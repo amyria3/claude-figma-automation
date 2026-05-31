@@ -8,11 +8,12 @@ Complete reference and workflows for automating Figma with Claude via MCP.
 > 1. `figma-workflow-technisch.md` – pre-flight checklist & golden rules
 > 2. `figma-api-reference.md` – what works, what doesn't, code patterns
 > 3. `figma-design-principles-arkadieff.md` – design system rules
-> 4. `figma-stylesheet-workaround.md` – variables workaround
+> 4. `figma-stylesheet-workaround.md` – variables workaround (load when Variables topic comes up)
 >
-> **Repo:** `amyria3/claude-figma-automation` via GitHub MCP (requires Docker + Claude Desktop)
+> **Access:** via GitHub MCP Connector in Claude.ai (no Docker needed for claude.ai)  
+> **Docker only required for:** Claude Desktop App
 
-## Documentation
+## Figma Documentation
 
 ### 1. `figma-workflow-technisch.md`
 - Pre-flight checklist (vor jeder Task)
@@ -29,19 +30,30 @@ Complete reference and workflows for automating Figma with Claude via MCP.
 - Known limitations & workarounds
 - Quick-start templates
 
-### 3. `figma-stylesheet-workaround.md`
+### 3. `figma-design-principles-arkadieff.md`
+- Core design principles (flex-based layouts, naming conventions)
+- Spacing & typography tokens
+
+### 4. `figma-stylesheet-workaround.md`
 - Stylesheet-based styling workflow (for Variables limitation)
 - Step-by-step guide
 - Design token templates (copy-paste ready)
 - Checklists for both Claude and user
 
-### 4. `figma-design-principles-arkadieff.md`
-- Core design principles (flex-based layouts, naming conventions)
-- Spacing & typography tokens
+## User Setup & Terminal Documentation
 
 ### 5. `github-mcp-setup.md`
-- Setup guide for GitHub MCP connection
-- Required configuration and terminal commands
+- Setup guide for GitHub MCP via Docker (Claude Desktop only)
+- PAT creation, config file path, start order
+- Diagnostic terminal commands
+
+### 6. `user-system-setup-documentation.md`
+- macOS system status (Git, Docker, Node, Python, Homebrew)
+- Installed tools log
+
+### 7. `user-is-learning-terminal-commands`
+- Terminal commands with explanations for beginners
+- Split into: already known / learning / not yet needed
 
 ## Quick Start
 
@@ -59,13 +71,7 @@ Complete reference and workflows for automating Figma with Claude via MCP.
 | Flex layouts | ✅ Working | VERTICAL, HORIZONTAL, alignment |
 | Node operations | ✅ Working | Create, delete, rename |
 | Verification via get_metadata() | ✅ Working | XML-based confirmation |
-| Variables (create/link) | ❌ Not supported | Workaround available in doc #3 |
-
-## How Claude Uses This
-
-- Stored in GitHub, accessed via GitHub MCP Connector
-- Single source of truth for all Figma automation workflows
-- Consistent across all chats (requires Docker + Claude Desktop)
+| Variables (create/link) | ❌ Not supported | Workaround: doc #4 |
 
 ## Related
 
