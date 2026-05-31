@@ -37,13 +37,6 @@
 - **GitHub Integration:** ✅ Can access public repos
 - **Local Development:** `/Users/mariatarabao/Documents/CODE/For Claude/`
 
-## Key Directories
-
-	~/                                          Home directory
-	~/Documents/CODE/                           Development projects
-	~/Documents/CODE/For Claude/                Claude-specific projects
-	~/Documents/CODE/For Claude/claude-figma-automation/  Main GitHub repo (cloned)
-
 ## Environment Setup
 
 - **Shell:** zsh (default on newer macOS)
