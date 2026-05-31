@@ -1,64 +1,46 @@
-# User System Setup Documentation
+# System Setup Documentation
 
-**Platform:** macOS
+**Platform:** macOS  
+**Shell:** zsh (default)
 
-## Installation Log
+## Installation Status
 
 ### Git & GitHub
 - **Git:** ✅ Installed & configured
-- **GitHub Account:** ✅ amyria3
-- **Personal Access Token:** ✅ Created (ghp\_...)
-- **GitHub SSH/HTTPS:** HTTPS (authenticated via PAT)
-
-### Development Tools
-- **Terminal:** macOS default (zsh)
-- **Code Editor:** (to be filled)
+- **GitHub:** ✅ Connected via PAT
 - **Git Client:** Command line
 
+### Development Tools
+- **Terminal:** macOS default
+- **Code Editor:** (to be filled)
+
 ### Package Manager
-- **Homebrew:** ❓ Status unknown – check with `brew --version`
-  - Installation date: 
+- **Homebrew:** Check with `brew --version`
+  - Status:
   - Version:
 
 ### Node.js / npm
-- **Node.js:** ❓ Status unknown – check with `node --version`
-  - Installation date:
+- **Node.js:** Check with `node --version`
+  - Status:
   - Version:
-- **npm:** ❓ Status unknown – check with `npm --version`
-  - Version:
+- **npm:** Check with `npm --version`
+  - Status:
 
 ### Python
-- **Python:** ❓ Status unknown – check with `python3 --version`
-  - Installation date:
+- **Python:** Check with `python3 --version`
+  - Status:
   - Version:
 
 ### Claude Integration
 - **Claude.ai:** Paid plan
-- **GitHub Integration:** ✅ Can access public repos
-- **Local Development:** `/Users/mariatarabao/Documents/CODE/For Claude/`
+- **GitHub:** Can access repositories
 
-## Environment Setup
+## Tools Added
 
-- **Shell:** zsh (default on newer macOS)
-- **Git Config:** ✅ Ready (username: amyria3)
-- **PATH:** (to be documented if needed)
-
-## Regular Backups
-
-- **Infomaniak:** Primary backup location
-- **GitHub:** Version control + backup
-- **Google Drive:** (Optional, if needed)
-
-## Installation Checklist
-
-Next steps to complete:
-- [ ] Verify Homebrew installation
-- [ ] Verify Node.js installation
-- [ ] Verify Python installation
-- [ ] Document code editor preference
-- [ ] Set up SSH keys (optional but recommended)
-- [ ] Document any additional tools as installed
+Document any packages/tools as installed:
+- [ ] Package name & version:
+- [ ] Installation date:
 
 ## Last Updated
 
-31.05.2026 – Initial setup documentation created
+31.05.2026
