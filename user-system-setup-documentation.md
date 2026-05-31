@@ -3,6 +3,13 @@
 **Platform:** macOS  
 **Shell:** zsh (default)
 
+## Claude Integration
+
+| Interface | GitHub MCP | Figma MCP |
+|---|---|---|
+| **Claude.ai** (Browser/App) | ✅ Via Connectors (kein Docker) | ✅ Via Connectors |
+| **Claude Desktop** | Via Docker (siehe `github-mcp-setup.md`) | — |
+
 ## Installation Status
 
 ### Git & GitHub
@@ -31,9 +38,9 @@
   - Status:
   - Version:
 
-### Claude Integration
-- **Claude.ai:** Paid plan
-- **GitHub:** Can access repositories
+### Docker
+- **Docker Desktop:** ✅ Installed (required for Claude Desktop GitHub MCP)
+- Check with `docker --version`
 
 ## Tools Added
 
