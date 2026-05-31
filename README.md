@@ -2,6 +2,16 @@
 
 Complete reference and workflows for automating Figma with Claude via MCP.
 
+## Instructions for Claude
+
+> **Whenever the user mentions Figma, load these files from this repo before starting any task:**
+> 1. `figma-workflow-technisch.md` – pre-flight checklist & golden rules
+> 2. `figma-api-reference.md` – what works, what doesn't, code patterns
+> 3. `figma-design-principles-arkadieff.md` – design system rules
+> 4. `figma-stylesheet-workaround.md` – variables workaround
+>
+> **Repo:** `amyria3/claude-figma-automation` via GitHub MCP (requires Docker + Claude Desktop)
+
 ## Documentation
 
 ### 1. `figma-workflow-technisch.md`
