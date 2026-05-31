@@ -1,4 +1,4 @@
-# ✅ FINAL Figma API Reference für Claude
+# ✅ Figma API Reference für Claude
 **Alle Funktionen validiert + ALLE Limitations dokumentiert**
 
 **Version:** 2.3 FINAL  
