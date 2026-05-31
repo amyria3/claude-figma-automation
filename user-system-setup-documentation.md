@@ -1,8 +1,6 @@
 # User System Setup Documentation
 
-**Platform:** macOS  
-**Device:** MacBook Pro von Maria  
-**User:** mariatarabao
+**Platform:** macOS
 
 ## Installation Log
 
