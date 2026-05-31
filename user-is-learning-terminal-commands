@@ -1,1 +1,129 @@
+# Terminal Commands Learning
 
+## ✅ Schon Können
+
+Hier brauchst Du nur zu wissen, WAS zu tun ist. Claude sagt Dir nur die Befehle.
+
+### Git
+- `git add .` – Alle Dateien für Commit vorbereiten
+- `git commit -m "message"` – Änderungen mit Nachricht speichern
+- `git push origin main` – Zu GitHub hochladen
+
+### Navigation
+- `cd <path>` – In einen Ordner gehen
+
+---
+
+## 🎓 Lernen Will
+
+Hier erklärt Claude WAS, WIE, WARUM + praktische Beispiele.
+
+### File Management
+
+#### `ls -la`
+**Was:** Zeigt alle Dateien im aktuellem Ordner (inkl. versteckte Dateien).
+
+**Wann brauche ich das:** Um zu überprüfen, welche Dateien wo sind.
+
+**Beispiel:**
+```bash
+cd /Users/mariatarabao/Documents/CODE/For\ Claude/claude-figma-automation
+ls -la
+```
+Du siehst dann: README.md, figma-*.md, .git/ (der Punkt bedeutet: versteckt)
+
+**Warnung:** Die Ausgabe kann lang sein. Nicht erschrecken!
+
+---
+
+#### `nano <file>`
+**Was:** Öffnet eine Datei zum Editieren im Terminal.
+
+**Wann brauche ich das:** Um schnell Dateien zu ändern, ohne einen Editor zu öffnen.
+
+**Beispiel:**
+```bash
+nano README.md
+```
+
+**Wie beenden:**
+- `Ctrl + X` → Drücken
+- `Y` (Yes) → Drücken
+- `Enter` → Drücken
+
+**Warnung:** Nicht `Ctrl+C` drücken – das bricht ab! Nutze `Ctrl+X`.
+
+---
+
+#### `rm .git/.COMMIT_EDITMSG.swp`
+**Was:** Löscht eine bestimmte Datei (den Swap-File, der Git-Fehler verursacht).
+
+**Wann brauche ich das:** Wenn Git-Commit mit Swap-File-Fehler abbricht.
+
+**Beispiel:**
+```bash
+rm .git/.COMMIT_EDITMSG.swp
+```
+
+**Warnung:** `rm` löscht PERMANENT! Kein Papierkorb. Nur verwenden, wenn Claude Dir genau sagt, welche Datei.
+
+---
+
+### Git
+
+#### `git status`
+**Was:** Zeigt, welche Dateien geändert wurden und bereit zum Committen sind.
+
+**Wann brauche ich das:** Um zu überprüfen, ob alles korrekt ist vor `git add`.
+
+**Beispiel:**
+```bash
+git status
+```
+
+Du siehst rot: noch nicht geaddet | grün: bereit zum committen
+
+---
+
+#### `git log`
+**Was:** Zeigt alle bisherigen Commits (Änderungen-Verlauf).
+
+**Wann brauche ich das:** Um zu sehen, was Du wann gemacht hast.
+
+**Beispiel:**
+```bash
+git log
+```
+
+Drück `q` zum Beenden.
+
+---
+
+#### `git pull origin main`
+**Was:** Holt die neuesten Änderungen von GitHub und verbindet sie mit deinem lokalen Code.
+
+**Wann brauche ich das:** Wenn du Dateien online auf GitHub bearbeitet hast und sie jetzt lokal haben willst.
+
+**Beispiel:**
+```bash
+git pull origin main
+```
+
+Du wirst sehen: "Already up to date" (nichts Neues) oder es werden Dateien heruntergeladen.
+
+**Warnung:** `git pull .` funktioniert NICHT! Der Punkt (`.`) ist dein Ordner, nicht GitHub. Nutze immer `origin main`.
+
+---
+
+## 📋 Noch nicht geplant
+
+Commands, die Du jetzt nicht brauchst:
+- `brew install`
+- `find . -name`
+- Komplexe Pipes (`|`)
+
+Können später dazukommen.
+
+---
+
+**Stand:** 31.05.2026
