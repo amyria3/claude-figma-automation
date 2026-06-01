@@ -3,12 +3,16 @@
 ## 🏗️ CORE PRINCIPLE: Flex-Based Layouts
 **Alle Elemente als `flex-row` oder `flex-col`. Exceptions nur wenn Code- oder optische Logik es erfordert.**
 
-## 🧱 CORE PRINCIPLE: Blöcke = Frames mit Auto Layout
-**Zusammenhängende Inhalte (Sektionen, Karten, Listen, Header etc.) werden IMMER in einen eigenen Frame gruppiert.**
-- Jeder Block-Frame hat Auto Layout aktiviert (flex-col oder flex-row)
-- Niemals zusammengehörige Elemente lose auf einen übergeordneten Frame legen
-- Das übergeordnete Layout (z.B. ein Seiten-Frame) organisiert diese Block-Frames selbst per Auto Layout
-- Auto Layout wird IMMER verwendet — Ausnahmen nur wenn technisch oder optisch zwingend notwendig
+## 🏛️ Structural Design Principles
+
+### Principle 1: Hierarchical Nesting
+Frames verschachtelt, nicht flach auf Canvas.
+
+### Principle 2: Component Separation
+Jedes bedeutungsvolle UI-Element hat seinen eigenen Frame/Component.
+
+### Principle 3: Blöcke = Frames mit Auto Layout
+Zusammenhängende Inhalte (Sektionen, Karten, Listen, Header etc.) werden IMMER in einen eigenen Frame gruppiert. Jeder Block-Frame hat Auto Layout aktiviert. Niemals zusammengehörige Elemente lose auf einen übergeordneten Frame legen. Das übergeordnete Layout organisiert die Block-Frames selbst per Auto Layout.
 
 **Beispiel: Zweispaltiges Seiten-Layout**
 ```
@@ -23,21 +27,13 @@ PageFrame (flex-row)
     └── SectionBlock-F (flex-col)
 ```
 
-## 🏛️ Structural Design Principles
-
-### Principle 1: Hierarchical Nesting
-Frames verschachtelt, nicht flach auf Canvas.
-
-### Principle 2: Component Separation
-Jedes bedeutungsvolle UI-Element hat seinen eigenen Frame/Component.
-
-### Principle 3: Scrollable Container Pattern
+### Principle 4: Scrollable Container Pattern
 Scrollbare Inhalte in explizitem Container mit Scroll-Naming (scroll, scroll-x-auto, scroll-y-auto).
 
-### Principle 4: Component Variants
+### Principle 5: Component Variants
 Wiederverwendbare Elemente sind Components mit Variants.
 
-### Principle 5: Granular & Semantic Naming
+### Principle 6: Granular & Semantic Naming
 Jede Ebene hat aussagekräftigen Namen (Header, Tabs Navigation, Feed Content).
 
 ## 📐 Layout-Struktur & Sizing
