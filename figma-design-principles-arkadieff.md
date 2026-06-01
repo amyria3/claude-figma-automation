@@ -3,6 +3,27 @@
 ## 🏗️ CORE PRINCIPLE: Flex-Based Layouts
 **Alle Elemente als `flex-row` oder `flex-col`. Exceptions nur wenn Code- oder optische Logik es erfordert.**
 
+## 🧱 CORE PRINCIPLE: Blöcke = Frames mit Auto Layout
+**Zusammenhängende Inhalte (Sektionen, Karten, Listen, Header etc.) werden IMMER in einen eigenen Frame gruppiert.**
+- Jeder Block-Frame hat Auto Layout aktiviert (flex-col oder flex-row)
+- Niemals zusammengehörige Elemente lose auf einen übergeordneten Frame legen
+- Das übergeordnete Layout (z.B. ein Seiten-Frame) organisiert diese Block-Frames selbst per Auto Layout
+- Auto Layout wird IMMER verwendet — Ausnahmen nur wenn technisch oder optisch zwingend notwendig
+
+**Beispiel: CV-Layout**
+```
+A4-Frame (flex-row)
+├── Sidebar-Frame (flex-col)
+│   ├── NameBlock-Frame (flex-col)
+│   ├── ContactBlock-Frame (flex-col)
+│   ├── SkillsBlock-Frame (flex-col)
+│   └── EducationBlock-Frame (flex-col)
+└── MainContent-Frame (flex-col)
+    ├── ExperienceBlock-Frame (flex-col)
+    ├── ProjectsBlock-Frame (flex-col)
+    └── ExpertiseBlock-Frame (flex-col)
+```
+
 ## 🏛️ Structural Design Principles
 
 ### Principle 1: Hierarchical Nesting
