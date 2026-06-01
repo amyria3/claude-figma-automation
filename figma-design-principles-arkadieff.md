@@ -10,18 +10,17 @@
 - Das übergeordnete Layout (z.B. ein Seiten-Frame) organisiert diese Block-Frames selbst per Auto Layout
 - Auto Layout wird IMMER verwendet — Ausnahmen nur wenn technisch oder optisch zwingend notwendig
 
-**Beispiel: CV-Layout**
+**Beispiel: Zweispaltiges Seiten-Layout**
 ```
-A4-Frame (flex-row)
-├── Sidebar-Frame (flex-col)
-│   ├── NameBlock-Frame (flex-col)
-│   ├── ContactBlock-Frame (flex-col)
-│   ├── SkillsBlock-Frame (flex-col)
-│   └── EducationBlock-Frame (flex-col)
-└── MainContent-Frame (flex-col)
-    ├── ExperienceBlock-Frame (flex-col)
-    ├── ProjectsBlock-Frame (flex-col)
-    └── ExpertiseBlock-Frame (flex-col)
+PageFrame (flex-row)
+├── SidebarFrame (flex-col)
+│   ├── SectionBlock-A (flex-col)
+│   ├── SectionBlock-B (flex-col)
+│   └── SectionBlock-C (flex-col)
+└── MainContentFrame (flex-col)
+    ├── SectionBlock-D (flex-col)
+    ├── SectionBlock-E (flex-col)
+    └── SectionBlock-F (flex-col)
 ```
 
 ## 🏛️ Structural Design Principles
