@@ -114,6 +114,11 @@ Wiederverwendbare Elemente werden als Components mit Variants angelegt.
 ### Principle 12: Granular & Semantic Naming
 Jede Ebene trägt einen aussagekräftigen Namen, der Funktion oder Inhalt beschreibt (z.B. `HeaderFrame`, `TabsNavigation`, `FeedContent`).
 
+### Principle 13: Text Styles konsequent verknüpfen
+Jeder Textknoten ist mit einem Text Style verknüpft. Direkte Font-Properties ohne Style-Verknüpfung sind nur temporär während der Erstellung zulässig. Globale Änderungen (Font, Größe, Farbe) sollen über den Style wirken — nicht durch manuelle Einzelanpassungen.
+
+Empfohlener Workflow: Styles werden vor der eigentlichen Datei-Erstellung angelegt (siehe `figma-kollaboration-workflows.md`).
+
 ---
 
 ## 📛 Naming-Konventionen
