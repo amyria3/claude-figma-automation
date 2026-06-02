@@ -22,19 +22,30 @@ Zusammenhängende Inhalte (Sektionen, Karten, Listen, Header etc.) werden in ein
 
 **Beispiel: Zweispaltiges Layout**
 ```
-PageFrame (flex-row)
-├── SidebarFrame (flex-col)
-│   ├── SectionBlock-A (flex-col)
-│   ├── SectionBlock-B (flex-col)
-│   └── SectionBlock-C (flex-col)
-└── MainContentFrame (flex-col)
-    ├── SectionBlock-D (flex-col)
-    ├── SectionBlock-E (flex-col)
-    └── SectionBlock-F (flex-col)
+PageFrame (flex-col)
+├── HeaderBlock          ← globale Elemente, die das gesamte Layout überspannen
+└── ColumnsFrame (flex-row)
+    ├── SidebarFrame (flex-col)
+    │   ├── SectionBlock-A (flex-col)
+    │   └── SectionBlock-B (flex-col)
+    └── MainContentFrame (flex-col)
+        ├── SectionBlock-C (flex-col)
+        └── SectionBlock-D (flex-col)
 ```
 
-### Principle 4: Sizing in flex-row — Fill/Hug-Regel
-In einem `flex-row`-Container gilt: Kind-Frames haben entweder `fill` oder `hug` auf der Hauptachse (width). Mindestens ein Kind trägt `fill` — andernfalls läuft der Container über.
+### Principle 4: Globale Elemente über Spalten-Layout
+Elemente, die das gesamte Layout überspannen (z.B. Name, Seitentitel, globale Navigation), werden direkt in den Root-Frame gelegt — nicht in eine der Spalten. Der Root-Frame ist `flex-col`: globaler Header oben, Spalten-Container darunter.
+
+```
+RootFrame (flex-col)
+├── GlobalHeader  → fill, liegt über allem
+└── ColumnsFrame (flex-row)
+    ├── Sidebar
+    └── MainContent
+```
+
+### Principle 5: Sizing in flex-row — Fill/Hug-Regel
+In einem `flex-row`-Container gilt: Mindestens ein Kind trägt `fill` — andernfalls läuft der Container über.
 
 ```
 flex-row
@@ -51,7 +62,7 @@ flex-row
 
 *Ausnahme: Karussell oder horizontaler Scroll — alle Kinder `hug`, Container overflows absichtlich.*
 
-### Principle 5: Sizing in flex-col — Querachse fill
+### Principle 6: Sizing in flex-col — Querachse fill
 Kind-Frames in einem `flex-col`-Container erben standardmäßig `fill` auf der Querachse (width).
 
 ```
@@ -63,29 +74,44 @@ flex-col
 
 *Ausnahme: Elemente mit intrinsischer Breite (z.B. Icon, Badge, Label mit fester Größe) behalten `hug`.*
 
-### Principle 6: flex-wrap als Grid-Alternative
-Für gleichartige Kindelemente ohne feste Spaltenanzahl `flex-wrap` verwenden statt eines starren Grid-Layouts. Kinder haben `hug`, der Container `fill`.
+### Principle 7: flex-wrap und Grid — Wahl nach Struktur
+`flex-wrap` für dynamische Inhalte ohne bekannte Anzahl. Grid (`grid-cols`) wenn Spaltenanzahl fix und vorhersehbar. Kinder in beiden Fällen standardmäßig `fill` — sie teilen den verfügbaren Platz gleichmäßig auf.
 
 ```
+// Dynamisch, Anzahl unbekannt → flex-wrap
 flex-row + flex-wrap (w-full)
-├── Item → hug
-├── Item → hug
-├── Item → hug   ← bricht um wenn kein Platz
-└── Item → hug
+├── Item → fill   ✅
+└── Item → fill   ✅ (umbricht automatisch)
+
+// Fix, Anzahl bekannt → grid
+grid-cols-2
+├── Item → fill   ✅
+├── Item → fill   ✅
+├── Item → fill   ✅
+└── Item → fill   ✅
 ```
 
-*Geeignet für: Tag-Listen, Skill-Gruppen, Karten-Raster ohne feste Spaltenanzahl.*
+*Ausnahme: Elemente mit stark variierendem Inhalt können `hug` behalten, wenn gleichmäßige Verteilung unerwünscht ist.*
 
-### Principle 7: SectionLabel als separater Frame *(optional)*
+### Principle 8: Intrinsische Breite — `hug` + `whitespace-nowrap`
+Elemente mit vorhersehbarem, kurzem Inhalt (Datum, Status, Badge) erhalten `hug` und `whitespace-nowrap` statt einer fixen Pixelbreite. Der Text definiert seine eigene Breite — keine manuelle Pflege erforderlich.
+
+```
+flex-row
+├── JobInfo  → fill              Titel + Subtitle, nimmt restlichen Platz
+└── Date     → hug + nowrap      "Current since January 2024", nie umbrechen
+```
+
+### Principle 9: SectionLabel als separater Frame *(optional)*
 Titel und Inhalt einer Sektion können in getrennten Kind-Frames liegen (`SectionLabel` + Content-Frame), um die semantische Trennung im Layer-Panel sichtbar zu machen. Bei großen Dateien ist eine durchgängige Benennung nicht immer erforderlich.
 
-### Principle 8: Scrollable Container Pattern
+### Principle 10: Scrollable Container Pattern
 Scrollbare Inhalte erhalten einen expliziten Container-Frame mit entsprechendem Scroll-Verhalten (`clip content` aktiviert, Overflow scroll).
 
-### Principle 9: Component Variants
+### Principle 11: Component Variants
 Wiederverwendbare Elemente werden als Components mit Variants angelegt.
 
-### Principle 10: Granular & Semantic Naming
+### Principle 12: Granular & Semantic Naming
 Jede Ebene trägt einen aussagekräftigen Namen, der Funktion oder Inhalt beschreibt (z.B. `HeaderFrame`, `TabsNavigation`, `FeedContent`).
 
 ---
