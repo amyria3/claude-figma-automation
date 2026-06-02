@@ -125,10 +125,20 @@ Empfohlener Workflow: Styles werden vor der eigentlichen Datei-Erstellung angele
 
 ## 📛 Naming-Konventionen
 
-- **Container:** `[Element]Container` — z.B. `FeedContainer`, `CardContainer`
-- **Layout:** `flex-row`, `flex-col` (Tailwind-Konvention, lowercase)
+- **Inhaltliche Container:** `[Element]Container` — z.B. `FeedContainer`, `CardContainer`
+- **Layout-Frames (Auto Layout):** Tailwind-Konvention, lowercase — z.B. `flex-row`, `flex-col`
+- **Layout-Wrapper mit Ausrichtung:** Tailwind `align-self`-Klassen — z.B. `self-end`, `self-start`, `self-center`. Werden verwendet wenn ein einzelnes Kind-Element eine abweichende Ausrichtung im Container braucht, ohne den Inhalt selbst zu verändern.
 - **Scroll:** `scroll`, `scroll-x-auto`, `scroll-y-auto`
 - **Components:** PascalCase — z.B. `TabsNavigation`, `Button`, `Card`
+
+**Beispiel: Layout-Wrapper**
+```
+MainContent (flex-col)
+├── ExperienceSection   ← inhaltlicher Block
+├── ProjectsSection     ← inhaltlicher Block
+└── self-end            ← reiner Layout-Wrapper, schiebt Kind ans untere Ende
+    └── BeyondWorkBlock ← inhaltlicher Block
+```
 
 ---
 
