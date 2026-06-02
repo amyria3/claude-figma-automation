@@ -63,16 +63,16 @@ flex-row
 *Ausnahme: Karussell oder horizontaler Scroll — alle Kinder `hug`, Container overflows absichtlich.*
 
 ### Principle 6: Sizing in flex-col — Querachse fill
-Kind-Frames in einem `flex-col`-Container erben standardmäßig `fill` auf der Querachse (width).
+Kind-Frames in einem `flex-col`-Container erben standardmäßig `fill` auf der Querachse (width). Das gilt auch für verschachtelte Container-Frames wie `SectionLabel` oder Wrapper-Frames — sie erben `fill` vom Elternelement, solange ihr Inhalt dynamisch oder textuell ist.
 
 ```
-flex-col
-├── ChildA  → width: fill   ✅
-├── ChildB  → width: fill   ✅
-└── ChildC  → width: fill   ✅
+flex-col (fill)
+├── SectionLabel  → fill   ✅ passt sich Containerbreite an
+├── ContentFrame  → fill   ✅
+└── AnotherBlock  → fill   ✅
 ```
 
-*Ausnahme: Elemente mit intrinsischer Breite (z.B. Icon, Badge, Label mit fester Größe) behalten `hug`.*
+*Ausnahme: Elemente mit wirklich fixer, nicht-textbasierter Größe — z.B. ein quadratisches Icon, ein Avatar, ein Badge mit fester Pixelgröße. Textbasierte Elemente, auch kurze Labels, bekommen immer `fill`.*
 
 ### Principle 7: flex-wrap und Grid — Wahl nach Struktur
 `flex-wrap` für dynamische Inhalte ohne bekannte Anzahl. Grid (`grid-cols`) wenn Spaltenanzahl fix und vorhersehbar. Kinder in beiden Fällen standardmäßig `fill` — sie teilen den verfügbaren Platz gleichmäßig auf.
