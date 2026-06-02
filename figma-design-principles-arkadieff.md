@@ -50,15 +50,39 @@ flex-row
 └── ChildB  → width: hug    → Container läuft über
 ```
 
+**Praxisbeispiel: Fixed/Fluid-Layout**
+Sidebar (`hug`/`shrink-0`) + Hauptbereich (`fill`) ist das häufigste Anwendungsmuster:
+```
+flex-row
+├── Sidebar      → width: hug (shrink-0)   feste Breite
+└── MainContent  → width: fill             nimmt restlichen Platz
+```
+
 *Ausnahme: Karussell oder horizontaler Scroll — alle Kinder `hug`, Container overflows absichtlich.*
 
-### Principle 5: Scrollable Container Pattern
+### Principle 5: flex-wrap als Grid-Alternative
+Für gleichartige Kindelemente ohne feste Spaltenanzahl `flex-wrap` verwenden statt eines starren Grid-Layouts. Kinder haben `hug`, der Container `fill`. Elemente umbrechen automatisch je nach verfügbarem Platz.
+
+```
+flex-row + flex-wrap (w-full)
+├── Item → hug
+├── Item → hug
+├── Item → hug   ← bricht um wenn kein Platz
+└── Item → hug
+```
+
+*Geeignet für: Tag-Listen, Skill-Gruppen, Karten-Raster ohne feste Spaltenanzahl.*
+
+### Principle 6: SectionLabel als separater Frame *(optional)*
+Titel und Inhalt einer Sektion können in getrennten Kind-Frames liegen (`SectionLabel` + Content-Frame), um die semantische Trennung im Layer-Panel sichtbar zu machen und selektives Styling zu erleichtern. Bei großen Dateien ist eine durchgängige Benennung nicht immer erforderlich.
+
+### Principle 7: Scrollable Container Pattern
 Scrollbare Inhalte erhalten einen expliziten Container-Frame mit entsprechendem Scroll-Verhalten (`clip content` aktiviert, Overflow scroll).
 
-### Principle 6: Component Variants
+### Principle 8: Component Variants
 Wiederverwendbare Elemente werden als Components mit Variants angelegt.
 
-### Principle 7: Granular & Semantic Naming
+### Principle 9: Granular & Semantic Naming
 Jede Ebene trägt einen aussagekräftigen Namen, der Funktion oder Inhalt beschreibt (z.B. `HeaderFrame`, `TabsNavigation`, `FeedContent`).
 
 ---
