@@ -34,9 +34,7 @@ PageFrame (flex-row)
 ```
 
 ### Principle 4: Sizing in flex-row — Fill/Hug-Regel
-In einem `flex-row`-Container gilt: Kind-Frames haben entweder `fill` oder `hug` auf der Hauptachse (width). Haben mehrere Kinder `hug`, muss mindestens eines `fill` haben — andernfalls läuft der Container über.
-
-**Regel:** Mindestens ein Kind pro `flex-row` trägt `fill`, um den verfügbaren Platz zu belegen.
+In einem `flex-row`-Container gilt: Kind-Frames haben entweder `fill` oder `hug` auf der Hauptachse (width). Mindestens ein Kind trägt `fill` — andernfalls läuft der Container über.
 
 ```
 flex-row
@@ -44,14 +42,7 @@ flex-row
 └── ChildB  → width: hug    ✅ passt sich Inhalt an
 ```
 
-```
-flex-row
-├── ChildA  → width: hug    ⚠️ beide hug ohne fill
-└── ChildB  → width: hug    → Container läuft über
-```
-
 **Praxisbeispiel: Fixed/Fluid-Layout**
-Sidebar (`hug`/`shrink-0`) + Hauptbereich (`fill`) ist das häufigste Anwendungsmuster:
 ```
 flex-row
 ├── Sidebar      → width: hug (shrink-0)   feste Breite
@@ -61,7 +52,7 @@ flex-row
 *Ausnahme: Karussell oder horizontaler Scroll — alle Kinder `hug`, Container overflows absichtlich.*
 
 ### Principle 5: Sizing in flex-col — Querachse fill
-Kind-Frames in einem `flex-col`-Container erben standardmäßig `fill` auf der Querachse (width). Kein Kind-Frame bleibt auf `hug`, solange es den verfügbaren Platz nutzen soll.
+Kind-Frames in einem `flex-col`-Container erben standardmäßig `fill` auf der Querachse (width).
 
 ```
 flex-col
@@ -73,7 +64,7 @@ flex-col
 *Ausnahme: Elemente mit intrinsischer Breite (z.B. Icon, Badge, Label mit fester Größe) behalten `hug`.*
 
 ### Principle 6: flex-wrap als Grid-Alternative
-Für gleichartige Kindelemente ohne feste Spaltenanzahl `flex-wrap` verwenden statt eines starren Grid-Layouts. Kinder haben `hug`, der Container `fill`. Elemente umbrechen automatisch je nach verfügbarem Platz.
+Für gleichartige Kindelemente ohne feste Spaltenanzahl `flex-wrap` verwenden statt eines starren Grid-Layouts. Kinder haben `hug`, der Container `fill`.
 
 ```
 flex-row + flex-wrap (w-full)
@@ -86,7 +77,7 @@ flex-row + flex-wrap (w-full)
 *Geeignet für: Tag-Listen, Skill-Gruppen, Karten-Raster ohne feste Spaltenanzahl.*
 
 ### Principle 7: SectionLabel als separater Frame *(optional)*
-Titel und Inhalt einer Sektion können in getrennten Kind-Frames liegen (`SectionLabel` + Content-Frame), um die semantische Trennung im Layer-Panel sichtbar zu machen und selektives Styling zu erleichtern. Bei großen Dateien ist eine durchgängige Benennung nicht immer erforderlich.
+Titel und Inhalt einer Sektion können in getrennten Kind-Frames liegen (`SectionLabel` + Content-Frame), um die semantische Trennung im Layer-Panel sichtbar zu machen. Bei großen Dateien ist eine durchgängige Benennung nicht immer erforderlich.
 
 ### Principle 8: Scrollable Container Pattern
 Scrollbare Inhalte erhalten einen expliziten Container-Frame mit entsprechendem Scroll-Verhalten (`clip content` aktiviert, Overflow scroll).
@@ -96,20 +87,6 @@ Wiederverwendbare Elemente werden als Components mit Variants angelegt.
 
 ### Principle 10: Granular & Semantic Naming
 Jede Ebene trägt einen aussagekräftigen Namen, der Funktion oder Inhalt beschreibt (z.B. `HeaderFrame`, `TabsNavigation`, `FeedContent`).
-
----
-
-## 📐 Layout-Struktur & Sizing
-
-### flex-row
-- Width: `fill` (mind. ein Kind) / `hug` (inhaltsgeprägte Kinder)
-- Height: `hug`
-- Verwendet für: Nav bars, Buttons, Header, Zeilen
-
-### flex-col
-- Width: `fill` (alle Kinder, Standard)
-- Height: `hug`
-- Verwendet für: Seiten-Layout, Cards, Feeds, Sektionen
 
 ---
 
