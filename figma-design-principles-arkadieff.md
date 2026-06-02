@@ -60,7 +60,19 @@ flex-row
 
 *Ausnahme: Karussell oder horizontaler Scroll — alle Kinder `hug`, Container overflows absichtlich.*
 
-### Principle 5: flex-wrap als Grid-Alternative
+### Principle 5: Sizing in flex-col — Querachse fill
+Kind-Frames in einem `flex-col`-Container erben standardmäßig `fill` auf der Querachse (width). Kein Kind-Frame bleibt auf `hug`, solange es den verfügbaren Platz nutzen soll.
+
+```
+flex-col
+├── ChildA  → width: fill   ✅
+├── ChildB  → width: fill   ✅
+└── ChildC  → width: fill   ✅
+```
+
+*Ausnahme: Elemente mit intrinsischer Breite (z.B. Icon, Badge, Label mit fester Größe) behalten `hug`.*
+
+### Principle 6: flex-wrap als Grid-Alternative
 Für gleichartige Kindelemente ohne feste Spaltenanzahl `flex-wrap` verwenden statt eines starren Grid-Layouts. Kinder haben `hug`, der Container `fill`. Elemente umbrechen automatisch je nach verfügbarem Platz.
 
 ```
@@ -73,16 +85,16 @@ flex-row + flex-wrap (w-full)
 
 *Geeignet für: Tag-Listen, Skill-Gruppen, Karten-Raster ohne feste Spaltenanzahl.*
 
-### Principle 6: SectionLabel als separater Frame *(optional)*
+### Principle 7: SectionLabel als separater Frame *(optional)*
 Titel und Inhalt einer Sektion können in getrennten Kind-Frames liegen (`SectionLabel` + Content-Frame), um die semantische Trennung im Layer-Panel sichtbar zu machen und selektives Styling zu erleichtern. Bei großen Dateien ist eine durchgängige Benennung nicht immer erforderlich.
 
-### Principle 7: Scrollable Container Pattern
+### Principle 8: Scrollable Container Pattern
 Scrollbare Inhalte erhalten einen expliziten Container-Frame mit entsprechendem Scroll-Verhalten (`clip content` aktiviert, Overflow scroll).
 
-### Principle 8: Component Variants
+### Principle 9: Component Variants
 Wiederverwendbare Elemente werden als Components mit Variants angelegt.
 
-### Principle 9: Granular & Semantic Naming
+### Principle 10: Granular & Semantic Naming
 Jede Ebene trägt einen aussagekräftigen Namen, der Funktion oder Inhalt beschreibt (z.B. `HeaderFrame`, `TabsNavigation`, `FeedContent`).
 
 ---
@@ -95,7 +107,7 @@ Jede Ebene trägt einen aussagekräftigen Namen, der Funktion oder Inhalt beschr
 - Verwendet für: Nav bars, Buttons, Header, Zeilen
 
 ### flex-col
-- Width: `fill`
+- Width: `fill` (alle Kinder, Standard)
 - Height: `hug`
 - Verwendet für: Seiten-Layout, Cards, Feeds, Sektionen
 
