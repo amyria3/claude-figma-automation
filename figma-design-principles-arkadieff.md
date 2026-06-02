@@ -63,13 +63,15 @@ flex-row
 *Ausnahme: Karussell oder horizontaler Scroll — alle Kinder `hug`, Container overflows absichtlich.*
 
 ### Principle 6: Sizing in flex-col — Querachse fill
-Kind-Frames in einem `flex-col`-Container erben standardmäßig `fill` auf der Querachse (width). Das gilt auch für verschachtelte Container-Frames wie `SectionLabel` oder Wrapper-Frames — sie erben `fill` vom Elternelement, solange ihr Inhalt dynamisch oder textuell ist.
+Kind-Frames **und Textknoten** in einem `flex-col`-Container erhalten standardmäßig `fill` auf der Querachse (width). Das gilt auf jeder Verschachtelungsebene — sowohl der Frame als auch der Textknoten darin müssen explizit auf `fill` gesetzt werden. Ein Frame auf `fill` zu setzen reicht nicht — der Textknoten innerhalb erbt das nicht automatisch.
 
 ```
 flex-col (fill)
-├── SectionLabel  → fill   ✅ passt sich Containerbreite an
-├── ContentFrame  → fill   ✅
-└── AnotherBlock  → fill   ✅
+├── SectionLabel (Frame)  → fill   ✅
+│   └── Text              → fill   ✅ muss explizit gesetzt werden!
+├── ContentFrame          → fill   ✅
+│   └── Text              → fill   ✅
+└── AnotherBlock          → fill   ✅
 ```
 
 *Ausnahme: Elemente mit wirklich fixer, nicht-textbasierter Größe — z.B. ein quadratisches Icon, ein Avatar, ein Badge mit fester Pixelgröße. Textbasierte Elemente, auch kurze Labels, bekommen immer `fill`.*
