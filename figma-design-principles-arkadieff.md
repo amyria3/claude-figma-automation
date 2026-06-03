@@ -121,6 +121,9 @@ Jeder Textknoten ist mit einem Text Style verknüpft. Direkte Font-Properties oh
 
 Empfohlener Workflow: Styles werden vor der eigentlichen Datei-Erstellung angelegt (siehe `figma-kollaboration-workflows.md`).
 
+### Principle 14: Clip Content nur explizit setzen
+`clipsContent` wird nicht als Default gesetzt — nur dann, wenn Inhalte eines Containers bewusst abgeschnitten werden sollen (z.B. Scroll-Container, Bild-Crop, Karussell). Slides und Layout-Frames erhalten kein Clip Content, solange kein Overflow-Problem vorliegt.
+
 ---
 
 ## 📛 Naming-Konventionen
