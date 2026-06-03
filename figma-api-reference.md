@@ -1,7 +1,7 @@
 # ✅ Figma API Reference für Claude
 **Alle Funktionen validiert + ALLE Limitations dokumentiert**
 
-**Version:** 2.4  
+**Version:** 2.5  
 **Status:** Production Ready  
 **Überprüft am:** 31.05.2026 / 03.06.2026
 
@@ -60,6 +60,15 @@ async function copyAllTypography(source, target) {
 }
 ```
 
+### `resize()` setzt Höhe auf FIXED
+Nach `node.resize(w, h)` ist `textAutoResize` auf `"NONE"` gesetzt — der Text bricht nicht mehr automatisch um und die Höhe passt sich nicht an. Für Textknoten die sich an den Inhalt anpassen sollen:
+```javascript
+node.resize(width, node.height);         // Breite fixieren
+node.textAutoResize = "HEIGHT";          // Höhe hug't Inhalt
+// oder:
+node.textAutoResize = "WIDTH_AND_HEIGHT"; // Breite und Höhe hug't Inhalt
+```
+
 ---
 
 ## 2️⃣ FLEX-LAYOUT OPERATIONEN (✅ FUNKTIONIERT)
@@ -91,7 +100,6 @@ item.layoutSizingVertical = 'FIXED';
 **Getestet am:** 03.06.2026
 
 ### Korrekte Reihenfolge (zwingend einhalten)
-
 ```javascript
 frame.layoutMode = "GRID";
 frame.gridColumnCount = 2;       // 1. erst Anzahl
@@ -102,8 +110,58 @@ frame.gridColumnGap = 40;
 frame.gridRowGap = 0;
 ```
 
-### Erlaubte Typen für `gridColumnSizes` / `gridRowSizes`
+### `gridItemsPositioning` — Auto vs Manual
+```javascript
+// ✅ ROW_AUTO_FLOW: Kinder werden automatisch in Zeilen platziert (Standard)
+frame.gridItemsPositioning = "ROW_AUTO_FLOW";
 
+// ⚠️ MANUAL: Jedes Kind braucht setGridChildPosition() — häufig unerwünschte Nebeneffekte
+frame.gridItemsPositioning = "MANUAL";
+child.setGridChildPosition(0, 0); // (rowIndex, columnIndex)
+```
+**Empfehlung:** `ROW_AUTO_FLOW` verwenden — Kinder werden in Reihenfolge automatisch platziert.
+
+### Grid-Frame Höhe — `counterAxisSizingMode`
+```javascript
+frame.primaryAxisSizingMode = "FIXED";  // Breite fix
+frame.counterAxisSizingMode = "AUTO";   // ✅ Höhe hug't Inhalt (ROW_AUTO_FLOW nötig)
+frame.counterAxisSizingMode = "FIXED";  // ❌ Höhe bleibt fix — Inhalt kann überlaufen
+```
+
+### Vollsize Grid-Frame mit Padding (bevorzugtes Muster)
+Statt einem kleinen zentrierten Inner-Frame: Grid-Frame in voller Slide-Größe mit Padding als Margin.
+```javascript
+// ✅ Sauber: Grid füllt den ganzen Slide, Padding erzeugt Abstand
+frame.layoutMode = "GRID";
+frame.resize(874, 595);          // Slide-Größe
+frame.paddingTop = 78;
+frame.paddingBottom = 78;
+frame.paddingLeft = 78;
+frame.paddingRight = 78;
+frame.primaryAxisSizingMode = "FIXED";
+frame.counterAxisSizingMode = "FIXED";
+frame.x = 0; frame.y = 0;
+
+// ❌ Umständlich: kleiner Inner-Frame muss manuell zentriert werden
+inner.x = Math.round((slideW - inner.width) / 2);
+inner.y = Math.round((slideH - inner.height) / 2);
+```
+
+### Rotierter Text als direktes Grid-Kind
+Text-Nodes können direkt Grid-Kinder sein (kein Wrapper-Frame nötig). Position: x:0, y:[textWidth], rotation:90.
+```javascript
+const heading = figma.createText();
+heading.characters = "INHALT";
+heading.fontSize = 63.6;
+grid.appendChild(heading);
+
+// Nach appendChild: y = original text width, rotation 90°
+heading.x = 0;
+heading.y = heading.width;  // y = Textbreite (vor Rotation)
+heading.rotation = 90;
+```
+
+### Erlaubte Typen für `gridColumnSizes` / `gridRowSizes`
 ```javascript
 // ✅ Erlaubt:
 { type: "FLEX", value: 1 }    // 1fr
@@ -116,54 +174,21 @@ frame.gridRowGap = 0;
 ```
 
 ### `gridColumnSizingCSS` ist read-only
-Nur zur Verifikation lesbar — nie schreiben:
 ```javascript
-console.log(frame.gridColumnSizingCSS); // ✅ "fit-content(100%) minmax(0,1fr)"
-frame.gridColumnSizingCSS = "...";      // ❌ read-only, wirft Fehler
-```
-
-### Kind-Positionen setzen
-`setGridChildPosition` erwartet zwei separate Integer — kein Objekt:
-```javascript
-child.setGridChildPosition(0, 0); // ✅ (rowIndex, columnIndex)
-child.setGridChildPosition({ row: 0, column: 0 }); // ❌ wirft Fehler
+console.log(frame.gridColumnSizingCSS); // ✅ lesen zur Verifikation
+frame.gridColumnSizingCSS = "...";      // ❌ read-only
 ```
 
 ### Alignment für Grid-Kinder
-Erlaubte Werte: `"MIN" | "CENTER" | "MAX" | "AUTO"` — nicht `"STRETCH"`:
 ```javascript
-child.gridChildHorizontalAlign = "AUTO"; // ✅
+child.gridChildHorizontalAlign = "AUTO"; // ✅ MIN | CENTER | MAX | AUTO
 child.gridChildHorizontalAlign = "STRETCH"; // ❌ wirft Fehler
 ```
 
-### Sizing für Grid-Kinder
-`layoutSizingHorizontal` funktioniert **nicht** für Grid-Kinder — Breite wird über `gridColumnSizes` im Parent gesteuert:
+### `layoutSizingHorizontal` für Grid-Kinder
 ```javascript
 child.layoutSizingHorizontal = "FILL"; // ❌ wirft Fehler für Grid-Kinder
-// ✅ Stattdessen: Spaltenbreite im Parent definieren:
-frame.gridColumnSizes = [{ type: "HUG" }, { type: "FLEX", value: 1 }];
-```
-
-### Vollständiges Beispiel: 2-Spalten-Grid (fit-content + 1fr)
-```javascript
-const frame = figma.createFrame();
-frame.layoutMode = "GRID";
-frame.gridColumnCount = 2;
-frame.gridRowCount = 1;
-frame.gridColumnSizes = [{ type: "HUG" }, { type: "FLEX", value: 1 }];
-frame.gridRowSizes = [{ type: "HUG" }];
-frame.gridColumnGap = 40;
-frame.gridRowGap = 0;
-
-const left = figma.createFrame();
-const right = figma.createFrame();
-frame.appendChild(left);
-frame.appendChild(right);
-
-left.setGridChildPosition(0, 0);
-right.setGridChildPosition(0, 1);
-left.gridChildHorizontalAlign = "AUTO";
-right.gridChildHorizontalAlign = "AUTO";
+// ✅ Breite über gridColumnSizes im Parent steuern
 ```
 
 ---
@@ -174,7 +199,8 @@ right.gridChildHorizontalAlign = "AUTO";
 - ❌ `figma.notify()` — User sieht das nicht
 - ❌ `figma.root.appendChild()` — stattdessen `page.appendChild()`
 - ❌ Variables — komplett blockiert
-- ❌ `layoutSizingHorizontal` für Grid-Kinder — über `gridColumnSizes` steuern
+- ❌ `layoutSizingHorizontal` für Grid-Kinder
+- ❌ `clipsContent` nicht als Default setzen — nur explizit wenn nötig
 - ✅ Text ändern (mit Font-Loading vorher)
 - ✅ Farben setzen und auslesen
 - ✅ Flex- und Grid-Layouts erstellen
@@ -191,4 +217,6 @@ right.gridChildHorizontalAlign = "AUTO";
 | Flex-Layouts | ✅ | 31.05.2026 |
 | Farben | ✅ | 31.05.2026 |
 | Grid-Layout | ✅ | 03.06.2026 |
+| Grid ROW_AUTO_FLOW | ✅ | 03.06.2026 |
+| Grid Vollsize + Padding | ✅ | 03.06.2026 |
 | Variables | ❌ | 31.05.2026 |
