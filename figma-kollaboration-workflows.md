@@ -32,4 +32,29 @@ Claude erstellt alle Textknoten und verknüpft sie direkt beim Erstellen mit den
 
 ---
 
+## Workflow 2: Frame spiegeln (EN → DE oder umgekehrt)
+
+**Warum?**
+Beim Übertragen eines Frames in eine andere Sprachversion können Properties verloren gehen oder falsch gesetzt werden, wenn Claude nur den sichtbaren Inhalt kopiert und Layout-Eigenschaften annimmt statt ausliest.
+
+**Empfehlung:** Vor dem Erstellen der Zielversion immer fragen, welche Properties aus dem Quell-Frame ausgelesen werden sollen.
+
+### Ablauf
+
+**Schritt 1 — Du gibst an, welche Properties relevant sind**
+Claude fragt: *"Welche Properties soll ich aus dem Quell-Frame auslesen?"* — z.B. Padding, Grid-Einstellungen, Sizing-Modes, Gap, Rotation, Positionen.
+
+**Schritt 2 — Claude liest die angegebenen Properties aus**
+Claude liest nur die explizit genannten Werte und gibt sie zur Bestätigung zurück.
+
+**Schritt 3 — Claude baut die Zielversion**
+Mit den verifizierten Werten wird der neue Frame erstellt oder angepasst — ohne Annahmen.
+
+### Ergebnis
+- Keine versehentlich falschen Sizing-Modes oder Padding-Werte
+- Keine unnötigen Properties (z.B. kein clipsContent als Default)
+- Weniger Iterationsschleifen
+
+---
+
 *Weitere Workflow-Vorschläge folgen aus der gemeinsamen Praxis.*
