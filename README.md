@@ -25,11 +25,12 @@ docker ps         # Prüfen ob es läuft (github-mcp-server muss sichtbar sein)
 
 Danach Claude Desktop starten / Claude.ai aufrufen.
 
-### Figma Edit-Link teilen
-Figma → Share → Copy edit link → Link in den Chat einfügen
+### Figma Edit-Link mit Claude teilen
+Figma → Share
 
 ### Was Claude nicht automatisch kann
-Variables in Figma müssen **manuell** verknüpft werden (API-Limitation) → Workaround: `figma-stylesheet-workaround.md`
+Variables in Figma müssen **manuell** verknüpft werden (API-Limitation)
+Workaround: `figma-stylesheet-workaround.md`
 
 ---
 
