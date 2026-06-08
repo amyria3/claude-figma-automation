@@ -9,10 +9,10 @@ Dieses Repository enthält Anweisungen und Referenzdateien, die Claude für die 
 **1. Falls nicht vorhanden, Docker Desktop installieren**
 → [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop) → Download für Mac → installieren
 
-**2.  Falls nicht vorhanden, Claude Desktop installieren**
+**2. Falls nicht vorhanden, Claude Desktop installieren**
 → [claude.ai/download](https://claude.ai/download)
 
-**3. MCP Server aktivieren**
+**3. MCP Server einrichten**
 Claude Desktop → Settings → Developer → MCP aktivieren → Config-Datei einrichten
 → Details: `github-mcp-setup.md`
 
@@ -42,7 +42,7 @@ Variables in Figma müssen **manuell** verknüpft werden (API-Limitation) → Wo
 > 4. `figma-stylesheet-workaround.md` – variables workaround (load when Variables topic comes up)
 >
 > **Access:** via GitHub MCP — requires Docker Desktop running on the user's Mac
-> **Start order:** 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai öffnen
+> **Start order:** 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai aufrufen
 > **Kein Zugriff?** Docker läuft nicht → Terminal: `open -a Docker` dann `docker ps` prüfen
 
 ---
