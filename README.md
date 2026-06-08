@@ -10,8 +10,9 @@ Complete reference and workflows for automating Figma with Claude via MCP.
 > 3. `figma-design-principles-arkadieff.md` – design system rules
 > 4. `figma-stylesheet-workaround.md` – variables workaround (load when Variables topic comes up)
 >
-> **Access:** via GitHub MCP Connector in Claude.ai (no Docker needed for claude.ai)  
-> **Docker only required for:** Claude Desktop App
+> **Access:** via GitHub MCP — requires Docker Desktop running on the user's Mac
+> **Start order:** 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai öffnen
+> **Kein Zugriff?** Docker läuft nicht → Terminal: `open -a Docker` dann `docker ps` prüfen
 
 ## Figma Documentation
 
@@ -43,7 +44,7 @@ Complete reference and workflows for automating Figma with Claude via MCP.
 ## User Setup & Terminal Documentation
 
 ### 5. `github-mcp-setup.md`
-- Setup guide for GitHub MCP via Docker (Claude Desktop only)
+- Setup guide for GitHub MCP via Docker
 - PAT creation, config file path, start order
 - Diagnostic terminal commands
 
@@ -80,4 +81,4 @@ Complete reference and workflows for automating Figma with Claude via MCP.
 
 ## Last Updated
 
-May 31, 2026
+June 8, 2026
