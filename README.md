@@ -1,6 +1,37 @@
 # Claude + Figma Automation
 
-Complete reference and workflows for automating Figma with Claude via MCP.
+## For the User
+
+Dieses Repository enthält Anweisungen und Referenzdateien, die Claude für die Automatisierung von Figma-Aufgaben benötigt. Das Setup ist so gedacht, dass Claude die Dateien direkt aus dieser Repository ausliest — die Userin muss nichts manuell übertragen.
+
+### Erstmalige Einrichtung
+
+**1. Docker Desktop installieren** (falls noch nicht vorhanden)
+→ [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop) → Download für Mac → installieren
+
+**2. Claude Desktop installieren**
+→ [claude.ai/download](https://claude.ai/download)
+
+**3. MCP Server aktivieren**
+Claude Desktop → Settings → Developer → MCP aktivieren → Config-Datei einrichten
+→ Details: `github-mcp-setup.md`
+
+### Vor jeder Session
+
+```bash
+open -a Docker    # Docker starten
+docker ps         # Prüfen ob es läuft (github-mcp-server muss sichtbar sein)
+```
+
+Danach Claude Desktop starten / Claude.ai aufrufen.
+
+### Figma Edit-Link teilen
+Figma → Share → Copy edit link → Link in den Chat einfügen
+
+### Was Claude nicht automatisch kann
+Variables in Figma müssen **manuell** verknüpft werden (API-Limitation) → Workaround: `figma-stylesheet-workaround.md`
+
+---
 
 ## Instructions for Claude
 
@@ -13,6 +44,8 @@ Complete reference and workflows for automating Figma with Claude via MCP.
 > **Access:** via GitHub MCP — requires Docker Desktop running on the user's Mac
 > **Start order:** 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai öffnen
 > **Kein Zugriff?** Docker läuft nicht → Terminal: `open -a Docker` dann `docker ps` prüfen
+
+---
 
 ## Figma Documentation
 
@@ -56,12 +89,7 @@ Complete reference and workflows for automating Figma with Claude via MCP.
 - Terminal commands with explanations for beginners
 - Split into: already known / learning / not yet needed
 
-## Quick Start
-
-1. Create design tokens/stylesheet in Figma
-2. Share screenshot with Claude
-3. Claude parses values and applies to elements
-4. User manually links to Figma Variables
+---
 
 ## Feature Status
 
