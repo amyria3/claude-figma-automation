@@ -41,6 +41,7 @@ Workaround: `figma-stylesheet-workaround.md`
 > 2. `figma-api-reference.md` – what works, what doesn't, code patterns
 > 3. `figma-design-principles-arkadieff.md` – design system rules
 > 4. `figma-stylesheet-workaround.md` – variables workaround (load when Variables topic comes up)
+> 5. `figma-kollaboration-workflows.md` – recommended collaboration workflows (load for workflow questions)
 >
 > **Access:** via GitHub MCP — requires Docker Desktop running on the user's Mac
 > **Start order:** 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai aufrufen
@@ -75,18 +76,23 @@ Workaround: `figma-stylesheet-workaround.md`
 - Design token templates (copy-paste ready)
 - Checklists for both Claude and user
 
+### 5. `figma-kollaboration-workflows.md`
+- Recommended workflows for working with Claude in Figma
+- Text Styles vor Datei-Erstellung anlegen
+- Frame spiegeln (EN → DE oder umgekehrt)
+
 ## User Setup & Terminal Documentation
 
-### 5. `github-mcp-setup.md`
+### 6. `github-mcp-setup.md`
 - Setup guide for GitHub MCP via Docker
 - PAT creation, config file path, start order
 - Diagnostic terminal commands
 
-### 6. `user-system-setup-documentation.md`
+### 7. `user-system-setup-documentation.md`
 - macOS system status (Git, Docker, Node, Python, Homebrew)
 - Installed tools log
 
-### 7. `user-is-learning-terminal-commands`
+### 8. `user-is-learning-terminal-commands`
 - Terminal commands with explanations for beginners
 - Split into: already known / learning / not yet needed
 
