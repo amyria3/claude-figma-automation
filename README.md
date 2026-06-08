@@ -2,7 +2,9 @@
 
 ## For the User
 
-Dieses Repository enthält Anweisungen und Referenzdateien, die Claude für die Automatisierung von Figma-Aufgaben benötigt. Das Setup ist so gedacht, dass Claude die Dateien direkt aus dieser Repository ausliest — die Userin muss nichts manuell übertragen.
+Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Claude für die Automatisierung von Figma-Aufgaben benötigt. Das Setup ist so gedacht, dass Claude die Dateien direkt aus dieser Repository ausliest — die Userin muss nichts manuell übertragen.
+Enjoy KI, enjoy liebe*r Nutzer/ *in. 
+
 
 ### Erstmalige Einrichtung
 
