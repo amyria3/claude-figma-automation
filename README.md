@@ -6,10 +6,10 @@ Dieses Repository enthält Anweisungen und Referenzdateien, die Claude für die 
 
 ### Erstmalige Einrichtung
 
-**1. Docker Desktop installieren** (falls noch nicht vorhanden)
+**1. Falls nicht vorhanden, Docker Desktop installieren**
 → [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop) → Download für Mac → installieren
 
-**2. Claude Desktop installieren**
+**2.  Falls nicht vorhanden, Claude Desktop installieren**
 → [claude.ai/download](https://claude.ai/download)
 
 **3. MCP Server aktivieren**
