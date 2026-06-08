@@ -12,6 +12,8 @@ Dieses Repo ist ausschließlich für **Figma-Automatisierung mit Claude** — te
 - Setup-Dokumentation (MCP, Docker, GitHub)
 - Claude-Skill-Definitionen
 
+> Persönlicher Kontext (Portfolio-Datei, Bewerbungsprofil) wird in **Claude Memory** oder direkt im jeweiligen Projekt gespeichert.
+
 ---
 
 ## ❌ Nicht in dieses Repo
@@ -22,5 +24,3 @@ Dieses Repo ist ausschließlich für **Figma-Automatisierung mit Claude** — te
 | Sitzungsnotizen zu spezifischen Figma-Dateien | Projektspezifischer Kontext → Claude Memory oder Figma-Datei selbst |
 | Kontaktdaten, Profil-Infos | Persönliche Daten, nicht Teil der Tool-Dokumentation |
 | Konversationsverläufe mit Claude | Kein dauerhafter Mehrwert für die Automatisierungs-Doku |
-
-> Persönlicher Kontext (Portfolio-Datei, Bewerbungsprofil) wird in **Claude Memory** oder direkt im jeweiligen Projekt gespeichert.
