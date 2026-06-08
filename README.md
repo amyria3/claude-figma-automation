@@ -32,6 +32,10 @@ Figma → Share
 Variables in Figma müssen **manuell** verknüpft werden (API-Limitation)
 Workaround: `figma-stylesheet-workaround.md`
 
+### Claude Skill installieren
+Den `figma-automation` Skill lokal installieren damit Claude bei jeder Figma-Erwähnung automatisch die richtigen Dateien lädt:
+→ [`figma-automation-skill.md`](./figma-automation-skill.md) herunterladen → Claude.ai → Einstellungen → Skills → Skill hinzufügen
+
 ---
 
 ## Instructions for Claude
@@ -95,6 +99,10 @@ Workaround: `figma-stylesheet-workaround.md`
 ### 8. `user-is-learning-terminal-commands`
 - Terminal commands with explanations for beginners
 - Split into: already known / learning / not yet needed
+
+### 9. `figma-automation-skill.md`
+- Downloadbare Skill-Definition für Claude
+- Für lokale Installation unter Einstellungen → Skills
 
 ---
 
