@@ -13,8 +13,8 @@ Dieses Repository enthält Anweisungen und Referenzdateien, die Claude für die 
 → [claude.ai/download](https://claude.ai/download)
 
 **3. MCP Server einrichten**
-Claude Desktop → Settings → Developer → MCP aktivieren → Config-Datei einrichten
-→ Details: `github-mcp-setup.md`
+1. Claude Desktop → Settings → Developer → MCP aktivieren
+2. Claude Config-Datei einrichten - _Details: `github-mcp-setup.md`_
 
 ### Vor jeder Session
 
