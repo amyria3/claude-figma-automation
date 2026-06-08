@@ -1,19 +1,27 @@
 # GitHub MCP Setup
 
-## Claude.ai vs. Claude Desktop
+## Wichtig: Docker ist immer erforderlich
 
-| | GitHub MCP einrichten |
-|---|---|
-| **Claude.ai** (Browser/App) | Einstellungen → Connectors → GitHub aktivieren — fertig, kein Docker nötig |
-| **Claude Desktop** | Docker + manuelle Konfiguration (siehe unten) |
+Docker wird **sowohl für Claude.ai als auch für Claude Desktop** benötigt — es gibt keine Docker-freie Alternative.
+
+**Startreihenfolge:**
+1. **Docker Desktop** starten → warten bis Whale-Icon stabil ist
+2. **Claude Desktop** starten
+3. **Claude.ai** im Browser öffnen
+
+**Kein GitHub-Zugriff?** → Docker läuft nicht. Terminal:
+```bash
+open -a Docker   # Docker starten
+docker ps        # Prüfen ob es läuft
+```
 
 ---
 
-## Claude Desktop: Setup via Docker
+## Setup via Docker
 
 ### Voraussetzungen
+- Docker Desktop installiert (docker.com) und gestartet
 - Claude Desktop App installiert
-- Docker Desktop installiert und gestartet
 - GitHub Personal Access Token (PAT) mit Repo-Zugriff
 
 ### Konfigurationsdatei
@@ -35,20 +43,19 @@
 }
 ```
 
+> **Erster Start:** Das Docker-Image wird automatisch heruntergeladen — dauert beim ersten Mal etwas länger.
+
 ### PAT erstellen / erneuern
 1. github.com → Settings → Developer Settings → Personal Access Tokens
 2. „Fine-grained token" → Repository-Zugriff auf gewünschte Repos
 3. Token sofort kopieren (wird nur einmal angezeigt)
 4. Token anstelle von `DEIN_PAT_HIER` eintragen
 
-### Startreihenfolge (wichtig!)
-1. **Docker Desktop** starten → warten bis Whale-Icon stabil ist
-2. **Claude Desktop** starten
-
 ### Diagnose
 
 | Befehl | Zweck |
 |--------|-------|
+| `open -a Docker` | Docker Desktop starten |
 | `docker ps` | Prüfen ob Docker läuft |
 | `docker images \| grep github-mcp-server` | Image vorhanden? |
 | `cat ~/Library/Application\ Support/Claude/claude_desktop_config.json` | Config anzeigen |
