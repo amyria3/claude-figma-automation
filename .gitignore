@@ -8,3 +8,7 @@
 .idea/
 *.swp
 *.swo
+
+# Private / lokal
+user-is-learning-terminal-commands.md
+user-system-setup-documentation.md
