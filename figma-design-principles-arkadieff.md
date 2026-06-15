@@ -116,6 +116,9 @@ Wiederverwendbare Elemente werden als Components mit Variants angelegt.
 ### Principle 12: Granular & Semantic Naming
 Jede Ebene trägt einen aussagekräftigen Namen, der Funktion oder Inhalt beschreibt (z.B. `HeaderFrame`, `TabsNavigation`, `FeedContent`).
 
+**Ergänzung — Frame-Naming und Auto-Layout:**
+„Frame" ist im Zweifel ein gültiger Name — random Nummerierungen wie `Frame 845`, `Frame 15` etc. werden vermieden. Ein schlichtes `Frame` ist insbesondere gewünscht, wenn der Frame keine erkennbare FE-Relevanz hat. Auto-Layout-Frames sind so oft es geht mit `flex-row` bzw. `flex-col` zu benennen — ihre Layout-Richtung ist FE-relevant.
+
 ### Principle 13: Text Styles konsequent verknüpfen
 Jeder Textknoten ist mit einem Text Style verknüpft. Direkte Font-Properties ohne Style-Verknüpfung sind nur temporär während der Erstellung zulässig. Globale Änderungen (Font, Größe, Farbe) sollen über den Style wirken — nicht durch manuelle Einzelanpassungen.
 

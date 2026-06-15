@@ -57,4 +57,29 @@ Mit den verifizierten Werten wird der neue Frame erstellt oder angepasst — ohn
 
 ---
 
+## Workflow 3: Referenzierung von Figma-Elementen
+
+**Warum?**
+Bei der Kommunikation über Figma-Elemente können zwei Systeme in Konflikt geraten: Menschlich lesbare Namen (z.B. „COMPONENTS & SCREENS") und interne Node-IDs. Klare Regeln vermeiden Verwechslungen und machen die Zusammenarbeit effizienter.
+
+**Empfehlung:** Claude benennt Seiten, Frames und Komponenten nach ihren visuellen Namen — Node-IDs dienen der Verifizierung im Hintergrund.
+
+### Ablauf
+
+**Schritt 1 — Claude nutzt Element-Namen in der Kommunikation**
+Claude spricht von „COMPONENTS & SCREENS", nicht von einer Node-ID wie `1:245`. Das macht die Zusammenarbeit verständlicher und menschlicher.
+
+**Schritt 2 — Node-IDs für Verifizierung intern**
+Node-IDs werden intern weiterhin zur Verifizierung genutzt — falls Claude unsicher ist oder Daria zur Verifizierung fragt, können sie angefordert werden.
+
+**Schritt 3 — Node-IDs nur bei Bedarf kommunizieren**
+Node-IDs erscheinen nur bei sachlicher Notwendigkeit oder auf explizite Anfrage in der Kommunikation.
+
+### Ergebnis
+- Klare, verständliche Kommunikation über Figma-Elemente
+- Weniger Verwirrung durch technische IDs
+- Flexibilität bei Bedarf: IDs sind verfügbar, werden aber nicht überflüssig ausgegeben
+
+---
+
 *Weitere Workflow-Vorschläge folgen aus der gemeinsamen Praxis.*
