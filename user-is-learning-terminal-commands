@@ -115,6 +115,73 @@ Du wirst sehen: "Already up to date" (nichts Neues) oder es werden Dateien herun
 
 ---
 
+### Docker & System
+
+#### `killall -9 Docker`
+**Was:** Beendet den Docker-Prozess sofort und erzwingt das Herunterfahren (ohne Gnade).
+
+**Wann brauche ich das:** Wenn Docker nicht mehr reagiert oder hängt.
+
+**Beispiel:**
+```bash
+killall -9 Docker
+```
+
+Das sollte sofort funktionieren. Wenn nicht, hängt Docker wirklich fest.
+
+**Warnung:** Das `-9` ist der "Force-Kill" – super aggressiv, aber manchmal nötig.
+
+---
+
+#### `sleep <sekunden>`
+**Was:** Pausiert das Terminal für X Sekunden.
+
+**Wann brauche ich das:** Als Pause zwischen Befehlen (z.B. nach Docker beenden, vor neubeginn).
+
+**Beispiel:**
+```bash
+sleep 3     # Wartet 3 Sekunden
+sleep 60    # Wartet 60 Sekunden (1 Minute)
+```
+
+Sehr nützlich, wenn du mehrere Befehle nacheinander ausführst und Zeit zum Hochfahren brauchst.
+
+---
+
+#### `open -a Docker`
+**Was:** Öffnet eine macOS-Applikation direkt vom Terminal (hier: Docker Desktop).
+
+**Wann brauche ich das:** Wenn du Docker neu starten willst, ohne die App manuell zu suchen.
+
+**Beispiel:**
+```bash
+open -a Docker
+```
+
+Das öffnet das Docker-App-Fenster. Du siehst das Wal-Icon (Whale) oben rechts in der Menüleiste.
+
+---
+
+#### Docker-Neustart-Sequenz
+**Was:** Vier Befehle hintereinander = Docker vollständig neustarten.
+
+**Wann brauche ich das:** Wenn Docker hängt oder MCP nicht verbunden ist.
+
+**Die Sequenz:**
+```bash
+killall -9 Docker    # Docker sofort beenden
+sleep 3              # 3 Sekunden warten
+open -a Docker       # Docker neu öffnen
+sleep 60             # 60 Sekunden warten (Docker braucht lange zum Starten)
+docker ps            # Prüfen: Läuft Docker jetzt?
+```
+
+**Ergebnis:** Wenn `docker ps` Laufen **Container anzeigt oder "CONTAINER ID..." Kopfzeile**, dann läuft Docker korrekt.
+
+**Hinweis:** Nach dieser Sequenz **auch Claude Desktop neu starten**, damit MCP die Verbindung erneuert.
+
+---
+
 ## 📋 Noch nicht geplant
 
 Commands, die Du jetzt nicht brauchst:
@@ -126,4 +193,4 @@ Können später dazukommen.
 
 ---
 
-**Stand:** 31.05.2026
+**Stand:** 29.06.2026
