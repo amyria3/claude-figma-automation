@@ -80,6 +80,9 @@ Node-IDs erscheinen nur bei sachlicher Notwendigkeit oder auf explizite Anfrage 
 - Weniger Verwirrung durch technische IDs
 - Flexibilität bei Bedarf: IDs sind verfügbar, werden aber nicht überflüssig ausgegeben
 
+**Ergänzung — Referenzierung in Doku, Kommentaren & Handoff-Notizen (Session 01.07.2026):**
+Dieselbe Regel gilt nicht nur im Chat, sondern auch schriftlich — z.B. in Entwickler-Kommentaren für Lukas, Audit-Notizen oder Issue-Beschreibungen. Referenziert wird der **Layer-Name** (z.B. `Cards / DiscoveryCard`), nicht die Node-ID. Eine Node-ID wird nur ergänzt, wenn mehrere Layer denselben Namen tragen und die Eindeutigkeit sonst verloren ginge (z.B. bei den beiden gleich benannten `Page / Tablet / 04-ProductDetails`-Screens).
+
 ---
 
 *Weitere Workflow-Vorschläge folgen aus der gemeinsamen Praxis.*
