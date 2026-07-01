@@ -129,6 +129,28 @@ Empfohlener Workflow: Styles werden vor der eigentlichen Datei-Erstellung angele
 
 ---
 
+## 🖱️ Interaction & State Behavior
+
+### Button-Verhalten: Inactive State
+- **Optik:** Inaktive Buttons verwenden die Variante `Deactivated?=True` der jeweiligen Button-Komponente. Beispiel: [`Buttons / MD / PrimaryButton`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2310-2156) — dort als Varianten-Parameter `Deactivated` hinterlegt. Keine manuelle Nachbildung über Opacity o.ä. — der Zustand ist Teil der Component.
+- **Klickbarkeit:** Inaktive Buttons sind **nicht** im Sinne von "nicht klickbar" deaktiviert — sie lassen sich anklicken.
+- **Feedback bei Klick:** Ein Klick auf einen inaktiven Button zeigt eine Fehlermeldung, die erklärt, warum die Aktion aktuell nicht möglich ist.
+- **Rückkehr zum Ausgangszustand:** Nach dem Click kehrt der Button wieder in die `Deactivated`-Optik zurück — es entsteht kein eigener, dauerhafter "Error"-Zustand am Button selbst.
+
+```
+Button (Variant: Deactivated=True)
+   │  onClick
+   ▼
+Fehlermeldung wird angezeigt
+   │
+   ▼
+Button (Variant: Deactivated=True)   ← zurück zum Ausgangszustand, kein separater Error-State am Button
+```
+
+*Hinweis: Dieses Verhalten unterscheidet sich bewusst von einem klassischen `disabled`-Button (nicht klickbar, kein Pointer-Event). Der Grund für die Klickbarkeit ist, der Nutzerin aktiv mitzuteilen, warum eine Aktion nicht verfügbar ist, statt sie stillschweigend zu ignorieren.*
+
+---
+
 ## 📛 Naming-Konventionen
 
 - **Inhaltliche Container:** `[Element]Container` — z.B. `FeedContainer`, `CardContainer`
