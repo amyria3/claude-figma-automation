@@ -127,6 +127,16 @@ Empfohlener Workflow: Styles werden vor der eigentlichen Datei-Erstellung angele
 ### Principle 14: Clip Content nur explizit setzen
 `clipsContent` wird nicht als Default gesetzt — nur dann, wenn Inhalte eines Containers bewusst abgeschnitten werden sollen (z.B. Scroll-Container, Bild-Crop, Karussell). Slides und Layout-Frames erhalten kein Clip Content, solange kein Overflow-Problem vorliegt.
 
+### Principle 15: Variant-Property-Konventionen
+Innerhalb von Component-Variant-Namen (z.B. `Hover?=False, Variant=1, Color=blue-tint`) gilt:
+
+- **Boolean-Properties** erhalten immer das Suffix `?` und ausschließlich die Werte `True`/`False` — nie `Yes`/`No`, nie ohne `?`. Beispiel: `Hover?=False`, nicht `Hover=No` oder `Hover?=No`.
+- **Enum/Options-Properties** (mehr als zwei mögliche Werte, z.B. Größenstufen oder Farbvarianten) heißen `Variant=` — nicht `Var=`.
+- Die Property-Reihenfolge bleibt innerhalb eines Component-Sets über alle Varianten hinweg identisch.
+- Enthält das Label selbst bereits ein `?` (z.B. eine Frage wie `"Weiter zu Versandmethoden?"`), wird der Boolean-Marker trotzdem zusätzlich außerhalb der Anführungszeichen ergänzt: `"Weiter zu Versandmethoden?"?=False`. Das sieht mit doppeltem `?` ungewohnt aus, folgt aber derselben Regel wie alle Nachbar-Properties.
+
+**Häufig verwendete Property-Namen zur Orientierung (Audit vom 01.07.2026):** `State`, `Hover?`, `Variant`, `Selected?`, `Open?`, `Deactivated?`, `Show Icon?`, `Size`, `Type`, `Is Active?`, `Has Input?`, `window-w`, `color-mode: ...?`
+
 ---
 
 ## 🖱️ Interaction & State Behavior
@@ -158,6 +168,7 @@ Button (Variant: Deactivated=True)   ← zurück zum Ausgangszustand, kein separ
 - **Layout-Wrapper mit Ausrichtung:** Tailwind `align-self`-Klassen — z.B. `self-end`, `self-start`, `self-center`. Werden verwendet wenn ein einzelnes Kind-Element eine abweichende Ausrichtung im Container braucht, ohne den Inhalt selbst zu verändern.
 - **Scroll:** `scroll`, `scroll-x-auto`, `scroll-y-auto`
 - **Components:** PascalCase — z.B. `TabsNavigation`, `Button`, `Card`
+- **Variant-Properties:** siehe Principle 15 — Booleans immer `Property?=True/False`, Enums immer `Variant=Wert`
 
 **Beispiel: Layout-Wrapper**
 ```
