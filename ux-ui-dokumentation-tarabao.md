@@ -4,14 +4,6 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 
 ---
 
-## Komponenten
-- Footer: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6315-16206&m=dev]
-- NavBar: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3175-6184&m=dev]
-- Header window-w-min 1260: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=1-105&m=dev]
-- Header window-w-max 1259: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3175-9316&m=dev&t=IFmWKRz9vuqv2YMT-1]
-- Payment [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3501-5794&m=dev]
-
-
 ## Content-Struktur 
 ### Kategorien vs. Sammlungen
 #### Feste Kategorien (Navigation)
@@ -25,6 +17,14 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 - Eigene URLs/Kollektionsseiten, aber **nicht** Teil des Kategorie-Baums.
 - Beispiele: "Alles fürs Radfahren", "Alles mit Schokolade", "Alles zum Selbstbacken", "Im Pfandglas", "Neu", "Voll beliebt", "Im Angebot" (noch zu verifizieren).
 - Ob und wie Sammlungen in der Hauptnavigation angezeigt werden, wird später besprochen und ggf. implementiert._
+
+## Komponenten (Liste)
+- Footer: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6315-16206&m=dev]
+- NavBar: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3175-6184&m=dev]
+- Header window-w-min 1260: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=1-105&m=dev]
+- Header window-w-max 1259: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3175-9316&m=dev&t=IFmWKRz9vuqv2YMT-1]
+- Payment [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3501-5794&m=dev]
+
 
 *(Weitere UX/UI-Erkenntnisse werden hier ergänzt.)*
 
