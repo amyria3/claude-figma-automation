@@ -21,7 +21,7 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 *(Weitere UX/UI-Erkenntnisse werden hier ergänzt.)*
 
 
-### Für Claude
+## Nur Für Claude
 #### Korrektur ggü. bisheriger Sitemap-Arbeit
 - "Im Pfandglas" wurde in einer früheren Sitemap-Version fälschlich als feste Kategorie mit eigenen Unterkategorien modelliert. Tatsächlich ist es vermutlich eine Sammlung/Verpackungsfilter, der quer durch die festen Kategorien geht.
 - Für zukünftige Sitemap-Arbeit: Sammlungen visuell/strukturell getrennt von festen Kategorien darstellen, nicht als gleichwertige Äste im Baum.
