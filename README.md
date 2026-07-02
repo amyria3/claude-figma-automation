@@ -49,6 +49,9 @@ Den `figma-automation` Skill lokal installieren damit Claude bei jeder Figma-Erw
 > 4. `figma-stylesheet-workaround.md` – variables workaround (load when Variables topic comes up)
 > 5. `figma-kollaboration-workflows.md` – recommended collaboration workflows (load for workflow questions)
 >
+> **Whenever the user discusses tarabao.bio content, IA, or UX/UI (independent of Figma), load:**
+> 10. `ux-ui-dokumentation-tarabao.md` – content structure & UX/UI findings
+>
 > **Access:** via GitHub MCP — requires Docker Desktop running on the user's Mac
 > **Start order:** 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai aufrufen
 > **Kein Zugriff?** Docker läuft nicht → Terminal: `open -a Docker` dann `docker ps` prüfen
@@ -86,6 +89,12 @@ Den `figma-automation` Skill lokal installieren damit Claude bei jeder Figma-Erw
 - Recommended workflows for working with Claude in Figma
 - Text Styles vor Datei-Erstellung anlegen
 - Frame spiegeln (EN → DE oder umgekehrt)
+
+## Content & UX/UI-Dokumentation (tarabao.bio)
+
+### 10. `ux-ui-dokumentation-tarabao.md`
+- UX/UI- und Content-Struktur-Erkenntnisse zu tarabao.bio, getrennt von den Figma-Komponentenprinzipien
+- Aktuell: Kategorien vs. Sammlungen (feste Navigationskategorien vs. thematische, produktübergreifende Sammlungen)
 
 ## User Setup & Terminal Documentation
 
@@ -126,4 +135,4 @@ Den `figma-automation` Skill lokal installieren damit Claude bei jeder Figma-Erw
 
 ## Last Updated
 
-June 8, 2026
+July 2, 2026
