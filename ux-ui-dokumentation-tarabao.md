@@ -29,6 +29,15 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 *(Weitere UX/UI-Erkenntnisse werden hier ergänzt.)*
 
 
+## Buttons: Hug / Fill / Fixed-Verhalten
+- Figma übersetzt Hug/Fill-Einstellungen manchmal in absolute Fixed-Werte. Das ist nicht so gedacht – Ausnahmen sind Min/Max-Constraints und bewusst gesetzte Fixwerte. In 99% der Fälle sind Fixwerte mit einer Variable verknüpft, nicht hart kodiert. Immer die Properties Fixed / Fill / Hug prüfen statt absolute Werte zu übernehmen.
+- Das Hintergrund-SVG passt sich grundsätzlich an das Mutter-Frame an.
+- Buttons für Tarabao sind so gebaut, dass Hintergrund und Rahmen ein SVG sind.
+- Sizing-Regeln Button / Label:
+  - Button = Fill → Label = Fill + truncate.
+  - Button = Fixed → Label = Fill.
+  - Button = Hug → Label = Fill.
+
 ## Nur Für Claude
 #### Korrektur ggü. bisheriger Sitemap-Arbeit
 - "Im Pfandglas" wurde in einer früheren Sitemap-Version fälschlich als feste Kategorie mit eigenen Unterkategorien modelliert. Tatsächlich ist es vermutlich eine Sammlung/Verpackungsfilter, der quer durch die festen Kategorien geht.
