@@ -227,12 +227,12 @@ Sofort per JS nachlesen (`.cm-line` Texte vergleichen), nicht per Screenshot –
 5. **Kein "Fertig" ohne Beweis** – Erst bestätigen, dann weitermachen
 
 ### ⚠️ Was NICHT funktioniert
-- ❌ Variables erstellen/bearbeiten
+- ✅ Variables lesen/schreiben/erstellen (Korrektur 13.07.2026 — Prefix `VariableID:` nötig, siehe `figma-api-reference.md`)
 - ❌ console.log() als Feedback
 - ❌ figma.notify() (User sieht das nicht)
 
 ---
 
-**Version:** 1.3  
+**Version:** 1.4  
 **Letzte Aktualisierung:** 13.07.2026  
 **Status:** Produktionsreif – Alle Limitations dokumentiert
