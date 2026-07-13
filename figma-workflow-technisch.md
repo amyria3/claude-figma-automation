@@ -179,6 +179,45 @@ Falls API nicht schreibt:
 
 ---
 
+## 7️⃣ GITHUB WEB-EDITOR (CodeMirror) – Mehrzeilige Edits per Browser-Automation
+
+**Kernproblem:** Simuliertes Tippen von mehrzeiligem Markdown-Text in GitHubs Web-Editor (CodeMirror 6) triggert bei jedem Enter die automatische Listen-Fortsetzung – dupliziert sich mit dem eigenen "- " im Text und kaskadiert über das ganze Dokument.
+
+### ❌ Was NICHT funktioniert
+- Zeichen für Zeichen tippen (inkl. Newlines) über simulierte Tastatur
+- `navigator.clipboard.writeText()` aus injiziertem Skript (Timeout)
+- `document.execCommand('copy')` aus injiziertem Skript (liefert `false`)
+- Koordinaten von einem älteren Screenshot wiederverwenden, nachdem sich das Layout geändert hat (Gefahr: falscher Klick, z. B. "Cancel changes" statt "Commit changes")
+- `.cm-line` Elemente abfragen, bevor sie durch echtes Scrollen ins Sichtfeld geholt wurden (CodeMirror rendert/virtualisiert Zeilen erst dann)
+
+### ✅ Zuverlässiges Pattern
+```javascript
+// 1. Echtes Scrollen (Mausrad, kein scrollTop-Hack), bis Zielzeile sichtbar ist
+// 2. Zielzeile per Textinhalt in .cm-line finden
+const el = document.querySelector('.cm-content');
+const target = Array.from(el.querySelectorAll('.cm-line'))
+  .find(l => l.textContent.startsWith('## Zielueberschrift'));
+
+// 3. Cursor per Selection/Range an den Zeilenanfang setzen
+let node = target;
+while (node.firstChild) node = node.firstChild;
+const range = document.createRange();
+range.setStart(node.nodeType === Node.TEXT_NODE ? node : target, 0);
+range.collapse(true);
+window.getSelection().removeAllRanges();
+window.getSelection().addRange(range);
+
+// 4. Text in einem Rutsch einfuegen -- bypassed die Enter-Listenfortsetzung
+document.execCommand('insertText', false, mehrzeiligerText);
+```
+
+### Verifizierung
+Sofort per JS nachlesen (`.cm-line` Texte vergleichen), nicht per Screenshot – Screenshots/`find`/`read_page` waren in der Ursprungssession zeitweise instabil, während `javascript_tool`-Aufrufe zuverlässig liefen.
+
+**Quelle:** Claude (Cowork), Modell `claude-sonnet-5` – Erkenntnis aus echter Session, 2026-07-13.
+
+---
+
 ## 📋 SUMMARY: Die 5 Goldenen Regeln
 
 1. **Aktives Tab zuerst** – Datei muss offen sein; Seite kann Claude per `setCurrentPageAsync()` selbst wechseln
@@ -194,6 +233,6 @@ Falls API nicht schreibt:
 
 ---
 
-**Version:** 1.2  
-**Letzte Aktualisierung:** 02.06.2026  
+**Version:** 1.3  
+**Letzte Aktualisierung:** 13.07.2026  
 **Status:** Produktionsreif – Alle Limitations dokumentiert
