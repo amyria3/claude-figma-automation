@@ -1,32 +1,67 @@
 # ✅ Figma API Reference für Claude
 **Alle Funktionen validiert + ALLE Limitations dokumentiert**
 
-**Version:** 2.5  
+**Version:** 2.6  
 **Status:** Production Ready  
-**Überprüft am:** 31.05.2026 / 03.06.2026
+**Überprüft am:** 31.05.2026 / 03.06.2026 / 13.07.2026  
 
 ---
 
-## 🔬 VARIABLES: KOMPLETT BLOCKIERT ⚠️
+## 🔬 VARIABLES: FUNKTIONIEREN (Korrektur 13.07.2026)
 
-**Getestet am:** 31.05.2026  
-**Ergebnis:** Figma blockiert ALLE Variable-Operationen via MCP
+**Korrigiert am:** 13.07.2026 — die vorherige Aussage "komplett blockiert" war falsch (Bug im Testcode: falsches Variable-ID-Format `'4146:39881'` statt `'VariableID:4146:39881'`), keine echte Plattform-Sperre.
+
+**Live getestet und bestätigt** (Tarabao B2C-und-CI File) — alle folgenden Operationen funktionieren via `use_figma` ohne Einschränkung:
 
 ### Was funktioniert ✅
 ```javascript
-const collection = figma.variables.createVariableCollection('MyVariables');
-const collections = figma.variables.getLocalVariableCollections();
-const variables = figma.variables.getLocalVariables();
-variables.forEach(v => console.log(v.name, v.resolvedType));
+// Lesen — WICHTIG: vollen Prefix "VariableID:" verwenden!
+const v = await figma.variables.getVariableByIdAsync('VariableID:xxxx:yyyy');
+const coll = await figma.variables.getVariableCollectionByIdAsync(v.variableCollectionId);
+
+// Schreiben — Wert für bestehenden Modus setzen
+v.setValueForMode(modeId, 'neuer Wert');
+
+// Neue Variable anlegen
+const neueVar = figma.variables.createVariable('Name', collectionId, 'STRING'); // oder COLOR, FLOAT, BOOLEAN
+
+// Neuen Modus zu einer Collection hinzufuegen / entfernen
+const newModeId = coll.addMode('Modusname');
+coll.removeMode(newModeId);
 ```
 
-### Was NICHT funktioniert ❌
-- ❌ Variablen erstellen
-- ❌ Variable-Werte auslesen
-- ❌ Variablen mit Nodes verknüpfen
-- ❌ Variable-Binding in fills
+**Offizielle Referenz:** [Working with Variables](https://developers.figma.com/docs/plugins/working-with-variables/), [Variables API](https://www.figma.com/plugin-docs/api/figma-variables/) — beide bestätigen `createVariable`, `setValueForMode`, `addMode` als regulär unterstützte Plugin-API-Funktionen.
 
-### Workaround
+### 🎯 Pattern: Text-Override ohne Font-Loading via Variable-Modes
+Wenn ein Text-Layer bereits an eine Variable gebunden ist (`textNode.boundVariables.characters` vorhanden), lässt sich der sichtbare Text ändern, ohne `node.characters` direkt zu schreiben — und damit ohne `loadFontAsync()`, was bei Custom Fonts (z. B. "BROWN NOW TWO") sonst fehlschlägt:
+
+```javascript
+// 1. Pruefen, ob der Text-Layer variablengebunden ist
+console.log(textNode.boundVariables); // { characters: { type: 'VARIABLE_ALIAS', id: 'VariableID:...' }, ... }
+
+// 2. Variable + Collection holen
+const v = await figma.variables.getVariableByIdAsync(textNode.boundVariables.characters.id);
+const coll = await figma.variables.getVariableCollectionByIdAsync(v.variableCollectionId);
+
+// 3. Neuen Modus anlegen (oder wiederverwenden) und Wert setzen
+let mode = coll.modes.find(m => m.name === 'GewuenschterText');
+const modeId = mode ? mode.modeId : coll.addMode('GewuenschterText');
+v.setValueForMode(modeId, 'Gewuenschter Text');
+
+// 4. Instanz explizit auf diesen Modus setzen (gilt fuer ganze Instanz/Subtree)
+instance.setExplicitVariableModeForCollection(coll, modeId);
+// Ergebnis: textNode.characters liest jetzt den neuen Text -- ohne loadFontAsync(),
+// Original-Font bleibt erhalten.
+```
+
+**Einschränkungen:**
+- Nur wenn `characters` bereits an eine Variable gebunden ist (nicht bei freiem Text)
+- `setExplicitVariableModeForCollection` gilt für die ganze Instanz/Subtree — bei mehreren variablengebundenen Properties in derselben Collection ändern sich alle gemeinsam mit
+- Ein neuer Modus in einer geteilten Collection wirkt sich nur auf Instanzen aus, die explizit darauf umgeschaltet werden
+
+**Fund-Kontext:** Tarabao B2C-und-CI File, Button-Komponente "Buttons/MD/PrimaryButton", Text-Layer "label" gebunden an Variable "placeholder" in Collection "__All Button Labels".
+
+### Workaround (falls Text-Layer NICHT variablengebunden ist)
 Siehe `figma-stylesheet-workaround.md`
 
 ---
@@ -198,7 +233,7 @@ child.layoutSizingHorizontal = "FILL"; // ❌ wirft Fehler für Grid-Kinder
 - ❌ `console.log()` — Claude sieht das nicht
 - ❌ `figma.notify()` — User sieht das nicht
 - ❌ `figma.root.appendChild()` — stattdessen `page.appendChild()`
-- ❌ Variables — komplett blockiert
+- ✅ Variables lesen/schreiben/erstellen (Korrektur 13.07.2026 — Prefix `VariableID:` nötig)
 - ❌ `layoutSizingHorizontal` für Grid-Kinder
 - ❌ `clipsContent` nicht als Default setzen — nur explizit wenn nötig
 - ✅ Text ändern (mit Font-Loading vorher)
@@ -219,4 +254,4 @@ child.layoutSizingHorizontal = "FILL"; // ❌ wirft Fehler für Grid-Kinder
 | Grid-Layout | ✅ | 03.06.2026 |
 | Grid ROW_AUTO_FLOW | ✅ | 03.06.2026 |
 | Grid Vollsize + Padding | ✅ | 03.06.2026 |
-| Variables | ❌ | 31.05.2026 |
+| Variables | ✅ | 13.07.2026 (Korrektur) |
