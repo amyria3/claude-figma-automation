@@ -2,6 +2,8 @@
 
 > **Ausnahmen:** Jedes Prinzip erlaubt Ausnahmen, sofern das UI-Pattern es erfordert. Beispiel: Ein Karussell erfordert, dass alle Kind-Frames `hug` haben und der Container absichtlich überläuft — das ist kein Fehler, sondern das korrekte Muster. Ausnahmen sind explizit zu benennen.
 
+> **Korrektur 13.07.2026:** Im Abschnitt "Interaction & State Behavior" weiter unten wird für `Buttons / MD / PrimaryButton` (node-id=2310-2156) die Variant-Property `Deactivated?=True` genannt. Live nachgeprüft: diese Property heißt inzwischen **`Inactive?`** (nicht mehr `Deactivated?`), Verhalten unverändert. Vor Code, der Property-Namen referenziert, immer live via `componentPropertyDefinitions` gegenprüfen — Namen ändern sich in diesem File.
+
 ---
 
 ## 🏗️ CORE PRINCIPLE: Flex-Based Layouts
