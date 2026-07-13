@@ -42,7 +42,7 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 #### Korrektur ggü. bisheriger Sitemap-Arbeit
 - "Im Pfandglas" wurde in einer früheren Sitemap-Version fälschlich als feste Kategorie mit eigenen Unterkategorien modelliert. Tatsächlich ist es vermutlich eine Sammlung/Verpackungsfilter, der quer durch die festen Kategorien geht.
 - Für zukünftige Sitemap-Arbeit: Sammlungen visuell/strukturell getrennt von festen Kategorien darstellen, nicht als gleichwertige Äste im Baum.
-- Offen: zu verifizieren, ob "Aufbewahren" und "Im Angebot" echte feste Kategorien oder ebenfalls Sammlungen sind.
+- "Aufbewahren" ist eine feste kategorie, "Im Angebot" eine Sammlung.
 
 ---
 
