@@ -1,4 +1,46 @@
-# ✅ Figma API Reference für Claude
+
+
+## 🔀 KOMPONENTEN-SWAP & ICON-AUSWAHL (verlustfrei) — NEU 13.07.2026
+
+**Getestet am:** 13.07.2026, Tarabao B2C-und-CI File, Buttons/LG/PrimaryButton → Buttons/MD/PrimaryButton.
+
+### Lossless Component Swap
+```javascript
+const targetVariant = await figma.getNodeByIdAsync(variantNodeId); // konkrete Variante, nicht das Set
+instance.swapComponent(targetVariant);
+instance.setProperties({ 'Show Icon?': 'True' /* + weitere Variant-Properties */ });
+```
+Reactions (`reactions`) bleiben beim Swap erhalten. Zusätzlich beobachtet: `CHANGE_TO`-Reactions, die auf eine Variante der ALTEN Komponente zeigten (z.B. Hover-Zustand), werden von Figma automatisch auf die entsprechende Variante der NEUEN Komponente umgemappt — zweimal reproduziert, nicht offiziell in der Plugin-API-Doku garantiert.
+
+### ⚠️ Mutterkomponente statt Remote-Kopie verwenden
+`search_design_system` + `importComponentByKeyAsync`/`importComponentSetByKeyAsync` liefern bei Bibliotheken, die im selben File liegen, u.U. eine **losgelöste Remote-Kopie** (`node.remote === true`, kein Parent auf einer echten Seite). Diese Kopie kann veraltet sein, wenn die Bibliothek seit dem letzten "Publish" lokal weiterbearbeitet wurde — in unserem Test hieß ein verschachteltes Icon-Set in der Remote-Kopie noch "Icons/Julia/Cart" (nur Warenkorb-Icons), während die echte, aktuelle Mutterkomponente im File längst "Icons / ButtonIcons" nutzt (Cart/Delivery/Heart/Checkout/Log In).
+
+**Praxisregel:** Vor jedem Swap `.remote` auf dem Zielknoten prüfen. Bei `true`: stattdessen die echte Mutterkomponente direkt im File suchen, z.B. auf der Seite "COMPONENTS & SCREENS":
+```javascript
+const page = await figma.getNodeByIdAsync(pageId);
+await figma.setCurrentPageAsync(page);
+const master = page.findAllWithCriteria({ types: ['COMPONENT_SET'] })
+  .find(n => n.name === 'Buttons / MD / PrimaryButton' && n.remote === false);
+```
+
+### Nicht-exponierte Icon-Slots
+Nicht jeder Icon-Platzhalter ist eine `componentPropertyDefinitions`-Property (Instance-Swap). Wenn `componentPropertyReferences` der verschachtelten Icon-Instanz leer ist (`{}`), gibt es keine exponierte Property — das Icon muss direkt über die verschachtelte Instanz getauscht werden:
+```javascript
+const iconInstances = instance.findAllWithCriteria({ types: ['INSTANCE'] })
+  .filter(n => n.name === 'Icons / ButtonIcons');
+iconInstances.forEach(i => i.swapComponent(zielIconVariante));
+```
+Bei mehrdeutigen oder unerwartet eingeschränkten Icon-Optionen (z.B. nur Warenkorb-Zustände für einen Checkout-Button) lieber kurz nachfragen statt zu raten.
+
+### Text-Variable direkt umbinden (kein Font-Loading nötig)
+```javascript
+textNode.setBoundVariable('characters', zielVariable);
+```
+Funktioniert **ohne** vorheriges `loadFontAsync()`, auch wenn der aktuelle Font des Textknotens defekt/nicht verfügbar ist (getestet mit einem kaputten Custom Font). Gilt sowohl fürs Umschalten von Modi einer Variable als auch fürs komplette Umbinden auf eine andere Variable.
+
+**Korrektur zur `__All Button Labels`-Struktur:** Diese Collection hat entgegen einer früheren Annahme **keine Modi pro Label** — nur einen einzigen Mode ("Mode 1"). Stattdessen existiert pro Label-Text eine eigene STRING-Variable (z.B. "Weiter zur Bezahlung" als eigene Variable, nicht als Modus von "placeholder"). Vor dem Erstellen eines neuen Modus daher immer erst prüfen, ob der gewünschte Label-Text nicht schon als eigene Variable existiert.
+
+---# ✅ Figma API Reference für Claude
 **Alle Funktionen validiert + ALLE Limitations dokumentiert**
 
 **Version:** 2.6  
