@@ -1,5 +1,14 @@
 
 
+### ⚠️ Variant-Properties (v.a. Color-Mode) sind nicht garantiert kompatibel
+Vor dem Swap die Variant-Properties der Quell-Instanz auslesen (`instance.variantProperties`), insbesondere den Farb-Modus (Property-Name beginnt meist mit `color-mode`). Farb-Modi sind zwischen Komponenten-Familien oft NICHT 1:1 benannt — Beispiel aus diesem Test: LG nutzt `color-mode: orange-cole-tint?`, MD nutzt `color-mode: cole-tint-warm-white?`. Nach dem Swap prüfen, ob die Ziel-Komponente (Component Set) eine Property mit demselben Namen anbietet:
+```javascript
+const sourceColorMode = Object.entries(instance.variantProperties).find(([k]) => k.startsWith('color-mode'));
+const targetDefs = targetComponentSet.componentPropertyDefinitions; // das Set, nicht die Variante
+const hasMatch = sourceColorMode && targetDefs[sourceColorMode[0]];
+```
+**Wichtig:** Gibt es keine Entsprechung, NICHT stillschweigend auf den Default der Ziel-Komponente ausweichen. Stattdessen explizit im Rückgabewert der `use_figma`-Antwort kennzeichnen (z.B. `colorModeCarriedOver: false, sourceColorMode: '...'`) und/oder die Nutzerin darauf hinweisen, damit der passende Farb-Modus manuell nachgeprüft/gewählt werden kann.
+
 ## 🔀 KOMPONENTEN-SWAP & ICON-AUSWAHL (verlustfrei) — NEU 13.07.2026
 
 **Getestet am:** 13.07.2026, Tarabao B2C-und-CI File, Buttons/LG/PrimaryButton → Buttons/MD/PrimaryButton.
