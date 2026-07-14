@@ -254,39 +254,39 @@ Box-Spacing- und Gap-Variablen verwenden — soweit im gescannten Bereich vorhan
 
 ## 📏 Design Tokens: Tailwind-Utility-Scale ↔ Figma-px (persönliche Referenz, nur für Maria)
 
-Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte tatsächlich im File verwendet werden, statt nur die resultierenden px-Zahlen zu sehen. Formel bei korrekter Umsetzung: `px = N × 4`, `rem = N × 0,25`. Diese Tabelle bleibt bewusst mit px-Vergleichsspalte, da ihr Zweck genau der Abgleich rem↔px ist (siehe Auffälligkeiten unten).
+Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte tatsächlich im File verwendet werden, statt nur die resultierenden px-Zahlen zu sehen. Formel: `px = N × 4`, `rem = N × 0,25`. **Der px-Wert in Figma ist maßgeblich** — wo eine Abweichung auftrat, war nicht der px-Wert falsch, sondern das `[twuc]-N`-Label falsch berechnet/vergeben. Die Spalte "korrektes [twuc]-N" zeigt den aus dem (richtigen) px-Wert zurückgerechneten Namen.
 
-| [twuc]-N | rem | px (Figma-Wert) | px nach Formel (N×4) | Stimmt überein? |
+| px (Figma-Wert, maßgeblich) | rem (px÷16) | korrektes [twuc]-N (px÷4) | bisher verwendetes [twuc]-N | Stimmt überein? |
 |---|---|---|---|---|
-| 4 | 1rem | 16 | 16 | ✅ |
-| 7 | 1,75rem | 28 | 28 | ✅ |
-| 8 | 2rem | 32 | 32 | ✅ |
-| 9 | 2,25rem | 36 | 36 | ✅ |
-| 10 | 2,5rem | 40 | 40 | ✅ |
-| 11 | 2,75rem | 44 | 44 | ✅ |
-| 12 | 3rem | 48 | 48 | ✅ |
-| 15 | 3,75rem | 60 | 60 | ✅ |
-| 16 | 4rem | 64 | 64 | ✅ |
-| 18 | 4,5rem | 72 | 72 | ✅ |
-| 20 | 5rem | 80 | 80 | ✅ |
-| 22 | 5,5rem | 88 | 88 | ✅ |
-| 24 | 6rem | 96 | 96 | ✅ |
-| 28 | 7rem | 112 | 112 | ✅ |
-| 32 | 8rem | 128 | 128 | ✅ |
-| 40 | 10rem | **144** | 160 | ❌ (−16px = −1rem) |
-| 41 | 10,25rem | 164 | 164 | ✅ |
-| 48 | 12rem | **176** | 192 | ❌ (−16px = −1rem) |
-| 56 | 14rem | 224 | 224 | ✅ |
-| 60 | 15rem | 240 | 240 | ✅ |
-| 64 | 16rem | 256 | 256 | ✅ |
-| 96 | 24rem | 384 | 384 | ✅ |
-| 112 | 28rem | 448 | 448 | ✅ |
-| 128 | 32rem | 512 | 512 | ✅ |
-| 160 | 40rem | 640 | 640 | ✅ |
-| 192 | 48rem | **674** | 768 | ❌ (−94px) |
-| 224 | 56rem | 896 | 896 | ✅ |
+| 16 | 1rem | 4 | 4 | ✅ |
+| 28 | 1,75rem | 7 | 7 | ✅ |
+| 32 | 2rem | 8 | 8 | ✅ |
+| 36 | 2,25rem | 9 | 9 | ✅ |
+| 40 | 2,5rem | 10 | 10 | ✅ |
+| 44 | 2,75rem | 11 | 11 | ✅ |
+| 48 | 3rem | 12 | 12 | ✅ |
+| 60 | 3,75rem | 15 | 15 | ✅ |
+| 64 | 4rem | 16 | 16 | ✅ |
+| 72 | 4,5rem | 18 | 18 | ✅ |
+| 80 | 5rem | 20 | 20 | ✅ |
+| 88 | 5,5rem | 22 | 22 | ✅ |
+| 96 | 6rem | 24 | 24 | ✅ |
+| 112 | 7rem | 28 | 28 | ✅ |
+| 128 | 8rem | 32 | 32 | ✅ |
+| **144** | 9rem | **36** | 40 | ❌ Label umbenennen: `[twuc]-40` → `[twuc]-36` |
+| 164 | 10,25rem | 41 | 41 | ✅ |
+| **176** | 11rem | **44** | 48 | ❌ Label umbenennen: `[twuc]-48` → `[twuc]-44` |
+| 224 | 14rem | 56 | 56 | ✅ |
+| 240 | 15rem | 60 | 60 | ✅ |
+| 256 | 16rem | 64 | 64 | ✅ |
+| 384 | 24rem | 96 | 96 | ✅ |
+| 448 | 28rem | 112 | 112 | ✅ |
+| 512 | 32rem | 128 | 128 | ✅ |
+| 640 | 40rem | 160 | 160 | ✅ |
+| **674** | 42,125rem | **168,5 (nicht ganzzahlig)** | 192 | ❌ px÷4 ergibt keine ganze Zahl — bitte in Figma direkt gegenprüfen, ob 674px wirklich stimmt oder selbst ein Tippfehler ist (z.B. 672px → `[twuc]-168`) |
+| 896 | 56rem | 224 | 224 | ✅ |
 
-**Auffällig:** Drei Werte weichen von der Formel ab: `[twuc]-40` (zeigt 144px statt 160px), `[twuc]-48` (zeigt 176px statt 192px) — beide exakt um 16px/1rem zu niedrig, ein systematisches Muster, das nach einem Tippfehler oder einer versehentlich falsch verknüpften Variable aussieht. `[twuc]-192` weicht stärker ab (674px statt 768px) — hier ist unklar, ob das ein bewusster Sondertwert (z.B. ein spezifischer Breakpoint) oder ebenfalls ein Fehler ist. Alle drei ggf. in Figma direkt gegenprüfen.
+**Auffällig:** Bei zwei Werten war nicht der px-Wert falsch, sondern das `[twuc]-N`-Label falsch berechnet: Bei 144px war `[twuc]-40` eingetragen, korrekt wäre `[twuc]-36` (144÷4=36). Bei 176px war `[twuc]-48` eingetragen, korrekt wäre `[twuc]-44` (176÷4=44). Bei 674px ergibt die Rückrechnung (674÷4=168,5) keine ganze Zahl — das ist ungewöhnlich für diese Skala und sollte direkt in Figma geprüft werden, ob 674px der tatsächlich beabsichtigte Wert ist.
 
 ---
 
@@ -294,10 +294,11 @@ Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte
 
 Claude hat aktuell nur lesenden Zugriff auf Figma (Dev Mode MCP Server). Folgende Korrekturen müssen manuell in Figma vorgenommen werden (oder sobald ein schreibfähiger Figma-Connector verbunden ist):
 
-### 1. Drei `[twuc]`-Werte korrigieren (siehe Tabelle oben)
-- `[twuc]-40`: 144px → **160px**
-- `[twuc]-48`: 176px → **192px**
-- `[twuc]-192`: 674px → vermutlich **768px** (Ursache/Absicht unklar, bitte gegenprüfen)
+### 1. Zwei `[twuc]`-Labels umbenennen, ein Wert zu prüfen (siehe Tabelle oben)
+Die px-Werte sind korrekt — es müssen die Variablen-Labels angepasst werden, nicht die Pixelwerte:
+- Variable mit 144px: Label `[twuc]-40` → **`[twuc]-36`**
+- Variable mit 176px: Label `[twuc]-48` → **`[twuc]-44`**
+- Variable mit 674px (Label `[twuc]-192`): 674÷4 ist nicht ganzzahlig — bitte in Figma prüfen, ob 674px korrekt ist oder ob hier ein zusätzlicher Tippfehler beim px-Wert vorliegt (z.B. 672px, dann Label `[twuc]-168`)
 
 ### 2. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
 32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen — Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft.
@@ -322,6 +323,8 @@ Claude hat aktuell nur lesenden Zugriff auf Figma (Dev Mode MCP Server). Folgend
 #### Komponenten-Liste "COMPONENTS & SCREENS" (14.07.2026)
 
 **Struktur der Seite:** Canvas "COMPONENTS & SCREENS" (2001:522) hat 3 direkte Kinder: Section "PAGES" (3658:9149, Screens – ausgeschlossen), Section "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" (3267:6614, enthält die gesamte Komponentenbibliothek) und Frame "PRACTICE FOR CLAUDE" (7372:19291, Testartefakt, ausgeschlossen). Innerhalb von 3267:6614 liegen die Top-Level-Sections: SECTIONS, HEADER & FOOTER, FILTER & SEARCH, BUTTONS, INPUTS, CARDS, COMPONENTS, ICONS, PATTERNS, NOTES, VISUALS.
+
+**Ausgeschlossen (bewusst):** ICONS (1:133, nicht im Detail durchsucht), NOTES (6611:18283, verifiziert nur Screenshots/Notizen), VISUALS (6663:16082, auf Wunsch nicht aufgenommen), PRACTICE FOR CLAUDE (7372:19291, nur 2 Button-Instanzen, kein Master).
 
 **Ausgeschlossen (bewusst):** ICONS (1:133, nicht im Detail durchsucht), NOTES (6611:18283, verifiziert nur Screenshots/Notizen), VISUALS (6663:16082, auf Wunsch nicht aufgenommen), PRACTICE FOR CLAUDE (7372:19291, nur 2 Button-Instanzen, kein Master).
 
