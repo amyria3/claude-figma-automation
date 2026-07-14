@@ -1,6 +1,6 @@
 # UX/UI-Dokumentation Tarabao
 
-Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für Figma-Arbeit, Sitemap-Modellierung und Frontend-Umsetzung relevant sind. Ergänzt die komponentenbezogenen Prinzipien in `figma-design-principles-arkadieff.md`.
+Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für Figma-Arbeit, Sitemap-Modellierung und Frontend-Umsetzung relevant sind. Ergänzt die allgemeineren Prinzipien in `figma-design-principles-arkadieff.md`.
 
 ---
 
