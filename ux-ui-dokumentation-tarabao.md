@@ -246,22 +246,6 @@ Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo 
 | 3rem | 12 tcss | - | box-spacing-xxl |
 | 3,5rem | 14 tcss | - | box-spacing-xxxl |
 
----
-
-## Offene TODOs (Figma-Schreibzugriff nötig — Claude kann nur lesen)
-
-Claude hat aktuell nur lesenden Zugriff auf Figma (Dev Mode MCP Server). Folgende Korrekturen müssen manuell in Figma vorgenommen werden (oder sobald ein schreibfähiger Figma-Connector verbunden ist):
-
-### 1. Zwei `[twuc]`-Variablen falsch benannt, eine dritte zu prüfen
-Live gegen Figma neu abgeglichen (15.07.2026) — beide Abweichungen bestehen unverändert:
-- Variable mit 144px: Name `[twuc]-40` → sollte **`[twuc]-36`** heißen (144÷4=36)
-- Variable mit 176px: Name `[twuc]-48` → sollte **`[twuc]-44`** heißen (176÷4=44)
-- Variable mit 674px: trägt aktuell nur noch den Namen `(48rem)` — ohne das sonst übliche `[twuc]-`-Präfix, das bei allen anderen Variablen dieser Familie vorhanden ist. 674÷4 ergibt zudem keine ganze Zahl (168,5) — bitte in Figma direkt prüfen, ob 674px der beabsichtigte Wert ist oder selbst ein Tippfehler vorliegt (z.B. 672px wäre `[twuc]-168`)
-
-### 2. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
-32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen — Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft.
-
-<sub>Punkt 1 zuletzt live via `get_variable_defs` auf Node 3267:6614 verifiziert (15.07.2026) — beide bekannten Abweichungen bestehen unverändert, zusätzlich neu aufgefallen: die 674px-Variable hat ihr `[twuc]-`-Präfix verloren. Punkt 2 stammt aus einer separaten Teilprüfung vom 14.07.2026, noch nicht erneut live abgeglichen.</sub>
 
 ---
 
@@ -274,29 +258,35 @@ Live gegen Figma neu abgeglichen (15.07.2026) — beide Abweichungen bestehen un
   - Button = Fixed → Label = Fill.
   - Button = Hug → Label = Fill.
 
-## Nur Für Claude
 
 <sub>
-
-#### Korrektur ggü. bisheriger Sitemap-Arbeit
+## Nur Für Claude
+### Anmerkungen
+#### Komponenten-Liste "COMPONENTS & SCREENS" (14.07.2026)
+**Struktur der Seite:** Canvas "COMPONENTS & SCREENS" (2001:522) hat 3 direkte Kinder: Section "PAGES" (3658:9149, Screens – ausgeschlossen), Section "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" (3267:6614, enthält die gesamte Komponentenbibliothek) und Frame "PRACTICE FOR CLAUDE" (7372:19291, Testartefakt, ausgeschlossen). Innerhalb von 3267:6614 liegen die Top-Level-Sections: SECTIONS, HEADER & FOOTER, FILTER & SEARCH, BUTTONS, INPUTS, CARDS, COMPONENTS, ICONS, PATTERNS, NOTES, VISUALS.
+#### Zur Komponenten-Struktur
+**Hierarchie-Verifikation (per `get_design_context`, echte Instanz-Prüfung statt nur Namenslogik):** Bestätigt verschachtelt: Filter/FilterPanel (enthält FilterChip- und eine PriceRange-Instanz, dort aber als "FilterPanel / PriceRange" benannt – Namensabweichung zum hier gelisteten Master 2605:2931, bitte prüfen), CartElements/Summary (enthält ProductItem, Calculation, LogIn), Account/CollapsibleSection (enthält SummaryItem, DataBlock), Components/OrderCancellation (enthält SelectOrder-Instanz, SelectProducts sehr wahrscheinlich analog). Geprüft und NICHT verschachtelt (daher als gleichrangige Einträge gelistet): NavBar/Nav/NavBlocks sind eigenständig, ebenso Components/Product/BuyBox und ImageCarousel.
+**Ausgeschlossen (bewusst):** ICONS (1:133, nicht im Detail durchsucht), NOTES (6611:18283, verifiziert nur Screenshots/Notizen), VISUALS (6663:16082, auf Wunsch nicht aufgenommen), PRACTICE FOR CLAUDE (7372:19291, nur 2 Button-Instanzen, kein Master).
+### TO Dos
+#### 1. Zwei `[twuc]`-Variablen falsch benannt, eine dritte zu prüfen
+Live gegen Figma neu abgeglichen (15.07.2026) — beide Abweichungen bestehen unverändert:
+- Variable mit 144px:
+- Variable mit 176px:
+- Variable mit 674px:
+Die Nutzerin hat die Variablen korrigiert. Prüfen, ob es verwaiste Instanzen dieser oder anderer Variablen gibt.
+### 2. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
+32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen — Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft.
+#### Zu klären: Korrektur ggü. bisheriger Sitemap-Arbeit
 - "Im Pfandglas" wurde in einer früheren Sitemap-Version fälschlich als feste Kategorie mit eigenen Unterkategorien modelliert. Tatsächlich ist es vermutlich eine Sammlung/Verpackungsfilter, der quer durch die festen Kategorien geht.
 - Für zukünftige Sitemap-Arbeit: Sammlungen visuell/strukturell getrennt von festen Kategorien darstellen, nicht als gleichwertige Äste im Baum.
 - "Aufbewahren" ist eine feste kategorie, "Im Angebot" eine Sammlung.
+- "Buttons / XS / SegmentControlButton" und "Buttons / SM / Segment Control" – uneinheitliche Schreibweise für vermutlich denselben Zweck.
+- "Input Field plain" (2406:1053) und "Input" (2328:2155) – zwei parallele Varianten-Sets mit identischen Feldtypen, aber unterschiedlicher Property-Struktur (Boolean vs. "Nr="-Nummerierung). Sieht nach Altlast/Duplikat aus.
+- Tippfehler in Figma noch nicht korrigiert (in dieser Liste bereits richtig geschrieben): "PurcheaseSummary" (6794:18851) → Purchase, "SearchPurchease" (6955:21898) → Purchase. "DecktopSize" (7448:19299) wurde von der Nutzerin bereits in Figma korrigiert. Claude hat keinen Schreibzugriff auf Figma (nur lesende Dev-Mode-MCP-Tools) – die restlichen zwei bitte manuell umbenennen.
+- Generische Wrapper-Frames ("fr", "wrapper", "gr") um "Layout / PromoBar" (3164:11788), "CartElements / Calculation" (2260:4084) und "Components / SearchPurchase" (6955:21898) sind laut Nutzerin bewusstes Design (Größenbeschränkung für sonst unlimitierte Komponenten), keine Namensfehler.
+- "TabControl" (3970:22955), "Add to Basket for mobile" (3986:23589) liegen ohne "Buttons /"-Präfix direkt im Buttons-Ordner. ("IconButton" wurde von der Nutzerin bereits zu "Buttons / IconButton" korrigiert.)
+- "Account / LogInStatus" liegt physisch bei den CartElements/CARD-ELEMENTS-Komponenten, "Account / CollapsibleSection" physisch bei den Section/*-Komponenten – hier aber thematisch unter "Account" einsortiert.
 
-#### Komponenten-Liste "COMPONENTS & SCREENS" (14.07.2026)
-
-**Struktur der Seite:** Canvas "COMPONENTS & SCREENS" (2001:522) hat 3 direkte Kinder: Section "PAGES" (3658:9149, Screens – ausgeschlossen), Section "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" (3267:6614, enthält die gesamte Komponentenbibliothek) und Frame "PRACTICE FOR CLAUDE" (7372:19291, Testartefakt, ausgeschlossen). Innerhalb von 3267:6614 liegen die Top-Level-Sections: SECTIONS, HEADER & FOOTER, FILTER & SEARCH, BUTTONS, INPUTS, CARDS, COMPONENTS, ICONS, PATTERNS, NOTES, VISUALS.
-
-**Ausgeschlossen (bewusst):** ICONS (1:133, nicht im Detail durchsucht), NOTES (6611:18283, verifiziert nur Screenshots/Notizen), VISUALS (6663:16082, auf Wunsch nicht aufgenommen), PRACTICE FOR CLAUDE (7372:19291, nur 2 Button-Instanzen, kein Master).
-
-**Offene Punkte / bitte in Figma prüfen:**
-1. "Buttons / XS / SegmentControlButton" und "Buttons / SM / Segment Control" – uneinheitliche Schreibweise für vermutlich denselben Zweck.
-2. "Input Field plain" (2406:1053) und "Input" (2328:2155) – zwei parallele Varianten-Sets mit identischen Feldtypen, aber unterschiedlicher Property-Struktur (Boolean vs. "Nr="-Nummerierung). Sieht nach Altlast/Duplikat aus.
-3. Tippfehler in Figma noch nicht korrigiert (in dieser Liste bereits richtig geschrieben): "PurcheaseSummary" (6794:18851) → Purchase, "SearchPurchease" (6955:21898) → Purchase. "DecktopSize" (7448:19299) wurde von der Nutzerin bereits in Figma korrigiert. Claude hat keinen Schreibzugriff auf Figma (nur lesende Dev-Mode-MCP-Tools) – die restlichen zwei bitte manuell umbenennen.
-4. Generische Wrapper-Frames ("fr", "wrapper", "gr") um "Layout / PromoBar" (3164:11788), "CartElements / Calculation" (2260:4084) und "Components / SearchPurchase" (6955:21898) sind laut Nutzerin bewusstes Design (Größenbeschränkung für sonst unlimitierte Komponenten), keine Namensfehler.
-5. "TabControl" (3970:22955), "Add to Basket for mobile" (3986:23589) liegen ohne "Buttons /"-Präfix direkt im Buttons-Ordner. ("IconButton" wurde von der Nutzerin bereits zu "Buttons / IconButton" korrigiert.)
-6. "Account / LogInStatus" liegt physisch bei den CartElements/CARD-ELEMENTS-Komponenten, "Account / CollapsibleSection" physisch bei den Section/*-Komponenten – hier aber thematisch unter "Account" einsortiert.
-
-**Hierarchie-Verifikation (per `get_design_context`, echte Instanz-Prüfung statt nur Namenslogik):** Bestätigt verschachtelt: Filter/FilterPanel (enthält FilterChip- und eine PriceRange-Instanz, dort aber als "FilterPanel / PriceRange" benannt – Namensabweichung zum hier gelisteten Master 2605:2931, bitte prüfen), CartElements/Summary (enthält ProductItem, Calculation, LogIn), Account/CollapsibleSection (enthält SummaryItem, DataBlock), Components/OrderCancellation (enthält SelectOrder-Instanz, SelectProducts sehr wahrscheinlich analog). Geprüft und NICHT verschachtelt (daher als gleichrangige Einträge gelistet): NavBar/Nav/NavBlocks sind eigenständig, ebenso Components/Product/BuyBox und ImageCarousel.
+Prüfen, ob es sich erledigt hat - falls ja, aus dieser Datei rausnehmen.
 
 </sub>
