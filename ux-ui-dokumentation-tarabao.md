@@ -234,21 +234,21 @@ Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variabl
 
 ## 📐 Design Tokens: Box-Spacing & Gap
 
-Box-Spacing- und Gap-Variablen verwenden — soweit im gescannten Bereich vorhanden — **identische px-Werte pro Größenlabel**, lassen sich also in einer gemeinsamen Tabelle führen. Rem-Werte auf Basis von 16px = 1rem (Browser-Standard):
+Box-Spacing- und Gap-Variablen verwenden — soweit im gescannten Bereich vorhanden — identische Werte pro Größenstufe, lassen sich also in einer gemeinsamen Tabelle führen. Sortiert von klein nach groß, mit rem, Tailwind-Einheit (tcss = n × 4px) und den konkreten Variablennamen. Wo eine Größenstufe nur in einer der beiden Skalen existiert, ist die andere Spalte mit "-" markiert.
 
-| Label | px | rem |
-|---|---|---|
-| xxxs | 2 | 0,125rem |
-| xxs | 4 | 0,25rem |
-| xs | 6 | 0,375rem |
-| sm | 8 | 0,5rem |
-| md-sm | 12 | 0,75rem |
-| md | 16 | 1rem |
-| md-l | 20 | 1,25rem |
-| lg | 28 | 1,75rem |
-| xl | 40 | 2,5rem |
-| xxl | 48 | 3rem *(im gescannten Bereich nicht als Gap gefunden, nur als Box-Spacing)* |
-| xxxl | 56 | 3,5rem *(im gescannten Bereich nicht als Gap gefunden, nur als Box-Spacing)* |
+| rem | tcss | Lyt scl / Spcngs / Gaps | Lyt scl / Spcngs / Box Spacing |
+|---|---|---|---|
+| 0,125rem | 0,5 tcss | gap-xxxs | box-spacing-xxxs |
+| 0,25rem | 1 tcss | gap-xxs | box-spacing-xxs |
+| 0,375rem | 1,5 tcss | gap-xs | box-spacing-xs |
+| 0,5rem | 2 tcss | gap-sm | box-spacing-sm |
+| 0,75rem | 3 tcss | gap-md-sm | box-spacing-md-sm |
+| 1rem | 4 tcss | gap-md | box-spacing-md |
+| 1,25rem | 5 tcss | gap-md-l | box-spacing-md-l |
+| 1,75rem | 7 tcss | gap-lg | box-spacing-lg |
+| 2,5rem | 10 tcss | gap-xl | box-spacing-xl |
+| 3rem | 12 tcss | - | box-spacing-xxl |
+| 3,5rem | 14 tcss | - | box-spacing-xxxl |
 
 ---
 
