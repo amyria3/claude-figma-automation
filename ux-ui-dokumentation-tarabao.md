@@ -19,12 +19,143 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 - Ob und wie Sammlungen in der Hauptnavigation angezeigt werden, wird später besprochen und ggf. implementiert._
 
 ## Komponenten (Liste)
-- Footer: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6315-16206&m=dev]
-- NavBar: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3175-6184&m=dev]
-- Header window-w-min 1260: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=1-105&m=dev]
-- Header window-w-max 1259: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3175-9316&m=dev&t=IFmWKRz9vuqv2YMT-1]
-- Payment [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3501-5794&m=dev]
 
+### Header, Footer & Navigation
+- NavBar: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3175-6184&m=dev]
+- Nav: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2761-6772&m=dev]
+- NavBlocks: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3164-5344&m=dev]
+- Header / window-w-min 1260: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=1-105&m=dev]
+- Header / window-w-max 1259: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3175-9316&m=dev]
+- Footer: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6315-16206&m=dev]
+- Checkout (Kontakt-/E-Mail-Schritt, ehem. "Payment"): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3501-5794&m=dev]
+- Cart / CartPage: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3155-6091&m=dev]
+
+### Sections
+- Section / Search & Filter: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2302-2041&m=dev]
+- Section / MegaCards: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2156-4072&m=dev]
+- Section / Hero: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6604-17025&m=dev]
+- Section / ContactForm: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6810-17863&m=dev]
+- Section / CardRow: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6604-17026&m=dev]
+- Section / ProductHeader: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=4221-28723&m=dev]
+- Section / Accordion: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6604-17023&m=dev]
+- Section / Tabs / DesktopSize (Name in Figma noch als "DecktopSize" zu korrigieren): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7448-19299&m=dev]
+- Section / Editorial: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3164-4506&m=dev]
+- Section / BlogCards: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6605-16723&m=dev]
+
+### Cards
+- Cards / ProductCard: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2356-2667&m=dev]
+- Cards / CategoryCard / SM: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2628-2698&m=dev]
+- Cards / CategoryCard / MD: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2638-2654&m=dev]
+- Cards / MegaCard: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2143-2061&m=dev]
+- Cards / VoucherCard: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3912-19811&m=dev]
+- Cards / PromotionPostCard: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3912-19740&m=dev]
+- Cards / ReviewCard: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2194-1982&m=dev]
+- Cards / Featured: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6704-18568&m=dev]
+- Cards / DiscoveryCard: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6708-16673&m=dev]
+- Cards / PurchaseCard: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6748-17300&m=dev]
+- Cards / Insta: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2066-1664&m=dev]
+- Cards / BlogCard: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=380-881&m=dev]
+
+### CartElements
+- CartElements / Summary: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3307-5882&m=dev]
+  - CartElements / LogIn: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3238-10265&m=dev]
+  - CartElements / ProductItem: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3280-9437&m=dev]
+  - CartElements / Calculation (steckt in generisch benanntem Wrapper-Frame "wrapper"): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2260-4084&m=dev]
+  - CartElements / VoucherInput: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3325-5910&m=dev]
+  - CartElements / MarketingMessage: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3480-19750&m=dev]
+
+### Account
+- Account / LogInStatus: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3220-18844&m=dev]
+- Account / CollapsibleSection: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3912-19582&m=dev]
+  - Components / Account / SummaryItem: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3941-19715&m=dev]
+  - Components / Account / DataBlock: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3941-19858&m=dev]
+
+### Components / Checkout
+- Components / Checkout / OrderConfirmation: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3826-18648&m=dev]
+- Components / Checkout / Payment: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3773-14405&m=dev]
+- Components / Checkout / DeliveryAddress: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3674-12341&m=dev]
+- Components / Checkout / Identification: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6617-16895&m=dev]
+- Components / Checkout / AddressFieldset: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3685-13778&m=dev]
+- Components / Checkout / SummaryDataset: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3773-11559&m=dev]
+- Components / Checkout / WelcomeDataset: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3501-6526&m=dev]
+- Components / Checkout / ShippingAddressFormRadioButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3782-14948&m=dev]
+- Components / Checkout / DeliveryMethodRadioGroup: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3674-12469&m=dev]
+- Components / Checkout / VoucherUIPattern: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2406-2720&m=dev]
+- Components / Checkout / Contact: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3953-24967&m=dev]
+- Components / Checkout / FinalCheckout: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3807-19305&m=dev]
+
+### Components / Cancellation
+- Components / OrderCancellation: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6811-20710&m=dev]
+  - Components / Cancellation / SelectOrder: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6811-20517&m=dev]
+  - Components / Cancellation / SelectProducts: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6810-20264&m=dev]
+- Components / SearchPurchase (Name in Figma noch als "SearchPurchease" zu korrigieren; steckt in generischem Wrapper "wrapper"): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6955-21898&m=dev]
+
+### Components (Sonstige)
+- Components / Product / BuyBox: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3175-5241&m=dev]
+- Components / Product / ImageCarousel: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2531-2860&m=dev]
+- Components / BlockElements / Newsletter: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6315-17848&m=dev]
+- Components / RadioButtonGroup: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3793-15664&m=dev]
+- Components / Disclosure: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=283-633&m=dev]
+- Components / OverlayComponents / Message: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2784-3621&m=dev]
+- Components / TabContent: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7448-20255&m=dev]
+
+### Filter & Search
+- Filter / FilterPanel: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2211-2165&m=dev]
+  - Filter / FilterChip: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2165-2011&m=dev]
+  - Filter / PriceFilterInputField: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2810-2830&m=dev]
+  - Filter / PriceFilterInput: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2849-1395&m=dev]
+  - Filter / PriceRange: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2605-2931&m=dev]
+    - Filter / PriceRange / Drop Down Button: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2829-2901&m=dev]
+    - Filter / PriceRange / Chip: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6093-25636&m=dev]
+    - Filter / PriceRange / Chips: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2609-2771&m=dev]
+- Search / Input: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2339-2155&m=dev]
+- Search / QueryState: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2216-2060&m=dev]
+
+### Buttons
+- Buttons / LG / PrimaryButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=509-1251&m=dev]
+- Buttons / LG / Inline: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2342-2047&m=dev]
+- Buttons / MD / PrimaryButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2310-2156&m=dev]
+- Buttons / MD / SecondaryButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2342-2052&m=dev]
+- Buttons / SM / PrimaryButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2342-2053&m=dev]
+- Buttons / SM / SecondaryButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6799-19379&m=dev]
+- Buttons / SM / Inline: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2359-3245&m=dev]
+- Buttons / SM / Segment Control: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3658-9719&m=dev]
+- Buttons / XS / ToggleButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=272-2159&m=dev]
+- Buttons / XS / SegmentControlButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3925-20314&m=dev]
+- Buttons / XXS / PrimaryButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2328-2172&m=dev]
+- Buttons / XXS / SecondaryButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3911-18672&m=dev]
+- Buttons / XXS / Inline: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3517-8568&m=dev]
+- Buttons / XXXS / Inline: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6799-20185&m=dev]
+- Buttons / Radio: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3795-12348&m=dev]
+- Buttons / CarouselNav: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2038-4884&m=dev]
+- Buttons / Payment: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3230-22134&m=dev]
+- Buttons / Counter: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2442-2491&m=dev]
+- Buttons / ReactionCounter: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2070-1506&m=dev]
+- Buttons / PlusMinus: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2228-2503&m=dev]
+- TabControl (ohne "Buttons /"-Präfix, liegt aber im Buttons-Ordner): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3970-22955&m=dev]
+- IconButton (ohne "Buttons /"-Präfix, liegt im Buttons-Ordner): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2588-2421&m=dev]
+- Layout / PromoBar (steckt in einem generisch benannten Wrapper-Frame "fr"): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3164-11788&m=dev]
+- Add to Basket for mobile (ohne "Buttons /"-Präfix): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3986-23589&m=dev]
+
+### Inputs
+- Input Field plain (großes Variant-Set: Voucher, E-mail, Passwort, Land, Vorname, Nachname, Addresse, Telefonnummer, PLZ, Stadt, Bestellnummer): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2406-1053&m=dev]
+- Input (paralleles Variant-Set mit "Nr="-Nummerierung statt Boolean-Properties, gleiche Feldtypen; Hinweis: manchmal steht ein Button neben dem Input): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2328-2155&m=dev]
+
+### Patterns
+- Patterns / ValidationSign: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2406-1344&m=dev]
+- Patterns / BulletedList: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=4221-27964&m=dev]
+- Patterns / Inline Question & Button: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6072-33346&m=dev]
+- Patterns / InlineFeedbackElement: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2337-1353&m=dev]
+- Patterns / PurchaseSummary (Name in Figma noch als "PurcheaseSummary" zu korrigieren): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6794-18851&m=dev]
+- Patterns / Ingredients: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7448-20925&m=dev]
+- Patterns / CarouselThumbnail: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2543-2114&m=dev]
+- Patterns / ProductImg: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6810-20272&m=dev]
+- Patterns / TextAndImg: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7448-20380&m=dev]
+- Patterns / SearchInput: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2171-2737&m=dev]
+- Patterns / TableElement: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2040-1345&m=dev]
+- Patterns / Breadcrumb: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3155-5202&m=dev]
+- Patterns / InputText: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2182-1829&m=dev]
+- Patterns / UserMessage & Explanation: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6811-20757&m=dev]
 
 *(Weitere UX/UI-Erkenntnisse werden hier ergänzt.)*
 
@@ -44,6 +175,18 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 - Für zukünftige Sitemap-Arbeit: Sammlungen visuell/strukturell getrennt von festen Kategorien darstellen, nicht als gleichwertige Äste im Baum.
 - "Aufbewahren" ist eine feste kategorie, "Im Angebot" eine Sammlung.
 
----
+#### Komponenten-Liste "COMPONENTS & SCREENS" (14.07.2026)
 
+**Struktur der Seite:** Canvas "COMPONENTS & SCREENS" (2001:522) hat 3 direkte Kinder: Section "PAGES" (3658:9149, Screens – ausgeschlossen), Section "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" (3267:6614, enthält die gesamte Komponentenbibliothek) und Frame "PRACTICE FOR CLAUDE" (7372:19291, Testartefakt, ausgeschlossen). Innerhalb von 3267:6614 liegen die Top-Level-Sections: SECTIONS, HEADER & FOOTER, FILTER & SEARCH, BUTTONS, INPUTS, CARDS, COMPONENTS, ICONS, PATTERNS, NOTES, VISUALS.
 
+**Ausgeschlossen (bewusst):** ICONS (1:133, nicht im Detail durchsucht), NOTES (6611:18283, verifiziert nur Screenshots/Notizen), VISUALS (6663:16082, auf Wunsch nicht aufgenommen), PRACTICE FOR CLAUDE (7372:19291, nur 2 Button-Instanzen, kein Master).
+
+**Offene Punkte / bitte in Figma prüfen:**
+1. "Buttons / XS / SegmentControlButton" und "Buttons / SM / Segment Control" – uneinheitliche Schreibweise für vermutlich denselben Zweck.
+2. "Input Field plain" (2406:1053) und "Input" (2328:2155) – zwei parallele Varianten-Sets mit identischen Feldtypen, aber unterschiedlicher Property-Struktur (Boolean vs. "Nr="-Nummerierung). Sieht nach Altlast/Duplikat aus.
+3. Tippfehler in Figma noch nicht korrigiert (in dieser Liste bereits richtig geschrieben): "PurcheaseSummary" (6794:18851) → Purchase, "SearchPurchease" (6955:21898) → Purchase, "DecktopSize" (7448:19299) → Desktop. Claude hat keinen Schreibzugriff auf Figma (nur lesende Dev-Mode-MCP-Tools) – bitte manuell umbenennen.
+4. Generische Wrapper-Frames ("fr", "wrapper", "gr") um "Layout / PromoBar" (3164:11788), "CartElements / Calculation" (2260:4084) und "Components / SearchPurchase" (6955:21898) sind laut Nutzerin bewusstes Design (Größenbeschränkung für sonst unlimitierte Komponenten), keine Namensfehler.
+5. "TabControl" (3970:22955), "IconButton" (2588:2421), "Add to Basket for mobile" (3986:23589) liegen ohne "Buttons /"-Präfix direkt im Buttons-Ordner.
+6. "Account / LogInStatus" liegt physisch bei den CartElements/CARD-ELEMENTS-Komponenten, "Account / CollapsibleSection" physisch bei den Section/*-Komponenten – hier aber thematisch unter "Account" einsortiert.
+
+**Hierarchie-Verifikation (per `get_design_context`, echte Instanz-Prüfung statt nur Namenslogik):** Bestätigt verschachtelt: Filter/FilterPanel (enthält FilterChip- und eine PriceRange-Instanz, dort aber als "FilterPanel / PriceRange" benannt – Namensabweichung zum hier gelisteten Master 2605:2931, bitte prüfen), CartElements/Summary (enthält ProductItem, Calculation, LogIn), Account/CollapsibleSection (enthält SummaryItem, DataBlock), Components/OrderCancellation (enthält SelectOrder-Instanz, SelectProducts sehr wahrscheinlich analog). Geprüft und NICHT verschachtelt (daher als gleichrangige Einträge gelistet): NavBar/Nav/NavBlocks sind eigenständig, ebenso Components/Product/BuyBox und ImageCarousel.
