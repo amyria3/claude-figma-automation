@@ -1,3 +1,15 @@
+## ⚠️ Weitere kritische Gotchas (aus Migrations-Projekt "Button with Labels" → "Buttons/MD/PrimaryButton", 82 Instanzen)
+
+**Atomarität pro Skript, nicht pro Batch-Element:** Ein ungefangener `throw` in EINER Zeile rollt die GESAMTE `use_figma`-Ausführung zurück — auch bereits erfolgreich gelaufene Mutationen (z.B. ein vorheriges `swapComponent()`) werden verworfen, wenn eine SPÄTERE Zeile im selben Aufruf fehlschlägt (z.B. `loadFontAsync()` für eine nicht verfügbare Font). Bei Batch-Operationen über viele Nodes: jede einzelne Mutation in ein eigenes try/catch wickeln, sonst kann ein einziger Fehler am Ende den kompletten Batch stillschweigend zunichtemachen.
+
+**Master-vs-Instance-Kaskade bei Plain-IDs:** Eine Node-ID ohne Semikolon (z.B. `3238:10792`) ist nicht automatisch eine eigenständige Top-Level-Instanz — sie kann strukturell INNERHALB einer geteilten Master-Komponente/eines Component-Sets liegen (Ancestor-Kette prüfen: `COMPONENT`/`COMPONENT_SET` vor der `PAGE`). Ein `swapComponent()` auf so einem Node verändert die geteilte Vorlage und kaskadiert automatisch auf JEDE Instanz im File, die exakt diese Variante nutzt — auch auf Instanzen, die explizit nicht angefasst werden sollten. Vor Batch-Swaps auf Plain-IDs immer die Ancestor-Kette prüfen und den Blast-Radius (wie viele andere Instanzen denselben `mainComponent.id` haben) vorher checken. Praktischer Trost: Reactions überleben so einen Swap zuverlässig, da sie node- statt komponentengebunden sind.
+
+**"Preferred values" ≠ Slot-Property-Typ:** Preferred Values einer Instance-Swap-Property kuratieren nur die Vorschlagsliste beim Swap (keine harte Sperre) und müssen an der Haupt-/Set-Komponente über die BESTEHENDE Property bearbeitet werden. Nicht per "Create property" mit einer neuen Instanz-Selektion eine zweite, konkurrierende Property anlegen — das lässt die alte Property auf "nicht verwendet" fallen.
+
+**Verwaiste Instanzen erkennen:** Nach dem Löschen einer Mutterkomponente werden zugehörige Instanzen NICHT automatisch gelöscht — sie bleiben mit letztem visuellem Stand bestehen (ggf. als "missing component" markiert). Prüfen via `await instance.getMainComponentAsync()`.
+
+---
+
 
 
 ### ⚠️ Variant-Properties (v.a. Color-Mode) sind nicht garantiert kompatibel
