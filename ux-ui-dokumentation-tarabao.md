@@ -159,9 +159,9 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 
 ---
 
-## 🔤 Design Tokens: Text Styles
+## Design Tokens: Text Styles
 
-Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section `get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles). Größe und Line-Height in rem (Basis 16px = 1rem); Line-Height-Werte, die in Figma bereits unitless (z.B. `1.2`) oder als Prozent-Angabe hinterlegt sind, bleiben unverändert.
+<sub>Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles). Größe und Line-Height in rem (Basis 16px = 1rem); Line-Height-Werte, die in Figma bereits unitless (z.B. `1.2`) oder als Prozent-Angabe hinterlegt sind, bleiben unverändert.</sub>
 
 | Style-Name | Font-Familie | Stil | Größe | Gewicht | Line-Height | Letter-Spacing |
 |---|---|---|---|---|---|---|
@@ -226,11 +226,11 @@ Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section `get_variable
 | Table/\<th\> | Manrope | SemiBold | 1,125rem | 600 | 1,125rem | 0 |
 | Table/Cell | Manrope | Regular | 1,25rem | 400 | 1,25rem | 0 |
 
-*Hinweis: "100 (%)" bei Line-Height bedeutet 100% Zeilenhöhe (relativ zur Schriftgröße), keine feste px-Angabe. Unitless-Werte (z.B. `1.2`, `0.8`) sind Multiplikatoren der Schriftgröße, ebenfalls keine px-Angabe — beide Fälle wurden daher nicht umgerechnet.*
+<sub>Hinweis: "100 (%)" bei Line-Height bedeutet 100% Zeilenhöhe (relativ zur Schriftgröße), keine feste px-Angabe. Unitless-Werte (z.B. `1.2`, `0.8`) sind Multiplikatoren der Schriftgröße, ebenfalls keine px-Angabe — beide Fälle wurden daher nicht umgerechnet.</sub>
 
 ---
 
-## 📐 Design Tokens: Box-Spacing & Gap
+## Design Tokens: Box-Spacing & Gap
 
 Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo eine Größenstufe nur in einer der beiden Skalen existiert, ist die andere Spalte mit "-" markiert.
 
@@ -250,9 +250,9 @@ Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo 
 
 ---
 
-## 📏 Design Tokens: Tailwind-Utility-Scale ↔ Figma-px (persönliche Referenz, nur für Maria)
+## Design Tokens: Tailwind-Utility-Scale ↔ Figma-px (persönliche Referenz, nur für Maria)
 
-Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte tatsächlich im File verwendet werden, statt nur die resultierenden px-Zahlen zu sehen. Formel: `px = N × 4`, `rem = N × 0,25`. **Der px-Wert in Figma ist maßgeblich** — wo eine Abweichung auftrat, war nicht der px-Wert falsch, sondern das `[twuc]-N`-Label falsch berechnet/vergeben. Die Spalte "korrektes [twuc]-N" zeigt den aus dem (richtigen) px-Wert zurückgerechneten Namen.
+Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte tatsächlich im File verwendet werden, statt nur die resultierenden px-Zahlen zu sehen. Formel: `px = N × 4`, `rem = N × 0,25`. Der px-Wert in Figma ist maßgeblich.
 
 | px (Figma-Wert, maßgeblich) | rem (px÷16) | korrektes [twuc]-N (px÷4) | bisher verwendetes [twuc]-N | Stimmt überein? |
 |---|---|---|---|---|
@@ -284,11 +284,11 @@ Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte
 | **674** | 42,125rem | **168,5 (nicht ganzzahlig)** | 192 | ❌ px÷4 ergibt keine ganze Zahl — bitte in Figma direkt gegenprüfen, ob 674px wirklich stimmt oder selbst ein Tippfehler ist (z.B. 672px → `[twuc]-168`) |
 | 896 | 56rem | 224 | 224 | ✅ |
 
-**Auffällig:** Bei zwei Werten war nicht der px-Wert falsch, sondern das `[twuc]-N`-Label falsch berechnet: Bei 144px war `[twuc]-40` eingetragen, korrekt wäre `[twuc]-36` (144÷4=36). Bei 176px war `[twuc]-48` eingetragen, korrekt wäre `[twuc]-44` (176÷4=44). Bei 674px ergibt die Rückrechnung (674÷4=168,5) keine ganze Zahl — das ist ungewöhnlich für diese Skala und sollte direkt in Figma geprüft werden, ob 674px der tatsächlich beabsichtigte Wert ist.
+<sub>Auffällig: Bei zwei Werten war nicht der px-Wert falsch, sondern das `[twuc]-N`-Label falsch berechnet: Bei 144px war `[twuc]-40` eingetragen, korrekt wäre `[twuc]-36` (144÷4=36). Bei 176px war `[twuc]-48` eingetragen, korrekt wäre `[twuc]-44` (176÷4=44). Bei 674px ergibt die Rückrechnung (674÷4=168,5) keine ganze Zahl — das ist ungewöhnlich für diese Skala und sollte direkt in Figma geprüft werden, ob 674px der tatsächlich beabsichtigte Wert ist.</sub>
 
 ---
 
-## ✅ Offene TODOs (Figma-Schreibzugriff nötig — Claude kann nur lesen)
+## Offene TODOs (Figma-Schreibzugriff nötig — Claude kann nur lesen)
 
 Claude hat aktuell nur lesenden Zugriff auf Figma (Dev Mode MCP Server). Folgende Korrekturen müssen manuell in Figma vorgenommen werden (oder sobald ein schreibfähiger Figma-Connector verbunden ist):
 
@@ -313,6 +313,9 @@ Die px-Werte sind korrekt — es müssen die Variablen-Labels angepasst werden, 
   - Button = Hug → Label = Fill.
 
 ## Nur Für Claude
+
+<sub>
+
 #### Korrektur ggü. bisheriger Sitemap-Arbeit
 - "Im Pfandglas" wurde in einer früheren Sitemap-Version fälschlich als feste Kategorie mit eigenen Unterkategorien modelliert. Tatsächlich ist es vermutlich eine Sammlung/Verpackungsfilter, der quer durch die festen Kategorien geht.
 - Für zukünftige Sitemap-Arbeit: Sammlungen visuell/strukturell getrennt von festen Kategorien darstellen, nicht als gleichwertige Äste im Baum.
@@ -333,3 +336,5 @@ Die px-Werte sind korrekt — es müssen die Variablen-Labels angepasst werden, 
 6. "Account / LogInStatus" liegt physisch bei den CartElements/CARD-ELEMENTS-Komponenten, "Account / CollapsibleSection" physisch bei den Section/*-Komponenten – hier aber thematisch unter "Account" einsortiert.
 
 **Hierarchie-Verifikation (per `get_design_context`, echte Instanz-Prüfung statt nur Namenslogik):** Bestätigt verschachtelt: Filter/FilterPanel (enthält FilterChip- und eine PriceRange-Instanz, dort aber als "FilterPanel / PriceRange" benannt – Namensabweichung zum hier gelisteten Master 2605:2931, bitte prüfen), CartElements/Summary (enthält ProductItem, Calculation, LogIn), Account/CollapsibleSection (enthält SummaryItem, DataBlock), Components/OrderCancellation (enthält SelectOrder-Instanz, SelectProducts sehr wahrscheinlich analog). Geprüft und NICHT verschachtelt (daher als gleichrangige Einträge gelistet): NavBar/Nav/NavBlocks sind eigenständig, ebenso Components/Product/BuyBox und ImageCarousel.
+
+</sub>
