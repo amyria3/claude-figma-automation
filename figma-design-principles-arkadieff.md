@@ -2,7 +2,7 @@
 
 > **Ausnahmen:** Jedes Prinzip erlaubt Ausnahmen, sofern das UI-Pattern es erfordert. Beispiel: Ein Karussell erfordert, dass alle Kind-Frames `hug` haben und der Container absichtlich überläuft — das ist kein Fehler, sondern das korrekte Muster. Ausnahmen sind explizit zu benennen.
 
-> **Korrektur 13.07.2026 (durchgängig eingearbeitet):** Die Variant-Property für den inaktiven Button-Zustand heißt **`Inactive?`** (nicht mehr `Deactivated?`, wie in einer früheren Doku-Version). Betrifft u.a. `Buttons / MD / PrimaryButton` (node-id=2310-2156). Vor Code, der Property-Namen referenziert, immer live via `componentPropertyDefinitions` gegenprüfen — Namen ändern sich in diesem File.
+> **Korrektur 13.07.2026 (durchgängig eingearbeitet):** Die Variant-Property für den inaktiven Button-Zustand heißt **`Inactive?`** (nicht mehr `Deactivated?`, wie manchmal verwendet). Betrifft u.a. `Buttons / MD / PrimaryButton` (node-id=2310-2156). Vor Code, der Property-Namen referenziert, immer live via `componentPropertyDefinitions` gegenprüfen — Namen ändern sich in diesem File, weil wir noch im Prozess sind.
 
 ---
 
