@@ -163,68 +163,68 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 
 | Style-Name | Font-Familie | Stil | Größe | Gewicht | Line-Height | Letter-Spacing |
 |---|---|---|---|---|---|---|
-| Label/default | BROWN NOW TWO | - | 1rem | 400 | 1rem | 0 |
-| Label/Selected | BROWN NOW ONE | - | 1rem | 400 | 1rem | 0 |
-| UserMessage/LG | BROWN NOW TWO | - | 1rem | 400 | 1rem ([twuc]-4) | -2 |
-| UserMessage/X-LG | BROWN NOW TWO | - | 1,25rem | 400 | 1rem ([twuc]-4) | -2 |
-| UserMessage/Default | Manrope | Regular | 0,75rem | 400 | 0,75rem | 0 |
-| Input/InputText | Manrope | Regular | 1,125rem | 400 | 0,875rem | 2 |
-| Input/LabelDefault | Manrope | Regular | 0,875rem | 400 | 0,875rem | -1 |
-| Input/Label SM | Manrope | Light | 0,5625rem | 300 | 0,5625rem | -1 |
-| Input/Warning&DefaultText | Manrope | Regular | 0,75rem | 400 | 0,875rem | 0 |
-| Cards/ProductTitle | Manrope | Bold | 1rem | 700 | 1,125rem | 2 |
-| Cards/MD | BROWN NOW TWO | - | 1,375rem | 400 | 0,875rem | 5 |
-| Cards/Light | Manrope | Light | 0,625rem | 300 | 0,625rem | -3 |
-| Cards/MegaCard/Lumo | LUMOSKY | Regular | 2,5rem | 400 | 2,5rem | 6 |
-| Cards/MegaCard/Body | Manrope | Regular | 1,25rem | 400 | 1,75rem ([twuc]-7) | -2 |
-| Cards/Featured/Title | LUMOSKY | Regular | 1,5rem | 400 | 1,875rem | -3 |
-| Cards/Blog/Title | Manrope | Light | 1,1875rem | 300 | 1.3 | 0 |
-| Buttons/LG | BROWN NOW ONE | - | 2,125rem | 400 | 2,5rem | -2 |
-| Buttons/LG Underlined | BROWN NOW ONE | ONE | 2,125rem | 400 | 2,5rem | 2 |
-| Buttons/MD | BROWN NOW TWO | - | 1,5rem | 400 | 0.8 | 5 |
-| Buttons/MD Underlined | BROWN NOW TWO | TWO | 1,5rem | 400 | 0.8 | 5 |
-| Buttons/SM | BROWN NOW ONE | - | 1,25rem | 400 | 1,25rem | -2 |
-| Buttons/X-SM | BROWN NOW TWO | - | 1,125rem | 400 | 1,125rem | -2 |
-| Buttons/XX-SM | BROWN NOW ONE | - | 0,875rem | 400 | 1rem | -2 |
-| Buttons/XX-SM underlined | BROWN NOW ONE | ONE | 0,875rem | 400 | 1rem | -2 |
-| Buttons/XXXS Inline | BROWN NOW ONE | ONE | 0,75rem | 400 | 0,75rem | -2 |
-| Buttons/Quantity&Packaging | Manrope | SemiBold | 0,875rem | 600 | 0,875rem | 0 |
-| H1 Subtitle | BROWN NOW TWO | - | 2,5rem | 400 | 0.8 | -2 |
-| H2 | LUMOSKY | Regular | 2rem | 400 | 1 | 2 |
-| H2 Produktkategorie | LUMOSKY | Regular | 2,5rem | 400 | 1 | 2 |
-| H2 Subtitle | BROWN NOW TWO | - | 1,5rem | 400 | 1,5rem | -2 |
-| H2 Alternative | BROWN NOW ONE | - | 1,625rem | 400 | 1 | 6 |
-| H3 | BROWN NOW ONE | ONE | 1,625rem | 400 | 1,25rem | -2 |
-| DefaultText LG | Manrope | Light | 1rem | 300 | 1.2 | 0.5 |
-| DefaultText MD | Manrope | Regular | 0,875rem | 400 | 1.5 | 1.5 |
-| DefaultText S | Manrope | Regular | 0,75rem | 400 | 100 (%) | 0 |
-| BulletPoints | Manrope | Regular | 0,875rem | 400 | 100 (%) | 0 |
-| Link | Manrope | SemiBold | 1rem | 600 | 1,125rem | -1 |
-| Comment | Manrope | Light | 0,75rem | 300 | 1rem | 0 |
-| Comment/BodyText | Manrope | Regular | 1rem | 400 | 100 (%) | 0 |
-| Navigation/Route | Manrope | Medium | 0,75rem | 500 | 1 | 5 |
-| Navigation/FullScreen/MainCategory | Manrope | ExtraBold | 1rem | 800 | 1.1 | 0 |
-| Navigation/FullScreen/SubCategory | Manrope | SemiBold | 1rem | 600 | 1.1 | 0 |
-| Navigation/SideNavigation/MainCategory | Manrope | SemiBold | 0,8125rem | 600 | 0,8125rem | 0 |
-| Navigation/SideNavigation/SubCategory | Manrope | Regular | 0,875rem | 400 | 0,875rem | 0 |
-| ProductPage/ProductTitle | Manrope | ExtraBold | 1,5rem | 800 | 1,625rem | 0 |
-| ProductPage/Hightlighted | Manrope | ExtraBold | 1rem | 800 | 0.8 | 0 |
-| ProductPage/Dropdown/Summary | Manrope | Bold | 1,125rem | 700 | 1,125rem | 1 |
-| ProductPage/Dropdown/H3 ManufacturerName | Manrope | SemiBold | 1rem | 600 | 100 (%) | 1 |
-| ProductPage/Dropdown/H4 Question | Manrope | Regular | 1rem | 400 | 1,625rem | 0 |
-| ProductPage/Dropdown/BodyText - Responce | Manrope | Regular | 1rem | 400 | 1,625rem | 0 |
-| ShoppingCart & Checkout/MainHeadline | BROWN NOW TWO | - | 2,125rem | 400 | 1 | -2 |
-| ShoppingCart & Checkout/Headline | Manrope | ExtraBold | 0,875rem | 800 | 0,875rem | -1 |
-| ShoppingCart & Checkout/Body | Manrope | Medium | 0,875rem | 500 | 0,875rem | 0 |
-| ShoppingCart & Checkout/Subtle | Manrope | Regular | 0,6875rem | 400 | 0,6875rem | 0 |
-| ShoppingCart & Checkout/Hightlighted | Manrope | Bold | 0,875rem | 700 | 0,875rem | -3 |
-| DataBlocks/SummaryItemTitle | Manrope | Medium | 1rem | 500 | 1rem | 0 |
-| DataBlocks/SummaryItemContent | Manrope | Regular | 0,875rem | 400 | 1,125rem | 0 |
-| PriceRangeFilter/Label | Manrope | Medium | 0,625rem | 500 | 0,625rem | 0 |
-| Table/\<th\> | Manrope | SemiBold | 1,125rem | 600 | 1,125rem | 0 |
-| Table/Cell | Manrope | Regular | 1,25rem | 400 | 1,25rem | 0 |
+| Label/default | BROWN NOW TWO | - | 1rem | 400 | 100% | 0 |
+| Label/Selected | BROWN NOW ONE | - | 1rem | 400 | 100% | 0 |
+| UserMessage/LG | BROWN NOW TWO | - | 1rem | 400 | 100% ([twuc]-4) | -2 |
+| UserMessage/X-LG | BROWN NOW TWO | - | 1,25rem | 400 | 80% ([twuc]-4) | -2 |
+| UserMessage/Default | Manrope | Regular | 0,75rem | 400 | 100% | 0 |
+| Input/InputText | Manrope | Regular | 1,125rem | 400 | 77,8% | 2 |
+| Input/LabelDefault | Manrope | Regular | 0,875rem | 400 | 100% | -1 |
+| Input/Label SM | Manrope | Light | 0,5625rem | 300 | 100% | -1 |
+| Input/Warning&DefaultText | Manrope | Regular | 0,75rem | 400 | 116,7% | 0 |
+| Cards/ProductTitle | Manrope | Bold | 1rem | 700 | 112,5% | 2 |
+| Cards/MD | BROWN NOW TWO | - | 1,375rem | 400 | 63,6% | 5 |
+| Cards/Light | Manrope | Light | 0,625rem | 300 | 100% | -3 |
+| Cards/MegaCard/Lumo | LUMOSKY | Regular | 2,5rem | 400 | 100% | 6 |
+| Cards/MegaCard/Body | Manrope | Regular | 1,25rem | 400 | 140% ([twuc]-7) | -2 |
+| Cards/Featured/Title | LUMOSKY | Regular | 1,5rem | 400 | 125% | -3 |
+| Cards/Blog/Title | Manrope | Light | 1,1875rem | 300 | 130% | 0 |
+| Buttons/LG | BROWN NOW ONE | - | 2,125rem | 400 | 117,6% | -2 |
+| Buttons/LG Underlined | BROWN NOW ONE | ONE | 2,125rem | 400 | 117,6% | 2 |
+| Buttons/MD | BROWN NOW TWO | - | 1,5rem | 400 | 80% | 5 |
+| Buttons/MD Underlined | BROWN NOW TWO | TWO | 1,5rem | 400 | 80% | 5 |
+| Buttons/SM | BROWN NOW ONE | - | 1,25rem | 400 | 100% | -2 |
+| Buttons/X-SM | BROWN NOW TWO | - | 1,125rem | 400 | 100% | -2 |
+| Buttons/XX-SM | BROWN NOW ONE | - | 0,875rem | 400 | 114,3% | -2 |
+| Buttons/XX-SM underlined | BROWN NOW ONE | ONE | 0,875rem | 400 | 114,3% | -2 |
+| Buttons/XXXS Inline | BROWN NOW ONE | ONE | 0,75rem | 400 | 100% | -2 |
+| Buttons/Quantity&Packaging | Manrope | SemiBold | 0,875rem | 600 | 100% | 0 |
+| H1 Subtitle | BROWN NOW TWO | - | 2,5rem | 400 | 80% | -2 |
+| H2 | LUMOSKY | Regular | 2rem | 400 | 100% | 2 |
+| H2 Produktkategorie | LUMOSKY | Regular | 2,5rem | 400 | 100% | 2 |
+| H2 Subtitle | BROWN NOW TWO | - | 1,5rem | 400 | 100% | -2 |
+| H2 Alternative | BROWN NOW ONE | - | 1,625rem | 400 | 100% | 6 |
+| H3 | BROWN NOW ONE | ONE | 1,625rem | 400 | 76,9% | -2 |
+| DefaultText LG | Manrope | Light | 1rem | 300 | 120% | 0.5 |
+| DefaultText MD | Manrope | Regular | 0,875rem | 400 | 150% | 1.5 |
+| DefaultText S | Manrope | Regular | 0,75rem | 400 | 100% | 0 |
+| BulletPoints | Manrope | Regular | 0,875rem | 400 | 100% | 0 |
+| Link | Manrope | SemiBold | 1rem | 600 | 112,5% | -1 |
+| Comment | Manrope | Light | 0,75rem | 300 | 133,3% | 0 |
+| Comment/BodyText | Manrope | Regular | 1rem | 400 | 100% | 0 |
+| Navigation/Route | Manrope | Medium | 0,75rem | 500 | 100% | 5 |
+| Navigation/FullScreen/MainCategory | Manrope | ExtraBold | 1rem | 800 | 110% | 0 |
+| Navigation/FullScreen/SubCategory | Manrope | SemiBold | 1rem | 600 | 110% | 0 |
+| Navigation/SideNavigation/MainCategory | Manrope | SemiBold | 0,8125rem | 600 | 100% | 0 |
+| Navigation/SideNavigation/SubCategory | Manrope | Regular | 0,875rem | 400 | 100% | 0 |
+| ProductPage/ProductTitle | Manrope | ExtraBold | 1,5rem | 800 | 108,3% | 0 |
+| ProductPage/Hightlighted | Manrope | ExtraBold | 1rem | 800 | 80% | 0 |
+| ProductPage/Dropdown/Summary | Manrope | Bold | 1,125rem | 700 | 100% | 1 |
+| ProductPage/Dropdown/H3 ManufacturerName | Manrope | SemiBold | 1rem | 600 | 100% | 1 |
+| ProductPage/Dropdown/H4 Question | Manrope | Regular | 1rem | 400 | 162,5% | 0 |
+| ProductPage/Dropdown/BodyText - Responce | Manrope | Regular | 1rem | 400 | 162,5% | 0 |
+| ShoppingCart & Checkout/MainHeadline | BROWN NOW TWO | - | 2,125rem | 400 | 100% | -2 |
+| ShoppingCart & Checkout/Headline | Manrope | ExtraBold | 0,875rem | 800 | 100% | -1 |
+| ShoppingCart & Checkout/Body | Manrope | Medium | 0,875rem | 500 | 100% | 0 |
+| ShoppingCart & Checkout/Subtle | Manrope | Regular | 0,6875rem | 400 | 100% | 0 |
+| ShoppingCart & Checkout/Hightlighted | Manrope | Bold | 0,875rem | 700 | 100% | -3 |
+| DataBlocks/SummaryItemTitle | Manrope | Medium | 1rem | 500 | 100% | 0 |
+| DataBlocks/SummaryItemContent | Manrope | Regular | 0,875rem | 400 | 128,6% | 0 |
+| PriceRangeFilter/Label | Manrope | Medium | 0,625rem | 500 | 100% | 0 |
+| Table/\<th\> | Manrope | SemiBold | 1,125rem | 600 | 100% | 0 |
+| Table/Cell | Manrope | Regular | 1,25rem | 400 | 100% | 0 |
 
-<sub>Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles). Größe und Line-Height in rem (Basis 16px = 1rem); Line-Height-Werte, die in Figma bereits unitless (z.B. `1.2`) oder als Prozent-Angabe hinterlegt sind, bleiben unverändert. "100 (%)" bedeutet 100% Zeilenhöhe (relativ zur Schriftgröße), keine feste px-Angabe.</sub>
+<sub>Stand 15.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles). Größe weiterhin in rem (Basis 16px = 1rem). Line-Height durchgängig als Prozent der Schriftgröße angegeben (Prozent = Line-Height in px ÷ Font-Size in px × 100), unabhängig davon, ob der Wert in Figma ursprünglich als px, unitless Multiplikator oder bereits als Prozent hinterlegt war.</sub>
 
 ---
 
@@ -288,6 +288,15 @@ Bitte in Figma direkt korrigieren. Danach zusätzlich prüfen, ob es verwaiste I
 #### 2. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
 
 32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen – Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft.
+
+#### 3. Unlinked Variables (Variable noch gebunden, aber Ursprungsvariable/-Name gelöscht)
+
+Live gefunden (15.07.2026, `get_variable_defs` auf Node 3267:6614): zwei Einträge zeigen nur noch ihren rohen Rem-Fallback statt eines Namens – ein starkes Indiz dafür, dass die ursprünglich benannte Variable, auf die sie verwiesen haben, gelöscht wurde:
+
+- `(30,5rem)` = 488px: bestätigt gebunden an die Height-Property von **Cards / DiscoveryCard** (beide Varianten "Default" und "Hover", da die Höhe außerhalb der Varianten-Verzweigung liegt). Im generierten Code sichtbar als `h-[var(--\(30\,5rem\),488px)]` – ein Variablenname, der nur noch aus dem Fallback-Wert besteht, kein sprechender Name mehr vorhanden.
+- `(48rem)` = 674px: gleiches Namensmuster, aber Fundort nicht abschließend bestätigt. Der Wert 674 taucht zusätzlich bei "Cards/Mid/max-h" auf, und exakt bei Cards / DiscoveryCard / Hover als Breite (674px) – dort im Code aber als roher Wert ohne `var()`-Referenz sichtbar, könnte also auch unabhängig hartkodiert sein statt an diese Variable gebunden. Nicht abschließend zuordenbar ohne direkten Blick in den Figma-Variablen-Dialog.
+
+Bitte in Figma direkt prüfen (Rechtsklick auf die Property → "Variablen" bzw. den Variablen-Modus im rechten Panel öffnen), ob dort "Missing variable" angezeigt wird, und die Bindung neu setzen oder den Wert bestätigen.
 
 #### Zu klären: Korrektur ggü. bisheriger Sitemap-Arbeit
 
