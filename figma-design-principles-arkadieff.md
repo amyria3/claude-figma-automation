@@ -2,7 +2,7 @@
 
 > **Ausnahmen:** Jedes Prinzip erlaubt Ausnahmen, sofern das UI-Pattern es erfordert. Beispiel: Ein Karussell erfordert, dass alle Kind-Frames `hug` haben und der Container absichtlich überläuft — das ist kein Fehler, sondern das korrekte Muster. Ausnahmen sind explizit zu benennen.
 
-> **Korrektur 13.07.2026:** Im Abschnitt "Interaction & State Behavior" weiter unten wird für `Buttons / MD / PrimaryButton` (node-id=2310-2156) die Variant-Property `Deactivated?=True` genannt. Live nachgeprüft: diese Property heißt inzwischen **`Inactive?`** (nicht mehr `Deactivated?`), Verhalten unverändert. Vor Code, der Property-Namen referenziert, immer live via `componentPropertyDefinitions` gegenprüfen — Namen ändern sich in diesem File.
+> **Korrektur 13.07.2026 (durchgängig eingearbeitet):** Die Variant-Property für den inaktiven Button-Zustand heißt **`Inactive?`** (nicht mehr `Deactivated?`, wie in einer früheren Doku-Version). Betrifft u.a. `Buttons / MD / PrimaryButton` (node-id=2310-2156). Vor Code, der Property-Namen referenziert, immer live via `componentPropertyDefinitions` gegenprüfen — Namen ändern sich in diesem File.
 
 ---
 
@@ -137,26 +137,28 @@ Innerhalb von Component-Variant-Namen (z.B. `Hover?=False, Variant=1, Color=blue
 - Die Property-Reihenfolge bleibt innerhalb eines Component-Sets über alle Varianten hinweg identisch.
 - Enthält das Label selbst bereits ein `?` (z.B. eine Frage wie `"Weiter zu Versandmethoden?"`), wird der Boolean-Marker trotzdem zusätzlich außerhalb der Anführungszeichen ergänzt: `"Weiter zu Versandmethoden?"?=False`. Das sieht mit doppeltem `?` ungewohnt aus, folgt aber derselben Regel wie alle Nachbar-Properties.
 
-**Häufig verwendete Property-Namen zur Orientierung (Audit vom 01.07.2026):** `State`, `Hover?`, `Variant`, `Selected?`, `Open?`, `Deactivated?`, `Show Icon?`, `Size`, `Type`, `Is Active?`, `Has Input?`, `window-w`, `color-mode: ...?`
+**Häufig verwendete Property-Namen zur Orientierung (Audit vom 01.07.2026, `Inactive?`-Umbenennung berücksichtigt):** `State`, `Hover?`, `Variant`, `Selected?`, `Open?`, `Inactive?`, `Show Icon?`, `Size`, `Type`, `Is Active?`, `Has Input?`, `window-w`, `color-mode: ...?`
 
 ---
 
 ## 🖱️ Interaction & State Behavior
 
 ### Button-Verhalten: Inactive State
-- **Optik:** Inaktive Buttons verwenden die Variante `Deactivated?=True` der jeweiligen Button-Komponente. Beispiel: [`Buttons / MD / PrimaryButton`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2310-2156) — dort als Varianten-Parameter `Deactivated` hinterlegt. Keine manuelle Nachbildung über Opacity o.ä. — der Zustand ist Teil der Component.
+- **Optik:** Inaktive Buttons verwenden die Variante `Inactive?=True` der jeweiligen Button-Komponente. Beispiel: [`Buttons / MD / PrimaryButton`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2310-2156) — dort als Varianten-Parameter `Inactive` hinterlegt. Keine manuelle Nachbildung über Opacity o.ä. — der Zustand ist Teil der Component.
 - **Klickbarkeit:** Inaktive Buttons sind **nicht** im Sinne von "nicht klickbar" deaktiviert — sie lassen sich anklicken.
 - **Feedback bei Klick:** Ein Klick auf einen inaktiven Button zeigt eine Fehlermeldung, die erklärt, warum die Aktion aktuell nicht möglich ist.
-- **Rückkehr zum Ausgangszustand:** Nach dem Click kehrt der Button wieder in die `Deactivated`-Optik zurück — es entsteht kein eigener, dauerhafter "Error"-Zustand am Button selbst.
+- **Rückkehr zum Ausgangszustand:** Nach dem Click kehrt der Button wieder in die `Inactive`-Optik zurück — es entsteht kein eigener, dauerhafter "Error"-Zustand am Button selbst.
+
+**Warum `Inactive?` statt eines echten `disabled`-Zustands:** Wir setzen bewusst auf eine sichtbar inaktive, aber weiterhin klickbare Variante, damit die Userin trotzdem interagieren kann — ein Klick liefert ihr die Fehlermeldung bzw. Erklärung dafür, warum der Zustand gerade `Inactive` ist (z.B. fehlende Pflichtangabe, nicht erfüllte Voraussetzung). Ein klassisches `disabled` (nicht klickbar, kein Pointer-Event) würde diese Erklärung verschlucken und die Userin ratlos zurücklassen.
 
 ```
-Button (Variant: Deactivated=True)
+Button (Variant: Inactive=True)
    │  onClick
    ▼
 Fehlermeldung wird angezeigt
    │
    ▼
-Button (Variant: Deactivated=True)   ← zurück zum Ausgangszustand, kein separater Error-State am Button
+Button (Variant: Inactive=True)   ← zurück zum Ausgangszustand, kein separater Error-State am Button
 ```
 
 *Hinweis: Dieses Verhalten unterscheidet sich bewusst von einem klassischen `disabled`-Button (nicht klickbar, kein Pointer-Event). Der Grund für die Klickbarkeit ist, der Nutzerin aktiv mitzuteilen, warum eine Aktion nicht verfügbar ist, statt sie stillschweigend zu ignorieren.*
