@@ -234,21 +234,21 @@ Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variabl
 
 ## 📐 Design Tokens: Box-Spacing & Gap
 
-Beide Skalen verwenden — soweit im gescannten Bereich vorhanden — **identische px-Werte pro Größenlabel**, lassen sich also in einer gemeinsamen Tabelle führen:
+Beide Skalen verwenden — soweit im gescannten Bereich vorhanden — **identische px-Werte pro Größenlabel**, lassen sich also in einer gemeinsamen Tabelle führen. Rem-Werte auf Basis von 16px = 1rem (Browser-Standard):
 
-| Label | px (Box-Spacing) | px (Gap) |
+| Label | px | rem |
 |---|---|---|
-| xxxs | 2 | 2 |
-| xxs | 4 | 4 |
-| xs | 6 | 6 |
-| sm | 8 | 8 |
-| md-sm | 12 | 12 |
-| md | 16 | 16 |
-| md-l | 20 | 20 |
-| lg | 28 | 28 |
-| xl | 40 | 40 |
-| xxl | 48 | *(im gescannten Bereich nicht als Gap gefunden)* |
-| xxxl | 56 | *(im gescannten Bereich nicht als Gap gefunden)* |
+| xxxs | 2 | 0,125rem |
+| xxs | 4 | 0,25rem |
+| xs | 6 | 0,375rem |
+| sm | 8 | 0,5rem |
+| md-sm | 12 | 0,75rem |
+| md | 16 | 1rem |
+| md-l | 20 | 1,25rem |
+| lg | 28 | 1,75rem |
+| xl | 40 | 2,5rem |
+| xxl | 48 | 3rem *(im gescannten Bereich nicht als Gap gefunden, nur als Box-Spacing)* |
+| xxxl | 56 | 3,5rem *(im gescannten Bereich nicht als Gap gefunden, nur als Box-Spacing)* |
 
 **Wichtig — Namenskollision mit einer dritten, unabhängigen Skala:** Es gibt zusätzlich eine Variable-Familie `spacings/spacing-*`, die dieselben Größenlabels (xxxs, xxs, xs, sm, md, lg) verwendet, aber **andere px-Werte** liefert — diese Familie ist stattdessen direkt an die Tailwind-Spacing-Einheit (`n-tcss` = n × 4px) gekoppelt:
 
@@ -263,7 +263,7 @@ Beide Skalen verwenden — soweit im gescannten Bereich vorhanden — **identisc
 | lg | 10 tcss | 40 | 2,5rem |
 | xxxxl | 14 tcss | 56 | 3,5rem |
 
-**Beispiel Kollision:** `box-spacing-xxxs` = 2px, aber `spacings/spacing-xxxs` = 4px — gleiches Label "xxxs", unterschiedliche Skala. Beim Lesen von Variable-Namen immer auf das Präfix achten (`box-spacing-`/`gap-` vs. `spacings/spacing-`), nicht nur auf das Größenlabel.
+**Beispiel Kollision:** `box-spacing-xxxs` = 2px (0,125rem), aber `spacings/spacing-xxxs` = 4px (0,25rem) — gleiches Label "xxxs", unterschiedliche Skala. Beim Lesen von Variable-Namen immer auf das Präfix achten (`box-spacing-`/`gap-` vs. `spacings/spacing-`), nicht nur auf das Größenlabel.
 
 ---
 
