@@ -304,7 +304,7 @@ Die px-Werte sind korrekt — es müssen die Variablen-Labels angepasst werden, 
 ---
 
 ## Buttons: Hug / Fill / Fixed-Verhalten
-- Figma übersetzt Hug/Fill-Einstellungen manchmal in absolute Fixed-Werte. Das ist nicht so gedacht – Ausnahmen sind Min/Max-Constraints und (absolut selten) bewusst gesetzte Fixwerte. In 99% der Fälle sind Fixwerte mit einer Variable verknüpft, nicht hart kodiert. Immer die Properties Fixed / Fill / Hug prüfen statt absolute Werte zu übernehmen.
+- Figma übersetzt Hug/Fill-Einstellungen unter bestimmten Bedingungen in absolute Fixed-Werte. Das ist nicht so gedacht – Ausnahmen sind Min/Max-Constraints und (absolut selten) bewusst gesetzte Fixwerte. In 99% der Fälle sind Fixwerte mit einer Variable verknüpft, nicht hart kodiert. Immer die Properties Fixed / Fill / Hug prüfen statt absolute Werte zu übernehmen.
 - Das Hintergrund-SVG passt sich grundsätzlich an das Mutter-Frame an.
 - Buttons für Tarabao sind so gebaut, dass Hintergrund und Rahmen ein SVG sind.
 - Sizing-Regeln Button / Label:
