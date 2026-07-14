@@ -275,28 +275,20 @@ Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo 
 
 ### TO Dos
 
-#### 1. Zwei `[twuc]`-Variablen falsch benannt, eine dritte zu prüfen
+#### 1. Vier `[twuc]`-Skalen-Variablen ohne konventionsgerechten Namen
 
-Live gegen Figma neu abgeglichen (15.07.2026): weiterhin offen – die Abweichungen bestehen unverändert:
+Live gegen Figma neu abgeglichen (15.07.2026): alle vier sind echte, korrekt gebundene Variablen (kein Bindungsfehler!) – nur ihr Name folgt nicht dem `[twuc]-N`-Muster der übrigen Skala:
 
-- Variable mit 144px: Name noch immer `[twuc]-40`, sollte `[twuc]-36` heißen (144÷4=36)
-- Variable mit 176px: Name noch immer `[twuc]-48`, sollte `[twuc]-44` heißen (176÷4=44)
-- Variable mit 674px: trägt weiterhin kein `[twuc]-`-Präfix (Name nur `(48rem)`); 674÷4 ergibt zudem keine ganze Zahl (168,5) – bitte in Figma direkt prüfen, ob 674px der beabsichtigte Wert ist
+- 144px: Name noch immer `[twuc]-40`, sollte `[twuc]-36` heißen (144÷4=36)
+- 176px: Name noch immer `[twuc]-48`, sollte `[twuc]-44` heißen (176÷4=44)
+- 488px: Name nur `(30,5rem)`, ohne `[twuc]-`-Präfix, sollte `[twuc]-122` heißen (488÷4=122). Per Screenshot aus dem Figma-Variablen-Picker bestätigt: korrekt gebunden an die Height-Property von **Cards / DiscoveryCard** (beide Varianten "Default" und "Hover") – nur der Name fehlt, keine defekte Bindung.
+- 674px: Name nur `(48rem)`, ohne `[twuc]-`-Präfix. 674÷4 ergibt keine ganze Zahl (168,5), und 48rem entspräche eigentlich 768px statt 674px – hier könnte also nicht nur der Name, sondern auch der Wert selbst nicht stimmen. Fundort (welche Komponente/Property) noch nicht abschließend bestätigt.
 
-Bitte in Figma direkt korrigieren. Danach zusätzlich prüfen, ob es verwaiste Instanzen dieser oder anderer Variablen gibt (siehe Punkt 2).
+Bitte in Figma direkt umbenennen; bei 674px zusätzlich prüfen, ob der Wert korrekt ist. Danach zusätzlich prüfen, ob es verwaiste Instanzen dieser oder anderer Variablen gibt (siehe Punkt 2).
 
 #### 2. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
 
 32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen – Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft.
-
-#### 3. Unlinked Variables (Variable noch gebunden, aber Ursprungsvariable/-Name gelöscht)
-
-Live gefunden (15.07.2026, `get_variable_defs` auf Node 3267:6614): zwei Einträge zeigen nur noch ihren rohen Rem-Fallback statt eines Namens – ein starkes Indiz dafür, dass die ursprünglich benannte Variable, auf die sie verwiesen haben, gelöscht wurde:
-
-- `(30,5rem)` = 488px: bestätigt gebunden an die Height-Property von **Cards / DiscoveryCard** (beide Varianten "Default" und "Hover", da die Höhe außerhalb der Varianten-Verzweigung liegt). Im generierten Code sichtbar als `h-[var(--\(30\,5rem\),488px)]` – ein Variablenname, der nur noch aus dem Fallback-Wert besteht, kein sprechender Name mehr vorhanden.
-- `(48rem)` = 674px: gleiches Namensmuster, aber Fundort nicht abschließend bestätigt. Der Wert 674 taucht zusätzlich bei "Cards/Mid/max-h" auf, und exakt bei Cards / DiscoveryCard / Hover als Breite (674px) – dort im Code aber als roher Wert ohne `var()`-Referenz sichtbar, könnte also auch unabhängig hartkodiert sein statt an diese Variable gebunden. Nicht abschließend zuordenbar ohne direkten Blick in den Figma-Variablen-Dialog.
-
-Bitte in Figma direkt prüfen (Rechtsklick auf die Property → "Variablen" bzw. den Variablen-Modus im rechten Panel öffnen), ob dort "Missing variable" angezeigt wird, und die Bindung neu setzen oder den Wert bestätigen.
 
 #### Zu klären: Korrektur ggü. bisheriger Sitemap-Arbeit
 
