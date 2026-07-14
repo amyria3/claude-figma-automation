@@ -157,13 +157,11 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 - Patterns / InputText: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2182-1829&m=dev]
 - Patterns / UserMessage & Explanation: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6811-20757&m=dev]
 
-*(Weitere UX/UI-Erkenntnisse werden hier ergänzt.)*
-
 ---
 
 ## 🔤 Design Tokens: Text Styles
 
-Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles). Größe und Line-Height in rem (Basis 16px = 1rem); Line-Height-Werte, die in Figma bereits unitless (z.B. `1.2`) oder als Prozent-Angabe hinterlegt sind, bleiben unverändert.
+Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section `get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles). Größe und Line-Height in rem (Basis 16px = 1rem); Line-Height-Werte, die in Figma bereits unitless (z.B. `1.2`) oder als Prozent-Angabe hinterlegt sind, bleiben unverändert.
 
 | Style-Name | Font-Familie | Stil | Größe | Gewicht | Line-Height | Letter-Spacing |
 |---|---|---|---|---|---|---|
