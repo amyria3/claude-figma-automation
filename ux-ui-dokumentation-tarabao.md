@@ -38,7 +38,7 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 - Section / CardRow: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6604-17026&m=dev]
 - Section / ProductHeader: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=4221-28723&m=dev]
 - Section / Accordion: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6604-17023&m=dev]
-- Section / Tabs / DesktopSize (Name in Figma noch als "DecktopSize" zu korrigieren): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7448-19299&m=dev]
+- Section / Tabs / DesktopSize: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7448-19299&m=dev]
 - Section / Editorial: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3164-4506&m=dev]
 - Section / BlogCards: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6605-16723&m=dev]
 
