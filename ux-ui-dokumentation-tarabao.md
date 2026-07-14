@@ -234,7 +234,7 @@ Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variabl
 
 ## 📐 Design Tokens: Box-Spacing & Gap
 
-Box-Spacing- und Gap-Variablen verwenden — soweit im gescannten Bereich vorhanden — identische Werte pro Größenstufe, lassen sich also in einer gemeinsamen Tabelle führen. Sortiert von klein nach groß, mit rem, Tailwind-Einheit (tcss = n × 4px) und den konkreten Variablennamen. Wo eine Größenstufe nur in einer der beiden Skalen existiert, ist die andere Spalte mit "-" markiert.
+Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo eine Größenstufe nur in einer der beiden Skalen existiert, ist die andere Spalte mit "-" markiert.
 
 | rem | tcss | Lyt scl / Spcngs / Gaps | Lyt scl / Spcngs / Box Spacing |
 |---|---|---|---|
