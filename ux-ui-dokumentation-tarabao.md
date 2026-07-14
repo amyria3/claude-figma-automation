@@ -167,10 +167,10 @@ Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variabl
 
 | Style-Name | Font-Familie | Stil | Größe | Gewicht | Line-Height | Letter-Spacing |
 |---|---|---|---|---|---|---|
-| Label/default | BROWN NOW TWO | TWO | 16 | 400 | 16 | 0 |
-| Label/Selected | BROWN NOW ONE | ONE | 16 | 400 | 16 | 0 |
-| UserMessage/LG | BROWN NOW TWO | TWO | 16 | 400 | 16 ([twuc]-4) | -2 |
-| UserMessage/X-LG | BROWN NOW TWO | TWO | 20 | 400 | 16 ([twuc]-4) | -2 |
+| Label/default | BROWN NOW TWO | - | 16 | 400 | 16 | 0 |
+| Label/Selected | BROWN NOW ONE | - | 16 | 400 | 16 | 0 |
+| UserMessage/LG | BROWN NOW TWO | - | 16 | 400 | 16 ([twuc]-4) | -2 |
+| UserMessage/X-LG | BROWN NOW TWO | - | 20 | 400 | 16 ([twuc]-4) | -2 |
 | UserMessage/Default | Manrope | Regular | 12 | 400 | 12 | 0 |
 | Input/InputText | Manrope | Regular | 18 | 400 | 14 | 2 |
 | Input/LabelDefault | Manrope | Regular | 14 | 400 | 14 | -1 |
