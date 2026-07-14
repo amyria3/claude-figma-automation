@@ -168,6 +168,7 @@ User:   "Ja" oder "Nein"
 | "This resource couldn't be accessed" | Falsches Tab aktiv | User Tab wechseln lassen |
 | "No response from get\_metadata" | API antwortet nicht | MCP Server down |
 | Text ändert sich nicht sichtbar | Browser-Cache | User: F5 oder Datei zu/auf |
+| `get_variable_defs` zeigt weiterhin alten Variablennamen/-wert, obwohl bereits umbenannt/gelöscht | Stale Cache im read-only Dev Mode MCP Server (siehe Abschnitt 9️⃣) | Nicht wiederholt abfragen und "unverändert" verkünden — Nutzerin bitten, direkt im Figma-Variablen-Panel nachzusehen |
 
 ---
 
@@ -245,6 +246,23 @@ await instance.setReactionsAsync(newReactions); // ✅ einzig funktionierender W
 
 ---
 
+## 9️⃣ `get_variable_defs` (Dev Mode MCP, read-only) — Stale-Cache-Verhalten (15.07.2026)
+
+**Kontext:** Anders als die `use_figma`-Plugin-API-Aufrufe in den Abschnitten oben ist `get_variable_defs` ein separates, rein lesendes Tool, das über den lokalen "Dev Mode MCP Server" der Figma-Desktop-App läuft. Es zeigt zuverlässig Variablennamen + gebundene Werte für einen Node — ABER liefert wiederholt denselben veralteten Snapshot, statt bei jedem Call neu zu lesen.
+
+**Zwei bestätigte Fälle in derselben Session:**
+1. Zwei Variablen im `[twuc]`-Namensschema (`[twuc]-40` für 144px, `[twuc]-48` für 176px) wurden von der Nutzerin in Figma umbenannt (`[twuc]-36`, `[twuc]-44`). Mehrere `get_variable_defs`-Reads danach zeigten weiterhin die ALTEN Namen — bestätigt erst durch einen Screenshot der Nutzerin direkt aus dem Figma-Variablen-Picker.
+2. Die Variable-Familie `spacings/spacing-*` tauchte in mehreren `get_variable_defs`-Reads auf, obwohl die Nutzerin direkt im Figma-Variablen-Panel nachgesehen und bestätigt hat, dass diese Familie dort gar nicht mehr existiert (vermutlich bereits gelöscht).
+
+**Why:** Das Tool ist rein lesend und hat keinen bekannten "force refresh"-Parameter. Wiederholtes Abfragen kurz hintereinander scheint einen serverseitigen Cache zu treffen statt eine echte Neuabfrage auszulösen — sowohl bei umbenannten als auch bei bereits gelöschten Variablen/Collections.
+
+**How to apply:**
+- Bei einem "weiterhin falsch/unverändert"-Befund nach einer von der Nutzerin behaupteten manuellen Korrektur NICHT vorschnell "die Änderung ist noch nicht angekommen" o.ä. verkünden.
+- Stattdessen transparent machen, dass das Tool möglicherweise veraltete Daten liefert, und die Nutzerin bitten, direkt im Figma-UI (Variablen-Panel/-Picker) nachzusehen — das ist die verlässlichere Quelle.
+- Gilt spiegelbildlich zum bereits dokumentierten `getNodeByIdAsync`-Cache-Artefakt bei frisch gelöschten Nodes (siehe [[project_figma_komponenten_liste]] in Claudes Memory) — beide Tools sollten nach einer behaupteten Änderung mit gesundem Misstrauen behandelt werden, nicht blind als Ground Truth.
+
+---
+
 ## 📋 SUMMARY: Die 5 Goldenen Regeln
 
 1. **Aktives Tab zuerst** – Datei muss offen sein; Seite kann Claude per `setCurrentPageAsync()` selbst wechseln
@@ -275,6 +293,6 @@ await instance.setReactionsAsync(newReactions); // ✅ einzig funktionierender W
 
 ---
 
-**Version:** 1.5  
-**Letzte Aktualisierung:** 14.07.2026  
+**Version:** 1.6  
+**Letzte Aktualisierung:** 15.07.2026  
 **Status:** Produktionsreif – Alle Limitations dokumentiert
