@@ -163,78 +163,78 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 
 ## 🔤 Design Tokens: Text Styles
 
-Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles).
+Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles). Größe und Line-Height in rem (Basis 16px = 1rem); Line-Height-Werte, die in Figma bereits unitless (z.B. `1.2`) oder als Prozent-Angabe hinterlegt sind, bleiben unverändert.
 
 | Style-Name | Font-Familie | Stil | Größe | Gewicht | Line-Height | Letter-Spacing |
 |---|---|---|---|---|---|---|
-| Label/default | BROWN NOW TWO | - | 16 | 400 | 16 | 0 |
-| Label/Selected | BROWN NOW ONE | - | 16 | 400 | 16 | 0 |
-| UserMessage/LG | BROWN NOW TWO | - | 16 | 400 | 16 ([twuc]-4) | -2 |
-| UserMessage/X-LG | BROWN NOW TWO | - | 20 | 400 | 16 ([twuc]-4) | -2 |
-| UserMessage/Default | Manrope | Regular | 12 | 400 | 12 | 0 |
-| Input/InputText | Manrope | Regular | 18 | 400 | 14 | 2 |
-| Input/LabelDefault | Manrope | Regular | 14 | 400 | 14 | -1 |
-| Input/Label SM | Manrope | Light | 9 | 300 | 9 | -1 |
-| Input/Warning&DefaultText | Manrope | Regular | 12 | 400 | 14 | 0 |
-| Cards/ProductTitle | Manrope | Bold | 16 | 700 | 18 | 2 |
-| Cards/MD | BROWN NOW TWO | - | 22 | 400 | 14 | 5 |
-| Cards/Light | Manrope | Light | 10 | 300 | 10 | -3 |
-| Cards/MegaCard/Lumo | LUMOSKY | Regular | 40 | 400 | 40 | 6 |
-| Cards/MegaCard/Body | Manrope | Regular | 20 | 400 | 28 ([twuc]-7) | -2 |
-| Cards/Featured/Title | LUMOSKY | Regular | 24 | 400 | 30 | -3 |
-| Cards/Blog/Title | Manrope | Light | 19 | 300 | 1.3 | 0 |
-| Buttons/LG | BROWN NOW ONE | - | 34 | 400 | 40 | -2 |
-| Buttons/LG Underlined | BROWN NOW ONE | ONE | 34 | 400 | 40 | 2 |
-| Buttons/MD | BROWN NOW TWO | - | 24 | 400 | 0.8 | 5 |
-| Buttons/MD Underlined | BROWN NOW TWO | TWO | 24 | 400 | 0.8 | 5 |
-| Buttons/SM | BROWN NOW ONE | - | 20 | 400 | 20 | -2 |
-| Buttons/X-SM | BROWN NOW TWO | - | 18 | 400 | 18 | -2 |
-| Buttons/XX-SM | BROWN NOW ONE | - | 14 | 400 | 16 | -2 |
-| Buttons/XX-SM underlined | BROWN NOW ONE | ONE | 14 | 400 | 16 | -2 |
-| Buttons/XXXS Inline | BROWN NOW ONE | ONE | 12 | 400 | 12 | -2 |
-| Buttons/Quantity&Packaging | Manrope | SemiBold | 14 | 600 | 14 | 0 |
-| H1 Subtitle | BROWN NOW TWO | - | 40 | 400 | 0.8 | -2 |
-| H2 | LUMOSKY | Regular | 32 | 400 | 1 | 2 |
-| H2 Produktkategorie | LUMOSKY | Regular | 40 | 400 | 1 | 2 |
-| H2 Subtitle | BROWN NOW TWO | - | 24 | 400 | 24 | -2 |
-| H2 Alternative | BROWN NOW ONE | - | 26 | 400 | 1 | 6 |
-| H3 | BROWN NOW ONE | ONE | 26 | 400 | 20 | -2 |
-| DefaultText LG | Manrope | Light | 16 | 300 | 1.2 | 0.5 |
-| DefaultText MD | Manrope | Regular | 14 | 400 | 1.5 | 1.5 |
-| DefaultText S | Manrope | Regular | 12 | 400 | 100 (%) | 0 |
-| BulletPoints | Manrope | Regular | 14 | 400 | 100 (%) | 0 |
-| Link | Manrope | SemiBold | 16 | 600 | 18 | -1 |
-| Comment | Manrope | Light | 12 | 300 | 16 | 0 |
-| Comment/BodyText | Manrope | Regular | 16 | 400 | 100 (%) | 0 |
-| Navigation/Route | Manrope | Medium | 12 | 500 | 1 | 5 |
-| Navigation/FullScreen/MainCategory | Manrope | ExtraBold | 16 | 800 | 1.1 | 0 |
-| Navigation/FullScreen/SubCategory | Manrope | SemiBold | 16 | 600 | 1.1 | 0 |
-| Navigation/SideNavigation/MainCategory | Manrope | SemiBold | 13 | 600 | 13 | 0 |
-| Navigation/SideNavigation/SubCategory | Manrope | Regular | 14 | 400 | 14 | 0 |
-| ProductPage/ProductTitle | Manrope | ExtraBold | 24 | 800 | 26 | 0 |
-| ProductPage/Hightlighted | Manrope | ExtraBold | 16 | 800 | 0.8 | 0 |
-| ProductPage/Dropdown/Summary | Manrope | Bold | 18 | 700 | 18 | 1 |
-| ProductPage/Dropdown/H3 ManufacturerName | Manrope | SemiBold | 16 | 600 | 100 (%) | 1 |
-| ProductPage/Dropdown/H4 Question | Manrope | Regular | 16 | 400 | 26 | 0 |
-| ProductPage/Dropdown/BodyText - Responce | Manrope | Regular | 16 | 400 | 26 | 0 |
-| ShoppingCart & Checkout/MainHeadline | BROWN NOW TWO | - | 34 | 400 | 1 | -2 |
-| ShoppingCart & Checkout/Headline | Manrope | ExtraBold | 14 | 800 | 14 | -1 |
-| ShoppingCart & Checkout/Body | Manrope | Medium | 14 | 500 | 14 | 0 |
-| ShoppingCart & Checkout/Subtle | Manrope | Regular | 11 | 400 | 11 | 0 |
-| ShoppingCart & Checkout/Hightlighted | Manrope | Bold | 14 | 700 | 14 | -3 |
-| DataBlocks/SummaryItemTitle | Manrope | Medium | 16 | 500 | 16 | 0 |
-| DataBlocks/SummaryItemContent | Manrope | Regular | 14 | 400 | 18 | 0 |
-| PriceRangeFilter/Label | Manrope | Medium | 10 | 500 | 10 | 0 |
-| Table/\<th\> | Manrope | SemiBold | 18 | 600 | 18 | 0 |
-| Table/Cell | Manrope | Regular | 20 | 400 | 20 | 0 |
+| Label/default | BROWN NOW TWO | - | 1rem | 400 | 1rem | 0 |
+| Label/Selected | BROWN NOW ONE | - | 1rem | 400 | 1rem | 0 |
+| UserMessage/LG | BROWN NOW TWO | - | 1rem | 400 | 1rem ([twuc]-4) | -2 |
+| UserMessage/X-LG | BROWN NOW TWO | - | 1,25rem | 400 | 1rem ([twuc]-4) | -2 |
+| UserMessage/Default | Manrope | Regular | 0,75rem | 400 | 0,75rem | 0 |
+| Input/InputText | Manrope | Regular | 1,125rem | 400 | 0,875rem | 2 |
+| Input/LabelDefault | Manrope | Regular | 0,875rem | 400 | 0,875rem | -1 |
+| Input/Label SM | Manrope | Light | 0,5625rem | 300 | 0,5625rem | -1 |
+| Input/Warning&DefaultText | Manrope | Regular | 0,75rem | 400 | 0,875rem | 0 |
+| Cards/ProductTitle | Manrope | Bold | 1rem | 700 | 1,125rem | 2 |
+| Cards/MD | BROWN NOW TWO | - | 1,375rem | 400 | 0,875rem | 5 |
+| Cards/Light | Manrope | Light | 0,625rem | 300 | 0,625rem | -3 |
+| Cards/MegaCard/Lumo | LUMOSKY | Regular | 2,5rem | 400 | 2,5rem | 6 |
+| Cards/MegaCard/Body | Manrope | Regular | 1,25rem | 400 | 1,75rem ([twuc]-7) | -2 |
+| Cards/Featured/Title | LUMOSKY | Regular | 1,5rem | 400 | 1,875rem | -3 |
+| Cards/Blog/Title | Manrope | Light | 1,1875rem | 300 | 1.3 | 0 |
+| Buttons/LG | BROWN NOW ONE | - | 2,125rem | 400 | 2,5rem | -2 |
+| Buttons/LG Underlined | BROWN NOW ONE | ONE | 2,125rem | 400 | 2,5rem | 2 |
+| Buttons/MD | BROWN NOW TWO | - | 1,5rem | 400 | 0.8 | 5 |
+| Buttons/MD Underlined | BROWN NOW TWO | TWO | 1,5rem | 400 | 0.8 | 5 |
+| Buttons/SM | BROWN NOW ONE | - | 1,25rem | 400 | 1,25rem | -2 |
+| Buttons/X-SM | BROWN NOW TWO | - | 1,125rem | 400 | 1,125rem | -2 |
+| Buttons/XX-SM | BROWN NOW ONE | - | 0,875rem | 400 | 1rem | -2 |
+| Buttons/XX-SM underlined | BROWN NOW ONE | ONE | 0,875rem | 400 | 1rem | -2 |
+| Buttons/XXXS Inline | BROWN NOW ONE | ONE | 0,75rem | 400 | 0,75rem | -2 |
+| Buttons/Quantity&Packaging | Manrope | SemiBold | 0,875rem | 600 | 0,875rem | 0 |
+| H1 Subtitle | BROWN NOW TWO | - | 2,5rem | 400 | 0.8 | -2 |
+| H2 | LUMOSKY | Regular | 2rem | 400 | 1 | 2 |
+| H2 Produktkategorie | LUMOSKY | Regular | 2,5rem | 400 | 1 | 2 |
+| H2 Subtitle | BROWN NOW TWO | - | 1,5rem | 400 | 1,5rem | -2 |
+| H2 Alternative | BROWN NOW ONE | - | 1,625rem | 400 | 1 | 6 |
+| H3 | BROWN NOW ONE | ONE | 1,625rem | 400 | 1,25rem | -2 |
+| DefaultText LG | Manrope | Light | 1rem | 300 | 1.2 | 0.5 |
+| DefaultText MD | Manrope | Regular | 0,875rem | 400 | 1.5 | 1.5 |
+| DefaultText S | Manrope | Regular | 0,75rem | 400 | 100 (%) | 0 |
+| BulletPoints | Manrope | Regular | 0,875rem | 400 | 100 (%) | 0 |
+| Link | Manrope | SemiBold | 1rem | 600 | 1,125rem | -1 |
+| Comment | Manrope | Light | 0,75rem | 300 | 1rem | 0 |
+| Comment/BodyText | Manrope | Regular | 1rem | 400 | 100 (%) | 0 |
+| Navigation/Route | Manrope | Medium | 0,75rem | 500 | 1 | 5 |
+| Navigation/FullScreen/MainCategory | Manrope | ExtraBold | 1rem | 800 | 1.1 | 0 |
+| Navigation/FullScreen/SubCategory | Manrope | SemiBold | 1rem | 600 | 1.1 | 0 |
+| Navigation/SideNavigation/MainCategory | Manrope | SemiBold | 0,8125rem | 600 | 0,8125rem | 0 |
+| Navigation/SideNavigation/SubCategory | Manrope | Regular | 0,875rem | 400 | 0,875rem | 0 |
+| ProductPage/ProductTitle | Manrope | ExtraBold | 1,5rem | 800 | 1,625rem | 0 |
+| ProductPage/Hightlighted | Manrope | ExtraBold | 1rem | 800 | 0.8 | 0 |
+| ProductPage/Dropdown/Summary | Manrope | Bold | 1,125rem | 700 | 1,125rem | 1 |
+| ProductPage/Dropdown/H3 ManufacturerName | Manrope | SemiBold | 1rem | 600 | 100 (%) | 1 |
+| ProductPage/Dropdown/H4 Question | Manrope | Regular | 1rem | 400 | 1,625rem | 0 |
+| ProductPage/Dropdown/BodyText - Responce | Manrope | Regular | 1rem | 400 | 1,625rem | 0 |
+| ShoppingCart & Checkout/MainHeadline | BROWN NOW TWO | - | 2,125rem | 400 | 1 | -2 |
+| ShoppingCart & Checkout/Headline | Manrope | ExtraBold | 0,875rem | 800 | 0,875rem | -1 |
+| ShoppingCart & Checkout/Body | Manrope | Medium | 0,875rem | 500 | 0,875rem | 0 |
+| ShoppingCart & Checkout/Subtle | Manrope | Regular | 0,6875rem | 400 | 0,6875rem | 0 |
+| ShoppingCart & Checkout/Hightlighted | Manrope | Bold | 0,875rem | 700 | 0,875rem | -3 |
+| DataBlocks/SummaryItemTitle | Manrope | Medium | 1rem | 500 | 1rem | 0 |
+| DataBlocks/SummaryItemContent | Manrope | Regular | 0,875rem | 400 | 1,125rem | 0 |
+| PriceRangeFilter/Label | Manrope | Medium | 0,625rem | 500 | 0,625rem | 0 |
+| Table/\<th\> | Manrope | SemiBold | 1,125rem | 600 | 1,125rem | 0 |
+| Table/Cell | Manrope | Regular | 1,25rem | 400 | 1,25rem | 0 |
 
-*Hinweis: "100 (%)" bei Line-Height bedeutet 100% Zeilenhöhe (relativ zur Schriftgröße), keine feste px-Angabe — anders als die übrigen Zeilen, die meist einen px- oder Multiplikator-Wert zeigen.*
+*Hinweis: "100 (%)" bei Line-Height bedeutet 100% Zeilenhöhe (relativ zur Schriftgröße), keine feste px-Angabe. Unitless-Werte (z.B. `1.2`, `0.8`) sind Multiplikatoren der Schriftgröße, ebenfalls keine px-Angabe — beide Fälle wurden daher nicht umgerechnet.*
 
 ---
 
 ## 📐 Design Tokens: Box-Spacing & Gap
 
-Beide Skalen verwenden — soweit im gescannten Bereich vorhanden — **identische px-Werte pro Größenlabel**, lassen sich also in einer gemeinsamen Tabelle führen. Rem-Werte auf Basis von 16px = 1rem (Browser-Standard):
+Box-Spacing- und Gap-Variablen verwenden — soweit im gescannten Bereich vorhanden — **identische px-Werte pro Größenlabel**, lassen sich also in einer gemeinsamen Tabelle führen. Rem-Werte auf Basis von 16px = 1rem (Browser-Standard):
 
 | Label | px | rem |
 |---|---|---|
@@ -250,26 +250,11 @@ Beide Skalen verwenden — soweit im gescannten Bereich vorhanden — **identisc
 | xxl | 48 | 3rem *(im gescannten Bereich nicht als Gap gefunden, nur als Box-Spacing)* |
 | xxxl | 56 | 3,5rem *(im gescannten Bereich nicht als Gap gefunden, nur als Box-Spacing)* |
 
-**Wichtig — Namenskollision mit einer dritten, unabhängigen Skala:** Es gibt zusätzlich eine Variable-Familie `spacings/spacing-*`, die dieselben Größenlabels (xxxs, xxs, xs, sm, md, lg) verwendet, aber **andere px-Werte** liefert — diese Familie ist stattdessen direkt an die Tailwind-Spacing-Einheit (`n-tcss` = n × 4px) gekoppelt:
-
-| Label | Tailwind-Einheit (tcss) | px | rem |
-|---|---|---|---|
-| xxxxs | 0,5 tcss | 2 | 0,125rem |
-| xxxs | 1 tcss | 4 | 0,25rem |
-| xxs | 2 tcss | 8 | 0,5rem |
-| xs | 3 tcss | 12 | 0,75rem |
-| sm | 4 tcss | 16 | 1rem |
-| md | 5 tcss | 20 | 1,25rem |
-| lg | 10 tcss | 40 | 2,5rem |
-| xxxxl | 14 tcss | 56 | 3,5rem |
-
-**Beispiel Kollision:** `box-spacing-xxxs` = 2px (0,125rem), aber `spacings/spacing-xxxs` = 4px (0,25rem) — gleiches Label "xxxs", unterschiedliche Skala. Beim Lesen von Variable-Namen immer auf das Präfix achten (`box-spacing-`/`gap-` vs. `spacings/spacing-`), nicht nur auf das Größenlabel.
-
 ---
 
 ## 📏 Design Tokens: Tailwind-Utility-Scale ↔ Figma-px (persönliche Referenz, nur für Maria)
 
-Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte tatsächlich im File verwendet werden, statt nur die resultierenden px-Zahlen zu sehen. Formel bei korrekter Umsetzung: `px = N × 4`, `rem = N × 0,25`.
+Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte tatsächlich im File verwendet werden, statt nur die resultierenden px-Zahlen zu sehen. Formel bei korrekter Umsetzung: `px = N × 4`, `rem = N × 0,25`. Diese Tabelle bleibt bewusst mit px-Vergleichsspalte, da ihr Zweck genau der Abgleich rem↔px ist (siehe Auffälligkeiten unten).
 
 | [twuc]-N | rem | px (Figma-Wert) | px nach Formel (N×4) | Stimmt überein? |
 |---|---|---|---|---|
@@ -314,24 +299,7 @@ Claude hat aktuell nur lesenden Zugriff auf Figma (Dev Mode MCP Server). Folgend
 - `[twuc]-48`: 176px → **192px**
 - `[twuc]-192`: 674px → vermutlich **768px** (Ursache/Absicht unklar, bitte gegenprüfen)
 
-### 2. `spacings/spacing-*`-Bindungen durch `gap-*`/`box-spacing-*` ersetzen
-Regel: **Gap-Variable für Flexbox-Gaps, Box-Spacing-Variable für Padding/Margin.** Labels sind zwischen den Skalen NICHT wertgleich (`spacing-md`=20px ≠ `gap-md`=16px) — immer nach dem tatsächlichen px-Wert mappen, nicht nach Label-Name.
-
-Bisher bekannte Fundstellen (Stichprobe aus 5 geprüften Komponenten, keine vollständige Suche):
-
-| Komponente | Property | Bisherige Variable | Neue Variable |
-|---|---|---|---|
-| Filter/FilterPanel (2211:2165), äußerer Container | gap | spacings/spacing-xxxs (4px) | **gap-xxs (4px)** |
-| NavBar (1:115), "Icons / Tools"-Reihe | gap | spacings/spacing-md (20px) | **gap-md-l (20px)** |
-| Components/Product/BuyBox, "Titel und Bewertungen" | gap | spacings/spacing-xs (12px) | **gap-md-sm (12px)** |
-| Components/Product/BuyBox, "Titel und Bewertungen" | padding-bottom | spacings/spacing-md (20px) | **box-spacing-md-l (20px)** |
-| Components/Product/BuyBox, "Benefits"-Liste | gap | spacings/spacing-xxs (8px) | **gap-sm (8px)** |
-| Components/Product/BuyBox, "Benefits"-Liste | padding-bottom | spacings/spacing-md (20px) | **box-spacing-md-l (20px)** |
-| Components/Product/BuyBox, "Menge, Verpackung, Preis" | gap | spacings/spacing-md (20px) | **gap-md-l (20px)** |
-| Components/Product/BuyBox, Preis-Label (flex-col) | gap | spacings/spacing-xxxxs (2px) | **gap-xxxs (2px)** |
-| Components/Product/BuyBox, "Menge und Preis" | gap | spacings/spacing-xxs (8px) | **gap-sm (8px)** |
-
-### 3. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
+### 2. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
 32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen — Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft.
 
 ---
