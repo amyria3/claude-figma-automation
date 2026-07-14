@@ -177,27 +177,27 @@ Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variabl
 | Input/Label SM | Manrope | Light | 9 | 300 | 9 | -1 |
 | Input/Warning&DefaultText | Manrope | Regular | 12 | 400 | 14 | 0 |
 | Cards/ProductTitle | Manrope | Bold | 16 | 700 | 18 | 2 |
-| Cards/MD | BROWN NOW TWO | TWO | 22 | 400 | 14 | 5 |
+| Cards/MD | BROWN NOW TWO | - | 22 | 400 | 14 | 5 |
 | Cards/Light | Manrope | Light | 10 | 300 | 10 | -3 |
 | Cards/MegaCard/Lumo | LUMOSKY | Regular | 40 | 400 | 40 | 6 |
 | Cards/MegaCard/Body | Manrope | Regular | 20 | 400 | 28 ([twuc]-7) | -2 |
 | Cards/Featured/Title | LUMOSKY | Regular | 24 | 400 | 30 | -3 |
 | Cards/Blog/Title | Manrope | Light | 19 | 300 | 1.3 | 0 |
-| Buttons/LG | BROWN NOW ONE | ONE | 34 | 400 | 40 | -2 |
+| Buttons/LG | BROWN NOW ONE | - | 34 | 400 | 40 | -2 |
 | Buttons/LG Underlined | BROWN NOW ONE | ONE | 34 | 400 | 40 | 2 |
-| Buttons/MD | BROWN NOW TWO | TWO | 24 | 400 | 0.8 | 5 |
+| Buttons/MD | BROWN NOW TWO | - | 24 | 400 | 0.8 | 5 |
 | Buttons/MD Underlined | BROWN NOW TWO | TWO | 24 | 400 | 0.8 | 5 |
-| Buttons/SM | BROWN NOW ONE | ONE | 20 | 400 | 20 | -2 |
-| Buttons/X-SM | BROWN NOW TWO | TWO | 18 | 400 | 18 | -2 |
-| Buttons/XX-SM | BROWN NOW ONE | ONE | 14 | 400 | 16 | -2 |
+| Buttons/SM | BROWN NOW ONE | - | 20 | 400 | 20 | -2 |
+| Buttons/X-SM | BROWN NOW TWO | - | 18 | 400 | 18 | -2 |
+| Buttons/XX-SM | BROWN NOW ONE | - | 14 | 400 | 16 | -2 |
 | Buttons/XX-SM underlined | BROWN NOW ONE | ONE | 14 | 400 | 16 | -2 |
 | Buttons/XXXS Inline | BROWN NOW ONE | ONE | 12 | 400 | 12 | -2 |
 | Buttons/Quantity&Packaging | Manrope | SemiBold | 14 | 600 | 14 | 0 |
-| H1 Subtitle | BROWN NOW TWO | TWO | 40 | 400 | 0.8 | -2 |
+| H1 Subtitle | BROWN NOW TWO | - | 40 | 400 | 0.8 | -2 |
 | H2 | LUMOSKY | Regular | 32 | 400 | 1 | 2 |
 | H2 Produktkategorie | LUMOSKY | Regular | 40 | 400 | 1 | 2 |
-| H2 Subtitle | BROWN NOW TWO | TWO | 24 | 400 | 24 | -2 |
-| H2 Alternative | BROWN NOW ONE | ONE | 26 | 400 | 1 | 6 |
+| H2 Subtitle | BROWN NOW TWO | - | 24 | 400 | 24 | -2 |
+| H2 Alternative | BROWN NOW ONE | - | 26 | 400 | 1 | 6 |
 | H3 | BROWN NOW ONE | ONE | 26 | 400 | 20 | -2 |
 | DefaultText LG | Manrope | Light | 16 | 300 | 1.2 | 0.5 |
 | DefaultText MD | Manrope | Regular | 14 | 400 | 1.5 | 1.5 |
@@ -217,7 +217,7 @@ Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variabl
 | ProductPage/Dropdown/H3 ManufacturerName | Manrope | SemiBold | 16 | 600 | 100 (%) | 1 |
 | ProductPage/Dropdown/H4 Question | Manrope | Regular | 16 | 400 | 26 | 0 |
 | ProductPage/Dropdown/BodyText - Responce | Manrope | Regular | 16 | 400 | 26 | 0 |
-| ShoppingCart & Checkout/MainHeadline | BROWN NOW TWO | TWO | 34 | 400 | 1 | -2 |
+| ShoppingCart & Checkout/MainHeadline | BROWN NOW TWO | - | 34 | 400 | 1 | -2 |
 | ShoppingCart & Checkout/Headline | Manrope | ExtraBold | 14 | 800 | 14 | -1 |
 | ShoppingCart & Checkout/Body | Manrope | Medium | 14 | 500 | 14 | 0 |
 | ShoppingCart & Checkout/Subtle | Manrope | Regular | 11 | 400 | 11 | 0 |
