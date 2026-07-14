@@ -1,23 +1,31 @@
 # 🎨 Workaround: Stylesheet-basierte Style-Anwendung
-**Praktische Lösung für Figma Variable-Limitation**
+**Praktische Lösung für Figma Variable-Sonderfälle**
 
-**Status:** Empfohlen  
-**Getestet am:** 31.05.2026  
-**Scenario:** Variables können nicht via MCP verknüpft werden
+**Status:** Empfohlen — aber NICHT mehr der Standardweg für Variables (siehe Korrektur unten)
+**Getestet am:** 31.05.2026
+**Scenario:** Ein Text-Layer ist noch nicht an eine Variable gebunden, oder ein Library-Text-Style soll ohne manuelle Einzelauswahl übertragen werden
+
+---
+
+> **Korrektur 13.07.2026:** Die frühere Annahme "Ich kann Variablen nicht mit Nodes verknüpfen" / "Figma blockiert alle Variable-APIs" war falsch — Ursache war ein Bug im Testcode (falsches ID-Format `'4146:39881'` statt `'VariableID:4146:39881'`), keine echte Plattform-Sperre. Variables lesen, schreiben, neu anlegen und Modi hinzufügen/entfernen funktionieren regulär via `use_figma` — Details und Code-Patterns in `figma-api-reference.md` (Abschnitt "Variables: Funktionieren").
+>
+> Dieser Stylesheet-Workaround bleibt trotzdem nützlich für zwei Sonderfälle, in denen die direkte Variable-API nicht greift:
+> 1. Ein Text-Layer ist **noch nicht** an eine Variable gebunden (freier Text) — dann kann kein `setBoundVariable()` verwendet werden, und die Werte müssen erst manuell gesetzt werden, bevor eine Variable-Verknüpfung sinnvoll ist.
+> 2. Text Styles, die aus einer verbundenen Library stammen (`figma.getLocalTextStylesAsync()` liefert dafür leere Arrays) — siehe Abschnitt "Workaround: Library Text Styles via textStyleId übertragen" weiter unten.
 
 ---
 
 ## 📋 Überblick
 
-**Problem:** 
-- Ich KANN Variablen nicht mit Nodes verknüpfen
-- Figma blockiert alle Variable-APIs
+**Problem (Sonderfälle, siehe Korrektur oben — NICHT der Regelfall):**
+- Ein Text-Layer ist nicht an eine Variable gebunden, oder
+- Ein Library Text Style lässt sich nicht über `getLocalTextStylesAsync()` auffinden
 
 **Lösung:**
 - User erstellt **Stylesheet** (Design Tokens)
 - User zeigt mir **Screenshots**
 - Ich lese Werte und **setze sie DIREKT**
-- User verknüpft dann **manuell mit Variablen**
+- User verknüpft dann **manuell mit Variablen** (oder ich binde die Werte direkt an eine bestehende Variable, falls schon eine existiert — siehe `figma-api-reference.md`)
 
 **Ergebnis:** ✅ Consistent, kontrolliert, praktisch!
 
@@ -126,9 +134,9 @@ async function createHeadingWithToken(text, tokenName = 'headingL') {
 
 ---
 
-### Schritt 5️⃣: User verknüpft manuell mit Variablen
+### Schritt 5️⃣: User verknüpft manuell mit Variablen (falls gewünscht)
 
-Nach der Erstellung verknüpft der User die Elemente manuell in Figma mit den entsprechenden Variablen.
+Nach der Erstellung verknüpft der User die Elemente manuell in Figma mit den entsprechenden Variablen — oder ich verknüpfe direkt über die Variable-API, falls die Zielvariable bereits existiert (siehe `figma-api-reference.md`).
 
 ---
 
@@ -184,11 +192,11 @@ for (const node of targets) {
 
 **Nach Erstellung:**
 - [ ] User verifiziert Styles optisch
-- [ ] User verknüpft mit Variablen (manuell)
+- [ ] User verknüpft mit Variablen (manuell, oder ich mache es direkt via API, falls die Variable schon existiert)
 - [ ] Fertig! 🎉
 
 ---
 
-**Version:** 1.1  
-**Status:** Praktisch & empfohlen  
-**Getestet:** 31.05.2026 / 02.06.2026
+**Version:** 1.2
+**Status:** Praktisch & empfohlen — für Variable-Sonderfälle, nicht mehr für den Regelfall (siehe Korrektur 13.07.2026 oben und `figma-api-reference.md`)
+**Getestet:** 31.05.2026 / 02.06.2026 / 13.07.2026 (Korrektur-Review)
