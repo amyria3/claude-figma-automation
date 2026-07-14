@@ -329,4 +329,35 @@ Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte
 
 ---
 
+## ✅ Offene TODOs (Figma-Schreibzugriff nötig — Claude kann nur lesen)
+
+Claude hat aktuell nur lesenden Zugriff auf Figma (Dev Mode MCP Server). Folgende Korrekturen müssen manuell in Figma vorgenommen werden (oder sobald ein schreibfähiger Figma-Connector verbunden ist):
+
+### 1. Drei `[twuc]`-Werte korrigieren (siehe Tabelle oben)
+- `[twuc]-40`: 144px → **160px**
+- `[twuc]-48`: 176px → **192px**
+- `[twuc]-192`: 674px → vermutlich **768px** (Ursache/Absicht unklar, bitte gegenprüfen)
+
+### 2. `spacings/spacing-*`-Bindungen durch `gap-*`/`box-spacing-*` ersetzen
+Regel: **Gap-Variable für Flexbox-Gaps, Box-Spacing-Variable für Padding/Margin.** Labels sind zwischen den Skalen NICHT wertgleich (`spacing-md`=20px ≠ `gap-md`=16px) — immer nach dem tatsächlichen px-Wert mappen, nicht nach Label-Name.
+
+Bisher bekannte Fundstellen (Stichprobe aus 5 geprüften Komponenten, keine vollständige Suche):
+
+| Komponente | Property | Bisherige Variable | Neue Variable |
+|---|---|---|---|
+| Filter/FilterPanel (2211:2165), äußerer Container | gap | spacings/spacing-xxxs (4px) | **gap-xxs (4px)** |
+| NavBar (1:115), "Icons / Tools"-Reihe | gap | spacings/spacing-md (20px) | **gap-md-l (20px)** |
+| Components/Product/BuyBox, "Titel und Bewertungen" | gap | spacings/spacing-xs (12px) | **gap-md-sm (12px)** |
+| Components/Product/BuyBox, "Titel und Bewertungen" | padding-bottom | spacings/spacing-md (20px) | **box-spacing-md-l (20px)** |
+| Components/Product/BuyBox, "Benefits"-Liste | gap | spacings/spacing-xxs (8px) | **gap-sm (8px)** |
+| Components/Product/BuyBox, "Benefits"-Liste | padding-bottom | spacings/spacing-md (20px) | **box-spacing-md-l (20px)** |
+| Components/Product/BuyBox, "Menge, Verpackung, Preis" | gap | spacings/spacing-md (20px) | **gap-md-l (20px)** |
+| Components/Product/BuyBox, Preis-Label (flex-col) | gap | spacings/spacing-xxxxs (2px) | **gap-xxxs (2px)** |
+| Components/Product/BuyBox, "Menge und Preis" | gap | spacings/spacing-xxs (8px) | **gap-sm (8px)** |
+
+### 3. Dokumentenweite Suche nach verwaisten Variables (in Vorbereitung)
+Nächster Schritt: systematische Prüfung möglichst vieler/aller 113 katalogisierten Komponenten auf hartkodierte Werte, die eigentlich eine bekannte Variable sein sollten. Liste folgt.
+
+---
+
 *Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen.*
