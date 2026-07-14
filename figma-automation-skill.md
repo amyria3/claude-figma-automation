@@ -24,7 +24,7 @@ description: "Figma Automation & Text-Operationen mit Claude. NUTZE DIESEN SKILL
 ### Schnellstart
 1. Figma Edit-Link teilen: **Share → Copy edit link**
 2. Aufgabe beschreiben — Claude lädt automatisch die Referenzdateien
-3. Bei Variables-Themen: `figma-stylesheet-workaround.md` wird gesondert geladen
+3. Bei Variables-Themen: siehe `figma-api-reference.md` (Abschnitt "Variables: Funktionieren") — `figma-stylesheet-workaround.md` nur noch für Sonderfälle relevant (z.B. Text-Layer ohne bestehende Variable-Bindung, Library-Text-Style-Transfer)
 
 ---
 
@@ -37,7 +37,7 @@ Bei jeder Figma-Aufgabe diese Dateien aus dem Repository laden:
 | 1 | `figma-workflow-technisch.md` | Pre-flight Checklist, Golden Rules |
 | 2 | `figma-api-reference.md` | API-Referenz, Code-Patterns, Limitations |
 | 3 | `figma-design-principles-arkadieff.md` | Design-Prinzipien (Flex, Spacing, Typography) |
-| 4 | `figma-stylesheet-workaround.md` | Variables-Workaround (bei Bedarf) |
+| 4 | `figma-stylesheet-workaround.md` | Nur noch für Variable-Sonderfälle (bei Bedarf) |
 | 5 | `figma-kollaboration-workflows.md` | Empfohlene Workflows (bei Workflow-Fragen) |
 
 > Falls GitHub MCP nicht verfügbar: Nutzerin bitten, Dateien manuell einzufügen oder als Text zu teilen.
@@ -51,7 +51,7 @@ Vollständige Prinzipien: `figma-design-principles-arkadieff.md` auf GitHub.
 - **Alle Layouts** als `flex-row` oder `flex-col`
 - **Naming:** `[Element]Container`, Tailwind-Konventionen (lowercase)
 - **Spacing:** 4 / 8 / 12 / 16 / 24 / 32px
-- **Variables:** Nicht per API erstellbar → Stylesheet-Workaround nutzen
+- **Variables:** Funktionieren regulär über die Plugin-API (Korrektur 13.07.2026) — beim Lesen/Schreiben immer den vollen ID-Prefix `VariableID:...` verwenden, siehe `figma-api-reference.md`
 
 ---
 
@@ -69,5 +69,5 @@ Vollständige Prinzipien: `figma-design-principles-arkadieff.md` auf GitHub.
 
 | Feature | Status |
 |---|---|
-| Variables erstellen/verknüpfen | ❌ API nicht unterstützt |
-| **Workaround** | Stylesheet in Figma anlegen → Claude liest Screenshot → wendet Werte an |
+| Variables lesen/schreiben/erstellen | ✅ Funktioniert via Plugin-API (Korrektur 13.07.2026 — voller Prefix `VariableID:...` nötig) |
+| **Stylesheet-Workaround** | Nicht mehr Standardweg für Variables — nur noch relevant, wenn ein Text-Layer NICHT bereits an eine Variable gebunden ist oder für den Library-Text-Style-Transfer, siehe `figma-stylesheet-workaround.md` |
