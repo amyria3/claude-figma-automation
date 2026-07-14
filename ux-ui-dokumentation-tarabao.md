@@ -161,8 +161,6 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 
 ## Design Tokens: Text Styles
 
-<sub>Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles). Größe und Line-Height in rem (Basis 16px = 1rem); Line-Height-Werte, die in Figma bereits unitless (z.B. `1.2`) oder als Prozent-Angabe hinterlegt sind, bleiben unverändert.</sub>
-
 | Style-Name | Font-Familie | Stil | Größe | Gewicht | Line-Height | Letter-Spacing |
 |---|---|---|---|---|---|---|
 | Label/default | BROWN NOW TWO | - | 1rem | 400 | 1rem | 0 |
@@ -226,7 +224,7 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 | Table/\<th\> | Manrope | SemiBold | 1,125rem | 600 | 1,125rem | 0 |
 | Table/Cell | Manrope | Regular | 1,25rem | 400 | 1,25rem | 0 |
 
-<sub>Hinweis: "100 (%)" bei Line-Height bedeutet 100% Zeilenhöhe (relativ zur Schriftgröße), keine feste px-Angabe. Unitless-Werte (z.B. `1.2`, `0.8`) sind Multiplikatoren der Schriftgröße, ebenfalls keine px-Angabe — beide Fälle wurden daher nicht umgerechnet.</sub>
+<sub>Stand 14.07.2026, ausgelesen aus der Komponentenbibliothek-Section (`get_variable_defs` auf Node 3267:6614, "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" — deckt alle Top-Level-Sections außer den Screens/Mockups in "PAGES" ab; ggf. existieren dort noch weitere, hier nicht erfasste Styles). Größe und Line-Height in rem (Basis 16px = 1rem); Line-Height-Werte, die in Figma bereits unitless (z.B. `1.2`) oder als Prozent-Angabe hinterlegt sind, bleiben unverändert. "100 (%)" bedeutet 100% Zeilenhöhe (relativ zur Schriftgröße), keine feste px-Angabe.</sub>
 
 ---
 
@@ -250,56 +248,20 @@ Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo 
 
 ---
 
-## Design Tokens: Tailwind-Utility-Scale ↔ Figma-px (persönliche Referenz, nur für Maria)
-
-Aus der Variable-Familie `[twuc]-N (X rem)` — zeigt, welche Tailwind-rem-Werte tatsächlich im File verwendet werden, statt nur die resultierenden px-Zahlen zu sehen. Formel: `px = N × 4`, `rem = N × 0,25`. Der px-Wert in Figma ist maßgeblich.
-
-| px (Figma-Wert, maßgeblich) | rem (px÷16) | korrektes [twuc]-N (px÷4) | bisher verwendetes [twuc]-N | Stimmt überein? |
-|---|---|---|---|---|
-| 16 | 1rem | 4 | 4 | ✅ |
-| 28 | 1,75rem | 7 | 7 | ✅ |
-| 32 | 2rem | 8 | 8 | ✅ |
-| 36 | 2,25rem | 9 | 9 | ✅ |
-| 40 | 2,5rem | 10 | 10 | ✅ |
-| 44 | 2,75rem | 11 | 11 | ✅ |
-| 48 | 3rem | 12 | 12 | ✅ |
-| 60 | 3,75rem | 15 | 15 | ✅ |
-| 64 | 4rem | 16 | 16 | ✅ |
-| 72 | 4,5rem | 18 | 18 | ✅ |
-| 80 | 5rem | 20 | 20 | ✅ |
-| 88 | 5,5rem | 22 | 22 | ✅ |
-| 96 | 6rem | 24 | 24 | ✅ |
-| 112 | 7rem | 28 | 28 | ✅ |
-| 128 | 8rem | 32 | 32 | ✅ |
-| **144** | 9rem | **36** | 40 | ❌ Label umbenennen: `[twuc]-40` → `[twuc]-36` |
-| 164 | 10,25rem | 41 | 41 | ✅ |
-| **176** | 11rem | **44** | 48 | ❌ Label umbenennen: `[twuc]-48` → `[twuc]-44` |
-| 224 | 14rem | 56 | 56 | ✅ |
-| 240 | 15rem | 60 | 60 | ✅ |
-| 256 | 16rem | 64 | 64 | ✅ |
-| 384 | 24rem | 96 | 96 | ✅ |
-| 448 | 28rem | 112 | 112 | ✅ |
-| 512 | 32rem | 128 | 128 | ✅ |
-| 640 | 40rem | 160 | 160 | ✅ |
-| **674** | 42,125rem | **168,5 (nicht ganzzahlig)** | 192 | ❌ px÷4 ergibt keine ganze Zahl — bitte in Figma direkt gegenprüfen, ob 674px wirklich stimmt oder selbst ein Tippfehler ist (z.B. 672px → `[twuc]-168`) |
-| 896 | 56rem | 224 | 224 | ✅ |
-
-<sub>Auffällig: Bei zwei Werten war nicht der px-Wert falsch, sondern das `[twuc]-N`-Label falsch berechnet: Bei 144px war `[twuc]-40` eingetragen, korrekt wäre `[twuc]-36` (144÷4=36). Bei 176px war `[twuc]-48` eingetragen, korrekt wäre `[twuc]-44` (176÷4=44). Bei 674px ergibt die Rückrechnung (674÷4=168,5) keine ganze Zahl — das ist ungewöhnlich für diese Skala und sollte direkt in Figma geprüft werden, ob 674px der tatsächlich beabsichtigte Wert ist.</sub>
-
----
-
 ## Offene TODOs (Figma-Schreibzugriff nötig — Claude kann nur lesen)
 
 Claude hat aktuell nur lesenden Zugriff auf Figma (Dev Mode MCP Server). Folgende Korrekturen müssen manuell in Figma vorgenommen werden (oder sobald ein schreibfähiger Figma-Connector verbunden ist):
 
-### 1. Zwei `[twuc]`-Labels umbenennen, ein Wert zu prüfen (siehe Tabelle oben)
-Die px-Werte sind korrekt — es müssen die Variablen-Labels angepasst werden, nicht die Pixelwerte:
-- Variable mit 144px: Label `[twuc]-40` → **`[twuc]-36`**
-- Variable mit 176px: Label `[twuc]-48` → **`[twuc]-44`**
-- Variable mit 674px (Label `[twuc]-192`): 674÷4 ist nicht ganzzahlig — bitte in Figma prüfen, ob 674px korrekt ist oder ob hier ein zusätzlicher Tippfehler beim px-Wert vorliegt (z.B. 672px, dann Label `[twuc]-168`)
+### 1. Zwei `[twuc]`-Variablen falsch benannt, eine dritte zu prüfen
+Live gegen Figma neu abgeglichen (15.07.2026) — beide Abweichungen bestehen unverändert:
+- Variable mit 144px: Name `[twuc]-40` → sollte **`[twuc]-36`** heißen (144÷4=36)
+- Variable mit 176px: Name `[twuc]-48` → sollte **`[twuc]-44`** heißen (176÷4=44)
+- Variable mit 674px: trägt aktuell nur noch den Namen `(48rem)` — ohne das sonst übliche `[twuc]-`-Präfix, das bei allen anderen Variablen dieser Familie vorhanden ist. 674÷4 ergibt zudem keine ganze Zahl (168,5) — bitte in Figma direkt prüfen, ob 674px der beabsichtigte Wert ist oder selbst ein Tippfehler vorliegt (z.B. 672px wäre `[twuc]-168`)
 
 ### 2. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
 32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen — Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft.
+
+<sub>Punkt 1 zuletzt live via `get_variable_defs` auf Node 3267:6614 verifiziert (15.07.2026) — beide bekannten Abweichungen bestehen unverändert, zusätzlich neu aufgefallen: die 674px-Variable hat ihr `[twuc]-`-Präfix verloren. Punkt 2 stammt aus einer separaten Teilprüfung vom 14.07.2026, noch nicht erneut live abgeglichen.</sub>
 
 ---
 
