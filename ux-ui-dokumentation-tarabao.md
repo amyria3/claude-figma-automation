@@ -126,6 +126,7 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 - Buttons / XXS / SecondaryButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3911-18672&m=dev]
 - Buttons / XXS / Inline: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3517-8568&m=dev]
 - Buttons / XXXS / Inline: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6799-20185&m=dev]
+- Buttons / IconButton: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2588-2421&m=dev]
 - Buttons / Radio: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3795-12348&m=dev]
 - Buttons / CarouselNav: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2038-4884&m=dev]
 - Buttons / Payment: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3230-22134&m=dev]
@@ -133,7 +134,6 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 - Buttons / ReactionCounter: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2070-1506&m=dev]
 - Buttons / PlusMinus: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2228-2503&m=dev]
 - TabControl (ohne "Buttons /"-Präfix, liegt aber im Buttons-Ordner): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3970-22955&m=dev]
-- IconButton (ohne "Buttons /"-Präfix, liegt im Buttons-Ordner): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2588-2421&m=dev]
 - Layout / PromoBar (steckt in einem generisch benannten Wrapper-Frame "fr"): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3164-11788&m=dev]
 - Add to Basket for mobile (ohne "Buttons /"-Präfix): [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3986-23589&m=dev]
 
