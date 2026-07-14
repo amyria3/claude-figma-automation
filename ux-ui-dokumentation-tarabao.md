@@ -259,8 +259,9 @@ Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo 
   - Button = Hug → Label = Fill.
 
 
-<sub>
+
 ## Nur Für Claude
+<sub>
 ### Anmerkungen
 #### Komponenten-Liste "COMPONENTS & SCREENS" (14.07.2026)
 **Struktur der Seite:** Canvas "COMPONENTS & SCREENS" (2001:522) hat 3 direkte Kinder: Section "PAGES" (3658:9149, Screens – ausgeschlossen), Section "PATTERNS, BUTTONS, ELEMENTS, COMPONENTS" (3267:6614, enthält die gesamte Komponentenbibliothek) und Frame "PRACTICE FOR CLAUDE" (7372:19291, Testartefakt, ausgeschlossen). Innerhalb von 3267:6614 liegen die Top-Level-Sections: SECTIONS, HEADER & FOOTER, FILTER & SEARCH, BUTTONS, INPUTS, CARDS, COMPONENTS, ICONS, PATTERNS, NOTES, VISUALS.
