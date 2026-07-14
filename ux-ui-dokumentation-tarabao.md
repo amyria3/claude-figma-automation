@@ -275,16 +275,16 @@ Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo 
 
 ### TO Dos
 
-#### 1. Vier `[twuc]`-Skalen-Variablen ohne konventionsgerechten Namen
+#### 1. Zwei `[twuc]`-Variablen falsch benannt
 
-Live gegen Figma neu abgeglichen (15.07.2026): alle vier sind echte, korrekt gebundene Variablen (kein Bindungsfehler!) – nur ihr Name folgt nicht dem `[twuc]-N`-Muster der übrigen Skala:
+Live gegen Figma neu abgeglichen (15.07.2026): weiterhin offen – die Abweichungen bestehen unverändert:
 
-- 144px: Name noch immer `[twuc]-40`, sollte `[twuc]-36` heißen (144÷4=36)
-- 176px: Name noch immer `[twuc]-48`, sollte `[twuc]-44` heißen (176÷4=44)
-- 488px: Name nur `(30,5rem)`, ohne `[twuc]-`-Präfix, sollte `[twuc]-122` heißen (488÷4=122). Per Screenshot aus dem Figma-Variablen-Picker bestätigt: korrekt gebunden an die Height-Property von **Cards / DiscoveryCard** (beide Varianten "Default" und "Hover") – nur der Name fehlt, keine defekte Bindung.
-- 674px: Name nur `(48rem)`, ohne `[twuc]-`-Präfix. 674÷4 ergibt keine ganze Zahl (168,5), und 48rem entspräche eigentlich 768px statt 674px – hier könnte also nicht nur der Name, sondern auch der Wert selbst nicht stimmen. Fundort (welche Komponente/Property) noch nicht abschließend bestätigt.
+- Variable mit 144px: Name noch immer `[twuc]-40`, sollte `[twuc]-36` heißen (144÷4=36)
+- Variable mit 176px: Name noch immer `[twuc]-48`, sollte `[twuc]-44` heißen (176÷4=44)
 
-Bitte in Figma direkt umbenennen; bei 674px zusätzlich prüfen, ob der Wert korrekt ist. Danach zusätzlich prüfen, ob es verwaiste Instanzen dieser oder anderer Variablen gibt (siehe Punkt 2).
+Bitte in Figma direkt korrigieren. Danach zusätzlich prüfen, ob es verwaiste Instanzen dieser oder anderer Variablen gibt (siehe Punkt 2).
+
+**Kein offener Punkt (Korrektur):** Die beiden Variablen mit 488px (`(30,5rem)`) und 674px (`(48rem)`) sind bewusst ohne `[twuc]-`-Namen – das ist keine Namenslücke, sondern Absicht: Es gibt keine Tailwind-Utility-Variable mit exakt diesem Rem-Wert, daher wäre ein `[twuc]-N`-Name hier falsch. 488px ist bestätigt korrekt an die Height-Property von **Cards / DiscoveryCard** gebunden (Screenshot-Beleg aus dem Figma-Variablen-Picker, 15.07.2026).
 
 #### 2. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
 
