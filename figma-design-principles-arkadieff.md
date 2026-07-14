@@ -137,7 +137,7 @@ Innerhalb von Component-Variant-Namen (z.B. `Hover?=False, Variant=1, Color=blue
 - Die Property-Reihenfolge bleibt innerhalb eines Component-Sets über alle Varianten hinweg identisch.
 - Enthält das Label selbst bereits ein `?` (z.B. eine Frage wie `"Weiter zu Versandmethoden?"`), wird der Boolean-Marker trotzdem zusätzlich außerhalb der Anführungszeichen ergänzt: `"Weiter zu Versandmethoden?"?=False`. Das sieht mit doppeltem `?` ungewohnt aus, folgt aber derselben Regel wie alle Nachbar-Properties.
 
-**Häufig verwendete Property-Namen zur Orientierung (Audit vom 01.07.2026, `Inactive?`-Umbenennung berücksichtigt):** `State`, `Hover?`, `Variant`, `Selected?`, `Open?`, `Inactive?`, `Show Icon?`, `Size`, `Type`, `Is Active?`, `Has Input?`, `window-w`, `color-mode: ...?`
+**Häufig verwendete Property-Namen zur Orientierung (Audit vom 01.07.2026, `Inactive?`-Umbenennung berücksichtigt):** `State`, `Variant`, `Hover?`,  `Type`, `Selected?`, `Open?`, `Inactive?`, `Show Icon?`, `Is Active?`, `Has Input?`, `window-w`, `Size`. Selten: `color-mode: ...?`
 
 ---
 
@@ -182,26 +182,6 @@ MainContent (flex-col)
 └── self-end            ← reiner Layout-Wrapper, schiebt Kind ans untere Ende
     └── BeyondWorkBlock ← inhaltlicher Block
 ```
-
----
-
-## 📐 Spacing & Gap Guide
-- 4px – Micro
-- 8px – Tight (STANDARD)
-- 12px – Standard
-- 16px – Generous
-- 24px – Large
-- 32px – Extra large
-
----
-
-## Typography Tokens (3-Layer)
-
-**Primitive:** font-size-12/14/16/20/24/32 · line-height-120/130/140/150/160 · font-weight-light/regular/medium/bold/extra-bold
-
-**Semantic:** Display/Extra Bold · Headline/Bold · Title/Bold · Body/Regular · Body/Medium · Caption/Light · Caption/Regular
-
-**Component:** Button/Label · Card/Title · Card/Caption
 
 ---
 
