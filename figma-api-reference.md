@@ -21,6 +21,8 @@ const hasMatch = sourceColorMode && targetDefs[sourceColorMode[0]];
 ```
 **Wichtig:** Gibt es keine Entsprechung, NICHT stillschweigend auf den Default der Ziel-Komponente ausweichen. Stattdessen explizit im Rückgabewert der `use_figma`-Antwort kennzeichnen (z.B. `colorModeCarriedOver: false, sourceColorMode: '...'`) und/oder die Nutzerin darauf hinweisen, damit der passende Farb-Modus manuell nachgeprüft/gewählt werden kann.
 
+**⚠️ Ergänzung 14.07.2026:** Manche Component-Varianten bieten für den Farb-Modus nur EINEN einzigen erlaubten Wert (z.B. `Buttons/MD/SecondaryButton` hat nur `color-mode: cole-tint-transparent ?` mit einziger Option `True`, im Gegensatz zu `Buttons/MD/PrimaryButton` mit 3 wählbaren Modi). In so einem Fall ist "Farbmodus ändern" technisch gar nicht möglich — vorher `variantOptions.length` der Ziel-Property prüfen und ggf. transparent melden, statt einen Wechsel zu versuchen.
+
 ## 🔀 KOMPONENTEN-SWAP & ICON-AUSWAHL (verlustfrei) — NEU 13.07.2026
 
 **Getestet am:** 13.07.2026, Tarabao B2C-und-CI File, Buttons/LG/PrimaryButton → Buttons/MD/PrimaryButton.
@@ -32,6 +34,8 @@ instance.swapComponent(targetVariant);
 instance.setProperties({ 'Show Icon?': 'True' /* + weitere Variant-Properties */ });
 ```
 Reactions (`reactions`) bleiben beim Swap erhalten. Zusätzlich beobachtet: `CHANGE_TO`-Reactions, die auf eine Variante der ALTEN Komponente zeigten (z.B. Hover-Zustand), werden von Figma automatisch auf die entsprechende Variante der NEUEN Komponente umgemappt — zweimal reproduziert, nicht offiziell in der Plugin-API-Doku garantiert.
+
+**⚠️ Ergänzung 14.07.2026:** Dieses automatische Remapping wurde jetzt auch über komplett unterschiedliche Component-Familien hinweg bestätigt (Primary→Secondary, nicht nur innerhalb derselben Größenfamilie wie LG→MD) — siehe `figma-workflow-technisch.md`, Abschnitt 8c.
 
 ### ⚠️ Mutterkomponente statt Remote-Kopie verwenden
 `search_design_system` + `importComponentByKeyAsync`/`importComponentSetByKeyAsync` liefern bei Bibliotheken, die im selben File liegen, u.U. eine **losgelöste Remote-Kopie** (`node.remote === true`, kein Parent auf einer echten Seite). Diese Kopie kann veraltet sein, wenn die Bibliothek seit dem letzten "Publish" lokal weiterbearbeitet wurde — in unserem Test hieß ein verschachteltes Icon-Set in der Remote-Kopie noch "Icons/Julia/Cart" (nur Warenkorb-Icons), während die echte, aktuelle Mutterkomponente im File längst "Icons / ButtonIcons" nutzt (Cart/Delivery/Heart/Checkout/Log In).
@@ -53,20 +57,24 @@ iconInstances.forEach(i => i.swapComponent(zielIconVariante));
 ```
 Bei mehrdeutigen oder unerwartet eingeschränkten Icon-Optionen (z.B. nur Warenkorb-Zustände für einen Checkout-Button) lieber kurz nachfragen statt zu raten.
 
+**⚠️ Ergänzung 14.07.2026 — Icon-Instanz-Name ist NICHT über Button-Familien hinweg konsistent:** Der Name der verschachtelten Icon-Instanz ("Icons / ButtonIcons" oben) gilt nur für `Buttons/MD/PrimaryButton`. `Buttons/MD/SecondaryButton` nutzt für denselben "Show Icon?"-Slot eine strukturell komplett andere Instanz namens "Icons / CartLive" (Warenkorb-Badge-System mit Properties wie `Add to cart?`, `One Item?`, `Zero Items?`, `2 Items?`). Ein Swap-Skript, das den Namen von der Quell-Familie übernimmt, findet nach einem Component-Swap zwischen unterschiedlichen Familien **keine passende Instanz** — das schlägt still fehl (kein Error, aber Ergebnis bleibt leer/null). Nach jedem Component-Swap zwischen unterschiedlichen Familien die verschachtelten Instanzen IMMER neu per `findAllWithCriteria` auflisten und den tatsächlichen Namen prüfen, statt ihn anzunehmen.
+
 ### Text-Variable direkt umbinden (kein Font-Loading nötig)
 ```javascript
 textNode.setBoundVariable('characters', zielVariable);
 ```
 Funktioniert **ohne** vorheriges `loadFontAsync()`, auch wenn der aktuelle Font des Textknotens defekt/nicht verfügbar ist (getestet mit einem kaputten Custom Font). Gilt sowohl fürs Umschalten von Modi einer Variable als auch fürs komplette Umbinden auf eine andere Variable.
 
+**⚠️ Ergänzung 14.07.2026 — Datenebene ≠ sichtbares Rendering bei kaputten Fonts:** Der Aufruf wirft bei einem kaputten/nicht ladbaren Custom Font (getestet mit "BROWN NOW TWO") zwar keinen Fehler, und `textNode.characters` liest danach sofort den neuen Wert korrekt aus — der `get_screenshot`-Render zeigte in diesem Fall aber weiterhin den ALTEN Text, auch nach mehrfachem Neu-Rendern. Ein expliziter `figma.loadFontAsync({family: "BROWN NOW TWO", style: "TWO"})`-Versuch schlägt mit `"font family does not exist"` fehl — der Font ist im File grundsätzlich nicht vorhanden, nicht nur in der `use_figma`-Sandbox nicht ladbar. **Praxisregel:** Bei bekannt kaputten Fonts der Userin mitteilen, dass die Änderung technisch korrekt gesetzt ist, das sichtbare Ergebnis aber erst nach einem Font-Fix im File (z.B. Font ersetzen/neu hochladen) sichtbar wird.
+
 **Korrektur zur `__All Button Labels`-Struktur:** Diese Collection hat entgegen einer früheren Annahme **keine Modi pro Label** — nur einen einzigen Mode ("Mode 1"). Stattdessen existiert pro Label-Text eine eigene STRING-Variable (z.B. "Weiter zur Bezahlung" als eigene Variable, nicht als Modus von "placeholder"). Vor dem Erstellen eines neuen Modus daher immer erst prüfen, ob der gewünschte Label-Text nicht schon als eigene Variable existiert.
 
 ---# ✅ Figma API Reference für Claude
 **Alle Funktionen validiert + ALLE Limitations dokumentiert**
 
-**Version:** 2.6  
+**Version:** 2.7  
 **Status:** Production Ready  
-**Überprüft am:** 31.05.2026 / 03.06.2026 / 13.07.2026  
+**Überprüft am:** 31.05.2026 / 03.06.2026 / 13.07.2026 / 14.07.2026  
 
 ---
 
@@ -122,7 +130,9 @@ instance.setExplicitVariableModeForCollection(coll, modeId);
 - `setExplicitVariableModeForCollection` gilt für die ganze Instanz/Subtree — bei mehreren variablengebundenen Properties in derselben Collection ändern sich alle gemeinsam mit
 - Ein neuer Modus in einer geteilten Collection wirkt sich nur auf Instanzen aus, die explizit darauf umgeschaltet werden
 
-**Fund-Kontext:** Tarabao B2C-und-CI File, Button-Komponente "Buttons/MD/PrimaryButton", Text-Layer "label" gebunden an Variable "placeholder" in Collection "__All Button Labels".
+**⚠️ Ergänzung 14.07.2026 — Datenebene ≠ sichtbares Rendering bei kaputten Fonts:** Das gilt auch für `textNode.setBoundVariable('characters', variable)` (direktes Umbinden auf eine andere String-Variable, ohne Modus-Wechsel): Der Aufruf wirft bei einem kaputten/nicht ladbaren Custom Font (getestet mit "BROWN NOW TWO") KEINEN Fehler, und `textNode.characters` liest danach sofort den neuen Wert korrekt aus. Der `get_screenshot`-Render zeigte in diesem Fall aber weiterhin den ALTEN Text — auch nach mehrfachem Neu-Rendern. Ein expliziter `figma.loadFontAsync({family: "BROWN NOW TWO", style: "TWO"})`-Versuch schlägt mit `"font family does not exist"` fehl — der Font ist im File grundsätzlich nicht vorhanden, nicht nur in der `use_figma`-Sandbox nicht ladbar. **Praxisregel:** Bei bekannt kaputten Fonts der Userin mitteilen, dass die Änderung technisch korrekt gesetzt ist, das sichtbare Ergebnis aber erst nach einem Font-Fix im File (z.B. Font ersetzen/neu hochladen) sichtbar wird.
+
+**Fund-Kontext:** Tarabao B2C-und-CI File, Button-Komponente "Buttons/MD/PrimaryButton", Text-Layer "label" gebunden an Variable "placeholder" in Collection "__All Button Labels". Ergänzung 14.07.2026 aus Test-Session am Frame "PRACTICE FOR CLAUDE" (Primary→Secondary-Button-Swap).
 
 ### Workaround (falls Text-Layer NICHT variablengebunden ist)
 Siehe `figma-stylesheet-workaround.md`
@@ -303,6 +313,7 @@ child.layoutSizingHorizontal = "FILL"; // ❌ wirft Fehler für Grid-Kinder
 - ✅ Farben setzen und auslesen
 - ✅ Flex- und Grid-Layouts erstellen
 - ✅ `get_metadata()` zur Verifizierung
+- ❌ `instance.reactions = [...]` direkt zuweisen (nur lesbar) — `await instance.setReactionsAsync(...)` verwenden (Korrektur 14.07.2026, siehe `figma-workflow-technisch.md`)
 
 ---
 
@@ -318,3 +329,5 @@ child.layoutSizingHorizontal = "FILL"; // ❌ wirft Fehler für Grid-Kinder
 | Grid ROW_AUTO_FLOW | ✅ | 03.06.2026 |
 | Grid Vollsize + Padding | ✅ | 03.06.2026 |
 | Variables | ✅ | 13.07.2026 (Korrektur) |
+| Component-Swap über Familien hinweg (Icon-Slot-Namen prüfen) | ✅ | 14.07.2026 |
+| setReactionsAsync für Trigger-Änderungen | ✅ | 14.07.2026 |
