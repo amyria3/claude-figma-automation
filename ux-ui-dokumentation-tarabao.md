@@ -275,18 +275,7 @@ Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo 
 
 ### TO Dos
 
-#### 1. Zwei `[twuc]`-Variablen falsch benannt
-
-Live gegen Figma neu abgeglichen (15.07.2026): weiterhin offen – die Abweichungen bestehen unverändert:
-
-- Variable mit 144px: Name noch immer `[twuc]-40`, sollte `[twuc]-36` heißen (144÷4=36)
-- Variable mit 176px: Name noch immer `[twuc]-48`, sollte `[twuc]-44` heißen (176÷4=44)
-
-Bitte in Figma direkt korrigieren. Danach zusätzlich prüfen, ob es verwaiste Instanzen dieser oder anderer Variablen gibt (siehe Punkt 2).
-
-**Kein offener Punkt (Korrektur):** Die beiden Variablen mit 488px (`(30,5rem)`) und 674px (`(48rem)`) sind bewusst ohne `[twuc]-`-Namen – das ist keine Namenslücke, sondern Absicht: Es gibt keine Tailwind-Utility-Variable mit exakt diesem Rem-Wert, daher wäre ein `[twuc]-N`-Name hier falsch. 488px ist bestätigt korrekt an die Height-Property von **Cards / DiscoveryCard** gebunden (Screenshot-Beleg aus dem Figma-Variablen-Picker, 15.07.2026).
-
-#### 2. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
+#### 1. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
 
 32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen – Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft.
 
@@ -303,6 +292,6 @@ Bitte in Figma direkt korrigieren. Danach zusätzlich prüfen, ob es verwaiste I
 - "TabControl" (3970:22955), "Add to Basket for mobile" (3986:23589) liegen weiterhin ohne "Buttons /"-Präfix direkt im Buttons-Ordner. ("IconButton" wurde von der Nutzerin bereits zu "Buttons / IconButton" korrigiert.)
 - "Account / LogInStatus" liegt physisch bei den CartElements/CARD-ELEMENTS-Komponenten, "Account / CollapsibleSection" physisch bei den Section/*-Komponenten – hier aber thematisch unter "Account" einsortiert (nicht live verifizierbar, nur Namens-/Node-Ebene geprüft).
 
-Erledigt und daher entfernt: Tippfehler "PurcheaseSummary" → jetzt korrekt "Patterns / PurchaseSummary" (6794:18851); "SearchPurchease" → jetzt korrekt "Components / SearchPurchase" (6955:21898); "DecktopSize" → bereits als "Section / Tabs / DesktopSize" (7448:19299) bestätigt. Ebenfalls entfernt: der Punkt zu generischen Wrapper-Frames ("fr", "wrapper", "gr") – von der Nutzerin bereits als bewusstes Design geklärt, kein offener Namensfehler.
+Erledigt und daher entfernt: Tippfehler "PurcheaseSummary" → jetzt korrekt "Patterns / PurchaseSummary" (6794:18851); "SearchPurchease" → jetzt korrekt "Components / SearchPurchase" (6955:21898); "DecktopSize" → bereits als "Section / Tabs / DesktopSize" (7448:19299) bestätigt. Ebenfalls entfernt: der Punkt zu generischen Wrapper-Frames ("fr", "wrapper", "gr") – von der Nutzerin bereits als bewusstes Design geklärt, kein offener Namensfehler. Ebenfalls entfernt: die zwei falsch benannten `[twuc]`-Variablen (144px `[twuc]-40`→`[twuc]-36`, 176px `[twuc]-48`→`[twuc]-44`) – Maria korrigiert diese direkt in Figma über den Variablen-Picker (Doppelklick auf den Namen → umbenennen). Die zwei Variablen mit 488px/674px waren nie ein offener Punkt: Sie sind bewusst ohne `[twuc]`-Namen, da kein Tailwind-Wert exakt diesem Rem-Wert entspricht.
 
 </sub>
