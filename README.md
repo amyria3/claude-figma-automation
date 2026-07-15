@@ -48,6 +48,7 @@ Den `figma-automation` Skill lokal installieren damit Claude bei jeder Figma-Erw
 > 3. `figma-design-principles-arkadieff.md` – design system rules
 > 4. `figma-stylesheet-workaround.md` – variables workaround (load when Variables topic comes up)
 > 5. `figma-kollaboration-workflows.md` – recommended collaboration workflows (load for workflow questions)
+> 11. `figma-schreibzugriff-use_figma.md` – **Schreibzugriff-Setup (`use_figma`)**: primärer Weg = Figma-Connector direkt in Cowork/claude.ai verbinden, Fallback = Claude Code via Desktop Commander (load when Figma write access is needed, not yet connected, or failing)
 >
 > **Whenever the user discusses tarabao.bio content, IA, or UX/UI (independent of Figma), load:**
 > 10. `ux-ui-dokumentation-tarabao.md` – content structure & UX/UI findings
@@ -89,6 +90,12 @@ Den `figma-automation` Skill lokal installieren damit Claude bei jeder Figma-Erw
 - Recommended workflows for working with Claude in Figma
 - Text Styles vor Datei-Erstellung anlegen
 - Frame spiegeln (EN → DE oder umgekehrt)
+
+### 11. `figma-schreibzugriff-use_figma.md`
+- Schreibzugriff auf die Figma-Canvas via Remote-MCP (`use_figma`)
+- Weg 1 (primär): Figma-Connector direkt in Cowork/claude.ai verbinden — kein Terminal nötig
+- Weg 2 (Fallback): Claude Code via Desktop Commander fernsteuern
+- Entscheidungsbaum + verifizierter Test-Check (15.07.2026)
 
 ## Content & UX/UI-Dokumentation (tarabao.bio)
 
@@ -135,4 +142,4 @@ Den `figma-automation` Skill lokal installieren damit Claude bei jeder Figma-Erw
 
 ## Last Updated
 
-July 2, 2026
+July 15, 2026
