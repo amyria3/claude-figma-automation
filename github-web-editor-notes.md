@@ -31,7 +31,26 @@ CodeMirror rendert nur die aktuell sichtbaren Zeilen als `.cm-line`-Elemente. Be
 - Synthetisches `KeyboardEvent('keydown', {key:'End', ctrlKey:true})` auf `.cm-content` — wird nicht von CodeMirrors Keymap abgefangen, obwohl der Fokus korrekt gesetzt ist.
 - `computer`-Tool `scroll`-Action und Screenshots waren in dieser Umgebung auf dieser Seite wiederholt instabil (Timeouts, "Frame with ID 0 was removed", Extension-Disconnects).
 
-**Was funktioniert:** Bearbeitungen auf Zeilen beschränken, die beim Laden der Seite bereits im sichtbaren Viewport gerendert sind (typischerweise die ersten ~19-20 Zeilen). Neue Abschnitte lieber oben im Dokument einfügen (z.B. direkt nach der Kopfzeile / vor dem ersten `---`) statt mittig oder am Ende — dafür muss nicht gescrollt werden. Bei neuen, leeren Dateien entfällt das Problem komplett (Cursor steht schon an Position 0).
+**Was funktioniert:** Bearbeitungen auf Zeilen beschränken, die beim Laden der Seite bereits im sichtbaren Viewport gerendert sind (typischerweise die ersten ~19-20 Zeilen) — **oder besser: Komplett-Ersatz per selectAll (nächster Abschnitt), damit sind auch Edits mitten in langen Dateien möglich.** Bei neuen, leeren Dateien entfällt das Problem komplett (Cursor steht schon an Position 0).
+
+## Ganze Datei ersetzen: selectAll + insertText (umgeht Virtualisierung komplett)
+
+**Bewährter Standardweg für Edits an beliebiger Position in bestehenden Dateien** (verifiziert 15.07.2026, README.md ~150 Zeilen, Edit mitten in der Datei):
+
+1. Aktuellen Dateiinhalt via Raw-URL holen (`https://raw.githubusercontent.com/<owner>/<repo>/main/<datei>`) — nicht aus `.cm-line` auslesen (Virtualisierung!).
+2. Neuen Gesamtinhalt lokal zusammenbauen (Original + Änderung).
+3. Im Editor:
+
+```javascript
+const el = document.querySelector('.cm-content');
+el.focus();
+document.execCommand('selectAll');   // selektiert das GANZE Dokument, nicht nur den Viewport
+document.execCommand('insertText', false, neuerGesamtinhalt);
+```
+
+`selectAll` arbeitet auf CodeMirrors Dokument-Modell, nicht auf den gerenderten DOM-Zeilen — der Ersatz erfasst also auch nicht-gerenderte Bereiche. Danach wie üblich per Preview-Tab verifizieren und committen.
+
+**Escaping-Hinweis:** Wird der Inhalt im `javascript_tool` als Template-Literal übergeben, alle Backticks im Markdown als \` escapen (${ käme ebenfalls in Konflikt, kommt in Markdown aber selten vor).
 
 ## Inhalt verifizieren: Preview-Tab statt .cm-line auslesen
 
@@ -39,15 +58,16 @@ Nach einem Insert kann der aus `.cm-line` ausgelesene Text irreführend aussehen
 
 **Zuverlässige Verifikation:** Auf den "Preview"-Tab-Button klicken (`Array.from(document.querySelectorAll('button')).find(b => b.textContent.trim() === 'Preview')`) und den gerenderten Markdown-Text per `get_page_text` prüfen — das zeigt den tatsächlichen Dokumentinhalt, nicht die virtualisierte DOM-Teilansicht.
 
+**Raw-URL-Cache:** Nach dem Commit zeigt `raw.githubusercontent.com` bis zu ~5 Minuten den alten Stand (CDN-Cache). Commit-Erfolg stattdessen prüfen via URL-Wechsel zu `.../blob/main/...` und "Latest commit"-Anzeige auf der Blob-Seite.
+
 ## Commit-Workflow
 
 1. Im Edit-Tab: Button mit Text "Commit changes..." klicken (öffnet ein Modal, `[role="dialog"]`).
-2. GitHub/Copilot füllt automatisch eine Commit-Message aus. Das Modal enthält zwei Buttons: "Cancel" und "Commit changes" — den zweiten (innerhalb des Dialogs) klicken, nicht nochmal den ursprünglichen Auslöser-Button außerhalb des Dialogs.
-3. Erfolg prüfen: Die URL wechselt von `.../edit/main/...` zu `.../blob/main/...`.
+2. GitHub/Copilot füllt automatisch eine Commit-Message aus. Das Modal enthält zwei Buttons: "Cancel" und "Commit changes" — den zweiten (innerhalb des Dialogs) klicken, nicht nochmal den ursprünglichen Auslöser-Button außerhalb des Dialogs. Eigene Commit-Message: Input im Dialog per nativem Value-Setter + `input`-Event setzen (React-kompatibel).
+3. Erfolg prüfen: Die URL wechselt von `.../edit/main/...` zu `.../blob/main/...` (bei neuen Dateien ggf. zu `.../tree/main`).
 
 ## Sonstiges
 
 - Die Chrome-Extension-Verbindung kann mitten in einer Session abbrechen ("Claude in Chrome is not connected"). Kein Grund zur Sorge — kurz erneut versuchen (`tabs_context_mcp`), meist erholt sie sich innerhalb weniger Versuche.
 - `Ctrl+F` öffnet in dieser Umgebung nicht CodeMirrors eigenes Such-Panel (öffnete stattdessen nur ein generisches Fokus-Hilfe-Panel) — nicht verlässlich zum Navigieren nutzen.
 - Bei neuen Dateien (`/new/main?filename=...`) ist der Editor leer und bereits fokussierbar — `execCommand('insertText', ...)` funktioniert dort direkt ohne vorheriges Zeilen-Suchen.
-
