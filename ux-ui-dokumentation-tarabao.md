@@ -39,6 +39,7 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 - Section / ProductHeader: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=4221-28723&m=dev]
 - Section / Accordion: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6604-17023&m=dev]
 - Section / Tabs / DesktopSize: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7448-19299&m=dev]
+  - Components / TabContent: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7448-20255&m=dev]
 - Section / Editorial: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3164-4506&m=dev]
 - Section / BlogCards: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=6605-16723&m=dev]
 
@@ -97,7 +98,6 @@ Sammlung von UX/UI- und Content-Struktur-Erkenntnissen zu tarabao.bio, die für 
 - Components / RadioButtonGroup: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=3793-15664&m=dev]
 - Components / Disclosure: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=283-633&m=dev]
 - Components / OverlayComponents / Message: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2784-3621&m=dev]
-- Components / TabContent: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7448-20255&m=dev]
 
 ### Filter & Search
 - Filter / FilterPanel: [https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=2211-2165&m=dev]
@@ -269,9 +269,17 @@ Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo 
 
 #### Zur Komponenten-Struktur
 
-**Hierarchie-Verifikation (per `get_design_context`, echte Instanz-Prüfung statt nur Namenslogik):** Bestätigt verschachtelt: Filter/FilterPanel (enthält FilterChip- und eine PriceRange-Instanz, dort aber als "FilterPanel / PriceRange" benannt – Namensabweichung zum hier gelisteten Master 2605:2931, bitte prüfen), CartElements/Summary (enthält ProductItem, Calculation, LogIn), Account/CollapsibleSection (enthält SummaryItem, DataBlock), Components/OrderCancellation (enthält SelectOrder-Instanz, SelectProducts sehr wahrscheinlich analog). Geprüft und NICHT verschachtelt (daher als gleichrangige Einträge gelistet): NavBar/Nav/NavBlocks sind eigenständig, ebenso Components/Product/BuyBox und ImageCarousel.
+**Hierarchie-Verifikation (per `get_design_context`, echte Instanz-Prüfung statt nur Namenslogik):** Bestätigt verschachtelt: Filter/FilterPanel (enthält FilterChip- und eine PriceRange-Instanz, dort aber als "FilterPanel / PriceRange" benannt – Namensabweichung zum hier gelisteten Master 2605:2931, bitte prüfen), CartElements/Summary (enthält ProductItem, Calculation, LogIn), Account/CollapsibleSection (enthält SummaryItem, DataBlock), Components/OrderCancellation (enthält SelectOrder-Instanz, SelectProducts sehr wahrscheinlich analog), Section/Tabs/DesktopSize (enthält Components/TabContent als direktes Content-Element, s. Update 15.07.2026 unten). Geprüft und NICHT verschachtelt (daher als gleichrangige Einträge gelistet): NavBar/Nav/NavBlocks sind eigenständig, ebenso Components/Product/BuyBox und ImageCarousel.
 
 **Ausgeschlossen (bewusst):** ICONS (1:133, nicht im Detail durchsucht), NOTES (6611:18283, verifiziert nur Screenshots/Notizen), VISUALS (6663:16082, auf Wunsch nicht aufgenommen), PRACTICE FOR CLAUDE (7372:19291, nur 2 Button-Instanzen, kein Master).
+
+#### Update 15.07.2026: Section / Tabs / DesktopSize verifiziert und Unterkomponente ergänzt
+
+Node 7448:19299 ist ein Component-Set mit Property "Selected?" (6 Varianten: Über das Produkt, Herkunft & Impact, Aufbewahrung, Bewertungen, Inhalt & Nährwerte, Herstellung), per Screenshot bestätigt. Direkte Kinder: eine "TabControl"-Instanz (bereits als eigener Master unter Buttons gelistet, 3970:22955 – daher hier nicht erneut eingerückt, da wiederverwendet) sowie eine Instanz von **Components / TabContent** (7448:20255), die den eigentlichen Tab-Inhalt rendert – neu unter Section/Tabs/DesktopSize eingerückt gelistet und aus "Components (Sonstige)" entfernt, um Dopplung zu vermeiden.
+
+TabContent selbst ist ein Component-Set mit Properties "Type" (Text And Img, Text Only, Table, Complex Content) und "Headline" (H2/H3); alle Varianten außer "Complex Content" nutzen bereits katalogisierte, wiederverwendbare Patterns (Patterns/TextAndImg 7448:20380, Patterns/TableElement 2040:1345, Patterns/Ingredients 7448:20925) – deshalb bleiben diese als eigenständige Patterns-Einträge stehen, statt zusätzlich verschachtelt zu werden (gleiche Logik wie bei Buttons/Segment-Control-Instanzen in anderen Composites). "Complex Content" ist nur ein generischer Platzhalter-Slot ohne benannte Sub-Komponente. Keine verwaisten Komponenten oder Variablen in diesem Bereich gefunden.
+
+Nebenbefund (kein neuer Fund, ergänzt nur den bereits bekannten Punkt unten): Die TabControl-Instanz in Section/Tabs/DesktopSize nutzt für die Tab-Buttons teils "Buttons / XS / SegmentControlButton", teils eine dritte, noch nicht katalogisierte Schreibweise "Buttons / XS / Segment Control" (ohne "Button"-Suffix) – passt zur bereits dokumentierten Uneinheitlichkeit zwischen SegmentControlButton/Segment Control weiter unten.
 
 ### TO Dos
 
@@ -287,7 +295,7 @@ Box-Spacing- und Gap-Variablen verwenden identische Werte pro Größenstufe. Wo 
 
 #### Zu klären: Komponenten-Naming (live gegen Figma geprüft, 15.07.2026)
 
-- "Buttons / XS / SegmentControlButton" und "Buttons / SM / Segment Control" – uneinheitliche Schreibweise für vermutlich denselben Zweck. Weiterhin unverändert in Figma.
+- "Buttons / XS / SegmentControlButton" und "Buttons / SM / Segment Control" – uneinheitliche Schreibweise für vermutlich denselben Zweck. Weiterhin unverändert in Figma. (Ergänzung 15.07.2026: eine dritte Schreibvariante "Buttons / XS / Segment Control" taucht zusätzlich innerhalb von Section/Tabs/DesktopSize auf, siehe oben.)
 - "Input Field plain" (2406:1053) und "Input" (2328:2155) – zwei parallele Varianten-Sets mit identischen Feldtypen, aber unterschiedlicher Property-Struktur (Boolean vs. "Nr="-Nummerierung). Sieht nach Altlast/Duplikat aus. Weiterhin unverändert in Figma.
 - "TabControl" (3970:22955), "Add to Basket for mobile" (3986:23589) liegen weiterhin ohne "Buttons /"-Präfix direkt im Buttons-Ordner. ("IconButton" wurde von der Nutzerin bereits zu "Buttons / IconButton" korrigiert.)
 - "Account / LogInStatus" liegt physisch bei den CartElements/CARD-ELEMENTS-Komponenten, "Account / CollapsibleSection" physisch bei den Section/*-Komponenten – hier aber thematisch unter "Account" einsortiert (nicht live verifizierbar, nur Namens-/Node-Ebene geprüft).
