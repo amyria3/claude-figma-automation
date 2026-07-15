@@ -288,11 +288,26 @@ Im "Complex Content"-Slot der "Bewertungen"-Variante von Section/Tabs/DesktopSiz
 
 Methodik-Hinweis für künftige Suchen: `get_metadata` auf einer Instanz-ID (z. B. aus dem Dev-Mode-Codegen-Pfad "I<host>;<slot>;<lokaleId>") liefert nur die Instanz selbst, nicht die Mastermaster-Komponente. Um den echten Master zu finden, wenn keine Figma-Beschreibung mit Node-ID vorhanden ist: `get_metadata` auf die übergeordnete Bibliotheks-Section (hier 3267:6614) ziehen (ggf. zu groß für Direktausgabe → wird in eine lokale Cache-Datei geschrieben) und darin mit einem eng begrenzten Regex-Fenster (z. B. `.{60}Name.{150}`) nach dem Komponentennamen suchen, um die reale Node-ID zu finden – ein zu weites Fenster oder `-C`-Kontext auf der rohen Cache-Datei scheitert an der "Omitted long matching line"-Begrenzung, da die gesamte Design-Context-Ausgabe als eine einzige JSON-Textzeile gespeichert ist.
 
+#### Update 15.07.2026 (3): Verwaiste-Variables-Fund präzisiert (Fix-Ort korrigiert)
+
+Nachrecherche ergab: Der `spacings/spacing-*`-Fund liegt NICHT in Section/CustomerReviews selbst, sondern im **Cards / ReviewCard**-Master (2194:1982) — betrifft also automatisch JEDE ReviewCard-Instanz im File (Section/CustomerReviews ist nur die Stelle, an der es auffiel). Bestätigt per `get_variable_defs` direkt am Master: `spacings/spacing-xxxs (1 tcss)`, `spacings/spacing-xs (3 tcss)`, `spacings/spacing-sm (4 tcss)` stehen im selben Component-Set NEBEN bereits korrekt gebundenen `box-spacing-*`/`gap-*`-Properties (gleiches Muster wie beim Footer-Fund vom 14.07.). Betroffen sind beide Varianten des Sets ("Reactions?=True, State?=Open" und "Reactions?=False, State?=Default").
+
+**Claude hat in dieser Session keinen Figma-Schreibzugriff** (nur die lesenden Dev-Mode-Tools get_design_context/get_metadata/get_screenshot/get_variable_defs, kein `use_figma` o. ä.) — die Korrektur muss die Nutzerin selbst im Variablen-Picker vornehmen. Genaue Fundstellen für die Korrektur:
+
+- Variante "Reactions?=True, State?=Open" (Node 2194:1925):
+  - Layer "Name u. Datum" (2194:1897): Gap `spacings/spacing-xxxs` (4px) → `gap-xxs` (4px)
+  - Layer "Buttons / ReactionCounter" (2194:1918): Gap `spacings/spacing-xs` (12px) → `gap-md-sm`; Padding-Top `spacings/spacing-xs` (12px) → `box-spacing-md-sm`; Padding-Links/Rechts `spacings/spacing-sm` (16px) → `box-spacing-md`
+- Variante "Reactions?=False, State?=Default" (Node 2194:2005):
+  - Layer "Name u. Datum" (2194:2014): Gap `spacings/spacing-xxxs` → `gap-xxs`
+  - Layer "Buttons / ReactionCounter" (2194:2019): Gap `spacings/spacing-xs` → `gap-md-sm`; Padding-Top `spacings/spacing-xs` → `box-spacing-md-sm`; Padding-Links/Rechts `spacings/spacing-sm` → `box-spacing-md`
+
+Vorgehen in Figma: Layer auswählen → im rechten Panel bei Gap/Padding auf den blauen Variablen-Chip klicken → im Picker die neue Variable aus der Collection "Lyt scl / Spcngs" auswählen (nicht neu verknüpfen über "Create property"). Da alle 8 Bindungen am MASTER hängen, reicht die einmalige Korrektur dort für alle Verwendungen im File.
+
 ### TO Dos
 
 #### 1. Verwaiste Variables (hartkodierte Werte statt Variable-Bindung)
 
-32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen – Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft. Zusätzlicher, noch nicht geprüfter Kandidat aus der heutigen Session: Section/CustomerReviews (7472:20901) verwendet in mehreren Cards/ReviewCard-Instanzen teils `spacings/spacing-*`-Variablen (z. B. `spacings/spacing-xxxs`, `spacings/spacing-xs`, `spacings/spacing-sm`) statt der neueren `gap-*`/`box-spacing-*`-Familie – passt zur bereits bekannten, noch nicht abgeschlossenen Migration (s. `figma-design-principles-arkadieff.md`).
+32 von 118 Komponenten geprüft (Stand 14.07.2026), 12 gesicherte Funde + 3 unsichere Kandidaten. Auffälligste Muster: Nav (2761:6772) hat 6× identisches hartkodiertes `gap-[6px]` in den Kategorie-Headern (Nachbar-Block "B2B Shop" im selben Component macht es korrekt → Fehler steckt im Master); Footer (6315:16206) hat mehrere hartkodierte Werte direkt neben korrekt gebundenen Geschwister-Properties; Cards/Featured und Cards/MegaCard haben durchgängig hartkodierte Paddings (20px/28px); Buttons/CarouselNav (2038:4884) reproduziert denselben Fehler in mind. 2 verschiedenen Verwendungskontexten. Vollständige Fundliste liegt lokal bereit (`verwaiste-variables-liste.md`), noch nicht hierher übertragen – Rest der 113 Komponenten (v. a. restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns) noch nicht geprüft. Neuer, bestätigter Fund (15.07.2026): Cards/ReviewCard-Master (2194:1982) — Details und exakte Korrekturschritte siehe "Update 15.07.2026 (3)" oben; Korrektur steht noch aus (kein Figma-Schreibzugriff in dieser Session).
 
 #### Zu klären: Korrektur ggü. bisheriger Sitemap-Arbeit
 
