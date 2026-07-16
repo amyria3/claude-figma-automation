@@ -144,7 +144,7 @@ Siehe `figma-stylesheet-workaround.md`
 ### Text ändern
 ```javascript
 async function updateText(nodeId, newContent) {
-  const node = figma.getNodeById(nodeId);
+  const node = await figma.getNodeByIdAsync(nodeId);
   if (!node || node.type !== 'TEXT') return;
   const fontRef = node.getRangeFontName(0, 1);
   await figma.loadFontAsync({ family: fontRef?.family || 'Inter', style: fontRef?.style || 'Regular' });
