@@ -1,8 +1,10 @@
-# GitHub MCP Setup
+# GitHub MCP Setup (LEGACY, optional)
 
-## Wichtig: Docker ist immer erforderlich
+> **Stand Juli 2026: Dieses Setup ist nicht mehr erforderlich.** Das Repo ist öffentlich — Claude liest die Dateien direkt via Raw-URLs (`https://raw.githubusercontent.com/amyria3/claude-figma-automation/main/<datei>`); Schreiben läuft über den GitHub-Web-Editor via Claude in Chrome (Techniken: `github-web-editor-notes.md`). Die folgende Anleitung gilt nur noch, wenn der GitHub MCP via Docker bewusst genutzt werden soll.
 
-Docker wird **sowohl für Claude.ai als auch für Claude Desktop** benötigt — es gibt keine Docker-freie Alternative.
+## Docker-Voraussetzung (nur für dieses Legacy-Setup)
+
+**Wenn** der GitHub MCP genutzt wird, ist Docker sowohl für Claude.ai als auch für Claude Desktop nötig.
 
 **Startreihenfolge:**
 1. **Docker Desktop** starten → warten bis Whale-Icon stabil ist
