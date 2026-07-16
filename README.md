@@ -6,7 +6,6 @@ Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Cla
 
 Enjoy KI, enjoy liebe*r Nutzer *in. 
 
-
 ### Setup (Stand Juli 2026)
 
 **Für Figma-Schreibzugriff ist keine lokale Installation mehr nötig.**
@@ -14,116 +13,88 @@ Enjoy KI, enjoy liebe*r Nutzer *in.
 1. In claude.ai / Cowork den **Figma-Connector** verbinden (Claude schlägt ihn bei Bedarf selbst vor → Connect klicken → OAuth-Login bei Figma bestätigen)
 2. Figma-Datei-URL mit Claude teilen (Figma → Share → Copy link)
 
-Details & Fallback-Weg: `figma-schreibzugriff-use_figma.md`
+Details & Fallback-Weg: `1-figma/1.1-figma-schreibzugriff-use_figma.md`
 
 ### Legacy-Setup: GitHub MCP via Docker (optional, nicht mehr erforderlich)
 
-Da diese Repo öffentlich ist, liest Claude die Dateien direkt über die Raw-URLs (siehe Instructions unten). Das Setup mit Docker funktioniert weiterhin, falls in Ausnahmefällen benötigt:
-
-1. Docker Desktop installieren → [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
-2. Claude Desktop installieren → [claude.ai/download](https://claude.ai/download)
-3. MCP einrichten: Claude Desktop → Settings → Developer → MCP aktivieren; Config-Datei einrichten — _Details: `github-mcp-setup.md`_
-4. Vor jeder Session: `open -a Docker`, dann `docker ps` prüfen
+Da diese Repo öffentlich ist, liest Claude die Dateien direkt über die Raw-URLs (siehe Instructions unten). Das Setup mit Docker funktioniert weiterhin, falls in Ausnahmefällen benötigt — Anleitung: `4-setup-legacy/4.1-github-mcp-setup.md`
 
 ### Was Claude inzwischen automatisch kann: Variables
 
-Ursprünglich musste die Userin Variables **manuell** verknüpfen (Limitation der alten API-Anbindung). **Seit wir `use_figma`-Schreibzugriff nutzen, kann Claude ebenfalls Variables erstellen, Modes/Scopes setzen und an Properties binden.** Der `figma-stylesheet-workaround.md` ist nur noch Fallback/Archiv.
+Ursprünglich musste die Userin Variables **manuell** verknüpfen (Limitation der alten API-Anbindung). **Seit wir `use_figma`-Schreibzugriff nutzen, kann Claude ebenfalls Variables erstellen, Modes/Scopes setzen und an Properties binden.** Der `1-figma/1.6-figma-stylesheet-workaround.md` ist nur noch Fallback/Archiv.
 
 ### Claude Skill installieren
 Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit Claude aufs Stichwort 'Figma' die richtigen Dateien aufruft:
-→ [`figma-automation-skill.md`](./figma-automation-skill.md) herunterladen → Claude.ai → Einstellungen → Skills → Skill hinzufügen
+→ [`1-figma/1.7-figma-automation-skill.md`](./1-figma/1.7-figma-automation-skill.md) herunterladen → Claude.ai → Einstellungen → Skills → Skill hinzufügen
 
 ---
 
 ## Instructions for Claude
 
-> **Whenever the user mentions Figma, load these files from this repo before starting any task:**
-> 1. `figma-workflow-technisch.md` – pre-flight checklist & golden rules
-> 2. `figma-api-reference.md` – what works, what doesn't, code patterns
-> 3. `figma-design-principles-arkadieff.md` – design system rules
-> 4. `figma-stylesheet-workaround.md` – variables workaround (LEGACY — nur noch Fallback, siehe Nr. 11)
-> 5. `figma-kollaboration-workflows.md` – recommended collaboration workflows (load for workflow questions)
-> 11. `figma-schreibzugriff-use_figma.md` – **Schreibzugriff-Setup (`use_figma`)**: primärer Weg = Figma-Connector direkt in Cowork/claude.ai verbinden, Fallback = Claude Code via Desktop Commander (load when Figma write access is needed, not yet connected, or failing)
+> **Language rule (agreed 2026-07-16):** Write everything that is purely Claude-facing — instructions, technical notes, this block, commit messages — in English to reduce token usage. Exceptions: anything the user reads or edits herself, and German language examples (`3-claude-meta/3.3-german-stilguide-claude.md`). Existing German docs stay as they are; apply the rule to new or substantially rewritten content.
 >
-> **Whenever the user discusses tarabao.bio content, IA, or UX/UI in the context of her day job (independent of Figma), load:**
-> 10. `ux-ui-dokumentation-tarabao.md` – content structure & UX/UI findings
+> **Whenever the user mentions Figma, load these files before starting any task:**
+> - `1-figma/1.2-figma-workflow-technisch.md` — pre-flight checklist & golden rules
+> - `1-figma/1.3-figma-api-reference.md` — what works, what doesn't, code patterns
+> - `1-figma/1.4-figma-design-principles-arkadieff.md` — design system rules
+> - `1-figma/1.5-figma-kollaboration-workflows.md` — collaboration workflows (load for workflow questions)
+> - `1-figma/1.6-figma-stylesheet-workaround.md` — variables workaround (LEGACY — fallback only, see 1.1)
+> - `1-figma/1.1-figma-schreibzugriff-use_figma.md` — **write-access setup (`use_figma`)**: primary = Figma connector in Cowork/claude.ai, fallback = Claude Code via Desktop Commander (load when write access is needed, not yet connected, or failing)
 >
-> **Access (primär):** Repo ist öffentlich — Dateien direkt lesen via `https://raw.githubusercontent.com/amyria3/claude-figma-automation/main/<datei>`. Kein Docker, kein GitHub MCP nötig. Schreiben ins Repo: GitHub-Web-Editor via Claude in Chrome — Techniken in `github-web-editor-notes.md`.
-> **Access (legacy, optional):** GitHub MCP via Docker (`github-mcp-setup.md`); Start order: 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai
-> **Achtung Konsistenz:** Dokus 1–5 entstanden teils vor dem `use_figma`-Schreibzugriff. Bei Widersprüchen (z. B. zu Variables-Limitationen) gilt `figma-schreibzugriff-use_figma.md` bzw. der aktuelle `figma-use`-Skill.
+> **Whenever the user discusses tarabao.bio content, IA, or UX/UI in the context of her day job (independent of Figma), load:** `2-tarabao/2.1-ux-ui-dokumentation-tarabao.md`
+>
+> **When editing repo files via the GitHub web editor:** `3-claude-meta/3.1-github-web-editor-notes.md`
+> **When writing or correcting German text for the user:** `3-claude-meta/3.3-german-stilguide-claude.md`
+> **Open tasks & unclear points:** `offene-punkte.md` (root) — check at session start, update before session end.
+>
+> **Access (primary):** repo is public — read files via `https://raw.githubusercontent.com/amyria3/claude-figma-automation/main/<pfad>`. No Docker, no GitHub MCP. Writing to the repo: GitHub web editor via Claude in Chrome — techniques in `3-claude-meta/3.1-github-web-editor-notes.md`.
+> **Access (legacy, optional):** GitHub MCP via Docker (`4-setup-legacy/4.1-github-mcp-setup.md`); start order: 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai
+> **Consistency:** docs 1.2–1.6 partly predate `use_figma` write access. On contradictions (e.g. variables limitations), `1-figma/1.1-figma-schreibzugriff-use_figma.md` and the current `figma-use` skill win.
 
 ---
 
-## Figma Documentation
+## Verzeichnis
 
-### 1. `figma-workflow-technisch.md`
-- Pre-flight checklist (vor jeder Task)
-- Font-loading patterns
-- Verification methods (get_metadata)
-- Error handling
-- Golden rules & best practices
+### 1-figma/ — Figma-Automatisierung (Anweisungen für Claude)
 
-### 2. `figma-api-reference.md`
-- Complete API reference with code examples
-- Text operations (changing, fonts, typography)
-- Styling operations (colors, fills, strokes)
-- Flex layouts (VERTICAL, HORIZONTAL, alignment)
-- Known limitations & workarounds
-- Quick-start templates
+| Datei | Inhalt |
+|---|---|
+| `1.1-figma-schreibzugriff-use_figma.md` | Schreibzugriff via Remote-MCP (`use_figma`): Connector-Weg (primär) + Claude-Code-Fallback, Entscheidungsbaum, Test-Check (15.07.2026) |
+| `1.2-figma-workflow-technisch.md` | Pre-flight Checklist, Font-Loading, Verifikation via get_metadata, Error Handling, Golden Rules |
+| `1.3-figma-api-reference.md` | Komplette API-Referenz mit Code-Beispielen, Limitations, Quick-Start-Templates |
+| `1.4-figma-design-principles-arkadieff.md` | Design-Prinzipien: Flex-Layouts, Naming, Spacing- & Typography-Tokens |
+| `1.5-figma-kollaboration-workflows.md` | Empfohlene Workflows: Text Styles vor Datei-Erstellung, Frames spiegeln (EN↔DE) |
+| `1.6-figma-stylesheet-workaround.md` | **LEGACY** — Stylesheet-Workaround aus der Zeit vor dem Variables-Zugriff, nur noch für Sonderfälle |
+| `1.7-figma-automation-skill.md` | Downloadbare Skill-Definition für Claude (Einstellungen → Skills) |
 
-### 3. `figma-design-principles-arkadieff.md`
-- Core design principles (flex-based layouts, naming conventions)
-- Spacing & typography tokens
+### 2-tarabao/ — Content & UX/UI (tarabao.bio)
 
-### 4. `figma-stylesheet-workaround.md` (LEGACY)
-- Stylesheet-based styling workflow — entstand als Workaround für die frühere Variables-Limitation
-- Seit `use_figma`-Schreibzugriff nur noch Fallback/Archiv
-- Design token templates (copy-paste ready)
+| Datei | Inhalt |
+|---|---|
+| `2.1-ux-ui-dokumentation-tarabao.md` | UX/UI- und Content-Struktur-Erkenntnisse, Kategorien vs. Sammlungen, TODOs (u.a. verwaiste Variables) |
 
-### 5. `figma-kollaboration-workflows.md`
-- Recommended workflows for working with Claude in Figma
-- Text Styles vor Datei-Erstellung anlegen
-- Frame spiegeln (EN → DE oder umgekehrt)
+### 3-claude-meta/ — Claudes Arbeitsweise
 
-### 11. `figma-schreibzugriff-use_figma.md`
-- Schreibzugriff auf die Figma-Canvas via Remote-MCP (`use_figma`)
-- Weg 1 (primär): Figma-Connector direkt in Cowork/claude.ai verbinden — kein Terminal nötig
-- Weg 2 (Fallback): Claude Code via Desktop Commander fernsteuern
-- Entscheidungsbaum + verifizierter Test-Check (15.07.2026)
+| Datei | Inhalt |
+|---|---|
+| `3.1-github-web-editor-notes.md` | Techniken für Repo-Bearbeitung über den GitHub-Web-Editor (CodeMirror 6): selectAll+insertText, Commit-Workflow |
+| `3.2-claude-architektur-chat-project-memory-artefakte.md` | Wie Chats, Project Memory und Artefakte zusammenhängen; was persistent ist und was nicht |
+| `3.3-german-stilguide-claude.md` | Deutscher Schreibstil für Claude: aktiv statt passiv, Verbstil, einfache Wörter — aus Darias Korrekturen abgeleitet |
 
-## Content & UX/UI-Dokumentation (tarabao.bio)
+### 4-setup-legacy/ — System-Setup (Legacy/optional)
 
-### 10. `ux-ui-dokumentation-tarabao.md`
-- UX/UI- und Content-Struktur-Erkenntnisse zu tarabao.bio, getrennt von den Figma-Komponentenprinzipien
-- Aktuell: Kategorien vs. Sammlungen (feste Navigationskategorien vs. thematische, produktübergreifende Sammlungen)
+| Datei | Inhalt |
+|---|---|
+| `4.1-github-mcp-setup.md` | **LEGACY** — GitHub MCP via Docker: PAT, Config-Pfad, Startreihenfolge, Diagnose |
+| `4.2-user-system-setup-documentation.md` | macOS-Systemstand: Git, Docker, Node, Python, Homebrew |
+| `user-is-learning-terminal-commands` | Terminal-Befehle mit Erklärungen — **liegt bewusst nur lokal bei der Nutzerin, wird nicht gepusht** |
 
-## User Setup & Terminal Documentation
+### Wurzel
 
-### 6. `github-mcp-setup.md` (LEGACY, optional)
-- Setup guide for GitHub MCP via Docker — nicht mehr erforderlich, Repo-Zugriff läuft via Raw-URLs
-- PAT creation, config file path, start order
-- Diagnostic terminal commands
-
-### 7. `user-system-setup-documentation.md`
-- macOS system status (Git, Docker, Node, Python, Homebrew)
-- Installed tools log
-
-### 8. `user-is-learning-terminal-commands`
-- Terminal commands with explanations for beginners
-- Split into: already known / learning / not yet needed
-- **Liegt bewusst nur lokal bei der Nutzerin — wird nicht gepusht** (Index-Eintrag dient nur der Vollständigkeit)
-
-### 9. `figma-automation-skill.md`
-- Downloadbare Skill-Definition für Claude
-- Für lokale Installation unter Einstellungen → Skills
-
-### 12. `github-web-editor-notes.md`
-- Technische Hinweise für Claude zum Bearbeiten von Repo-Dateien über den GitHub-Web-Editor (CodeMirror 6)
-- selectAll+insertText-Komplettersatz, Virtualisierung, Preview-Verifikation, Commit-Workflow
-
-### 13. `offene-punkte.md`
-- Zentrale Liste ausschließlich für unklare Punkte und unbeendete Aufgaben (Nutzerin + alle Claude-Instanzen)
-- Bei Session-Ende offene Aufgaben hier eintragen, Erledigtes streichen
+| Datei | Inhalt |
+|---|---|
+| `offene-punkte.md` | Zentrale Liste ausschließlich für unklare Punkte und unbeendete Aufgaben — bei Session-Ende aktualisieren |
+| `SCOPE.md` | Was in dieses Repo gehört und was nicht |
 
 ---
 
@@ -137,7 +108,7 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 | Flex layouts | ✅ Working | VERTICAL, HORIZONTAL, alignment |
 | Node operations | ✅ Working | Create, delete, rename |
 | Verification via get_metadata() | ✅ Working | XML-based confirmation |
-| Variables (create/link) | ✅ Working | via `use_figma` (früher ❌ — doc #4 nur noch Fallback) |
+| Variables (create/link) | ✅ Working | via `use_figma` (früher ❌ — 1.6 nur noch Fallback) |
 
 ## Related
 
