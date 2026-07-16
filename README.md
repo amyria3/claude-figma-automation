@@ -111,6 +111,7 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 ### 8. `user-is-learning-terminal-commands`
 - Terminal commands with explanations for beginners
 - Split into: already known / learning / not yet needed
+- **Liegt bewusst nur lokal bei der Nutzerin — wird nicht gepusht** (Index-Eintrag dient nur der Vollständigkeit)
 
 ### 9. `figma-automation-skill.md`
 - Downloadbare Skill-Definition für Claude
@@ -119,6 +120,10 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 ### 12. `github-web-editor-notes.md`
 - Technische Hinweise für Claude zum Bearbeiten von Repo-Dateien über den GitHub-Web-Editor (CodeMirror 6)
 - selectAll+insertText-Komplettersatz, Virtualisierung, Preview-Verifikation, Commit-Workflow
+
+### 13. `offene-punkte.md`
+- Zentrale Liste ausschließlich für unklare Punkte und unbeendete Aufgaben (Nutzerin + alle Claude-Instanzen)
+- Bei Session-Ende offene Aufgaben hier eintragen, Erledigtes streichen
 
 ---
 
@@ -141,4 +146,4 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 
 ## Last Updated
 
-July 15, 2026
+July 16, 2026
