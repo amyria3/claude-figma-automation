@@ -17,9 +17,8 @@ description: "Figma Automation & Text-Operationen mit Claude. NUTZE DIESEN SKILL
 ## ⚙️ Einrichtung
 
 ### Voraussetzungen
-- Figma MCP in Claude.ai: **Einstellungen → Connectors → Figma** aktivieren
-- GitHub MCP: Docker Desktop muss laufen (gilt für Claude.ai UND Desktop)
-  → Details: `github-mcp-setup.md`
+- Figma-Zugriff: **Figma-Connector** in Cowork/claude.ai verbinden (Einstellungen → Connectors → Figma) — Schreibzugriff läuft via `use_figma` (Remote-MCP), Details: `figma-schreibzugriff-use_figma.md`
+- Repo-Zugriff: **keine Installation nötig** — Referenzdateien via Raw-URLs lesen (`https://raw.githubusercontent.com/amyria3/claude-figma-automation/main/<datei>`). GitHub MCP via Docker ist nur noch Legacy: `github-mcp-setup.md`
 
 ### Schnellstart
 1. Figma Edit-Link teilen: **Share → Copy edit link**
@@ -28,7 +27,7 @@ description: "Figma Automation & Text-Operationen mit Claude. NUTZE DIESEN SKILL
 
 ---
 
-## 📂 Pflichtlektüre beim Start (via GitHub MCP)
+## 📂 Pflichtlektüre beim Start (via Raw-URLs)
 
 Bei jeder Figma-Aufgabe diese Dateien aus dem Repository laden:
 
@@ -40,7 +39,7 @@ Bei jeder Figma-Aufgabe diese Dateien aus dem Repository laden:
 | 4 | `figma-stylesheet-workaround.md` | Nur noch für Variable-Sonderfälle (bei Bedarf) |
 | 5 | `figma-kollaboration-workflows.md` | Empfohlene Workflows (bei Workflow-Fragen) |
 
-> Falls GitHub MCP nicht verfügbar: Nutzerin bitten, Dateien manuell einzufügen oder als Text zu teilen.
+> Falls die Raw-URLs nicht erreichbar sind: Nutzerin bitten, Dateien manuell einzufügen oder als Text zu teilen. (Legacy-Alternative: GitHub MCP, siehe `github-mcp-setup.md`.)
 
 ---
 
