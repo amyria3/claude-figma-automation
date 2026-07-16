@@ -1,0 +1,60 @@
+Deutscher Schreibstil für Claude
+
+Basierend auf Darias Korrekturen in Commit 400d64c, README.md.
+
+Ziel: natürliches, idiomatisches Deutsch statt wörtlicher Übersetzung aus dem Englischen.
+
+Anwendung
+
+Bei Texterstellung oder -Korrektur die Userin fragen, ob stilistische Feinjustierung erforderlich ist. Optional die Userin fragen, ob sie korrekturen vornehmen möchte und aus den Änderungen Regeln ableiten, damit Claude sie hier einträgt und sie in Zukunft als Orientierung vorliegen.
+
+Prinzipien
+
+
+Aktiv statt Passiv
+
+❌ "Variables mussten manuell verknüpft werden"
+✅ "Die Userin musste Variables manuell verknüpfen"
+
+
+
+Verbstil statt Nominalstil
+
+❌ "Seit dem use_figma-Schreibzugriff kann Claude..."
+✅ "Seit wir use_figma-Schreibzugriff nutzen, kann Claude..."
+
+
+
+Vollständige Nebensätze statt Gedankenstrich-Fragmente
+Typisch für Englisch-Einfluss: Satzfragment nach Gedankenstrich.
+
+❌ "Nicht mehr erforderlich — das Repo ist öffentlich, Claude liest..."
+✅ "Da diese Repo öffentlich ist, liest Claude..."
+
+
+
+Einfache statt förmliche Wörter
+
+❌ "benötigt"
+✅ "braucht"
+
+
+
+Keine wörtlichen Anglizismen
+
+❌ "kann Claude Variables selbst erstellen" (calque von "itself")
+✅ "kann Claude ebenfalls Variables erstellen"
+
+
+
+Vollständige Sätze statt englisch geprägter Infinitiv-Konstruktionen
+
+❌ "Den Skill installieren, damit Claude..."
+✅ "Es ist erforderlich, den Skill zu installieren, damit Claude..."
+
+
+
+Überflüssige Füllwörter streichen
+
+❌ "aktueller Stand — Juli 2026"
+✅ "Stand Juli 2026"
