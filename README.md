@@ -2,11 +2,12 @@
 
 ## For the User
 
-Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Claude für die Automatisierung von Figma-Aufgaben benötigt. Das Setup ist so gedacht, dass Claude die Dateien direkt aus dieser Repository ausliest — die Userin muss nichts manuell übertragen.
+Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Claude für die Automatisierung von Figma-Aufgaben braucht. Das Setup ist so gedacht, dass Claude die Dateien direkt aus dieser Repository ausliest — die Userin muss nichts manuell übertragen.
+
 Enjoy KI, enjoy liebe*r Nutzer *in. 
 
 
-### Setup (aktueller Stand — Juli 2026)
+### Setup (Stand Juli 2026)
 
 **Für Figma-Schreibzugriff ist keine lokale Installation mehr nötig.**
 
@@ -15,9 +16,9 @@ Enjoy KI, enjoy liebe*r Nutzer *in.
 
 Details & Fallback-Weg: `figma-schreibzugriff-use_figma.md`
 
-### Legacy-Setup: GitHub MCP via Docker (optional)
+### Legacy-Setup: GitHub MCP via Docker (optional, nicht mehr erforderlich)
 
-**Nicht mehr erforderlich** — das Repo ist öffentlich, Claude liest die Dateien direkt über die Raw-URLs (siehe Instructions unten). Das alte Setup funktioniert weiterhin, falls gewünscht:
+Da diese Repo öffentlich ist, liest Claude die Dateien direkt über die Raw-URLs (siehe Instructions unten). Das Setup mit Docker funktioniert weiterhin, falls in Ausnahmefällen benötigt:
 
 1. Docker Desktop installieren → [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
 2. Claude Desktop installieren → [claude.ai/download](https://claude.ai/download)
@@ -26,10 +27,10 @@ Details & Fallback-Weg: `figma-schreibzugriff-use_figma.md`
 
 ### Was Claude inzwischen automatisch kann: Variables
 
-Früher mussten Variables **manuell** verknüpft werden (Limitation der alten API-Anbindung). **Seit dem `use_figma`-Schreibzugriff kann Claude Variables selbst erstellen, Modes/Scopes setzen und an Properties binden.** Der `figma-stylesheet-workaround.md` ist nur noch Fallback/Archiv.
+Ursprünglich musste die Userin Variables **manuell** verknüpfen (Limitation der alten API-Anbindung). **Seit wir `use_figma`-Schreibzugriff nutzen, kann Claude ebenfalls Variables erstellen, Modes/Scopes setzen und an Properties binden.** Der `figma-stylesheet-workaround.md` ist nur noch Fallback/Archiv.
 
 ### Claude Skill installieren
-Den `figma-automation` Skill lokal installieren damit Claude bei jeder Figma-Erwähnung automatisch die richtigen Dateien lädt:
+Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit Claude aufs Stichwort 'Figma' die richtigen Dateien aufruft:
 → [`figma-automation-skill.md`](./figma-automation-skill.md) herunterladen → Claude.ai → Einstellungen → Skills → Skill hinzufügen
 
 ---
@@ -44,7 +45,7 @@ Den `figma-automation` Skill lokal installieren damit Claude bei jeder Figma-Erw
 > 5. `figma-kollaboration-workflows.md` – recommended collaboration workflows (load for workflow questions)
 > 11. `figma-schreibzugriff-use_figma.md` – **Schreibzugriff-Setup (`use_figma`)**: primärer Weg = Figma-Connector direkt in Cowork/claude.ai verbinden, Fallback = Claude Code via Desktop Commander (load when Figma write access is needed, not yet connected, or failing)
 >
-> **Whenever the user discusses tarabao.bio content, IA, or UX/UI (independent of Figma), load:**
+> **Whenever the user discusses tarabao.bio content, IA, or UX/UI in the context of her day job (independent of Figma), load:**
 > 10. `ux-ui-dokumentation-tarabao.md` – content structure & UX/UI findings
 >
 > **Access (primär):** Repo ist öffentlich — Dateien direkt lesen via `https://raw.githubusercontent.com/amyria3/claude-figma-automation/main/<datei>`. Kein Docker, kein GitHub MCP nötig. Schreiben ins Repo: GitHub-Web-Editor via Claude in Chrome — Techniken in `github-web-editor-notes.md`.
