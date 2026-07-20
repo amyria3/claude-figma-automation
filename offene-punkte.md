@@ -2,12 +2,12 @@
 
 Zentrale Ablage **ausschließlich** für unklare Punkte und unbeendete Aufgaben (Nutzerin + alle Claude-Instanzen). Erledigtes hier streichen; Details gehören in die jeweilige Fachdatei.
 
-## Offen (Stand 16.07.2026)
+## Offen (Stand 20.07.2026)
 
-1. **`verwaiste-variables-liste.md` ins Repo übertragen** — Die vollständige Fundliste (12 gesicherte Funde + 3 Kandidaten, 32/118 Komponenten geprüft) liegt laut Nutzerin sicher im Speicher/Kontext des Web-Chats ( „Figma-Schreibverbindung wiederherstellen"), aber noch nicht im Repo. Referenziert von `2-tarabao/2.1-ux-ui-dokumentation-tarabao.md` (TODO #1). → Diese Instanz bitten, die Liste hierher zu committen.
+1. **`verwaiste-variables-liste.md` ins Repo übertragen** — Die vollständige Fundliste (12 gesicherte Funde + 3 Kandidaten, 32/118 Komponenten geprüft) liegt laut Nutzerin sicher im Speicher/Kontext des Web-Chats („Figma-Schreibverbindung wiederherstellen"), aber noch nicht im Repo. Referenziert von `2-tarabao/2.1-ux-ui-dokumentation-tarabao.md` (TODO #1). **Hinweis 20.07.:** Web-Chats sind aus Cowork-Sessions nicht auslesbar (nur lokale Sessions) — die Nutzerin muss die Liste in einen Chat einfügen, dann committet die Instanz sie als `2-tarabao/2.2-verwaiste-variables-liste.md`.
 2. ~~**`1-figma-claude-technical/1.3-figma-api-reference.md`: Async-Fix**~~ — ✅ erledigt 16.07. (`getNodeById` → `await getNodeByIdAsync` im `updateText()`-Beispiel).
-3. ~~**`test.md` löschen**~~ — ✅ erledigt 16.07. (Commit 5e71b4f, Nutzerin direkt — es gab keine zweite aktive Instanz; auch der README-Commit „Stilistic changes“ war die Nutzerin).
-4. **Audit 15.07.: „vier übrige Doku-Fixes" unklar** — Der Original-Fehlerbericht (8 Befunde) ist nicht mehr rekonstruierbar. Neuprüfung am 16.07. fand nur Punkt 2 sowie die Setup-Widersprüche (github-mcp-setup, Skill-Datei — am 16.07. korrigiert). Falls eine Instanz die 8 Befunde noch im Kontext hat: hier eintragen.
+3. ~~**`test.md` löschen**~~ — ✅ erledigt 16.07. (Commit 5e71b4f, Nutzerin direkt — es gab keine zweite aktive Instanz; auch der README-Commit „Stilistic changes" war die Nutzerin).
+4. ~~**Audit 15.07.: „vier übrige Doku-Fixes" unklar**~~ — ✅ aufgelöst 20.07. (Audit-Instanz hatte die 8 Befunde noch im Kontext). Abgleich: **(1)** README toter Link `user-is-learning...` + fehlende Index-Einträge → erledigt 16.07. (Klarstellung „bewusst lokal" + Kapitelindex); **(2)** github-mcp-setup „Docker immer erforderlich" → erledigt 16.07. (LEGACY-Framing); **(3)** api-reference „Variables komplett blockiert" (in sich widersprüchlich) → erledigt 16.07. (Korrektur 13.07. dokumentiert); **(4)** deprecated Sync-APIs (`getNodeById`, `getLocalVariableCollections`) → erledigt 15./16.07.; **(5)** automation-skill „Screenshots via get_metadata()" → erledigt 20.07. (get_screenshot / node.screenshot, get_metadata = Struktur); **(6)** workflow-technisch „aktives Tab ist Zielort / Datei muss offen sein" (galt nur für lokalen Dev-Mode-Server) + „Variables ❌" → erledigt 15.07. (v2.0: fileKey zählt beim Remote-MCP); **(7)** stylesheet-workaround „Status: Empfohlen" → erledigt 16.07. (nur noch Sonderfälle); **(8)** kollaboration Workflow 1 manuelles Text-Style-Anlegen → erledigt 20.07. (Update-Hinweis: `createTextStyle` via `use_figma`, manuelle Schritte optional).
 5. **Installierter Cowork-Skill `figma-automation` veraltet** — Die lokal installierte Kopie behauptet noch „Variables erstellen/verknüpfen ❌ API nicht unterstützt". Nur die Nutzerin kann sie ersetzen: Einstellungen → Capabilities, aktuelle Repo-Version `1-figma-claude-technical/1.6-figma-automation-skill.md` verwenden.
 6. **Verwaiste-Variables-Prüfung unvollständig** — 86 von 118 Komponenten ungeprüft (restliche Buttons, Filter & Search, Checkout-Details, Cancellation, Patterns).
 
@@ -15,4 +15,3 @@ Zentrale Ablage **ausschließlich** für unklare Punkte und unbeendete Aufgaben 
 
 - `user-is-learning-terminal-commands` (README-Index #8) liegt **bewusst nur lokal** bei der Nutzerin und wird nicht gepusht.
 - Die „TEST/PRACTICE FOR CLAUDE"-Aufgaben liefen über den Figma-Connector (`use_figma`, Remote-MCP); Referenzdateien wurden via Raw-URLs gelesen — Docker/GitHub-MCP war nicht beteiligt.
-
