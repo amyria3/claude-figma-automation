@@ -33,7 +33,7 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 
 > **Language rule (agreed 2026-07-16, clarified 2026-07-16):** Write everything that is purely Claude-facing — instructions, technical notes, this block, commit messages — in English to reduce token usage. Exceptions: anything the user reads or edits herself, and German language examples (`3-claude-meta/3.3-german-stilguide-claude.md`). Existing German docs stay as they are; apply the rule to new or substantially rewritten content.
 >
-> **Scope clarification:** files under `1-figma-claude-technical/` (e.g. `1.2-figma-workflow-technisch.md`, `1.3-figma-api-reference.md`) are purely Claude-facing in their entirety, not just their new sections — translate the whole file to English when editing it, do not leave it partly German/partly English. This applies per-file, not per-added-content. Files the user actively reads or co-writes with Claude (e.g. `2-tarabao/2.1-ux-ui-dokumentation-tarabao.md`, `offene-punkte.md`) stay in German regardless of this rule.
+> **Scope clarification:** files under `1-figma-claude-technical/` (e.g. `1.2-figma-workflow-technisch.md`, `1.3-figma-api-reference.md`) are purely Claude-facing in their entirety, not just their new sections — translate the whole file to English when editing it, do not leave it partly German/partly English. This applies per-file, not per-added-content. Files the user actively reads or co-writes with Claude (e.g. `2-tarabao/2.1-ux-ui-dokumentation-tarabao.md`, `2-tarabao/offene-punkte.md`) stay in German regardless of this rule.
 >
 > **Whenever the user mentions Figma, load these files before starting any task:**
 > - `1-figma-claude-technical/1.2-figma-workflow-technisch.md` — pre-flight checklist & golden rules
@@ -47,7 +47,7 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 >
 > **When editing repo files via the GitHub web editor:** `3-claude-meta/3.1-github-web-editor-notes.md`
 > **When writing or correcting German text for the user:** `3-claude-meta/3.3-german-stilguide-claude.md`
-> **Open tasks & unclear points:** `offene-punkte.md` (root) — check at session start, update before session end.
+> **Open tasks & unclear points:** `2-tarabao/offene-punkte.md` — check at session start, update before session end.
 >
 > **Access (primary):** repo is public — read files via `https://raw.githubusercontent.com/amyria3/claude-figma-automation/main/<pfad>`. No Docker, no GitHub MCP. Writing to the repo: GitHub web editor via Claude in Chrome — techniques in `3-claude-meta/3.1-github-web-editor-notes.md`.
 > **Access (legacy, optional):** GitHub MCP via Docker (`4-setup-legacy/4.1-github-mcp-setup.md`); start order: 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai
@@ -96,7 +96,7 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 | Datei | Inhalt |
 |---|---|
 | `figma-design-principles-arkadieff.md` | Design-Prinzipien: Flex-Layouts, Naming, Spacing- & Typography-Tokens |
-| `offene-punkte.md` | Zentrale Liste ausschließlich für unklare Punkte und unbeendete Aufgaben — bei Session-Ende aktualisieren |
+| `2-tarabao/offene-punkte.md` | Zentrale Liste ausschließlich für unklare Punkte und unbeendete Aufgaben — bei Session-Ende aktualisieren |
 | `SCOPE.md` | Was in dieses Repo gehört und was nicht |
 
 ---
