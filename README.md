@@ -81,6 +81,7 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 | `3.1-github-web-editor-notes.md` | Techniken für Repo-Bearbeitung über den GitHub-Web-Editor (CodeMirror 6): selectAll+insertText, Commit-Workflow |
 | `3.2-claude-architektur-chat-project-memory-artefakte.md` | Wie Chats, Project Memory und Artefakte zusammenhängen; was persistent ist und was nicht |
 | `3.3-german-stilguide-claude.md` | Deutscher Schreibstil für Claude: aktiv statt passiv, Verbstil, einfache Wörter — aus Darias Korrekturen abgeleitet |
+| `3.4-geteilte-claude-projekte.md` | Verzeichnis geteilter Claude-Projekte (claude.ai): Zweck/Zielgruppe + Link — u. a. Geschäftsführung & IT |
 
 ### 4-setup-legacy/ — System-Setup (Legacy/optional)
 
@@ -119,4 +120,4 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 
 ## Last Updated
 
-July 16, 2026
+July 21, 2026
