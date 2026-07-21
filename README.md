@@ -47,7 +47,7 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 >
 > **When editing repo files via the GitHub web editor:** `3-claude-meta/3.1-github-web-editor-notes.md`
 > **When writing or correcting German text for the user:** `3-claude-meta/3.3-german-stilguide-claude.md`
-> **Open tasks & unclear points:** `2-tarabao/offene-punkte.md` — check at session start, update before session end.
+> **Open tasks & unclear points:** `2-tarabao/offene-punkte.md` (Tarabao) and `1-figma-claude-technical/offene-punkte.md` (Claude/tech) — check at session start, update before session end.
 >
 > **Access (primary):** repo is public — read files via `https://raw.githubusercontent.com/amyria3/claude-figma-automation/main/<pfad>`. No Docker, no GitHub MCP. Writing to the repo: GitHub web editor via Claude in Chrome — techniques in `3-claude-meta/3.1-github-web-editor-notes.md`.
 > **Access (legacy, optional):** GitHub MCP via Docker (`4-setup-legacy/4.1-github-mcp-setup.md`); start order: 1. Docker Desktop → 2. Claude Desktop → 3. Claude.ai
@@ -96,7 +96,8 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 | Datei | Inhalt |
 |---|---|
 | `figma-design-principles-arkadieff.md` | Design-Prinzipien: Flex-Layouts, Naming, Spacing- & Typography-Tokens |
-| `2-tarabao/offene-punkte.md` | Zentrale Liste ausschließlich für unklare Punkte und unbeendete Aufgaben — bei Session-Ende aktualisieren |
+| `2-tarabao/offene-punkte.md` | Offene Punkte & Klarstellungen zu Tarabao (Shop, Figma-Datei, Inhalte) — bei Session-Ende aktualisieren |
+| `1-figma-claude-technical/offene-punkte.md` | Offene Punkte & Klarstellungen zu Claude & Technik (Setup, Skills, Doku) — bei Session-Ende aktualisieren |
 | `SCOPE.md` | Was in dieses Repo gehört und was nicht |
 
 ---
