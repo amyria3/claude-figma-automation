@@ -18,8 +18,6 @@ Zentrale Ablage **ausschließlich** für unklare Punkte und unbeendete Aufgaben 
 
 7. **Dev Mode kann veralteten Modi-Stand anzeigen** — Nach dem Löschen der Variablen-Collection „__Product Examples“ (22.07.2026, ersetzt durch „__Produkte“ ohne Modi, 736 Bindungen migriert) kann die Dev-Mode-Ansicht noch den alten Modi-Stand widerspiegeln. Bei der Übergabe an Lukas/Carsten darauf hinweisen: Angaben im Zweifel gegen das Variablen-Panel im Design Mode prüfen, nicht gegen Dev Mode.
 
-8. **Tote Modus-Verweise auf 7 weitere gelöschte Collections (~4.900 Nodes)** — Beim Aufräumen der „__Product Examples"-Reste (22.07., 423 Nodes bereinigt) gefunden: explizite Modus-Zuweisungen auf die gelöschten Collections „Tint color-modes" (4.099), „White color-modes" (625), „Buttons/Sizes" (516), „Inputs Types" (47), „Buttons/Mid/Secondary" (31), „Colors" (12), „Pages" (3) — Ursache derselben Dev-Mode-Geisteranzeigen wie Punkt 7. Bereinigungsrezept ist verifiziert (1.3, Abschnitt Slots/Property-Gotchas); Freigabe von Daria steht aus.
-
 9. **Inhalt (!) von `PaddingWrapperForScrollableContent` als Komponente anlegen** — Der Wrapper beinhaltet in den Screen-Mockups (PAGES) manchmal die komplette Produktseite, bisher als je Screen kopierte Frames (u. a. Tablet 04/04b/04c, Mobile 04/04a/04b). Den Inhalt (nicht den Wrapper selbst) als Komponente anlegen und in allen Screens aktualisieren. (Befund 22.07.2026 beim H1/H3-Headline-Scan: dort liegen auch die stillosen 48px-Headlines „Herkunft, Aufbewahrung & Nährwerte" in ProductInfoAndSEO/FAQs, „Unsere Neuzugänge", Newsletter und „Was unsere Kund*innen sagen"; ein veralteter FAQs-Block auf Tablet/04b wurde am 22.07. gelöscht.)
 
 ## Klarstellungen (keine Fehler)
