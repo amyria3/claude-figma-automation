@@ -78,6 +78,8 @@ flex-col (fill)
 
 *Ausnahme: Elemente mit wirklich fixer, nicht-textbasierter Größe — z.B. ein quadratisches Icon, ein Avatar, ein Badge mit fester Pixelgröße. Textbasierte Elemente, auch kurze Labels, bekommen immer `fill`.*
 
+**Ergänzung (21.07.2026) — Primitives & Slot-Einsatz:** Gilt insbesondere für Typo-Primitives (Headlines, Paragraphs) und Content Modules: Der Textknoten übernimmt per `fill` die Breite seines Frames — auf jeder Verschachtelungsebene, auch innerhalb von Wrapper-Frames wie `Title`. Wird eine Instanz in einen Slot oder ein Modul gesetzt (auch nach Instance-Swap), sind Frame UND Textknoten auf `fill` zu prüfen. Breiten-Constraints (min-/max-w) gehören an den Container — nie an den Textknoten oder das Primitive selbst (vgl. max-w-Entfernung am Master von Primitives / Headlines / H3, 21.07.2026).
+
 ### Principle 7: flex-wrap und Grid — Wahl nach Struktur
 `flex-wrap` für dynamische Inhalte ohne bekannte Anzahl. Grid (`grid-cols`) wenn Spaltenanzahl fix und vorhersehbar. Kinder in beiden Fällen standardmäßig `fill` — sie teilen den verfügbaren Platz gleichmäßig auf.
 
