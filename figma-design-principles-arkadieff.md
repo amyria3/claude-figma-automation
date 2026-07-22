@@ -167,6 +167,29 @@ Button (Variant: Inactive=True)   ← zurück zum Ausgangszustand, kein separate
 
 ---
 
+## 🧩 Slots & Content Modules — Bauprinzip für CMS-abbildende Komponenten
+
+**Referenz:** [`ContentModules / Basic`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7565-24446) (Seite COMPONENTS & SCREENS) — an dieser Komponente ist das Muster vollständig umgesetzt. Derselben Mechanik folgen [`ContentModules / CustomContent`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7660-20273) und [`Section / CustomSection`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7601-22036).
+
+Damit eine Komponente das CMS-Verhalten korrekt abbildet und „Explore Component Behavior" sauber funktioniert, braucht **jeder austauschbare Inhaltsbereich vier Bausteine**:
+
+1. **Slot-Property** (Typ SLOT) — der Platzhalter, in dem ein Primitive bzw. Content Module steckt. Beispiel Basic: `Headline`, `Paragraph`.
+2. **Preferred Values am Slot** — die abschließende Liste der erlaubten Inhalte. Das ist die CMS-Regel „nur erlaubte Werte" in Figma: Headline-Slot → H1/H2/H3; Paragraph-Slot → Paragraphs/Default + Paragraphs/LG. Nichts anderes gehört hinein.
+3. **Zugehörige Varianten-Achse pro Slot** (`TypeOfHeadline`, `TypeOfParagraph`) — Figma verlangt zu jedem Slot eine Varianten-Achse; jede Variante trägt den Slot mit anderem Default-Inhalt. Die Achsen-Werte heißen wie das Primitive im Slot, mit vollem Pfad (z. B. `Primitives / Headline / H2 / Default`), damit im Playground ohne Layer-Suche ablesbar ist, welcher Baustein gerade im Slot steckt. **Wichtig:** Diese Achse ist keine Redundanz, sondern Teil der Slot-Verdrahtung — nicht „aufräumen".
+4. **Boolean-Achse für optionale Bereiche** — z. B. `Has Headline?=True/False` (Naming nach Principle 15).
+
+**Warum keine freien Overrides:** Die Texte der Primitives hängen an Content-Variablen, die Auswahl läuft ausschließlich über Slots und Achsen. So zeigt die Komponente exakt die Zustände, die es geben darf — und nur diese. (Übergabe-Prinzip: nichts frei überschreiben, alles über Slots/Varianten/Properties.)
+
+### Explore Component Behavior — Anleitung für Lukas & Carsten
+
+1. Datei **B2C-und-CI** öffnen und oben rechts in den **Dev Mode** wechseln (`</>`-Toggle).
+2. Komponente oder Instanz auswählen — z. B. [`ContentModules / Basic`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7565-24446).
+3. Im rechten Panel **„Explore component behavior"** öffnen (Component Playground).
+4. Dort alle Properties durchschalten: `Has Headline?`, `TypeOfHeadline`, `TypeOfParagraph` und die Slot-Inhalte. Der Playground ist eine Sandbox — nichts davon verändert das Design.
+5. Lesart: **Jede im Playground erreichbare Kombination ist ein gültiger CMS-Zustand.** Kombinationen, die dort nicht existieren, sind bewusst nicht vorgesehen — bitte nicht per Override nachbauen.
+
+---
+
 ## 📛 Naming-Konventionen
 
 - **Inhaltliche Container:** `[Element]Container` — z.B. `FeedContainer`, `CardContainer`
@@ -188,3 +211,4 @@ MainContent (flex-col)
 ---
 
 *Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen. Design-Tokens (Text Styles, Box-Spacing & Gap, Tailwind-Utility-Scale) und offene TODOs stehen in `ux-ui-dokumentation-tarabao.md`.*
+
