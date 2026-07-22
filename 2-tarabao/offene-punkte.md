@@ -16,6 +16,8 @@ Zentrale Ablage **ausschließlich** für unklare Punkte und unbeendete Aufgaben 
 
 6. **Dopplung nervt massiv: `Components / TabContent` (7448:20255) existiert weiterhin parallel zu den neuen Content Modules** — Das alte Set (5 Varianten: Text And Img H2/H3, Text Only, Table, Complex Content) dupliziert inhaltlich die neue Content-Module-Ebene (u. a. CustomContent = ex-TextAndImg). Stört im Picker, bei der Pflege und birgt Verwechslungsgefahr. Zu klären: SectionTabs-Content direkt auf Content-Module umstellen, dann TabContent auflösen. Achtung: die Varianten stecken als Instanzen in `Section / Tabs / SectionTabs`. Link: https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/?node-id=7448-20255 Stand 22.07.2026: nur noch 4 Verwendungen — SectionTabs-Variante „Bewertungen" (7448:20797), verwaiste „Selected?5" (7549:22257) und 2× Tablet-Screen 04-ProductDetails; nach deren Umbau löschbar. UMBAU ABGESCHLOSSEN 22.07.: alle Verwendungen aufgelöst (Bewertungen-Variante → direkte CustomerReviews-Instanz + box-spacing-xl; Screen-Instanzen detacht, Geist-Master „Über das Produkt“ 7448:19300 bereinigt) — 0 Verwendungen, Set kann gelöscht werden.
 
+7. **Dev Mode kann veralteten Modi-Stand anzeigen** — Nach dem Löschen der Variablen-Collection „__Product Examples“ (22.07.2026, ersetzt durch „__Produkte“ ohne Modi, 736 Bindungen migriert) kann die Dev-Mode-Ansicht noch den alten Modi-Stand widerspiegeln. Bei der Übergabe an Lukas/Carsten darauf hinweisen: Angaben im Zweifel gegen das Variablen-Panel im Design Mode prüfen, nicht gegen Dev Mode.
+
 ## Klarstellungen (keine Fehler)
 
 - Ungebundene Abstände auf Component-Set-Rahmen und Canvas-Ordnungsframes sind **Absicht** (nur innerhalb von Varianten sind sie ein Befund).
