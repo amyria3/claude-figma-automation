@@ -175,7 +175,7 @@ Damit eine Komponente das CMS-Verhalten korrekt abbildet und „Explore Componen
 
 1. **Slot-Property** (Typ SLOT) — der Platzhalter, in dem ein Primitive bzw. Content Module steckt. Beispiel Basic: `Headline`, `Paragraph`.
 2. **Preferred Values am Slot** — die abschließende Liste der erlaubten Inhalte. Das ist die CMS-Regel „nur erlaubte Werte" in Figma: Headline-Slot → H1/H2/H3; Paragraph-Slot → Paragraphs/Default + Paragraphs/LG. Nichts anderes gehört hinein.
-3. **Zugehörige Varianten-Achse pro Slot** (`TypeOfHeadline`, `TypeOfParagraph`) — Figma verlangt zu jedem Slot eine Varianten-Achse; jede Variante trägt den Slot mit anderem Default-Inhalt. Die Achsen-Werte heißen wie das Primitive im Slot, mit vollem Pfad (z. B. `Primitives / Headline / H2 / Default`), damit im Playground ohne Layer-Suche ablesbar ist, welcher Baustein gerade im Slot steckt. **Wichtig:** Diese Achse ist keine Redundanz, sondern Teil der Slot-Verdrahtung — nicht „aufräumen".
+3. **Zugehörige Varianten-Achse pro Slot** (`TypeOfHeadline`, `TypeOfParagraph`) — Figma verlangt zu jedem Slot eine Varianten-Achse; jede Variante trägt den Slot mit anderem Default-Inhalt. **Der Achsen-Name trägt den Namen seines Slots**, damit Achse und Slot einander eindeutig zuordenbar sind — bestehende Muster: `TypeOf<Slot>` (Slot `Headline` → `TypeOfHeadline`, Slot `Paragraph` → `TypeOfParagraph`) sowie `SlotContent` für den Content-Slot in CustomContent und CustomSection. Die Achsen-Werte heißen wie das Primitive im Slot, mit vollem Pfad (z. B. `Primitives / Headline / H2 / Default`), damit im Playground ohne Layer-Suche ablesbar ist, welcher Baustein gerade im Slot steckt. **Wichtig:** Diese Achse ist keine Redundanz, sondern Teil der Slot-Verdrahtung — nicht „aufräumen".
 4. **Boolean-Achse für optionale Bereiche** — z. B. `Has Headline?=True/False` (Naming nach Principle 15).
 
 **Warum keine freien Overrides:** Die Texte der Primitives hängen an Content-Variablen, die Auswahl läuft ausschließlich über Slots und Achsen. So zeigt die Komponente exakt die Zustände, die es geben darf — und nur diese. (Übergabe-Prinzip: nichts frei überschreiben, alles über Slots/Varianten/Properties.)
@@ -211,4 +211,3 @@ MainContent (flex-col)
 ---
 
 *Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen. Design-Tokens (Text Styles, Box-Spacing & Gap, Tailwind-Utility-Scale) und offene TODOs stehen in `ux-ui-dokumentation-tarabao.md`.*
-
