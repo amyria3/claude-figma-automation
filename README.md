@@ -72,7 +72,8 @@ Es ist erforderlich, den `figma-automation` Skill lokal zu installieren, damit C
 
 | Datei | Inhalt |
 |---|---|
-| `2.1-ux-ui-dokumentation-tarabao.md` | UX/UI- und Content-Struktur-Erkenntnisse, Kategorien vs. Sammlungen, TODOs (u.a. verwaiste Variables) |
+| `2.1-ux-ui-dokumentation-tarabao.md` | UX/UI- & Content-Struktur-Regeln |
+| `2.2-tailwind.md` | Details zum Style-System |
 
 ### 3-claude-meta/ — Claudes Arbeitsweise
 
