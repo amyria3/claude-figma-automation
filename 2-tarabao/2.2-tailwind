@@ -7,7 +7,7 @@ Das Code-Äquivalent spiegelt Figma 1:1: **semantische Tokens als CSS-Variablen 
 ```css
 @import "tailwindcss";
 
-/* 1) Palette (= Clrs) — Rohwerte, NIE direkt im Markup nutzen */
+/* 1) Palette (= Clrs) — Beispiel Rohwerte (Primitives), nie direkt in der Komponente nutzen */
 :root {
   --cole-tint-90: #1d2020;
   --cole-tint-100: #1d2020;
@@ -19,6 +19,7 @@ Das Code-Äquivalent spiegelt Figma 1:1: **semantische Tokens als CSS-Variablen 
 }
 
 /* 2) Semantische Utilities (= Clrs / Color Modes).
+
       `inline` ist wichtig: so geben die Utilities `var(--…)` aus und
       bleiben zur Laufzeit über data-theme umschaltbar. */
 @theme inline {
@@ -82,7 +83,6 @@ Die vier Figma-Modi = vier `data-theme`-Werte. Pro Theme werden nur die **semant
 ```
 
 ## 2 Nutzung
-
 ```html
 <section data-theme="purple-snow" class="bg-surface">
   <p class="text-content-text">Fließtext …</p>
