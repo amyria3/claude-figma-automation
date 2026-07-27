@@ -1,0 +1,886 @@
+@import "tailwindcss";
+
+/* ================================================================
+ *  DESIGN TOKENS — Figma → Tailwind v4
+ *  Source: Figma file rLwATluwV4CSS5rXceLptH
+ *  Verified against live Figma variables: 2026-07-27
+ *
+ *  Excluded by rule: all "__"-prefixed collections.
+ *
+ *  Layer stack:
+ *    1. Primitives            :root (raw hex, never themed, never used directly)
+ *    2. Semantic tokens       :root + [data-theme] / [data-campaign] switches
+ *    3. Tailwind utilities    @theme inline (colors) + @theme (static scales)
+ *
+ *  Änderungsprotokoll & Begründungen:
+ *    2-tarabao/2.4-app-tcss-aenderungsprotokoll.md
+ *  Architektur & Token-Herkunft:
+ *    2-tarabao/2.3-design-tokens-tailwind-v4.md
+ * ================================================================ */
+
+
+/* ================================================================
+ *  1. PRIMITIVES — Raw palette values, never themed
+ *     46 variables, "Clrs / Primitives"
+ * ================================================================ */
+
+:root {
+  /* Cole Tint */
+  --cole-tint-100: #1d2020;
+  --cole-tint-90: #1d2020e5;
+  --cole-tint-60: #1d202099;
+
+  /* Purple Tint Light */
+  --purple-tint-light-100: #48426a;
+  --purple-tint-light-old: #57536f;
+  --purple-tint-light-60: #57536f99;
+
+  /* Purple Tint Dark */
+  --purple-tint-dark-dark: #25232b;
+  --purple-tint-dark-90: #25232be5;
+  --purple-tint-dark-60: #25232b99;
+
+  /* Warm White */
+  --warm-white-100: #fff9f2;
+  --warm-white-80: #fff9f2cc;
+  --warm-white-60: #fff9f299;
+
+  /* Snow White */
+  --snow-white-100: #ffffff;
+  --snow-white-90: #ffffffe5;
+  --snow-white-60: #ffffff99;
+
+  /* Purple Early Evening Sky */
+  --purple-early-evening-sky-100: #d0cde3;
+  --purple-early-evening-sky-40: #d9d6eb66;
+  --purple-early-evening-sky-40-opaque: #e7e5f2;
+  --purple-early-evening-sky-40-opaque-50: #e7e5f280;
+
+  /* Golden Orange */
+  --golden-orange-100: #ff7f4c;
+  --golden-orange-90: #ff7f4ce5;
+
+  /* Peachy Coral */
+  --peachy-coral-100: #ffbb83;
+  --peachy-coral-90: #ffbb83e5;
+
+  /* Yellow */
+  --yellow-sunflower-100: #ffb900;
+  --yellow-sunflower-90: #ffb900e5;
+  --yellow-lemon-100: #ffd000;
+
+  /* Greens */
+  --pistachio-green-100: #cbf7e2;
+  --pistachio-green-95: #cbf7e2f2;
+  --forest-green-100: #00463d;
+  --tarabao-green-100: #005c5b;
+  --vibrant-green-100: #00cb6a;
+  --vibrant-green-10: #00cb6a1a;
+
+  /* Blues & Purples */
+  --passiflore-purple-100: #514a9f;
+  --sky-blue-100: #4b76f3;
+  --sky-blue-90: #4b76f3e5;
+  --morning-sky-purple-100: #ece8ff;
+  --morning-sky-purple-80: #ece8ffcc;
+  --cloudy-blue-100: #b8d2ef;
+  --cloudy-lilac-purple-100: #9d97c6;
+  --lilac-purple-100: #b2a8ff;
+  --lilac-purple-90: #b2a8ffe5;
+
+  /* Pinks */
+  --flower-rosa-100: #e7b3e2;
+  --peach-rosa-100: #ffabaa;
+
+  /* Functional Raw */
+  --vivid-red-100: #ff0000;
+  --vivid-red-10: #ff00001a;
+
+  /* Transparent (transparent cole-tint, not pure transparent) */
+  --transparent-100: #1d202000;
+}
+
+
+/* ================================================================
+ *  2a. COLOR MODES — [data-theme], section- or component-level
+ *
+ *  55 tokens from "Clrs / Color Modes", 4 modes:
+ *    cole-tint-surface-warm   (default)
+ *    cole-tint-surface-snow
+ *    purple-tint-surface-warm
+ *    purple-tint-surface-snow
+ *
+ *  Each block is COMPLETE on purpose. Do not reduce these to diffs —
+ *  custom properties inherit, so a partial block leaks the ancestor's
+ *  theme for every token it omits. Completeness is what makes nesting
+ *  (<section data-theme=A><article data-theme=B>) behave like a Figma
+ *  mode pin.
+ * ================================================================ */
+
+/* ---- Mode 1 (default): cole-tint-surface-warm ---- */
+:root,
+[data-theme="cole-tint-surface-warm"] {
+  /* Surface */
+  --surface-color: var(--warm-white-100);
+  --surface-placeholder: var(--purple-tint-light-old);
+
+  /* Content */
+  --content-text: var(--cole-tint-100);
+  --content-weak: var(--cole-tint-60);
+  --content-loud-headline: var(--cole-tint-100);
+
+  /* Button Primary */
+  --btn-primary-bg: var(--cole-tint-90);
+  --btn-primary-label: var(--warm-white-80);
+  --btn-primary-bg-hover: var(--cole-tint-100);
+  --btn-primary-label-hover: var(--warm-white-100);
+  --btn-primary-bg-inactive: var(--cole-tint-60);
+  --btn-primary-label-inactive: var(--warm-white-60);
+
+  /* Button Secondary */
+  --btn-secondary-bg: var(--transparent-100);
+  --btn-secondary-label: var(--cole-tint-90);
+  --btn-secondary-bg-hover: var(--cole-tint-90);
+  --btn-secondary-label-hover: var(--warm-white-100);
+  --btn-secondary-bg-inactive: var(--transparent-100);
+  --btn-secondary-label-inactive: var(--cole-tint-60);
+
+  /* Button Inline */
+  --btn-inline-bg: var(--transparent-100);
+  --btn-inline-label: var(--cole-tint-90);
+  --btn-inline-bg-hover: var(--cole-tint-90);
+  --btn-inline-label-hover: var(--warm-white-80);
+  --btn-inline-bg-inactive: var(--transparent-100);
+  --btn-inline-label-inactive: var(--cole-tint-60);
+
+  /* Input */
+  --input-label: var(--cole-tint-90);
+  --input-bg-active: var(--purple-early-evening-sky-40-opaque);
+  --input-label-active: var(--cole-tint-100);
+  --input-placeholder: var(--cole-tint-60);
+  --input-label-inactive: var(--cole-tint-60);
+
+  /* Segmented */
+  --segmented-bg: var(--transparent-100);
+  --segmented-label: var(--cole-tint-90);
+  --segmented-bg-hover: var(--cole-tint-90);
+  --segmented-label-hover: var(--warm-white-60);
+  --segmented-bg-selected: var(--cole-tint-90);
+  --segmented-label-selected: var(--warm-white-80);
+
+  /* Counter */
+  --counter-bg: var(--transparent-100);
+  --counter-label: var(--purple-tint-dark-90);
+  --counter-bg-hover: var(--purple-early-evening-sky-100);
+
+  /* Variant Selector Buttons */
+  --vs-btn-bg: var(--purple-early-evening-sky-40);
+  --vs-btn-label: var(--cole-tint-90);
+  --vs-btn-bg-hover: var(--cole-tint-90);
+  --vs-btn-label-hover: var(--warm-white-100);
+  --vs-btn-bg-selected: var(--cole-tint-90);
+  --vs-btn-label-selected: var(--warm-white-80);
+
+  /* Card */
+  --card-surface: var(--warm-white-100);
+  --card-surface-hover: var(--purple-early-evening-sky-40-opaque-50);
+  --card-content-text: var(--cole-tint-100);
+  --card-content-text-hover: var(--cole-tint-100);
+  --card-btn: var(--warm-white-100);
+  --card-btn-hover: var(--purple-early-evening-sky-40-opaque);
+
+  /* Block */
+  --block-surface: var(--warm-white-100);
+  --block-content-text: var(--cole-tint-100);
+
+  /* Functional (theme-independent, but restated for completeness) */
+  --error-content: var(--vivid-red-100);
+  --error-bg: var(--vivid-red-10);
+  --success-content: var(--vibrant-green-100);
+  --success-bg: var(--vibrant-green-10);
+}
+
+/* ---- Mode 2: cole-tint-surface-snow ---- */
+[data-theme="cole-tint-surface-snow"] {
+  /* Surface */
+  --surface-color: var(--snow-white-100);
+  --surface-placeholder: var(--purple-tint-light-old);
+
+  /* Content */
+  --content-text: var(--cole-tint-100);
+  --content-weak: var(--purple-tint-dark-60);
+  --content-loud-headline: var(--cole-tint-100);
+
+  /* Button Primary */
+  --btn-primary-bg: var(--cole-tint-90);
+  --btn-primary-label: var(--warm-white-80);
+  --btn-primary-bg-hover: var(--cole-tint-100);
+  --btn-primary-label-hover: var(--warm-white-100);
+  --btn-primary-bg-inactive: var(--cole-tint-60);
+  --btn-primary-label-inactive: var(--warm-white-60);
+
+  /* Button Secondary */
+  --btn-secondary-bg: var(--transparent-100);
+  --btn-secondary-label: var(--cole-tint-90);
+  --btn-secondary-bg-hover: var(--cole-tint-90);
+  --btn-secondary-label-hover: var(--snow-white-100);
+  --btn-secondary-bg-inactive: var(--transparent-100);
+  --btn-secondary-label-inactive: var(--cole-tint-60);
+
+  /* Button Inline */
+  --btn-inline-bg: var(--transparent-100);
+  --btn-inline-label: var(--cole-tint-90);
+  --btn-inline-bg-hover: var(--cole-tint-90);
+  --btn-inline-label-hover: var(--snow-white-90);
+  --btn-inline-bg-inactive: var(--transparent-100);
+  --btn-inline-label-inactive: var(--cole-tint-60);
+
+  /* Input */
+  --input-label: var(--cole-tint-90);
+  --input-bg-active: var(--purple-early-evening-sky-40-opaque);
+  --input-label-active: var(--cole-tint-100);
+  --input-placeholder: var(--cole-tint-60);
+  --input-label-inactive: var(--cole-tint-60);
+
+  /* Segmented */
+  --segmented-bg: var(--transparent-100);
+  --segmented-label: var(--cole-tint-90);
+  --segmented-bg-hover: var(--cole-tint-90);
+  --segmented-label-hover: var(--snow-white-60);
+  --segmented-bg-selected: var(--cole-tint-90);
+  --segmented-label-selected: var(--snow-white-90);
+
+  /* Counter */
+  --counter-bg: var(--transparent-100);
+  --counter-label: var(--purple-tint-dark-90);
+  --counter-bg-hover: var(--purple-early-evening-sky-100);
+
+  /* Variant Selector Buttons */
+  --vs-btn-bg: var(--purple-early-evening-sky-40);
+  --vs-btn-label: var(--cole-tint-90);
+  --vs-btn-bg-hover: var(--cole-tint-90);
+  --vs-btn-label-hover: var(--snow-white-100);
+  --vs-btn-bg-selected: var(--cole-tint-90);
+  --vs-btn-label-selected: var(--snow-white-90);
+
+  /* Card */
+  --card-surface: var(--snow-white-100);
+  --card-surface-hover: var(--purple-early-evening-sky-40-opaque-50);
+  --card-content-text: var(--cole-tint-100);
+  --card-content-text-hover: var(--cole-tint-100);
+  --card-btn: var(--snow-white-100);
+  --card-btn-hover: var(--purple-early-evening-sky-40-opaque);
+
+  /* Block */
+  --block-surface: var(--snow-white-100);
+  --block-content-text: var(--cole-tint-100);
+
+  /* Functional */
+  --error-content: var(--vivid-red-100);
+  --error-bg: var(--vivid-red-10);
+  --success-content: var(--vibrant-green-100);
+  --success-bg: var(--vibrant-green-10);
+}
+
+/* ---- Mode 3: purple-tint-surface-warm ---- */
+[data-theme="purple-tint-surface-warm"] {
+  /* Surface */
+  --surface-color: var(--warm-white-100);
+  --surface-placeholder: var(--purple-tint-light-old);
+
+  /* Content — Fliesstext = purple-tint-dark, Headline = purple-tint-light */
+  --content-text: var(--purple-tint-dark-dark);
+  --content-weak: var(--purple-tint-dark-60);
+  --content-loud-headline: var(--purple-tint-light-100);
+
+  /* Button Primary — Buttons = purple-tint-light */
+  --btn-primary-bg: var(--purple-tint-light-old);
+  --btn-primary-label: var(--warm-white-80);
+  --btn-primary-bg-hover: var(--purple-tint-light-100);
+  --btn-primary-label-hover: var(--warm-white-100);
+  --btn-primary-bg-inactive: var(--purple-tint-light-60);
+  --btn-primary-label-inactive: var(--warm-white-60);
+
+  /* Button Secondary */
+  --btn-secondary-bg: var(--transparent-100);
+  --btn-secondary-label: var(--purple-tint-light-old);
+  --btn-secondary-bg-hover: var(--purple-tint-light-old);
+  --btn-secondary-label-hover: var(--warm-white-100);
+  --btn-secondary-bg-inactive: var(--transparent-100);
+  --btn-secondary-label-inactive: var(--cole-tint-60);
+
+  /* Button Inline */
+  --btn-inline-bg: var(--transparent-100);
+  --btn-inline-label: var(--purple-tint-dark-90);
+  --btn-inline-bg-hover: var(--purple-early-evening-sky-100);
+  --btn-inline-label-hover: var(--purple-tint-dark-dark);
+  --btn-inline-bg-inactive: var(--transparent-100);
+  --btn-inline-label-inactive: var(--cole-tint-60);
+
+  /* Input — Inputs = purple-tint-dark */
+  --input-label: var(--purple-tint-dark-90);
+  --input-bg-active: var(--purple-early-evening-sky-40-opaque);
+  --input-label-active: var(--purple-tint-dark-dark);
+  --input-placeholder: var(--purple-tint-dark-60);
+  --input-label-inactive: var(--purple-tint-dark-60);
+
+  /* Segmented */
+  --segmented-bg: var(--transparent-100);
+  --segmented-label: var(--purple-tint-light-old);
+  --segmented-bg-hover: var(--purple-early-evening-sky-100);
+  --segmented-label-hover: var(--purple-tint-light-100);
+  --segmented-bg-selected: var(--purple-tint-light-old);
+  --segmented-label-selected: var(--warm-white-80);
+
+  /* Counter */
+  --counter-bg: var(--transparent-100);
+  --counter-label: var(--purple-tint-light-old);
+  --counter-bg-hover: var(--purple-early-evening-sky-100);
+
+  /* Variant Selector Buttons */
+  --vs-btn-bg: var(--purple-early-evening-sky-40);
+  --vs-btn-label: var(--purple-tint-light-old);
+  --vs-btn-bg-hover: var(--purple-tint-dark-90);
+  --vs-btn-label-hover: var(--warm-white-100);
+  --vs-btn-bg-selected: var(--purple-tint-light-old);
+  --vs-btn-label-selected: var(--warm-white-80);
+
+  /* Card */
+  --card-surface: var(--warm-white-100);
+  --card-surface-hover: var(--purple-early-evening-sky-40-opaque-50);
+  --card-content-text: var(--purple-tint-dark-dark);
+  --card-content-text-hover: var(--purple-tint-dark-dark);
+  --card-btn: var(--warm-white-100);
+  --card-btn-hover: var(--purple-early-evening-sky-40-opaque);
+
+  /* Block */
+  --block-surface: var(--warm-white-100);
+  --block-content-text: var(--purple-tint-dark-dark);
+
+  /* Functional */
+  --error-content: var(--vivid-red-100);
+  --error-bg: var(--vivid-red-10);
+  --success-content: var(--vibrant-green-100);
+  --success-bg: var(--vibrant-green-10);
+}
+
+/* ---- Mode 4: purple-tint-surface-snow ---- */
+[data-theme="purple-tint-surface-snow"] {
+  /* Surface */
+  --surface-color: var(--snow-white-100);
+  --surface-placeholder: var(--purple-tint-light-old);
+
+  /* Content */
+  --content-text: var(--purple-tint-dark-dark);
+  --content-weak: var(--purple-tint-dark-60);
+  --content-loud-headline: var(--purple-tint-light-100);
+
+  /* Button Primary */
+  --btn-primary-bg: var(--purple-tint-light-old);
+  --btn-primary-label: var(--snow-white-90);
+  --btn-primary-bg-hover: var(--purple-tint-light-100);
+  --btn-primary-label-hover: var(--snow-white-100);
+  --btn-primary-bg-inactive: var(--purple-tint-light-60);
+  --btn-primary-label-inactive: var(--snow-white-60);
+
+  /* Button Secondary */
+  --btn-secondary-bg: var(--transparent-100);
+  --btn-secondary-label: var(--purple-tint-light-old);
+  --btn-secondary-bg-hover: var(--purple-tint-light-old);
+  --btn-secondary-label-hover: var(--snow-white-100);
+  --btn-secondary-bg-inactive: var(--transparent-100);
+  --btn-secondary-label-inactive: var(--cole-tint-60);
+
+  /* Button Inline */
+  --btn-inline-bg: var(--transparent-100);
+  --btn-inline-label: var(--purple-tint-dark-90);
+  --btn-inline-bg-hover: var(--purple-early-evening-sky-100);
+  --btn-inline-label-hover: var(--purple-tint-dark-dark);
+  --btn-inline-bg-inactive: var(--transparent-100);
+  --btn-inline-label-inactive: var(--cole-tint-60);
+
+  /* Input */
+  --input-label: var(--purple-tint-dark-90);
+  --input-bg-active: var(--purple-early-evening-sky-40-opaque);
+  --input-label-active: var(--purple-tint-dark-dark);
+  --input-placeholder: var(--purple-tint-dark-60);
+  --input-label-inactive: var(--purple-tint-dark-60);
+
+  /* Segmented */
+  --segmented-bg: var(--transparent-100);
+  --segmented-label: var(--purple-tint-light-old);
+  --segmented-bg-hover: var(--purple-early-evening-sky-100);
+  --segmented-label-hover: var(--purple-tint-light-100);
+  --segmented-bg-selected: var(--purple-tint-light-old);
+  --segmented-label-selected: var(--snow-white-90);
+
+  /* Counter */
+  --counter-bg: var(--transparent-100);
+  --counter-label: var(--purple-tint-light-old);
+  --counter-bg-hover: var(--purple-early-evening-sky-100);
+
+  /* Variant Selector Buttons
+     NOTE: label-on-hover resolves to warm-white/100 in this mode in Figma,
+     not snow-white/100. Reproduced faithfully — looks like a leftover from
+     the mode migration; confirm before "correcting" it. */
+  --vs-btn-bg: var(--purple-early-evening-sky-40);
+  --vs-btn-label: var(--purple-tint-light-old);
+  --vs-btn-bg-hover: var(--purple-tint-dark-90);
+  --vs-btn-label-hover: var(--warm-white-100);
+  --vs-btn-bg-selected: var(--purple-tint-light-old);
+  --vs-btn-label-selected: var(--snow-white-90);
+
+  /* Card */
+  --card-surface: var(--snow-white-100);
+  --card-surface-hover: var(--purple-early-evening-sky-40-opaque-50);
+  --card-content-text: var(--purple-tint-dark-dark);
+  --card-content-text-hover: var(--purple-tint-dark-dark);
+  --card-btn: var(--snow-white-100);
+  --card-btn-hover: var(--purple-early-evening-sky-40-opaque);
+
+  /* Block */
+  --block-surface: var(--snow-white-100);
+  --block-content-text: var(--purple-tint-dark-dark);
+
+  /* Functional */
+  --error-content: var(--vivid-red-100);
+  --error-bg: var(--vivid-red-10);
+  --success-content: var(--vibrant-green-100);
+  --success-bg: var(--vibrant-green-10);
+}
+
+
+/* ================================================================
+ *  2b. SINGLE-MODE COLLECTIONS — fixed, never follow [data-theme]
+ *      "Clrs / Filter Panel" (26), "Clrs / Search" (7),
+ *      "Clrs / Btns / Large / Inline" (3)
+ *      Opt-out is structural: they are simply never re-declared
+ *      inside a [data-theme] block.
+ * ================================================================ */
+
+:root {
+  /* ---- Filter Panel / Filter Chips ---- */
+  --filter-chip-bg: var(--purple-early-evening-sky-40);
+  --filter-chip-label: var(--purple-tint-light-old);
+  --filter-chip-bg-hover: var(--morning-sky-purple-100);
+  --filter-chip-label-hover: var(--purple-tint-light-100);
+  --filter-chip-bg-selected: var(--purple-tint-light-old);
+  --filter-chip-label-selected: var(--warm-white-80);
+  --filter-chip-bg-selected-hover: var(--purple-tint-light-100);
+  --filter-chip-label-selected-hover: var(--warm-white-100);
+
+  /* ---- Filter Panel / shared element stroke ---- */
+  --filter-panel-stroke: var(--snow-white-100);
+
+  /* ---- Filter Panel / Price Range Filter ---- */
+  --price-filter-stroke: var(--filter-panel-stroke); /* aliased in Figma */
+  --price-filter-bg: var(--morning-sky-purple-80);
+  --price-filter-label: var(--purple-tint-light-old);
+  --price-filter-bg-hover: var(--morning-sky-purple-100);
+  --price-filter-label-hover: var(--purple-tint-dark-dark);
+  --price-filter-bg-selected: var(--purple-tint-light-100);
+  --price-filter-label-selected: var(--warm-white-80);
+  --price-filter-bg-selected-hover: var(--purple-tint-dark-dark);
+  --price-filter-label-selected-hover: var(--warm-white-100);
+
+  /* ---- Filter Panel / Price Range Drop Down Button ---- */
+  --price-dd-bg: var(--morning-sky-purple-80);
+  --price-dd-label: var(--purple-tint-light-old);
+  --price-dd-bg-hover: var(--morning-sky-purple-100);
+  --price-dd-label-hover: var(--purple-tint-light-100);
+  --price-dd-bg-selected: var(--purple-tint-light-old);
+  --price-dd-label-selected: var(--warm-white-80);
+  --price-dd-bg-selected-hover: var(--purple-tint-light-100);
+  --price-dd-label-selected-hover: var(--warm-white-100);
+
+  /* ---- Search ---- */
+  --search-bg: var(--snow-white-90);
+  --search-bg-hover: var(--morning-sky-purple-100);
+  --search-bg-active: var(--morning-sky-purple-100);
+  --search-stroke-active: var(--snow-white-100);
+  --search-icon: var(--purple-tint-light-old);
+  --search-input-text: var(--purple-tint-light-old);
+  --search-close-icon: var(--snow-white-100);
+
+  /* ---- Btns / Large / Inline (single mode: purple-tint-yellow) ---- */
+  --lg-inline-label: var(--purple-tint-light-100);
+  --lg-inline-label-hover: var(--purple-tint-light-100);
+  --lg-inline-highlight-hover: var(--yellow-sunflower-90);
+}
+
+
+/* ================================================================
+ *  2c. CAMPAIGN AXIS — [data-campaign], orthogonal to [data-theme]
+ *      Own namespace, so campaign elements keep their colours inside
+ *      any themed section. Set per component, like the Figma variant.
+ *      Blocks are complete for the same nesting reason as above.
+ * ================================================================ */
+
+/* ---- Mega-Cards: default = blue-pistacio-green ---- */
+:root,
+[data-campaign="mc-blue-pistacio-green"] {
+  --megacard-section-bg: var(--snow-white-100);
+  --megacard-span-bg: var(--cloudy-blue-100);
+  --megacard-title-text: var(--pistachio-green-100);
+  --megacard-title-span-bg: var(--sky-blue-100);
+  --megacard-default-text: var(--snow-white-100);
+  --megacard-text-span-bg: var(--sky-blue-100);
+}
+
+[data-campaign="mc-orange-black"] {
+  --megacard-section-bg: var(--snow-white-100);
+  --megacard-span-bg: var(--peachy-coral-100);
+  --megacard-title-text: var(--purple-tint-light-100);
+  --megacard-title-span-bg: var(--warm-white-100);
+  --megacard-default-text: var(--purple-tint-light-100);
+  --megacard-text-span-bg: var(--transparent-100);
+}
+
+[data-campaign="mc-purple-black"] {
+  --megacard-section-bg: var(--snow-white-100);
+  --megacard-span-bg: var(--snow-white-100);
+  --megacard-title-text: var(--lilac-purple-100);
+  --megacard-title-span-bg: var(--purple-tint-light-old);
+  --megacard-default-text: var(--purple-tint-light-100);
+  --megacard-text-span-bg: var(--snow-white-100);
+}
+
+[data-campaign="mc-happy-christmas"] {
+  --megacard-section-bg: var(--warm-white-100);
+  --megacard-span-bg: var(--warm-white-100);
+  --megacard-title-text: var(--cole-tint-100);
+  --megacard-title-span-bg: var(--yellow-sunflower-100);
+  --megacard-default-text: var(--cole-tint-100);
+  --megacard-text-span-bg: var(--transparent-100);
+}
+
+/* ---- Btns / Large / Primary: default = purple-warm-white ----
+   These mode names bake campaign + surface together, so each block
+   sets a full set including the knocked-out label colour. */
+:root,
+[data-campaign="lg-purple-warm-white"] {
+  --lg-primary-bg: var(--purple-tint-light-old);
+  --lg-primary-label: var(--warm-white-80);
+  --lg-primary-bg-hover: var(--purple-tint-light-100);
+  --lg-primary-label-hover: var(--warm-white-100);
+}
+
+[data-campaign="lg-sky-blue-pistacio-green"] {
+  --lg-primary-bg: var(--sky-blue-90);
+  --lg-primary-label: var(--pistachio-green-95);
+  --lg-primary-bg-hover: var(--sky-blue-100);
+  --lg-primary-label-hover: var(--pistachio-green-100);
+}
+
+[data-campaign="lg-yellow-cole-tint"] {
+  --lg-primary-bg: var(--yellow-sunflower-90);
+  --lg-primary-label: var(--cole-tint-90);
+  --lg-primary-bg-hover: var(--yellow-sunflower-100);
+  --lg-primary-label-hover: var(--cole-tint-100);
+}
+
+[data-campaign="lg-orange-cole-tint"] {
+  --lg-primary-bg: var(--golden-orange-90);
+  --lg-primary-label: var(--cole-tint-90);
+  --lg-primary-bg-hover: var(--golden-orange-100);
+  --lg-primary-label-hover: var(--cole-tint-100);
+}
+
+
+/* ================================================================
+ *  2d. COMPONENT HEIGHTS — plain custom properties
+ *      Tailwind v4 has NO height theme namespace, so these are kept
+ *      as variables and exposed through @utility further down.
+ *      "Lyt scl / Heights" (10)
+ * ================================================================ */
+
+:root {
+  --height-btn-lg: 3.75rem;        /* btns/L/fix-h        60px */
+  --height-btn-md: 2.75rem;        /* btns/MD/fix-h       44px */
+  --height-btn-sm: 2.5rem;         /* btns/SM/fix-h       40px */
+  --height-btn-x-sm: 2.25rem;      /* btns/X-SM/fix-h     36px */
+  --height-btn-xx-sm: 1.75rem;     /* btns/XX-SM/fix-h    28px */
+  --height-btn-xxxx-sm: 1.25rem;   /* btns/XXXX-SM/fix-h  20px */
+  --height-input-inline: 2.25rem;  /* Input/Inline/fix-h  36px */
+  --height-input-search: 3.5rem;   /* Input/Search/fix-h  56px */
+  --height-card-md-min: 24rem;     /* Cards/MD/min-h     384px */
+  --height-card-md-max: 42rem;     /* Cards/MD/max-h     672px
+                                      alias [twuc]-168 (42rem) */
+}
+
+
+/* ================================================================
+ *  3. TAILWIND UTILITY REGISTRATION — COLORS
+ *     @theme inline is required: it makes utilities emit var(--…)
+ *     so [data-theme] / [data-campaign] switching works at runtime.
+ *     Without inline the values are frozen at build time.
+ * ================================================================ */
+
+@theme inline {
+  /* ---- Surface & Content ---- */
+  --color-surface: var(--surface-color);
+  --color-surface-placeholder: var(--surface-placeholder);
+  --color-content-text: var(--content-text);
+  --color-content-weak: var(--content-weak);
+  --color-content-loud-headline: var(--content-loud-headline);
+
+  /* ---- Button Primary ---- */
+  --color-btn-primary-bg: var(--btn-primary-bg);
+  --color-btn-primary-label: var(--btn-primary-label);
+  --color-btn-primary-bg-hover: var(--btn-primary-bg-hover);
+  --color-btn-primary-label-hover: var(--btn-primary-label-hover);
+  --color-btn-primary-bg-inactive: var(--btn-primary-bg-inactive);
+  --color-btn-primary-label-inactive: var(--btn-primary-label-inactive);
+
+  /* ---- Button Secondary ---- */
+  --color-btn-secondary-bg: var(--btn-secondary-bg);
+  --color-btn-secondary-label: var(--btn-secondary-label);
+  --color-btn-secondary-bg-hover: var(--btn-secondary-bg-hover);
+  --color-btn-secondary-label-hover: var(--btn-secondary-label-hover);
+  --color-btn-secondary-bg-inactive: var(--btn-secondary-bg-inactive);
+  --color-btn-secondary-label-inactive: var(--btn-secondary-label-inactive);
+
+  /* ---- Button Inline ---- */
+  --color-btn-inline-bg: var(--btn-inline-bg);
+  --color-btn-inline-label: var(--btn-inline-label);
+  --color-btn-inline-bg-hover: var(--btn-inline-bg-hover);
+  --color-btn-inline-label-hover: var(--btn-inline-label-hover);
+  --color-btn-inline-bg-inactive: var(--btn-inline-bg-inactive);
+  --color-btn-inline-label-inactive: var(--btn-inline-label-inactive);
+
+  /* ---- Input ---- */
+  --color-input-label: var(--input-label);
+  --color-input-bg-active: var(--input-bg-active);
+  --color-input-label-active: var(--input-label-active);
+  --color-input-placeholder: var(--input-placeholder);
+  --color-input-label-inactive: var(--input-label-inactive);
+
+  /* ---- Segmented ---- */
+  --color-segmented-bg: var(--segmented-bg);
+  --color-segmented-label: var(--segmented-label);
+  --color-segmented-bg-hover: var(--segmented-bg-hover);
+  --color-segmented-label-hover: var(--segmented-label-hover);
+  --color-segmented-bg-selected: var(--segmented-bg-selected);
+  --color-segmented-label-selected: var(--segmented-label-selected);
+
+  /* ---- Counter ---- */
+  --color-counter-bg: var(--counter-bg);
+  --color-counter-label: var(--counter-label);
+  --color-counter-bg-hover: var(--counter-bg-hover);
+
+  /* ---- Variant Selector Buttons ---- */
+  --color-vs-btn-bg: var(--vs-btn-bg);
+  --color-vs-btn-label: var(--vs-btn-label);
+  --color-vs-btn-bg-hover: var(--vs-btn-bg-hover);
+  --color-vs-btn-label-hover: var(--vs-btn-label-hover);
+  --color-vs-btn-bg-selected: var(--vs-btn-bg-selected);
+  --color-vs-btn-label-selected: var(--vs-btn-label-selected);
+
+  /* ---- Card ---- */
+  --color-card-surface: var(--card-surface);
+  --color-card-surface-hover: var(--card-surface-hover);
+  --color-card-content-text: var(--card-content-text);
+  --color-card-content-text-hover: var(--card-content-text-hover);
+  --color-card-btn: var(--card-btn);
+  --color-card-btn-hover: var(--card-btn-hover);
+
+  /* ---- Block ---- */
+  --color-block-surface: var(--block-surface);
+  --color-block-content-text: var(--block-content-text);
+
+  /* ---- Functional ---- */
+  --color-error-content: var(--error-content);
+  --color-error-bg: var(--error-bg);
+  --color-success-content: var(--success-content);
+  --color-success-bg: var(--success-bg);
+
+  /* ---- Filter Panel ---- */
+  --color-filter-chip-bg: var(--filter-chip-bg);
+  --color-filter-chip-label: var(--filter-chip-label);
+  --color-filter-chip-bg-hover: var(--filter-chip-bg-hover);
+  --color-filter-chip-label-hover: var(--filter-chip-label-hover);
+  --color-filter-chip-bg-selected: var(--filter-chip-bg-selected);
+  --color-filter-chip-label-selected: var(--filter-chip-label-selected);
+  --color-filter-chip-bg-selected-hover: var(--filter-chip-bg-selected-hover);
+  --color-filter-chip-label-selected-hover: var(--filter-chip-label-selected-hover);
+  --color-filter-panel-stroke: var(--filter-panel-stroke);
+  --color-price-filter-stroke: var(--price-filter-stroke);
+  --color-price-filter-bg: var(--price-filter-bg);
+  --color-price-filter-label: var(--price-filter-label);
+  --color-price-filter-bg-hover: var(--price-filter-bg-hover);
+  --color-price-filter-label-hover: var(--price-filter-label-hover);
+  --color-price-filter-bg-selected: var(--price-filter-bg-selected);
+  --color-price-filter-label-selected: var(--price-filter-label-selected);
+  --color-price-filter-bg-selected-hover: var(--price-filter-bg-selected-hover);
+  --color-price-filter-label-selected-hover: var(--price-filter-label-selected-hover);
+  --color-price-dd-bg: var(--price-dd-bg);
+  --color-price-dd-label: var(--price-dd-label);
+  --color-price-dd-bg-hover: var(--price-dd-bg-hover);
+  --color-price-dd-label-hover: var(--price-dd-label-hover);
+  --color-price-dd-bg-selected: var(--price-dd-bg-selected);
+  --color-price-dd-label-selected: var(--price-dd-label-selected);
+  --color-price-dd-bg-selected-hover: var(--price-dd-bg-selected-hover);
+  --color-price-dd-label-selected-hover: var(--price-dd-label-selected-hover);
+
+  /* ---- Search ---- */
+  --color-search-bg: var(--search-bg);
+  --color-search-bg-hover: var(--search-bg-hover);
+  --color-search-bg-active: var(--search-bg-active);
+  --color-search-stroke-active: var(--search-stroke-active);
+  --color-search-icon: var(--search-icon);
+  --color-search-input-text: var(--search-input-text);
+  --color-search-close-icon: var(--search-close-icon);
+
+  /* ---- Btns / Large / Inline ---- */
+  --color-lg-inline-label: var(--lg-inline-label);
+  --color-lg-inline-label-hover: var(--lg-inline-label-hover);
+  --color-lg-inline-highlight-hover: var(--lg-inline-highlight-hover);
+
+  /* ---- Campaign: Mega-Cards ---- */
+  --color-megacard-section-bg: var(--megacard-section-bg);
+  --color-megacard-span-bg: var(--megacard-span-bg);
+  --color-megacard-title-text: var(--megacard-title-text);
+  --color-megacard-title-span-bg: var(--megacard-title-span-bg);
+  --color-megacard-default-text: var(--megacard-default-text);
+  --color-megacard-text-span-bg: var(--megacard-text-span-bg);
+
+  /* ---- Campaign: Btns / Large / Primary ---- */
+  --color-lg-primary-bg: var(--lg-primary-bg);
+  --color-lg-primary-label: var(--lg-primary-label);
+  --color-lg-primary-bg-hover: var(--lg-primary-bg-hover);
+  --color-lg-primary-label-hover: var(--lg-primary-label-hover);
+}
+
+
+/* ================================================================
+ *  4. TAILWIND UTILITY REGISTRATION — STATIC SCALES
+ *     Plain @theme (not inline) so these are also emitted as CSS
+ *     variables and usable from hand-written CSS.
+ *     None of these are theme-dependent.
+ * ================================================================ */
+
+@theme {
+  /* ---- Font families (from Text Styles) ---- */
+  --font-display: "LUMOSKY", serif;         /* H1, H2, MegaCard/Lumo, Featured */
+  --font-accent-one: "BROWN NOW ONE", sans-serif;
+  --font-accent-two: "BROWN NOW TWO", sans-serif;
+  --font-body: "Manrope", sans-serif;
+
+  /* ---- Font sizes — "Typografy" (17), Figma px → rem @ 16px base ----
+     Correct namespace is --text-*, which generates text-<name>.
+     Usage: text-16, text-34, text-60 … */
+  --text-10: 0.625rem;
+  --text-11: 0.6875rem;
+  --text-12: 0.75rem;
+  --text-13: 0.8125rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-18: 1.125rem;
+  --text-20: 1.25rem;
+  --text-22: 1.375rem;
+  --text-24: 1.5rem;
+  --text-26: 1.625rem;
+  --text-30: 1.875rem;
+  --text-32: 2rem;
+  --text-34: 2.125rem;
+  --text-40: 2.5rem;
+  --text-48: 3rem;
+  --text-60: 3.75rem;
+
+  /* ---- Spacing — unified Box Spacing + Gaps (identical per step) ----
+     Usage: p-md, px-lg, gap-sm, m-xl …
+     NOTE: v4's dynamic numeric scale stays active, so p-4 also still
+     works and bypasses these tokens. Uncomment the line below to
+     enforce token-only spacing. */
+  /* --spacing-*: initial; */
+  --spacing-zero: 0rem;
+  --spacing-xxxs: 0.125rem; /*  2px */
+  --spacing-xxs: 0.25rem;   /*  4px */
+  --spacing-xs: 0.375rem;   /*  6px */
+  --spacing-sm: 0.5rem;     /*  8px */
+  --spacing-md-sm: 0.75rem; /* 12px */
+  --spacing-md: 1rem;       /* 16px */
+  --spacing-md-l: 1.25rem;  /* 20px */
+  --spacing-lg: 1.75rem;    /* 28px */
+  --spacing-xl: 2.5rem;     /* 40px */
+  --spacing-xxl: 3rem;      /* 48px */
+  --spacing-xxxl: 3.5rem;   /* 56px */
+
+  /* ---- Component widths — "Lyt scl / Width" (15) ----
+     Correct namespace is --container-*, which generates
+     w-<name>, min-w-<name> and max-w-<name>.
+     Usage: min-w-card-default, max-w-card-default … */
+  --container-block-lg-min: 24rem;      /* Block Element/LG/min-w       384px */
+  --container-block-md-max: 32rem;      /* Block Element/MD/max-w       512px */
+  --container-block-sm-min: 20.5rem;    /* Block Element/SM/min-w       328px */
+  --container-block-x-sm-min: 6rem;     /* Block Element/x-SM/min-w      96px */
+  --container-block-xx-sm-min: 4rem;    /* Block Element/xx-SM/min-w     64px */
+  --container-block-xx-sm-max: 13rem;   /* Block Element/xx-SM/max-w    208px */
+  --container-text-blocks-max: 66.5rem; /* 2 Text Block Elements/max-w 1064px */
+  --container-card-default-min: 15rem;  /* Cards/Default/min-w          240px */
+  --container-card-default-max: 24rem;  /* Cards/Default/max-w          384px */
+  --container-card-md-min: 15rem;       /* Cards/MD/min-w               240px */
+  --container-card-md-max: 28rem;       /* Cards/MD/max-w               448px */
+  --container-btn-min: 15rem;           /* Buttons/min-w                240px */
+  --container-btn-max: 32rem;           /* Buttons/max-w                512px */
+  --container-megacard-min: 11rem;      /* Mega Cards/min-w             176px
+                                           alias [twuc]-44 (11rem) */
+  --container-megacard-max: 78rem;      /* Mega Cards/max-w            1248px
+                                           alias [twuc]-312 (78rem) */
+}
+
+
+/* ================================================================
+ *  5. HEIGHT UTILITIES — @utility
+ *     v4 has no height theme namespace, so fixed/min/max heights are
+ *     declared explicitly. Values come from §2d.
+ * ================================================================ */
+
+@utility h-btn-lg      { height: var(--height-btn-lg); }
+@utility h-btn-md      { height: var(--height-btn-md); }
+@utility h-btn-sm      { height: var(--height-btn-sm); }
+@utility h-btn-x-sm    { height: var(--height-btn-x-sm); }
+@utility h-btn-xx-sm   { height: var(--height-btn-xx-sm); }
+@utility h-btn-xxxx-sm { height: var(--height-btn-xxxx-sm); }
+
+@utility h-input-inline { height: var(--height-input-inline); }
+@utility h-input-search { height: var(--height-input-search); }
+
+@utility min-h-card-md { min-height: var(--height-card-md-min); }
+@utility max-h-card-md { max-height: var(--height-card-md-max); }
+
+
+/* ================================================================
+ *  USAGE
+ *
+ *  Theme at the container, one switch cascades:
+ *    <section data-theme="purple-tint-surface-snow" class="bg-surface">
+ *      <p class="text-content-text">Fliesstext …</p>
+ *      <button class="h-btn-md min-w-btn-min bg-btn-primary-bg
+ *                     text-btn-primary-label
+ *                     hover:bg-btn-primary-bg-hover">CTA</button>
+ *    </section>
+ *
+ *  Nested override (now works — blocks are complete):
+ *    <section data-theme="purple-tint-surface-warm" class="bg-surface">
+ *      <article data-theme="cole-tint-surface-snow" class="bg-card-surface">…</article>
+ *    </section>
+ *
+ *  Campaign, independent of theme:
+ *    <button data-campaign="lg-orange-cole-tint"
+ *            class="h-btn-lg bg-lg-primary-bg text-lg-primary-label">Jetzt shoppen</button>
+ *
+ *  RULES
+ *    1. Never use a primitive in a component (no bg-[#1d2020], no
+ *       bg-cole-tint-90) — always the semantic utility.
+ *    2. Theme lives on the container; campaign and single-mode groups
+ *       are per component.
+ *    3. Colour logic lives in the token definitions, never in markup.
+ *       The same utility name is used across all four themes.
+ *
+ *  KNOWN GAPS (not fixable from the variable data alone)
+ *    - No --leading-* / --tracking-* tokens, although the 65 text styles
+ *      carry distinct line-heights and letter-spacings.
+ *    - Text styles Input/Label SM (9px) and Cards/Blog/Title (19px) have
+ *      no counterpart in the "Typografy" collection.
+ * ================================================================ */
