@@ -172,31 +172,31 @@
   --btn-primary-label: var(--warm-white-80);
   --btn-primary-bg-hover: var(--cole-tint-100);
   --btn-primary-label-hover: var(--warm-white-100);
-  --btn-primary-bg-inactive: var(--cole-tint-60);
-  --btn-primary-label-inactive: var(--warm-white-60);
+  --btn-primary-bg-disabled: var(--cole-tint-60);
+  --btn-primary-label-disabled: var(--warm-white-60);
 
   /* Button Secondary */
   --btn-secondary-bg: var(--transparent-100);
   --btn-secondary-label: var(--cole-tint-90);
   --btn-secondary-bg-hover: var(--cole-tint-90);
   --btn-secondary-label-hover: var(--warm-white-100);
-  --btn-secondary-bg-inactive: var(--transparent-100);
-  --btn-secondary-label-inactive: var(--cole-tint-60);
+  --btn-secondary-bg-disabled: var(--transparent-100);
+  --btn-secondary-label-disabled: var(--cole-tint-60);
 
   /* Button Inline */
   --btn-inline-bg: var(--transparent-100);
   --btn-inline-label: var(--cole-tint-90);
   --btn-inline-bg-hover: var(--cole-tint-90);
   --btn-inline-label-hover: var(--warm-white-80);
-  --btn-inline-bg-inactive: var(--transparent-100);
-  --btn-inline-label-inactive: var(--cole-tint-60);
+  --btn-inline-bg-disabled: var(--transparent-100);
+  --btn-inline-label-disabled: var(--cole-tint-60);
 
   /* Input */
   --input-label: var(--cole-tint-90);
   --input-bg-active: var(--purple-early-evening-sky-40-opaque);
   --input-label-active: var(--cole-tint-100);
   --input-placeholder: var(--cole-tint-60);
-  --input-label-inactive: var(--cole-tint-60);
+  --input-label-disabled: var(--cole-tint-60);
 
   /* Segmented */
   --segmented-bg: var(--transparent-100);
@@ -254,31 +254,31 @@
   --btn-primary-label: var(--warm-white-80);
   --btn-primary-bg-hover: var(--cole-tint-100);
   --btn-primary-label-hover: var(--warm-white-100);
-  --btn-primary-bg-inactive: var(--cole-tint-60);
-  --btn-primary-label-inactive: var(--warm-white-60);
+  --btn-primary-bg-disabled: var(--cole-tint-60);
+  --btn-primary-label-disabled: var(--warm-white-60);
 
   /* Button Secondary */
   --btn-secondary-bg: var(--transparent-100);
   --btn-secondary-label: var(--cole-tint-90);
   --btn-secondary-bg-hover: var(--cole-tint-90);
   --btn-secondary-label-hover: var(--snow-white-100);
-  --btn-secondary-bg-inactive: var(--transparent-100);
-  --btn-secondary-label-inactive: var(--cole-tint-60);
+  --btn-secondary-bg-disabled: var(--transparent-100);
+  --btn-secondary-label-disabled: var(--cole-tint-60);
 
   /* Button Inline */
   --btn-inline-bg: var(--transparent-100);
   --btn-inline-label: var(--cole-tint-90);
   --btn-inline-bg-hover: var(--cole-tint-90);
   --btn-inline-label-hover: var(--snow-white-90);
-  --btn-inline-bg-inactive: var(--transparent-100);
-  --btn-inline-label-inactive: var(--cole-tint-60);
+  --btn-inline-bg-disabled: var(--transparent-100);
+  --btn-inline-label-disabled: var(--cole-tint-60);
 
   /* Input */
   --input-label: var(--cole-tint-90);
   --input-bg-active: var(--purple-early-evening-sky-40-opaque);
   --input-label-active: var(--cole-tint-100);
   --input-placeholder: var(--cole-tint-60);
-  --input-label-inactive: var(--cole-tint-60);
+  --input-label-disabled: var(--cole-tint-60);
 
   /* Segmented */
   --segmented-bg: var(--transparent-100);
@@ -336,31 +336,31 @@
   --btn-primary-label: var(--warm-white-80);
   --btn-primary-bg-hover: var(--purple-tint-light-100);
   --btn-primary-label-hover: var(--warm-white-100);
-  --btn-primary-bg-inactive: var(--purple-tint-light-60);
-  --btn-primary-label-inactive: var(--warm-white-60);
+  --btn-primary-bg-disabled: var(--purple-tint-light-60);
+  --btn-primary-label-disabled: var(--warm-white-60);
 
   /* Button Secondary */
   --btn-secondary-bg: var(--transparent-100);
   --btn-secondary-label: var(--purple-tint-light-old);
   --btn-secondary-bg-hover: var(--purple-tint-light-old);
   --btn-secondary-label-hover: var(--warm-white-100);
-  --btn-secondary-bg-inactive: var(--transparent-100);
-  --btn-secondary-label-inactive: var(--cole-tint-60);
+  --btn-secondary-bg-disabled: var(--transparent-100);
+  --btn-secondary-label-disabled: var(--cole-tint-60);
 
   /* Button Inline */
   --btn-inline-bg: var(--transparent-100);
   --btn-inline-label: var(--purple-tint-dark-90);
   --btn-inline-bg-hover: var(--purple-early-evening-sky-100);
   --btn-inline-label-hover: var(--purple-tint-dark-dark);
-  --btn-inline-bg-inactive: var(--transparent-100);
-  --btn-inline-label-inactive: var(--cole-tint-60);
+  --btn-inline-bg-disabled: var(--transparent-100);
+  --btn-inline-label-disabled: var(--cole-tint-60);
 
   /* Input */
   --input-label: var(--purple-tint-dark-90);
   --input-bg-active: var(--purple-early-evening-sky-40-opaque);
   --input-label-active: var(--purple-tint-dark-dark);
   --input-placeholder: var(--purple-tint-dark-60);
-  --input-label-inactive: var(--purple-tint-dark-60);
+  --input-label-disabled: var(--purple-tint-dark-60);
 
   /* Segmented */
   --segmented-bg: var(--transparent-100);
@@ -418,31 +418,31 @@
   --btn-primary-label: var(--snow-white-90);
   --btn-primary-bg-hover: var(--purple-tint-light-100);
   --btn-primary-label-hover: var(--snow-white-100);
-  --btn-primary-bg-inactive: var(--purple-tint-light-60);
-  --btn-primary-label-inactive: var(--snow-white-60);
+  --btn-primary-bg-disabled: var(--purple-tint-light-60);
+  --btn-primary-label-disabled: var(--snow-white-60);
 
   /* Button Secondary */
   --btn-secondary-bg: var(--transparent-100);
   --btn-secondary-label: var(--purple-tint-light-old);
   --btn-secondary-bg-hover: var(--purple-tint-light-old);
   --btn-secondary-label-hover: var(--snow-white-100);
-  --btn-secondary-bg-inactive: var(--transparent-100);
-  --btn-secondary-label-inactive: var(--cole-tint-60);
+  --btn-secondary-bg-disabled: var(--transparent-100);
+  --btn-secondary-label-disabled: var(--cole-tint-60);
 
   /* Button Inline */
   --btn-inline-bg: var(--transparent-100);
   --btn-inline-label: var(--purple-tint-dark-90);
   --btn-inline-bg-hover: var(--purple-early-evening-sky-100);
   --btn-inline-label-hover: var(--purple-tint-dark-dark);
-  --btn-inline-bg-inactive: var(--transparent-100);
-  --btn-inline-label-inactive: var(--cole-tint-60);
+  --btn-inline-bg-disabled: var(--transparent-100);
+  --btn-inline-label-disabled: var(--cole-tint-60);
 
   /* Input */
   --input-label: var(--purple-tint-dark-90);
   --input-bg-active: var(--purple-early-evening-sky-40-opaque);
   --input-label-active: var(--purple-tint-dark-dark);
   --input-placeholder: var(--purple-tint-dark-60);
-  --input-label-inactive: var(--purple-tint-dark-60);
+  --input-label-disabled: var(--purple-tint-dark-60);
 
   /* Segmented */
   --segmented-bg: var(--transparent-100);
@@ -610,28 +610,28 @@
 /* ---- Btns / Large / Primary → Buttons/LG/PrimaryButton ----
    default mode = purple-warm-white */
 :root,
-[data-lively-theme="lg-purple-warm-white"] {
+[data-lively-theme="lg-purple"] {
   --lg-primary-bg: var(--purple-tint-light-old);
   --lg-primary-label: var(--warm-white-80);
   --lg-primary-bg-hover: var(--purple-tint-light-100);
   --lg-primary-label-hover: var(--warm-white-100);
 }
 
-[data-lively-theme="lg-sky-blue-pistacio-green"] {
+[data-lively-theme="lg-sky-blue"] {
   --lg-primary-bg: var(--sky-blue-90);
   --lg-primary-label: var(--pistachio-green-95);
   --lg-primary-bg-hover: var(--sky-blue-100);
   --lg-primary-label-hover: var(--pistachio-green-100);
 }
 
-[data-lively-theme="lg-yellow-cole-tint"] {
+[data-lively-theme="lg-yellow"] {
   --lg-primary-bg: var(--yellow-sunflower-90);
   --lg-primary-label: var(--cole-tint-90);
   --lg-primary-bg-hover: var(--yellow-sunflower-100);
   --lg-primary-label-hover: var(--cole-tint-100);
 }
 
-[data-lively-theme="lg-orange-cole-tint"] {
+[data-lively-theme="lg-orange"] {
   --lg-primary-bg: var(--golden-orange-90);
   --lg-primary-label: var(--cole-tint-90);
   --lg-primary-bg-hover: var(--golden-orange-100);
@@ -681,31 +681,31 @@
   --color-btn-primary-label: var(--btn-primary-label);
   --color-btn-primary-bg-hover: var(--btn-primary-bg-hover);
   --color-btn-primary-label-hover: var(--btn-primary-label-hover);
-  --color-btn-primary-bg-inactive: var(--btn-primary-bg-inactive);
-  --color-btn-primary-label-inactive: var(--btn-primary-label-inactive);
+  --color-btn-primary-bg-disabled: var(--btn-primary-bg-disabled);
+  --color-btn-primary-label-disabled: var(--btn-primary-label-disabled);
 
   /* ---- Button Secondary ---- */
   --color-btn-secondary-bg: var(--btn-secondary-bg);
   --color-btn-secondary-label: var(--btn-secondary-label);
   --color-btn-secondary-bg-hover: var(--btn-secondary-bg-hover);
   --color-btn-secondary-label-hover: var(--btn-secondary-label-hover);
-  --color-btn-secondary-bg-inactive: var(--btn-secondary-bg-inactive);
-  --color-btn-secondary-label-inactive: var(--btn-secondary-label-inactive);
+  --color-btn-secondary-bg-disabled: var(--btn-secondary-bg-disabled);
+  --color-btn-secondary-label-disabled: var(--btn-secondary-label-disabled);
 
   /* ---- Button Inline ---- */
   --color-btn-inline-bg: var(--btn-inline-bg);
   --color-btn-inline-label: var(--btn-inline-label);
   --color-btn-inline-bg-hover: var(--btn-inline-bg-hover);
   --color-btn-inline-label-hover: var(--btn-inline-label-hover);
-  --color-btn-inline-bg-inactive: var(--btn-inline-bg-inactive);
-  --color-btn-inline-label-inactive: var(--btn-inline-label-inactive);
+  --color-btn-inline-bg-disabled: var(--btn-inline-bg-disabled);
+  --color-btn-inline-label-disabled: var(--btn-inline-label-disabled);
 
   /* ---- Input ---- */
   --color-input-label: var(--input-label);
   --color-input-bg-active: var(--input-bg-active);
   --color-input-label-active: var(--input-label-active);
   --color-input-placeholder: var(--input-placeholder);
-  --color-input-label-inactive: var(--input-label-inactive);
+  --color-input-label-disabled: var(--input-label-disabled);
 
   /* ---- Segmented ---- */
   --color-segmented-bg: var(--segmented-bg);
