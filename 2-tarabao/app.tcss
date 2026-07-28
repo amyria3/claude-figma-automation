@@ -23,7 +23,7 @@
  *                                                 --input-*           Input, Input Field plain
  *                                                 --segmented-*       Segment Control, TabControl
  *                                                 --counter-*         Buttons/Counter, PlusMinus
- *                                                 --os-btn-*          Buttons/XS/OptionSelection
+ *                                                 --btn-option-selection-*          Buttons/XS/OptionSelection
  *                                                 --card-*            Cards/* (except MegaCard)
  *                                                 --block-*           Components/BlockElements/*
  *                                                 --error-*/--success-* validation & feedback
@@ -212,12 +212,12 @@
   --counter-bg-hover: var(--purple-early-evening-sky-100);
 
   /* Options Selector Buttons */
-  --os-btn-bg: var(--purple-early-evening-sky-40);
-  --os-btn-label: var(--cole-tint-90);
-  --os-btn-bg-hover: var(--cole-tint-90);
-  --os-btn-label-hover: var(--warm-white-100);
-  --os-btn-bg-selected: var(--cole-tint-90);
-  --os-btn-label-selected: var(--warm-white-80);
+  --btn-option-selection-bg: var(--purple-early-evening-sky-40);
+  --btn-option-selection-label: var(--cole-tint-90);
+  --btn-option-selection-bg-hover: var(--cole-tint-90);
+  --btn-option-selection-label-hover: var(--warm-white-100);
+  --btn-option-selection-bg-selected: var(--cole-tint-90);
+  --btn-option-selection-label-selected: var(--warm-white-80);
 
   /* Card */
   --card-surface: var(--purple-early-evening-sky-light);
@@ -294,12 +294,12 @@
   --counter-bg-hover: var(--purple-early-evening-sky-100);
 
   /* Options Selector Button */
-  --os-btn-bg: var(--purple-early-evening-sky-40);
-  --os-btn-label: var(--cole-tint-90);
-  --os-btn-bg-hover: var(--cole-tint-90);
-  --os-btn-label-hover: var(--snow-white-100);
-  --os-btn-bg-selected: var(--cole-tint-90);
-  --os-btn-label-selected: var(--snow-white-90);
+  --btn-option-selection-bg: var(--purple-early-evening-sky-40);
+  --btn-option-selection-label: var(--cole-tint-90);
+  --btn-option-selection-bg-hover: var(--cole-tint-90);
+  --btn-option-selection-label-hover: var(--snow-white-100);
+  --btn-option-selection-bg-selected: var(--cole-tint-90);
+  --btn-option-selection-label-selected: var(--snow-white-90);
 
   /* Card */
   --card-surface: var(--purple-early-evening-sky-light);
@@ -376,12 +376,12 @@
   --counter-bg-hover: var(--purple-early-evening-sky-100);
 
   /* Option Selector Button */
-  --os-btn-bg: var(--purple-early-evening-sky-40);
-  --os-btn-label: var(--purple-tint-light-old);
-  --os-btn-bg-hover: var(--purple-tint-dark-90);
-  --os-btn-label-hover: var(--warm-white-100);
-  --os-btn-bg-selected: var(--purple-tint-light-old);
-  --os-btn-label-selected: var(--warm-white-80);
+  --btn-option-selection-bg: var(--purple-early-evening-sky-40);
+  --btn-option-selection-label: var(--purple-tint-light-old);
+  --btn-option-selection-bg-hover: var(--purple-tint-dark-90);
+  --btn-option-selection-label-hover: var(--warm-white-100);
+  --btn-option-selection-bg-selected: var(--purple-tint-light-old);
+  --btn-option-selection-label-selected: var(--warm-white-80);
 
   /* Card */
   --card-surface: var(--purple-early-evening-sky-light);
@@ -458,12 +458,12 @@
   --counter-bg-hover: var(--purple-early-evening-sky-100);
 
   /* Options Selector Button */
-  --os-btn-bg: var(--purple-early-evening-sky-40);
-  --os-btn-label: var(--purple-tint-light-old);
-  --os-btn-bg-hover: var(--purple-tint-dark-90);
-  --os-btn-label-hover: var(--warm-white-100);
-  --os-btn-bg-selected: var(--purple-tint-light-old);
-  --os-btn-label-selected: var(--snow-white-90);
+  --btn-option-selection-bg: var(--purple-early-evening-sky-40);
+  --btn-option-selection-label: var(--purple-tint-light-old);
+  --btn-option-selection-bg-hover: var(--purple-tint-dark-90);
+  --btn-option-selection-label-hover: var(--warm-white-100);
+  --btn-option-selection-bg-selected: var(--purple-tint-light-old);
+  --btn-option-selection-label-selected: var(--snow-white-90);
 
   /* Card */
   --card-surface: var(--purple-early-evening-sky-light);
@@ -721,12 +721,12 @@
   --color-counter-bg-hover: var(--counter-bg-hover);
 
   /* ---- Option Selector Button ---- */
-  --color-os-btn-bg: var(--os-btn-bg);
-  --color-os-btn-label: var(--os-btn-label);
-  --color-os-btn-bg-hover: var(--os-btn-bg-hover);
-  --color-os-btn-label-hover: var(--os-btn-label-hover);
-  --color-os-btn-bg-selected: var(--os-btn-bg-selected);
-  --color-os-btn-label-selected: var(--os-btn-label-selected);
+  --color-btn-option-selection-bg: var(--btn-option-selection-bg);
+  --color-btn-option-selection-label: var(--btn-option-selection-label);
+  --color-btn-option-selection-bg-hover: var(--btn-option-selection-bg-hover);
+  --color-btn-option-selection-label-hover: var(--btn-option-selection-label-hover);
+  --color-btn-option-selection-bg-selected: var(--btn-option-selection-bg-selected);
+  --color-btn-option-selection-label-selected: var(--btn-option-selection-label-selected);
 
   /* ---- Card ---- */
   --color-card-surface: var(--card-surface);
