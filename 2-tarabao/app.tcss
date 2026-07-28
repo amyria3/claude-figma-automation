@@ -3,19 +3,47 @@
 /* ================================================================
  *  DESIGN TOKENS — Figma → Tailwind v4
  *  Source: Figma file rLwATluwV4CSS5rXceLptH
- *  Verified against live Figma variables: 2026-07-27
- *
- *  Excluded by rule: all "__"-prefixed collections.
+ *  Docs: 2-tarabao/2.3-design-tokens-tailwind-v4.md
  *
  *  Layer stack:
  *    1. Primitives            :root (raw hex, never themed, never used directly)
- *    2. Semantic tokens       :root + [data-theme] / [data-campaign] switches
+ *    2. Semantic tokens       :root + [data-theme] / [data-lively-theme] switches
  *    3. Tailwind utilities    @theme inline (colors) + @theme (static scales)
  *
- *  Änderungsprotokoll & Begründungen:
- *    2-tarabao/2.4-app-tcss-aenderungsprotokoll.md
- *  Architektur & Token-Herkunft:
- *    2-tarabao/2.3-design-tokens-tailwind-v4.md
+ *  WHAT BELONGS TO WHAT
+ *
+ *  Figma collection                  CSS section   token prefix        components
+ *  ────────────────────────────────  ───────────   ─────────────────   ─────────────────────────
+ *  Clrs / Primitives                 §1           (palette names)     none — never used directly
+ *  Clrs / Color Modes                §2a          --surface-*         page & section surfaces
+ *    switched via [data-theme],                   --content-*         body copy, headlines
+ *    4 modes = brand × surface:                   --btn-primary-*     Buttons/*/PrimaryButton
+ *      cole   × warm | snow                       --btn-secondary-*   Buttons/*/SecondaryButton
+ *      purple × warm | snow                       --btn-inline-*      Buttons/*/Inline
+ *                                                 --input-*           Input, Input Field plain
+ *                                                 --segmented-*       Segment Control, TabControl
+ *                                                 --counter-*         Buttons/Counter, PlusMinus
+ *                                                 --vs-btn-*          Buttons/XS/OptionSelection
+ *                                                 --card-*            Cards/* (except MegaCard)
+ *                                                 --block-*           Components/BlockElements/*
+ *                                                 --error-*/--success-* validation & feedback
+ *  Clrs / Filter Panel               §2b          --filter-chip-*     Filter/FilterChip
+ *    single mode — never themed                   --price-filter-*    Filter/PriceRange*
+ *                                                 --price-dd-*        Filter/PriceRange/DropDown
+ *                                                 --filter-panel-*    Filter/FilterPanel
+ *  Clrs / Search                     §2b          --search-*          Search/Input, QueryState
+ *  Clrs / Btns / Large / Inline      §2b          --lg-inline-*       Buttons/LG/Inline
+ *  Clrs / Sustainability Tags        §2b          --tag-*             sustainability tag chips
+ *  Clrs / Mega-Cards                 §2c          --megacard-*        Cards/MegaCard,
+ *    switched via [data-lively-theme]                                     Section/MegaCards
+ *  Clrs / Btns / Large / Primary     §2c          --lg-primary-*      Buttons/LG/PrimaryButton
+ *  Lyt scl / Heights                 §2d          --height-*          → @utility h-*, §5
+ *  Text Styles                       §4           --font-*            all type
+ *  Typografy                         §4           --text-*            all type
+ *  Box Spacing + Gaps                §4           --spacing-*         all padding/gap/margin
+ *  Lyt scl / Width                   §4           --container-*       → w-/min-w-/max-w-
+ *
+ *  Collections prefixed "__" are content data, not design tokens — not mapped here.
  * ================================================================ */
 
 
@@ -54,7 +82,17 @@
   --purple-early-evening-sky-100: #d0cde3;
   --purple-early-evening-sky-40: #d9d6eb66;
   --purple-early-evening-sky-40-opaque: #e7e5f2;
-  --purple-early-evening-sky-40-opaque-50: #e7e5f280;
+  --purple-early-evening-sky-light: #f5f4ff;
+
+  /* Sustainability Tag palette (60 % / 100 % pairs) */
+  --pale-lime-green-100: #e0ffcc;
+  --pale-lime-green-60: #e0ffcc99;
+  --mint-green-100: #bdffd8;
+  --mint-green-60: #bdffd899;
+  --pale-lilac-100: #f6e4ff;
+  --pale-lilac-60: #f6e4ff99;
+  --periwinkle-purple-100: #b8afff;
+  --periwinkle-purple-60: #b8afff99;
 
   /* Golden Orange */
   --golden-orange-100: #ff7f4c;
@@ -182,8 +220,8 @@
   --vs-btn-label-selected: var(--warm-white-80);
 
   /* Card */
-  --card-surface: var(--warm-white-100);
-  --card-surface-hover: var(--purple-early-evening-sky-40-opaque-50);
+  --card-surface: var(--purple-early-evening-sky-light);
+  --card-surface-hover: var(--warm-white-100);
   --card-content-text: var(--cole-tint-100);
   --card-content-text-hover: var(--cole-tint-100);
   --card-btn: var(--warm-white-100);
@@ -264,8 +302,8 @@
   --vs-btn-label-selected: var(--snow-white-90);
 
   /* Card */
-  --card-surface: var(--snow-white-100);
-  --card-surface-hover: var(--purple-early-evening-sky-40-opaque-50);
+  --card-surface: var(--purple-early-evening-sky-light);
+  --card-surface-hover: var(--snow-white-100);
   --card-content-text: var(--cole-tint-100);
   --card-content-text-hover: var(--cole-tint-100);
   --card-btn: var(--snow-white-100);
@@ -288,12 +326,12 @@
   --surface-color: var(--warm-white-100);
   --surface-placeholder: var(--purple-tint-light-old);
 
-  /* Content — Fliesstext = purple-tint-dark, Headline = purple-tint-light */
+  /* Content */
   --content-text: var(--purple-tint-dark-dark);
   --content-weak: var(--purple-tint-dark-60);
   --content-loud-headline: var(--purple-tint-light-100);
 
-  /* Button Primary — Buttons = purple-tint-light */
+  /* Button Primary */
   --btn-primary-bg: var(--purple-tint-light-old);
   --btn-primary-label: var(--warm-white-80);
   --btn-primary-bg-hover: var(--purple-tint-light-100);
@@ -317,7 +355,7 @@
   --btn-inline-bg-inactive: var(--transparent-100);
   --btn-inline-label-inactive: var(--cole-tint-60);
 
-  /* Input — Inputs = purple-tint-dark */
+  /* Input */
   --input-label: var(--purple-tint-dark-90);
   --input-bg-active: var(--purple-early-evening-sky-40-opaque);
   --input-label-active: var(--purple-tint-dark-dark);
@@ -346,8 +384,8 @@
   --vs-btn-label-selected: var(--warm-white-80);
 
   /* Card */
-  --card-surface: var(--warm-white-100);
-  --card-surface-hover: var(--purple-early-evening-sky-40-opaque-50);
+  --card-surface: var(--purple-early-evening-sky-light);
+  --card-surface-hover: var(--warm-white-100);
   --card-content-text: var(--purple-tint-dark-dark);
   --card-content-text-hover: var(--purple-tint-dark-dark);
   --card-btn: var(--warm-white-100);
@@ -419,10 +457,7 @@
   --counter-label: var(--purple-tint-light-old);
   --counter-bg-hover: var(--purple-early-evening-sky-100);
 
-  /* Variant Selector Buttons
-     NOTE: label-on-hover resolves to warm-white/100 in this mode in Figma,
-     not snow-white/100. Reproduced faithfully — looks like a leftover from
-     the mode migration; confirm before "correcting" it. */
+  /* Variant Selector Buttons */
   --vs-btn-bg: var(--purple-early-evening-sky-40);
   --vs-btn-label: var(--purple-tint-light-old);
   --vs-btn-bg-hover: var(--purple-tint-dark-90);
@@ -431,8 +466,8 @@
   --vs-btn-label-selected: var(--snow-white-90);
 
   /* Card */
-  --card-surface: var(--snow-white-100);
-  --card-surface-hover: var(--purple-early-evening-sky-40-opaque-50);
+  --card-surface: var(--purple-early-evening-sky-light);
+  --card-surface-hover: var(--snow-white-100);
   --card-content-text: var(--purple-tint-dark-dark);
   --card-content-text-hover: var(--purple-tint-dark-dark);
   --card-btn: var(--snow-white-100);
@@ -453,7 +488,8 @@
 /* ================================================================
  *  2b. SINGLE-MODE COLLECTIONS — fixed, never follow [data-theme]
  *      "Clrs / Filter Panel" (26), "Clrs / Search" (7),
- *      "Clrs / Btns / Large / Inline" (3)
+ *      "Clrs / Btns / Large / Inline" (3),
+ *      "Clrs / Sustainability Tags" (8)
  *      Opt-out is structural: they are simply never re-declared
  *      inside a [data-theme] block.
  * ================================================================ */
@@ -506,19 +542,36 @@
   --lg-inline-label: var(--purple-tint-light-100);
   --lg-inline-label-hover: var(--purple-tint-light-100);
   --lg-inline-highlight-hover: var(--yellow-sunflower-90);
+
+  /* ---- Sustainability Tags (single mode) ----
+     One colour pair per category: 60 % as the resting chip fill,
+     100 % on active/hover. Theme-independent by design. */
+  --tag-transportation-bg: var(--pale-lime-green-60);
+  --tag-transportation-bg-active: var(--pale-lime-green-100);
+  --tag-cultivation-environment-bg: var(--mint-green-60);
+  --tag-cultivation-environment-bg-active: var(--mint-green-100);
+  --tag-social-commitment-bg: var(--pale-lilac-60);
+  --tag-social-commitment-bg-active: var(--pale-lilac-100);
+  --tag-supply-chain-fairness-bg: var(--periwinkle-purple-60);
+  --tag-supply-chain-fairness-bg-active: var(--periwinkle-purple-100);
 }
 
 
 /* ================================================================
- *  2c. CAMPAIGN AXIS — [data-campaign], orthogonal to [data-theme]
- *      Own namespace, so campaign elements keep their colours inside
- *      any themed section. Set per component, like the Figma variant.
+ *  2c. LIVELY THEMES — [data-lively-theme], a parallel theme axis
+ *      Same mechanism as [data-theme], just its own token namespace —
+ *      so the two compose and one element may carry both. Independent of
+ *      brand/surface; chosen per component, not inherited from the page.
  *      Blocks are complete for the same nesting reason as above.
+ *
+ *      Two groups share this attribute, hence the value prefixes:
+ *        mc-*  → Cards/MegaCard + Section/MegaCards   (--megacard-*)
+ *        lg-*  → Buttons/LG/PrimaryButton             (--lg-primary-*)
  * ================================================================ */
 
 /* ---- Mega-Cards: default = blue-pistacio-green ---- */
 :root,
-[data-campaign="mc-blue-pistacio-green"] {
+[data-lively-theme="mc-blue-pistacio-green"] {
   --megacard-section-bg: var(--snow-white-100);
   --megacard-span-bg: var(--cloudy-blue-100);
   --megacard-title-text: var(--pistachio-green-100);
@@ -527,7 +580,7 @@
   --megacard-text-span-bg: var(--sky-blue-100);
 }
 
-[data-campaign="mc-orange-black"] {
+[data-lively-theme="mc-orange-black"] {
   --megacard-section-bg: var(--snow-white-100);
   --megacard-span-bg: var(--peachy-coral-100);
   --megacard-title-text: var(--purple-tint-light-100);
@@ -536,7 +589,7 @@
   --megacard-text-span-bg: var(--transparent-100);
 }
 
-[data-campaign="mc-purple-black"] {
+[data-lively-theme="mc-purple-black"] {
   --megacard-section-bg: var(--snow-white-100);
   --megacard-span-bg: var(--snow-white-100);
   --megacard-title-text: var(--lilac-purple-100);
@@ -545,7 +598,7 @@
   --megacard-text-span-bg: var(--snow-white-100);
 }
 
-[data-campaign="mc-happy-christmas"] {
+[data-lively-theme="mc-happy-christmas"] {
   --megacard-section-bg: var(--warm-white-100);
   --megacard-span-bg: var(--warm-white-100);
   --megacard-title-text: var(--cole-tint-100);
@@ -554,32 +607,31 @@
   --megacard-text-span-bg: var(--transparent-100);
 }
 
-/* ---- Btns / Large / Primary: default = purple-warm-white ----
-   These mode names bake campaign + surface together, so each block
-   sets a full set including the knocked-out label colour. */
+/* ---- Btns / Large / Primary → Buttons/LG/PrimaryButton ----
+   default mode = purple-warm-white */
 :root,
-[data-campaign="lg-purple-warm-white"] {
+[data-lively-theme="lg-purple-warm-white"] {
   --lg-primary-bg: var(--purple-tint-light-old);
   --lg-primary-label: var(--warm-white-80);
   --lg-primary-bg-hover: var(--purple-tint-light-100);
   --lg-primary-label-hover: var(--warm-white-100);
 }
 
-[data-campaign="lg-sky-blue-pistacio-green"] {
+[data-lively-theme="lg-sky-blue-pistacio-green"] {
   --lg-primary-bg: var(--sky-blue-90);
   --lg-primary-label: var(--pistachio-green-95);
   --lg-primary-bg-hover: var(--sky-blue-100);
   --lg-primary-label-hover: var(--pistachio-green-100);
 }
 
-[data-campaign="lg-yellow-cole-tint"] {
+[data-lively-theme="lg-yellow-cole-tint"] {
   --lg-primary-bg: var(--yellow-sunflower-90);
   --lg-primary-label: var(--cole-tint-90);
   --lg-primary-bg-hover: var(--yellow-sunflower-100);
   --lg-primary-label-hover: var(--cole-tint-100);
 }
 
-[data-campaign="lg-orange-cole-tint"] {
+[data-lively-theme="lg-orange-cole-tint"] {
   --lg-primary-bg: var(--golden-orange-90);
   --lg-primary-label: var(--cole-tint-90);
   --lg-primary-bg-hover: var(--golden-orange-100);
@@ -612,7 +664,7 @@
 /* ================================================================
  *  3. TAILWIND UTILITY REGISTRATION — COLORS
  *     @theme inline is required: it makes utilities emit var(--…)
- *     so [data-theme] / [data-campaign] switching works at runtime.
+ *     so [data-theme] / [data-lively-theme] switching works at runtime.
  *     Without inline the values are frozen at build time.
  * ================================================================ */
 
@@ -736,7 +788,17 @@
   --color-lg-inline-label-hover: var(--lg-inline-label-hover);
   --color-lg-inline-highlight-hover: var(--lg-inline-highlight-hover);
 
-  /* ---- Campaign: Mega-Cards ---- */
+  /* ---- Sustainability Tags ---- */
+  --color-tag-transportation-bg: var(--tag-transportation-bg);
+  --color-tag-transportation-bg-active: var(--tag-transportation-bg-active);
+  --color-tag-cultivation-environment-bg: var(--tag-cultivation-environment-bg);
+  --color-tag-cultivation-environment-bg-active: var(--tag-cultivation-environment-bg-active);
+  --color-tag-social-commitment-bg: var(--tag-social-commitment-bg);
+  --color-tag-social-commitment-bg-active: var(--tag-social-commitment-bg-active);
+  --color-tag-supply-chain-fairness-bg: var(--tag-supply-chain-fairness-bg);
+  --color-tag-supply-chain-fairness-bg-active: var(--tag-supply-chain-fairness-bg-active);
+
+  /* ---- Lively theme: Mega-Cards ---- */
   --color-megacard-section-bg: var(--megacard-section-bg);
   --color-megacard-span-bg: var(--megacard-span-bg);
   --color-megacard-title-text: var(--megacard-title-text);
@@ -744,7 +806,7 @@
   --color-megacard-default-text: var(--megacard-default-text);
   --color-megacard-text-span-bg: var(--megacard-text-span-bg);
 
-  /* ---- Campaign: Btns / Large / Primary ---- */
+  /* ---- Lively theme: Btns / Large / Primary ---- */
   --color-lg-primary-bg: var(--lg-primary-bg);
   --color-lg-primary-label: var(--lg-primary-label);
   --color-lg-primary-bg-hover: var(--lg-primary-bg-hover);
@@ -848,39 +910,3 @@
 
 @utility min-h-card-md { min-height: var(--height-card-md-min); }
 @utility max-h-card-md { max-height: var(--height-card-md-max); }
-
-
-/* ================================================================
- *  USAGE
- *
- *  Theme at the container, one switch cascades:
- *    <section data-theme="purple-tint-surface-snow" class="bg-surface">
- *      <p class="text-content-text">Fliesstext …</p>
- *      <button class="h-btn-md min-w-btn-min bg-btn-primary-bg
- *                     text-btn-primary-label
- *                     hover:bg-btn-primary-bg-hover">CTA</button>
- *    </section>
- *
- *  Nested override (now works — blocks are complete):
- *    <section data-theme="purple-tint-surface-warm" class="bg-surface">
- *      <article data-theme="cole-tint-surface-snow" class="bg-card-surface">…</article>
- *    </section>
- *
- *  Campaign, independent of theme:
- *    <button data-campaign="lg-orange-cole-tint"
- *            class="h-btn-lg bg-lg-primary-bg text-lg-primary-label">Jetzt shoppen</button>
- *
- *  RULES
- *    1. Never use a primitive in a component (no bg-[#1d2020], no
- *       bg-cole-tint-90) — always the semantic utility.
- *    2. Theme lives on the container; campaign and single-mode groups
- *       are per component.
- *    3. Colour logic lives in the token definitions, never in markup.
- *       The same utility name is used across all four themes.
- *
- *  KNOWN GAPS (not fixable from the variable data alone)
- *    - No --leading-* / --tracking-* tokens, although the 65 text styles
- *      carry distinct line-heights and letter-spacings.
- *    - Text styles Input/Label SM (9px) and Cards/Blog/Title (19px) have
- *      no counterpart in the "Typografy" collection.
- * ================================================================ */
