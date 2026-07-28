@@ -38,6 +38,8 @@
  *  Lyt scl / Heights                 §2d          --height-*          → @utility h-*, §5
  *  Text Styles                       §4           --font-*            all type
  *  Typografy                         §4           --text-*            all type
+ *  Text Styles (leading)             §4           --leading-*         line-height, all type
+ *  Text Styles (tracking)            §4           --tracking-*        letter-spacing, all type
  *  Box Spacing + Gaps                §4           --spacing-*         all padding/gap/margin
  *  Lyt scl / Width                   §4           --container-*       → w-/min-w-/max-w-
  *
@@ -853,6 +855,20 @@
   --text-40: 2.5rem;
   --text-48: 3rem;
   --text-60: 3.75rem;
+
+  /* ---- Line height — Leading scale (from Text Styles) ----
+     Relative %, min = font height. Figma % / 100 -> unitless.
+     Usage: leading-tight, leading-heading, leading-body, leading-relaxed */
+  --leading-tight: 1;      /* 100% — single-line: buttons, labels, inputs, nav */
+  --leading-heading: 1.15; /* 115% — wrapping titles/headlines */
+  --leading-body: 1.4;     /* 140% — wrapping body copy */
+  --leading-relaxed: 1.6;  /* 160% — long-form reading (reserve) */
+
+  /* ---- Letter spacing — Tracking scale (from Text Styles) ----
+     Figma % / 100 -> em (scales with font size). */
+  --tracking-tight: -0.02em; /* -2% — display faces (LUMOSKY, BROWN NOW) */
+  --tracking-normal: 0em;    /*  0% — body & UI (Manrope) */
+  --tracking-wide: 0.02em;   /* +2% — small spaced labels (Navigation/Route) */
 
   /* ---- Spacing — unified Box Spacing + Gaps (identical per step) ----
      Usage: p-md, px-lg, gap-sm, m-xl …
