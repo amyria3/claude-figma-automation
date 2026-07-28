@@ -9,10 +9,10 @@ Das Code-Äquivalent spiegelt Figma 1:1: **semantische Tokens als CSS-Variablen 
 
 /* 1) Palette (= Clrs) — Beispiel Rohwerte (Primitives), nie direkt in der Komponente nutzen */
 :root {
-  --cole-tint-90: #1d2020;
+  --cole-tint-90: #1d2020e5;
   --cole-tint-100: #1d2020;
   --purple-tint-light-old: #57536f;
-  --purple-tint-dark: #2a2740;
+  --purple-tint-dark-dark: #25232b;
   --warm-white-100: #fff9f2;
   --snow-white-100: #ffffff;
   /* … restliche Palette … */
@@ -23,70 +23,76 @@ Das Code-Äquivalent spiegelt Figma 1:1: **semantische Tokens als CSS-Variablen 
       `inline` ist wichtig: so geben die Utilities `var(--…)` aus und
       bleiben zur Laufzeit über data-theme umschaltbar. */
 @theme inline {
-  --color-surface: var(--surface);
+  --color-surface: var(--surface-color);
   --color-content-text: var(--content-text);
-  --color-button-primary-bg: var(--button-primary-bg-default);
-  --color-button-primary-label: var(--button-primary-label-default);
-  --color-segment-bg-on-selected: var(--segment-bg-on-selected);
+  --color-btn-primary-bg: var(--btn-primary-bg);
+  --color-btn-primary-label: var(--btn-primary-label);
+  --color-segmented-bg-selected: var(--segmented-bg-selected);
   /* … alle Color-Themes-Tokens … */
 }
 ```
 
-**Merke:** Ein `--color-<name>`-Token erzeugt in v4 automatisch **alle** Farb-Utilities dieses Namens. Beispiel für `--color-button-primary-bg` — jedes Utility setzt eine andere CSS-Eigenschaft auf denselben Token-Wert:
+**Merke:** Ein `--color-<name>`-Token erzeugt in v4 automatisch **alle** Farb-Utilities dieses Namens. Beispiel für `--color-btn-primary-bg` — jedes Utility setzt eine andere CSS-Eigenschaft auf denselben Token-Wert:
 
 | Utility                           | CSS-Eigenschaft                 | typische Nutzung im DS                       |
 | --------------------------------- | ------------------------------- | -------------------------------------------- |
-| `bg-button-primary-bg`            | `background-color`              | Flächen (Button-BG, Surface, Card)           |
-| `text-button-primary-bg`          | `color`                         | Text **und** Icons, die `currentColor` erben |
-| `border-button-primary-bg`        | `border-color`                  | Rahmen / Stroke                              |
-| `fill-button-primary-bg`          | `fill`                          | SVG-Icons (gefüllt)                          |
-| `stroke-button-primary-bg`        | `stroke`                        | SVG-Icons (Kontur)                           |
-| `ring-button-primary-bg`          | Ring-Farbe (`--tw-ring-color`)  | Focus-Ring                                   |
-| `outline-button-primary-bg`       | `outline-color`                 | Focus-Outline                                |
-| `divide-button-primary-bg`        | `border-color` zwischen Kindern | Trennlinien in Listen                        |
-| `decoration-button-primary-bg`    | `text-decoration-color`         | Unterstreichungen                            |
-| `accent-button-primary-bg`        | `accent-color`                  | Checkbox/Radio/Range                         |
-| `caret-button-primary-bg`         | `caret-color`                   | Text-Cursor in Inputs                        |
-| `from-/via-/to-button-primary-bg` | Gradient-Stops                  | Farbverläufe                                 |
+| `bg-btn-primary-bg`            | `background-color`              | Flächen (Button-BG, Surface, Card)           |
+| `text-btn-primary-bg`          | `color`                         | Text **und** Icons, die `currentColor` erben |
+| `border-btn-primary-bg`        | `border-color`                  | Rahmen / Stroke                              |
+| `fill-btn-primary-bg`          | `fill`                          | SVG-Icons (gefüllt)                          |
+| `stroke-btn-primary-bg`        | `stroke`                        | SVG-Icons (Kontur)                           |
+| `ring-btn-primary-bg`          | Ring-Farbe (`--tw-ring-color`)  | Focus-Ring                                   |
+| `outline-btn-primary-bg`       | `outline-color`                 | Focus-Outline                                |
+| `divide-btn-primary-bg`        | `border-color` zwischen Kindern | Trennlinien in Listen                        |
+| `decoration-btn-primary-bg`    | `text-decoration-color`         | Unterstreichungen                            |
+| `accent-btn-primary-bg`        | `accent-color`                  | Checkbox/Radio/Range                         |
+| `caret-btn-primary-bg`         | `caret-color`                   | Text-Cursor in Inputs                        |
+| `from-/via-/to-btn-primary-bg` | Gradient-Stops                  | Farbverläufe                                 |
 
 Ohne `inline` würde v4 den Wert beim Build „einfrieren" — dann funktioniert die Laufzeit-Umschaltung (`data-theme`) nicht.
+
+Zwei `@theme`-Blöcke: **Farben** in `@theme inline` (bleiben zur Laufzeit umschaltbar),
+**statische Skalen** in normalem `@theme` — `--text-*` (Schriftgrößen), `--spacing-*`
+(Padding und Gap aus einer Skala), `--container-*` (Breiten). Letztere werden zusätzlich als
+CSS-Variablen ausgegeben und sind in handgeschriebenem CSS nutzbar. Höhen haben in v4
+**keinen** Theme-Namespace und laufen über `@utility` (`h-btn-lg` …).
 
 ## 2 Die 4 Modi (globales Theme)
 
 Die vier Figma-Modi = vier `data-theme`-Werte. Pro Theme werden nur die **semantischen** Variablen neu gesetzt (nicht die Palette, nicht die `--color-*`):
 
 ```css
-[data-theme="cole-warm"] {
-  --surface: var(--warm-white-100);
+[data-theme="cole-tint-surface-warm"] {
+  --surface-color: var(--warm-white-100);
   --content-text: var(--cole-tint-90);
-  --button-primary-bg-default: var(--cole-tint-90);
-  --button-primary-label-default: var(--warm-white-100); /* ausgestanzt = Surface */
+  --btn-primary-bg: var(--cole-tint-90);
+  --btn-primary-label: var(--warm-white-100); /* ausgestanzt = Surface */
 }
-[data-theme="cole-snow"] {
-  --surface: var(--snow-white-100);
+[data-theme="cole-tint-surface-snow"] {
+  --surface-color: var(--snow-white-100);
   --content-text: var(--cole-tint-90);
-  --button-primary-bg-default: var(--cole-tint-90);
-  --button-primary-label-default: var(--snow-white-100);
+  --btn-primary-bg: var(--cole-tint-90);
+  --btn-primary-label: var(--snow-white-100);
 }
-[data-theme="purple-warm"] {
-  --surface: var(--warm-white-100);
-  --content-text: var(--purple-tint-dark);              /* Fließtext = dark */
-  --button-primary-bg-default: var(--purple-tint-light-old); /* Button = light */
-  --button-primary-label-default: var(--warm-white-100);
+[data-theme="purple-tint-surface-warm"] {
+  --surface-color: var(--warm-white-100);
+  --content-text: var(--purple-tint-dark-dark);              /* Fließtext = dark */
+  --btn-primary-bg: var(--purple-tint-light-old); /* Button = light */
+  --btn-primary-label: var(--warm-white-100);
 }
-[data-theme="purple-snow"] {
-  --surface: var(--snow-white-100);
-  --content-text: var(--purple-tint-dark);
-  --button-primary-bg-default: var(--purple-tint-light-old);
-  --button-primary-label-default: var(--snow-white-100);
+[data-theme="purple-tint-surface-snow"] {
+  --surface-color: var(--snow-white-100);
+  --content-text: var(--purple-tint-dark-dark);
+  --btn-primary-bg: var(--purple-tint-light-old);
+  --btn-primary-label: var(--snow-white-100);
 }
 ```
 
 ## 2 Nutzung
 ```html
-<section data-theme="purple-snow" class="bg-surface">
+<section data-theme="purple-tint-surface-snow" class="bg-surface">
   <p class="text-content-text">Fließtext …</p>
-  <button class="bg-button-primary-bg text-button-primary-label">Call to action</button>
+  <button class="bg-btn-primary-bg text-btn-primary-label">Call to action</button>
 </section>
 ```
 
@@ -95,10 +101,10 @@ Die vier Figma-Modi = vier `data-theme`-Werte. Pro Theme werden nur die **semant
 Ein eigenes `data-theme` auf einem Wrapper überschreibt den geerbten Modus für dessen ganzen Teilbaum — identisch zum lokalen Figma-Modus-Pin. Für Karten typisch (bewusst abweichende Fläche):
 
 ```html
-<section data-theme="cole-warm" class="bg-surface">
+<section data-theme="cole-tint-surface-warm" class="bg-surface">
   <p class="text-content-text">Standard-Theme der Section …</p>
-  <article data-theme="cole-snow" class="bg-surface">   <!-- Card hebt sich ab -->
-    <button class="bg-button-primary-bg text-button-primary-label">Sonder-CTA</button>
+  <article data-theme="cole-tint-surface-snow" class="bg-surface">   <!-- Card hebt sich ab -->
+    <button class="bg-btn-primary-bg text-btn-primary-label">Sonder-CTA</button>
   </article>
 </section>
 ```
@@ -107,7 +113,7 @@ Ein eigenes `data-theme` auf einem Wrapper überschreibt den geerbten Modus für
 
 Zwei Kategorien laufen bewusst **nicht** über `data-theme`.
 
-**a) Single-mode: Filter Panel, Search (und LG/Inline)**
+**a) Single-mode: Filter Panel, Search, Sustainability Tags (und LG/Inline)**
 Feste Werte, die nie theme-en → in `:root` definieren und **nicht** unter `[data-theme]` neu setzen:
 
 ```css
@@ -129,11 +135,11 @@ Feste Werte, die nie theme-en → in `:root` definieren und **nicht** unter `[da
 
 → `bg-filter-chip-bg` sieht in jeder Section gleich aus (Opt-out per Weglassen des Theme-Overrides). Kein Variant nötig.
 
-**b) Kampagnen-Achse: Mega-Cards, LG/Primary, LG/Inline**
+**b) Lively-Theme-Achse: Mega-Cards, LG/Primary, LG/Inline**
 Eine **zweite, orthogonale** Theming-Dimension (welche Kampagne), unabhängig von hell/dunkel. Zwei Dinge halten sie konfliktfrei:
 
 - **Eigener Namespace** (`--color-lg-primary-*`, `--color-megacard-*`) — kollidiert nicht mit den globalen Tokens. Deshalb behält ein Kampagnen-Element seine Farben in *jeder* `data-theme`-Section.
-- In Figma ist es eine **Varianten-Property** an der Komponente (nicht ein Section-Pin) → im Code = **Component-Variant / eigenes Scope** (`data-campaign`), nicht `data-theme`.
+- In Figma ist es eine **Varianten-Property** an der Komponente (nicht ein Section-Pin) → im Code = **Component-Variant / eigenes Scope** (`data-lively-theme`), nicht `data-theme`.
 
 ```css
 @theme inline {
@@ -141,29 +147,51 @@ Eine **zweite, orthogonale** Theming-Dimension (welche Kampagne), unabhängig vo
   --color-lg-primary-label: var(--lg-primary-label);
 }
 /* Kampagne wird pro Komponente gewählt — wie die Figma-Variante */
-[data-campaign="orange-cole-tint"] {
+[data-lively-theme="lg-orange"] {
   --lg-primary-bg: var(--cole-tint-90);
   --lg-primary-label: var(--warm-white-100); /* Label = Surface-Farbe */
 }
-[data-campaign="sky-blue-pistacio-green"] {
+[data-lively-theme="lg-sky-blue"] {
   --lg-primary-bg: var(--sky-blue-100);
   --lg-primary-label: var(--pistachio-green-100);
 }
 ```
 
 ```html
-<button data-campaign="orange-cole-tint"
+<button data-lively-theme="lg-orange"
         class="bg-lg-primary-bg text-lg-primary-label">Jetzt shoppen</button>
 ```
 
-> Hinweis: Die LG-Modus-Namen (`purple-warm-white`, `yellow-cole-tint` …) backen **Kampagne + Surface** zusammen. Jeder `data-campaign`-Wert setzt daher einen kompletten Satz Variablen inkl. ausgestanztem Label = Surface-Farbe. (In der Praxis oft sauberer als echte Component-Variante via `tailwind-variants`/CVA statt Attribut.)
+> Hinweis: Die LG-Modus-Namen (`lg-purple`, `lg-yellow` …) backen **Kampagne + Surface** zusammen. Jeder `data-lively-theme`-Wert setzt daher einen kompletten Satz Variablen inkl. ausgestanztem Label = Surface-Farbe. (In der Praxis oft sauberer als echte Component-Variante via `tailwind-variants`/CVA statt Attribut.)
+
+## 5 Welche Achse wofür
+
+| Achse | Attribut | wird gesetzt | Beispiel-Collections |
+|---|---|---|---|
+| Marke × Fläche (global) | `data-theme`, 4 Werte | am Container, kaskadiert | Clrs / Color Modes |
+| Lively Theme (parallel) | `data-lively-theme` | pro Komponente | Mega-Cards, Btns / LG / Primary |
+| Single-mode | — (fix in `:root`) | nirgends | Filter Panel, Search, Sustainability Tags |
+
+Technisch ist das ein und derselbe Mechanismus: ein Attribut-Selektor, der einen Satz Custom
+Properties neu setzt — gleiche Spezifität, gleiche Vererbung. „Lively Theme" ist deshalb keine
+eigene Technik, sondern eine **zweite, parallele Theme-Achse**.
+
+Kombinierbar sind sie, weil die Token-Namespaces disjunkt sind (`--surface-*`, `--content-*`,
+`--btn-*` vs. `--megacard-*` vs. `--lg-primary-*`): ein Element darf beide Attribute tragen,
+jedes wirkt nur auf seine eigenen Tokens. Single-mode-Tokens stehen ausschließlich in `:root`
+und werden in keinem `[data-theme]`-Block erneut gesetzt — genau das ist ihr Opt-out.
+
+**Faustregel:** variiert ein Wert mit Marke oder Fläche → `data-theme`. Variiert er unabhängig
+davon (Kampagne, Saison) → eigene Achse mit eigenem Token-Präfix. Variiert er nie → `:root`.
+
+---
 
 ## 6 Die drei Regeln (spiegeln Figma)
 
-1. **Keine primitiven Farben in der Komponente** — kein `bg-[#1d2020]` / `bg-cole-tint-90`, immer das semantische Utility (`bg-button-primary-bg`).
-2. **Theme am Container** (`data-theme`) — der eine Schalter kaskadiert; in bestimmten Komponenten kann das Theme aber auch explizit gesetzt sein (lokaler Override, siehe §4.4). Kampagne und Single-mode laufen dagegen immer pro Komponente (`data-campaign` bzw. fix).
+1. **Keine primitiven Farben in der Komponente** — kein `bg-[#1d2020]` / `bg-cole-tint-90`, immer das semantische Utility (`bg-btn-primary-bg`).
+2. **Theme am Container** (`data-theme`) — der eine Schalter kaskadiert; in bestimmten Komponenten kann das Theme aber auch explizit gesetzt sein (lokaler Override, siehe §4.4). Kampagne und Single-mode laufen dagegen immer pro Komponente (`data-lively-theme` bzw. fix).
 3. **Die Farb-Logik liegt in den Token-Definitionen, nicht im Komponenten-Code.** Die themeabhängige Belegung der Werte (siehe §1.3) — z. B. Inputs und Fließtext = `purple-tint-dark`, Buttons und Akzente = `purple-tint-light` im Purple-Theme — steckt ausschließlich in den Werten der semantischen CSS-Variablen je `data-theme`. Das Komponenten-Markup referenziert stets dasselbe semantische Utility und bleibt über alle Themes hinweg unverändert.
 
 ## 7 Automatisch generieren *(Vorschlag von Claude)*
 
-Das Set lässt sich aus Figma erzeugen: **Tokens Studio** oder **Figma Variables REST API** + **Style Dictionary**. Der `theme-name`-String der 4 Modi liefert direkt den passenden `data-theme`-Wert; die Kampagnen-Collections (Mega-Cards, LG) exportierst du als eigenen `data-campaign`-Satz.
+Das Set lässt sich aus Figma erzeugen: **Tokens Studio** oder **Figma Variables REST API** + **Style Dictionary**. Der `theme-name`-String der 4 Modi liefert direkt den passenden `data-theme`-Wert; die Kampagnen-Collections (Mega-Cards, LG) exportierst du als eigenen `data-lively-theme`-Satz.
