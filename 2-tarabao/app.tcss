@@ -32,11 +32,9 @@
  *                                                 --price-dd-*        Filter/PriceRange/DropDown
  *                                                 --filter-panel-*    Filter/FilterPanel
  *  Clrs / Search                     §2b          --search-*          Search/Input, QueryState
- *  Clrs / Btns / Large / Inline      §2b          --lg-inline-*       Buttons/LG/Inline
  *  Clrs / Sustainability Tags        §2b          --tag-*             sustainability tag chips
- *  Clrs / Mega-Cards                 §2c          --megacard-*        Cards/MegaCard,
- *    switched via [data-lively-theme]                                     Section/MegaCards
- *  Clrs / Btns / Large / Primary     §2c          --lg-primary-*      Buttons/LG/PrimaryButton
+ *  Clrs / Mega Cards                 §2c          --megacard-*        Cards/MegaCard, Section/MegaCards
+ *    switched via [data-lively-theme]             --megacard-btn-*    Buttons/LG/Primary + Inline
  *  Lyt scl / Heights                 §2d          --height-*          → @utility h-*, §5
  *  Text Styles                       §4           --font-*            all type
  *  Typografy                         §4           --text-*            all type
@@ -538,11 +536,6 @@
   --search-input-text: var(--purple-tint-light-old);
   --search-close-icon: var(--snow-white-100);
 
-  /* ---- Btns / Large / Inline (single mode: purple-tint-yellow) ---- */
-  --lg-inline-label: var(--purple-tint-light-100);
-  --lg-inline-label-hover: var(--purple-tint-light-100);
-  --lg-inline-highlight-hover: var(--yellow-sunflower-90);
-
   /* ---- Sustainability Tags (single mode) ----
      One colour pair per category: 60 % as the resting chip fill,
      100 % on active/hover. Theme-independent by design. */
@@ -559,85 +552,99 @@
 
 /* ================================================================
  *  2c. LIVELY THEMES — [data-lively-theme], a parallel theme axis
- *      Same mechanism as [data-theme], just its own token namespace —
- *      so the two compose and one element may carry both. Independent of
- *      brand/surface; chosen per component, not inherited from the page.
+ *      Same mechanism as [data-theme], own token namespace, so the two
+ *      compose: an element may carry both. Chosen per component.
  *      Blocks are complete for the same nesting reason as above.
  *
- *      Two groups share this attribute, hence the value prefixes:
- *        mc-*  → Cards/MegaCard + Section/MegaCards   (--megacard-*)
- *        lg-*  → Buttons/LG/PrimaryButton             (--lg-primary-*)
+ *      Source: one collection "Clrs / Mega Cards" (13) — the MegaCard and
+ *      the LG buttons it contains switch together, so the mode values are
+ *      the collection modes, without group prefixes.
  * ================================================================ */
 
-/* ---- Mega-Cards: default = blue-pistacio-green ---- */
 :root,
-[data-lively-theme="mc-blue-pistacio-green"] {
+[data-lively-theme="blue-pistacio-green"] {
+  /* Mega Card */
   --megacard-section-bg: var(--snow-white-100);
   --megacard-span-bg: var(--cloudy-blue-100);
   --megacard-title-text: var(--pistachio-green-100);
   --megacard-title-span-bg: var(--sky-blue-100);
   --megacard-default-text: var(--snow-white-100);
   --megacard-text-span-bg: var(--sky-blue-100);
+
+  /* Mega Card Primary Button */
+  --megacard-btn-primary-bg: var(--sky-blue-90);
+  --megacard-btn-primary-bg-hover: var(--sky-blue-100);
+  --megacard-btn-primary-label: var(--pistachio-green-95);
+  --megacard-btn-primary-label-hover: var(--pistachio-green-100);
+
+  /* Mega Card Inline Button */
+  --megacard-btn-inline-label: var(--purple-tint-light-100);
+  --megacard-btn-inline-label-hover: var(--purple-tint-light-100);
+  --megacard-btn-inline-highlight-hover: var(--yellow-sunflower-90);
 }
 
-[data-lively-theme="mc-orange-black"] {
+[data-lively-theme="orange-black"] {
+  /* Mega Card */
   --megacard-section-bg: var(--snow-white-100);
   --megacard-span-bg: var(--peachy-coral-100);
   --megacard-title-text: var(--purple-tint-light-100);
   --megacard-title-span-bg: var(--warm-white-100);
   --megacard-default-text: var(--purple-tint-light-100);
   --megacard-text-span-bg: var(--transparent-100);
+
+  /* Mega Card Primary Button */
+  --megacard-btn-primary-bg: var(--purple-tint-light-old);
+  --megacard-btn-primary-bg-hover: var(--purple-tint-light-100);
+  --megacard-btn-primary-label: var(--warm-white-80);
+  --megacard-btn-primary-label-hover: var(--warm-white-100);
+
+  /* Mega Card Inline Button */
+  --megacard-btn-inline-label: var(--purple-tint-light-100);
+  --megacard-btn-inline-label-hover: var(--purple-tint-light-100);
+  --megacard-btn-inline-highlight-hover: var(--yellow-sunflower-90);
 }
 
-[data-lively-theme="mc-purple-black"] {
-  --megacard-section-bg: var(--snow-white-100);
-  --megacard-span-bg: var(--snow-white-100);
-  --megacard-title-text: var(--lilac-purple-100);
-  --megacard-title-span-bg: var(--purple-tint-light-old);
-  --megacard-default-text: var(--purple-tint-light-100);
-  --megacard-text-span-bg: var(--snow-white-100);
-}
-
-[data-lively-theme="mc-happy-christmas"] {
+[data-lively-theme="happy-christmas"] {
+  /* Mega Card */
   --megacard-section-bg: var(--warm-white-100);
   --megacard-span-bg: var(--warm-white-100);
   --megacard-title-text: var(--cole-tint-100);
   --megacard-title-span-bg: var(--yellow-sunflower-100);
   --megacard-default-text: var(--cole-tint-100);
   --megacard-text-span-bg: var(--transparent-100);
+
+  /* Mega Card Primary Button */
+  --megacard-btn-primary-bg: var(--yellow-sunflower-90);
+  --megacard-btn-primary-bg-hover: var(--yellow-sunflower-100);
+  --megacard-btn-primary-label: var(--cole-tint-90);
+  --megacard-btn-primary-label-hover: var(--cole-tint-100);
+
+  /* Mega Card Inline Button */
+  --megacard-btn-inline-label: var(--purple-tint-light-100);
+  --megacard-btn-inline-label-hover: var(--purple-tint-light-100);
+  --megacard-btn-inline-highlight-hover: var(--yellow-sunflower-90);
 }
 
-/* ---- Btns / Large / Primary → Buttons/LG/PrimaryButton ----
-   default mode = purple-warm-white */
-:root,
-[data-lively-theme="lg-purple"] {
-  --lg-primary-bg: var(--purple-tint-light-old);
-  --lg-primary-label: var(--warm-white-80);
-  --lg-primary-bg-hover: var(--purple-tint-light-100);
-  --lg-primary-label-hover: var(--warm-white-100);
-}
+[data-lively-theme="purple-black"] {
+  /* Mega Card */
+  --megacard-section-bg: var(--snow-white-100);
+  --megacard-span-bg: var(--snow-white-100);
+  --megacard-title-text: var(--lilac-purple-100);
+  --megacard-title-span-bg: var(--purple-tint-light-old);
+  --megacard-default-text: var(--purple-tint-light-100);
+  --megacard-text-span-bg: var(--snow-white-100);
 
-[data-lively-theme="lg-sky-blue"] {
-  --lg-primary-bg: var(--sky-blue-90);
-  --lg-primary-label: var(--pistachio-green-95);
-  --lg-primary-bg-hover: var(--sky-blue-100);
-  --lg-primary-label-hover: var(--pistachio-green-100);
-}
+  /* Mega Card Primary Button */
+  --megacard-btn-primary-bg: var(--golden-orange-90);
+  --megacard-btn-primary-bg-hover: var(--golden-orange-100);
+  --megacard-btn-primary-label: var(--cole-tint-90);
+  --megacard-btn-primary-label-hover: var(--cole-tint-100);
 
-[data-lively-theme="lg-yellow"] {
-  --lg-primary-bg: var(--yellow-sunflower-90);
-  --lg-primary-label: var(--cole-tint-90);
-  --lg-primary-bg-hover: var(--yellow-sunflower-100);
-  --lg-primary-label-hover: var(--cole-tint-100);
+  /* Mega Card Inline Button */
+  --megacard-btn-inline-label: var(--purple-tint-light-100);
+  --megacard-btn-inline-label-hover: var(--purple-tint-light-100);
+  --megacard-btn-inline-highlight-hover: var(--yellow-sunflower-90);
 }
-
-[data-lively-theme="lg-orange"] {
-  --lg-primary-bg: var(--golden-orange-90);
-  --lg-primary-label: var(--cole-tint-90);
-  --lg-primary-bg-hover: var(--golden-orange-100);
-  --lg-primary-label-hover: var(--cole-tint-100);
-}
-
 
 /* ================================================================
  *  2d. COMPONENT HEIGHTS — plain custom properties
@@ -783,10 +790,6 @@
   --color-search-input-text: var(--search-input-text);
   --color-search-close-icon: var(--search-close-icon);
 
-  /* ---- Btns / Large / Inline ---- */
-  --color-lg-inline-label: var(--lg-inline-label);
-  --color-lg-inline-label-hover: var(--lg-inline-label-hover);
-  --color-lg-inline-highlight-hover: var(--lg-inline-highlight-hover);
 
   /* ---- Sustainability Tags ---- */
   --color-tag-transportation-bg: var(--tag-transportation-bg);
@@ -798,19 +801,21 @@
   --color-tag-supply-chain-fairness-bg: var(--tag-supply-chain-fairness-bg);
   --color-tag-supply-chain-fairness-bg-hover-click: var(--tag-supply-chain-fairness-bg-hover-click);
 
-  /* ---- Lively theme: Mega-Cards ---- */
+  /* ---- Lively theme: Mega Cards (card + its LG buttons) ---- */
   --color-megacard-section-bg: var(--megacard-section-bg);
   --color-megacard-span-bg: var(--megacard-span-bg);
   --color-megacard-title-text: var(--megacard-title-text);
   --color-megacard-title-span-bg: var(--megacard-title-span-bg);
   --color-megacard-default-text: var(--megacard-default-text);
   --color-megacard-text-span-bg: var(--megacard-text-span-bg);
+  --color-megacard-btn-primary-bg: var(--megacard-btn-primary-bg);
+  --color-megacard-btn-primary-bg-hover: var(--megacard-btn-primary-bg-hover);
+  --color-megacard-btn-primary-label: var(--megacard-btn-primary-label);
+  --color-megacard-btn-primary-label-hover: var(--megacard-btn-primary-label-hover);
+  --color-megacard-btn-inline-label: var(--megacard-btn-inline-label);
+  --color-megacard-btn-inline-label-hover: var(--megacard-btn-inline-label-hover);
+  --color-megacard-btn-inline-highlight-hover: var(--megacard-btn-inline-highlight-hover);
 
-  /* ---- Lively theme: Btns / Large / Primary ---- */
-  --color-lg-primary-bg: var(--lg-primary-bg);
-  --color-lg-primary-label: var(--lg-primary-label);
-  --color-lg-primary-bg-hover: var(--lg-primary-bg-hover);
-  --color-lg-primary-label-hover: var(--lg-primary-label-hover);
 }
 
 
