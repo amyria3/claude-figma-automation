@@ -211,13 +211,13 @@
   --counter-label: var(--purple-tint-dark-90);
   --counter-bg-hover: var(--purple-early-evening-sky-100);
 
-  /* Variant Selector Buttons */
-  --vs-btn-bg: var(--purple-early-evening-sky-40);
-  --vs-btn-label: var(--cole-tint-90);
-  --vs-btn-bg-hover: var(--cole-tint-90);
-  --vs-btn-label-hover: var(--warm-white-100);
-  --vs-btn-bg-selected: var(--cole-tint-90);
-  --vs-btn-label-selected: var(--warm-white-80);
+  /* Options Selector Buttons */
+  --os-btn-bg: var(--purple-early-evening-sky-40);
+  --os-btn-label: var(--cole-tint-90);
+  --os-btn-bg-hover: var(--cole-tint-90);
+  --os-btn-label-hover: var(--warm-white-100);
+  --os-btn-bg-selected: var(--cole-tint-90);
+  --os-btn-label-selected: var(--warm-white-80);
 
   /* Card */
   --card-surface: var(--purple-early-evening-sky-light);
@@ -293,7 +293,7 @@
   --counter-label: var(--purple-tint-dark-90);
   --counter-bg-hover: var(--purple-early-evening-sky-100);
 
-  /* Variant Selector Buttons */
+  /* Options Selector Button */
   --vs-btn-bg: var(--purple-early-evening-sky-40);
   --vs-btn-label: var(--cole-tint-90);
   --vs-btn-bg-hover: var(--cole-tint-90);
@@ -375,13 +375,13 @@
   --counter-label: var(--purple-tint-light-old);
   --counter-bg-hover: var(--purple-early-evening-sky-100);
 
-  /* Variant Selector Buttons */
-  --vs-btn-bg: var(--purple-early-evening-sky-40);
-  --vs-btn-label: var(--purple-tint-light-old);
-  --vs-btn-bg-hover: var(--purple-tint-dark-90);
-  --vs-btn-label-hover: var(--warm-white-100);
-  --vs-btn-bg-selected: var(--purple-tint-light-old);
-  --vs-btn-label-selected: var(--warm-white-80);
+  /* Option Selector Button */
+  --os-btn-bg: var(--purple-early-evening-sky-40);
+  --os-btn-label: var(--purple-tint-light-old);
+  --os-btn-bg-hover: var(--purple-tint-dark-90);
+  --os-btn-label-hover: var(--warm-white-100);
+  --os-btn-bg-selected: var(--purple-tint-light-old);
+  --os-btn-label-selected: var(--warm-white-80);
 
   /* Card */
   --card-surface: var(--purple-early-evening-sky-light);
@@ -457,13 +457,13 @@
   --counter-label: var(--purple-tint-light-old);
   --counter-bg-hover: var(--purple-early-evening-sky-100);
 
-  /* Variant Selector Buttons */
-  --vs-btn-bg: var(--purple-early-evening-sky-40);
-  --vs-btn-label: var(--purple-tint-light-old);
-  --vs-btn-bg-hover: var(--purple-tint-dark-90);
-  --vs-btn-label-hover: var(--warm-white-100);
-  --vs-btn-bg-selected: var(--purple-tint-light-old);
-  --vs-btn-label-selected: var(--snow-white-90);
+  /* Options Selector Button */
+  --os-btn-bg: var(--purple-early-evening-sky-40);
+  --os-btn-label: var(--purple-tint-light-old);
+  --os-btn-bg-hover: var(--purple-tint-dark-90);
+  --os-btn-label-hover: var(--warm-white-100);
+  --os-btn-bg-selected: var(--purple-tint-light-old);
+  --os-btn-label-selected: var(--snow-white-90);
 
   /* Card */
   --card-surface: var(--purple-early-evening-sky-light);
@@ -720,13 +720,13 @@
   --color-counter-label: var(--counter-label);
   --color-counter-bg-hover: var(--counter-bg-hover);
 
-  /* ---- Variant Selector Buttons ---- */
-  --color-vs-btn-bg: var(--vs-btn-bg);
-  --color-vs-btn-label: var(--vs-btn-label);
-  --color-vs-btn-bg-hover: var(--vs-btn-bg-hover);
-  --color-vs-btn-label-hover: var(--vs-btn-label-hover);
-  --color-vs-btn-bg-selected: var(--vs-btn-bg-selected);
-  --color-vs-btn-label-selected: var(--vs-btn-label-selected);
+  /* ---- Option Selector Button ---- */
+  --color-os-btn-bg: var(--vs-btn-bg);
+  --color-os-btn-label: var(--vs-btn-label);
+  --color-os-btn-bg-hover: var(--vs-btn-bg-hover);
+  --color-os-btn-label-hover: var(--vs-btn-label-hover);
+  --color-os-btn-bg-selected: var(--vs-btn-bg-selected);
+  --color-os-btn-label-selected: var(--vs-btn-label-selected);
 
   /* ---- Card ---- */
   --color-card-surface: var(--card-surface);
