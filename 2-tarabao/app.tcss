@@ -71,6 +71,7 @@
 
   /* Warm White */
   --warm-white-100: #fff9f2;
+  --between-warm-and-snow: #fffbf7;
   --warm-white-80: #fff9f2cc;
   --warm-white-60: #fff9f299;
 
@@ -221,8 +222,8 @@
   --btn-option-selection-label-selected: var(--warm-white-80);
 
   /* Card */
-  --card-surface: var(--purple-early-evening-sky-light);
-  --card-surface-hover: var(--warm-white-100);
+  --card-surface: var(--between-warm-and-snow);
+  --card-surface-hover: var(--snow-white-90);
   --card-content-text: var(--cole-tint-100);
   --card-content-text-hover: var(--cole-tint-100);
   --card-btn: var(--warm-white-100);
@@ -303,7 +304,7 @@
   --btn-option-selection-label-selected: var(--snow-white-90);
 
   /* Card */
-  --card-surface: var(--purple-early-evening-sky-light);
+  --card-surface: var(--snow-white-100);
   --card-surface-hover: var(--snow-white-100);
   --card-content-text: var(--cole-tint-100);
   --card-content-text-hover: var(--cole-tint-100);
@@ -385,8 +386,8 @@
   --btn-option-selection-label-selected: var(--warm-white-80);
 
   /* Card */
-  --card-surface: var(--purple-early-evening-sky-light);
-  --card-surface-hover: var(--warm-white-100);
+  --card-surface: var(--between-warm-and-snow);
+  --card-surface-hover: var(--snow-white-90);
   --card-content-text: var(--purple-tint-dark-dark);
   --card-content-text-hover: var(--purple-tint-dark-dark);
   --card-btn: var(--warm-white-100);
@@ -467,7 +468,7 @@
   --btn-option-selection-label-selected: var(--snow-white-90);
 
   /* Card */
-  --card-surface: var(--purple-early-evening-sky-light);
+  --card-surface: var(--snow-white-100);
   --card-surface-hover: var(--snow-white-100);
   --card-content-text: var(--purple-tint-dark-dark);
   --card-content-text-hover: var(--purple-tint-dark-dark);
