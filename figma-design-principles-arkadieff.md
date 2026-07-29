@@ -211,3 +211,29 @@ MainContent (flex-col)
 ---
 
 *Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen. Design-Tokens (Text Styles, Box-Spacing & Gap, Tailwind-Utility-Scale) und offene TODOs stehen in `ux-ui-dokumentation-tarabao.md`.*
+
+---
+
+## 📦 Box-Spacing-Muster (Section-basierte Seiten)
+
+Padding und Gap sind pro Layout-Ebene festgelegt; jede Ebene hat genau eine Aufgabe. Spacing sitzt ausschließlich auf der **Section** und im **wrapper-max-w** — Page und Slots sind spacing-neutral.
+
+| Figma-Ebene | React/HTML | Padding vert. | Padding horiz. | Gap |
+|---|---|---|---|---|
+| **Page** (`main` → `wrapper-max-w` → `Section-Slots`) | Seiten-Layout `<main>`, stapelt Sections — spacing-neutral | 0 | 0 | 0 |
+| **Section** (Section-(Template)-Instanz) | `<section>` — die Spacing-Box (`py-10 px-5`) | 40 | 20 | 0 |
+| **wrapper-max-w** | `<div className="mx-auto max-w-[1024px] flex flex-col gap-5">` | 0 | 0 | 20 |
+| **Content Slot** | React-Composition-Slot (`{children}`) — nur Transport, kein Styling | 0 | 0 | 0 |
+| **Inhalt mit >1 Child** (z. B. Card-Reihe) | eigene Komponente, bringt eigenes Spacing mit (`gap-3`) | 0 | 0 | 12* |
+| **Inhalt mit 1 Child** (z. B. Headline/H2) | eigene Komponente — immer `gap-0` (Single-Child-Regel) | 0 | 0 | 0 |
+
+\* Card-Reihe: 12 in den Standardvarianten, 16 in der Horizontal-Scroll-Variante.
+
+**Regeln:**
+1. Vertikaler Abstand entsteht nur auf Section-Ebene (`py-10`/40, `px-5`/20, Gap 0).
+2. Der Abstand zwischen zwei Sections ergibt sich rein aus deren Padding (40 + 40 = 80) — die Page fügt nichts hinzu.
+3. `wrapper-max-w` (max-w 1024, zentriert) hat kein Padding, aber `gap-5`/20 — der einzige Abstand zwischen mehreren Inhaltsblöcken innerhalb einer Section.
+4. `Content Slots` sind 0/0/0 — sie transportieren Inhalt, stylen ihn nicht.
+5. Die Page-Kette (`main` → `wrapper-max-w` → `Section-Slots`) ist durchgehend 0/0/0.
+6. Inhaltskomponenten bringen ihr eigenes internes Spacing mit.
+7. **Single-Child-Regel: Container mit nur einem Child haben grundsätzlich `gap-0`.**
