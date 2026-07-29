@@ -829,12 +829,13 @@
  *  theme-1 = Default; theme-2 wird pro Frame gepinnt.
  */
 :root,
-[data-special-theme="theme-1"] {
+:root,
+[data-special-theme="forest"] {
   --special-surface-color-voucher: var(--forest-green-100);
   --special-content-text: var(--surface-color);
 }
 
-[data-special-theme="theme-2"] {
+[data-special-theme="lilac"] {
   --special-surface-color-voucher: var(--lilac-purple-90);
   --special-content-text: var(--purple-tint-dark-dark);
 }
@@ -917,8 +918,7 @@
   --container-block-md-max: 32rem;      /* Block Element/MD/max-w       512px */
   --container-block-sm-min: 20.5rem;    /* Block Element/SM/min-w       328px */
   --container-block-x-sm-min: 6rem;     /* Block Element/x-SM/min-w      96px */
-  --container-block-xx-sm-min: 4rem;    /* Block Element/xx-SM/min-w     64px */
-  --container-block-xx-sm-max: 13rem;   /* Block Element/xx-SM/max-w    208px */
+  --container-card-img-max: 13rem;      /* Cards/Img/max-w              208px */
   --container-text-blocks-max: 66.5rem; /* 2 Text Block Elements/max-w 1064px */
   --container-card-default-min: 15rem;  /* Cards/Default/min-w          240px */
   --container-card-default-max: 24rem;  /* Cards/Default/max-w          384px */
@@ -926,9 +926,12 @@
   --container-card-md-max: 28rem;       /* Cards/MD/max-w               448px */
   --container-btn-min: 15rem;           /* Buttons/min-w                240px */
   --container-btn-max: 32rem;           /* Buttons/max-w                512px */
-  --container-megacard-min: 11rem;      /* Mega Cards/min-w             176px
+  --container-megacard-min: 26.5rem;    /* Mega Cards/min-w             424px */
                                            alias [twuc]-44 (11rem) */
-  --container-megacard-max: 78rem;      /* Mega Cards/max-w            1248px
+  --container-megacard-max: 66.5rem;    /* Mega Cards/max-w            1064px */
+  --container-max-w-content: 66.5rem;   /* max-w-content               1064px */
+  --container-min-w-screen: 26.5rem;    /* min-w-screen                 424px */
+  --container-breakpoint: 60.25rem;     /* breakpoint                   964px */
                                            alias [twuc]-312 (78rem) */
 }
 
