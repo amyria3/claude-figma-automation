@@ -83,7 +83,7 @@
   --purple-early-evening-sky-100: #d0cde3;
   --purple-early-evening-sky-40: #d9d6eb66;
   --purple-early-evening-sky-40-opaque: #e7e5f2;
-  --purple-early-evening-sky-light: #f5f4ff;
+  --purple-early-evening-sky-light: #fafaff;
 
   /* Sustainability Tag palette (60 % / 100 % pairs) */
   --pale-lime-green-100: #e0ffcc;
@@ -124,8 +124,8 @@
   --morning-sky-purple-80: #ece8ffcc;
   --cloudy-blue-100: #b8d2ef;
   --cloudy-lilac-purple-100: #9d97c6;
-  --lilac-purple-100: #b2a8ff;
-  --lilac-purple-90: #b2a8ffe5;
+  --lilac-purple-100: #c6beff;
+  --lilac-purple-90: #c6beffe5;
 
   /* Pinks */
   --flower-rosa-100: #e7b3e2;
