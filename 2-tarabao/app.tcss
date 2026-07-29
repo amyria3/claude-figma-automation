@@ -35,6 +35,7 @@
  *  Clrs / Sustainability Tags        §2b          --tag-*             sustainability tag chips
  *  Clrs / Mega Cards                 §2c          --megacard-*        Cards/MegaCard, Section/MegaCards
  *    switched via [data-lively-theme]             --megacard-btn-*    Buttons/LG/Primary + Inline
+ *  Clrs / Special                   §2c          --special-*         Cards/VoucherCard, Layout/PromoBar
  *  Lyt scl / Heights                 §2d          --height-*          → @utility h-*, §5
  *  Text Styles                       §4           --font-*            all type
  *  Typografy                         §4           --text-*            all type
@@ -817,8 +818,26 @@
   --color-megacard-btn-inline-label: var(--megacard-btn-inline-label);
   --color-megacard-btn-inline-label-hover: var(--megacard-btn-inline-label-hover);
   --color-megacard-btn-inline-highlight-hover: var(--megacard-btn-inline-highlight-hover);
+  --color-special-surface-color-voucher: var(--special-surface-color-voucher);
+  --color-special-content-text: var(--special-content-text);
 
 }
+
+/*  2c. SPECIAL — [data-special-theme], parallele Achse
+ *  Quelle: Clrs / Special (2) — Sonderflächen (Voucher, Banner).
+ *  theme-1 = Default; theme-2 wird pro Frame gepinnt.
+ */
+:root,
+[data-special-theme="theme-1"] {
+  --special-surface-color-voucher: var(--forest-green-100);
+  --special-content-text: var(--surface-color);
+}
+
+[data-special-theme="theme-2"] {
+  --special-surface-color-voucher: var(--lilac-purple-90);
+  --special-content-text: var(--purple-tint-dark-dark);
+}
+
 
 
 /* ================================================================
