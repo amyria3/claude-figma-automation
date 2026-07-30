@@ -57,6 +57,7 @@
   /* Cole Tint */
   --cole-tint-100: #1d2020;
   --cole-tint-90: #1d2020e5;
+  --cole-tint-80: #1d2020cc;
   --cole-tint-60: #1d202099;
 
   /* Purple Tint Light */
@@ -67,6 +68,7 @@
   /* Purple Tint Dark */
   --purple-tint-dark-dark: #25232b;
   --purple-tint-dark-90: #25232be5;
+  --purple-tint-dark-80: #25232bcc;
   --purple-tint-dark-60: #25232b99;
 
   /* Warm White */
@@ -166,7 +168,7 @@
 
   /* Content */
   --content-text: var(--cole-tint-100);
-  --content-weak: var(--cole-tint-60);
+  --content-weak: var(--cole-tint-80);
   --content-loud-headline: var(--cole-tint-100);
 
   /* Button Primary */
@@ -248,7 +250,7 @@
 
   /* Content */
   --content-text: var(--cole-tint-100);
-  --content-weak: var(--purple-tint-dark-60);
+  --content-weak: var(--cole-tint-80);
   --content-loud-headline: var(--cole-tint-100);
 
   /* Button Primary */
@@ -330,7 +332,7 @@
 
   /* Content */
   --content-text: var(--purple-tint-dark-dark);
-  --content-weak: var(--purple-tint-dark-60);
+  --content-weak: var(--purple-tint-dark-80);
   --content-loud-headline: var(--purple-tint-light-100);
 
   /* Button Primary */
@@ -412,7 +414,7 @@
 
   /* Content */
   --content-text: var(--purple-tint-dark-dark);
-  --content-weak: var(--purple-tint-dark-60);
+  --content-weak: var(--purple-tint-dark-80);
   --content-loud-headline: var(--purple-tint-light-100);
 
   /* Button Primary */
