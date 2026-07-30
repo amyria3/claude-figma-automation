@@ -928,9 +928,8 @@
   --container-overlay-message-min: 24rem; /* Overlay Message/min-w        384px */
   --container-overlay-message-max: 32rem; /* Overlay Message/max-w        512px */
   --container-block-pair-max: 66.5rem; /* 2 Block Elements/max-w  = max-w-content */
-  --container-card-default-min: 15rem;  /* Cards/Default/min-w          240px */
+  --container-card-min: 15rem;  /* Cards/min-w                     240px */
   --container-card-default-max: 24rem;  /* Cards/Default/max-w          384px */
-  --container-card-md-min: 15rem;       /* Cards/MD/min-w               240px */
   --container-card-md-max: 28rem;       /* Cards/MD/max-w               448px */
   --container-btn-min: 15rem;           /* Buttons/min-w                240px */
   --container-btn-max: 32rem;           /* Buttons/max-w                512px */
