@@ -927,10 +927,13 @@
   --container-card-img-max: 13rem;      /* Cards/Img/max-w              208px */
   --container-overlay-message-min: 24rem; /* Overlay Message/min-w        384px */
   --container-overlay-message-max: 32rem; /* Overlay Message/max-w        512px */
+  --container-panel-min: 24rem;          /* Panel/min-w                  384px */
+  --container-panel-max: 66.5rem;        /* Panel/max-w = max-w-content 1064px */
+  --container-fieldset-min: 15rem;       /* Fieldset/min-w               240px */
   --container-block-pair-max: 66.5rem; /* 2 Block Elements/max-w  = max-w-content */
   --container-card-min: 15rem;  /* Cards/min-w                     240px */
-  --container-card-default-max: 24rem;  /* Cards/Default/max-w          384px */
-  --container-card-md-max: 28rem;       /* Cards/MD/max-w               448px */
+  --container-card-max: 24rem;  /* Cards/max-w                     384px */
+  --container-footer-header-max: 28rem;  /* Footer/header-max-w          448px */
   --container-btn-min: 15rem;           /* Buttons/min-w                240px */
   --container-btn-max: 32rem;           /* Buttons/max-w                512px */
   --container-megacard-min: 26.5rem;    /* Mega Cards/min-w             424px */
