@@ -886,6 +886,7 @@
   /* ---- Line height — Leading scale (from Text Styles) ----
      Relative %, min = font height. Figma % / 100 -> unitless.
      Usage: leading-tight, leading-heading, leading-body, leading-relaxed */
+  --leading-tighter: 0.85; /* 85% — H1 Subtitle (Display, bewusst unter Fonthöhe) */
   --leading-tight: 1;      /* 100% — single-line: buttons, labels, inputs, nav */
   --leading-heading: 1.15; /* 115% — wrapping titles/headlines */
   --leading-body: 1.4;     /* 140% — wrapping body copy */
