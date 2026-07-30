@@ -923,7 +923,7 @@
      Usage: min-w-card-default, max-w-card-default … */
   --container-block-wide-min: 24rem;      /* Block Element/Wide/min-w        384px */
   --container-block-max: 32rem;      /* Block Element/max-w             512px */
-  --container-block-text-min: 20.5rem;    /* Block Element/Text/min-w        328px */
+  --container-product-page-column-min: 20.5rem;    /* Product Page/column-min-w       328px */
   --container-block-inline-min: 6rem;     /* Block Element/Inline/min-w       96px */
   --container-card-img-max: 13rem;      /* Cards/Img/max-w              208px */
   --container-overlay-message-min: 24rem; /* Overlay Message/min-w        384px */
