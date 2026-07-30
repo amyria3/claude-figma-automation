@@ -850,6 +850,12 @@
  * ================================================================ */
 
 @theme {
+  /* ---- Breakpoint — "Lyt scl / Width" > breakpoint-lg ----
+     In Figma die Grenze selbst: max-w der schmalen Page-Variante und
+     min-w der breiten. Ueberschreibt Tailwinds Default-lg (64rem),
+     lg: bedeutet jetzt >= 964px. Unpraefixiert gilt alles darunter. */
+  --breakpoint-lg: 60.25rem;            /* 964px */
+
   /* ---- Font families (from Text Styles) ---- */
   --font-display: "LUMOSKY", serif;         /* H1, H2, MegaCard/Lumo, Featured */
   --font-accent-one: "BROWN NOW ONE", sans-serif;
@@ -914,12 +920,14 @@
      Correct namespace is --container-*, which generates
      w-<name>, min-w-<name> and max-w-<name>.
      Usage: min-w-card-default, max-w-card-default … */
-  --container-block-lg-min: 24rem;      /* Block Element/LG/min-w       384px */
-  --container-block-md-max: 32rem;      /* Block Element/MD/max-w       512px */
-  --container-block-sm-min: 20.5rem;    /* Block Element/SM/min-w       328px */
-  --container-block-x-sm-min: 6rem;     /* Block Element/x-SM/min-w      96px */
+  --container-block-wide-min: 24rem;      /* Block Element/Wide/min-w        384px */
+  --container-block-max: 32rem;      /* Block Element/max-w             512px */
+  --container-block-text-min: 20.5rem;    /* Block Element/Text/min-w        328px */
+  --container-block-inline-min: 6rem;     /* Block Element/Inline/min-w       96px */
   --container-card-img-max: 13rem;      /* Cards/Img/max-w              208px */
-  --container-text-blocks-max: 66.5rem; /* 2 Text Block Elements/max-w 1064px */
+  --container-overlay-message-min: 24rem; /* Overlay Message/min-w        384px */
+  --container-overlay-message-max: 32rem; /* Overlay Message/max-w        512px */
+  --container-block-pair-max: 66.5rem; /* 2 Block Elements/max-w  = max-w-content */
   --container-card-default-min: 15rem;  /* Cards/Default/min-w          240px */
   --container-card-default-max: 24rem;  /* Cards/Default/max-w          384px */
   --container-card-md-min: 15rem;       /* Cards/MD/min-w               240px */
@@ -931,7 +939,6 @@
   --container-megacard-max: 66.5rem;    /* Mega Cards/max-w            1064px */
   --container-max-w-content: 66.5rem;   /* max-w-content               1064px */
   --container-min-w-screen: 26.5rem;    /* min-w-screen                 424px */
-  --container-breakpoint: 60.25rem;     /* breakpoint                   964px */
                                            alias [twuc]-312 (78rem) */
 }
 
