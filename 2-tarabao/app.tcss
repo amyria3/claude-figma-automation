@@ -50,7 +50,7 @@
 
 /* ================================================================
  *  1. PRIMITIVES — Raw palette values, never themed
- *     46 variables, "Clrs / Primitives"
+ *     57 variables, "Clrs / Primitives"
  * ================================================================ */
 
 :root {
