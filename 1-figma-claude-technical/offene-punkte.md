@@ -6,9 +6,8 @@ Zentrale Ablage **ausschließlich** für unklare Punkte und unbeendete Aufgaben 
 
 1. **Installierter Cowork-Skill `figma-automation` aktualisieren** — Kapitel 1 wurde am 03.08. überarbeitet (1.3 thematisch restrukturiert, 1.1/1.5 auf Englisch, Skill-Version 2026-08-03 mit raw-URL-Staleness-Warnung). Nur die Nutzerin kann die installierte Kopie ersetzen: Einstellungen → Capabilities/Skills, aktuelle Repo-Version `1-figma-claude-technical/1.6-figma-automation-skill.md` verwenden. (Vorheriger Punkt „installierte Kopie veraltet, Variables ❌" war mit dem Update auf Version 2026-07-20 erledigt, ist durch die Neufassung aber wieder aktuell.)
 
-2. **1.2, verschollene „Section 8" (Reactions/`setReactionsAsync`-Details)** — 1.3 verwies bis 03.08. auf „1.2 Section 8c", die in der aktuellen 1.2 nicht existiert (vermutlich bei der Komplett-Übersetzung am 16.07. entfallen). Die Kernfakten (setReactionsAsync, CHANGE_TO-Auto-Remap familienübergreifend) sind seit 03.08. direkt in 1.3 §3 eingearbeitet; die Verweise sind repariert. Optional: Originaltext der alten Section 8 aus der Git-History (Commits vor 16.07.) rekonstruieren, falls dort weitere Details standen.
-
 ## Klarstellungen (keine Fehler)
 
+- Die frühere „Section 8" von 1.2 (Reactions/`setReactionsAsync`-Details) ging vermutlich bei der Komplett-Übersetzung am 16.07. verloren; die Kernfakten sind seit 03.08. in 1.3 §3 eingearbeitet, die Verweise repariert. Eine Rekonstruktion aus der Git-History ist laut Nutzerin (03.08.) **nicht nötig**.
 - `user-is-learning-terminal-commands` (README-Index #8, alt) liegt **bewusst nur lokal** bei der Nutzerin und wird nicht gepusht.
 - Die „TEST/PRACTICE FOR CLAUDE"-Aufgaben liefen über den Figma-Connector (`use_figma`, Remote-MCP); Referenzdateien wurden via Raw-URLs gelesen — Docker/GitHub-MCP war nicht beteiligt.
