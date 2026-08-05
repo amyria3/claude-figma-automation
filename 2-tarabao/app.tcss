@@ -33,6 +33,7 @@
  *                                                 --filter-panel-*    Filter/FilterPanel
  *  Clrs / Search                     §2b          --search-*          Search/Input, QueryState
  *  Clrs / Sustainability Tags        §2b          --tag-*             sustainability tag chips
+ *  Clrs / NutmixerTags              §2b          --nutmixer-tag-*    NutmixerTags chip
  *  Clrs / Mega Cards                 §2c          --megacard-*        Cards/MegaCard, Section/MegaCards
  *    switched via [data-lively-theme]             --megacard-btn-*    Buttons/LG/Primary + Inline
  *  Clrs / Special                   §2c          --special-*         Cards/VoucherCard, Layout/PromoBar
@@ -553,6 +554,13 @@
   --tag-social-commitment-bg-hover-click: var(--pale-lilac-100);
   --tag-supply-chain-fairness-bg: var(--periwinkle-purple-60);
   --tag-supply-chain-fairness-bg-hover-click: var(--periwinkle-purple-100);
+
+
+  /* ---- Nutmixer Tags (single mode) ---- */
+  --nutmixer-tag-bg-default: var(--warm-white-100);
+  --nutmixer-tag-bg-selected: var(--forest-green-100);
+  --nutmixer-tag-label-stroke-default: var(--cole-tint-100);
+  --nutmixer-tag-label-selected: var(--warm-white-100); /* Figma-Var heisst "…-bg-label-selected", ist aber die Label-Farbe, nicht bg */
 }
 
 
@@ -807,6 +815,12 @@
   --color-tag-supply-chain-fairness-bg: var(--tag-supply-chain-fairness-bg);
   --color-tag-supply-chain-fairness-bg-hover-click: var(--tag-supply-chain-fairness-bg-hover-click);
 
+  /* ---- Nutmixer Tags ---- */
+  --color-nutmixer-tag-bg-default: var(--nutmixer-tag-bg-default);
+  --color-nutmixer-tag-bg-selected: var(--nutmixer-tag-bg-selected);
+  --color-nutmixer-tag-label-stroke-default: var(--nutmixer-tag-label-stroke-default);
+  --color-nutmixer-tag-label-selected: var(--nutmixer-tag-label-selected);
+
   /* ---- Lively theme: Mega Cards (card + its LG buttons) ---- */
   --color-megacard-section-bg: var(--megacard-section-bg);
   --color-megacard-span-bg: var(--megacard-span-bg);
@@ -830,7 +844,6 @@
  *  Quelle: Clrs / Special (2) — Sonderflächen (Voucher, Banner).
  *  theme-1 = Default; theme-2 wird pro Frame gepinnt.
  */
-:root,
 :root,
 [data-special-theme="forest"] {
   --special-surface-color-voucher: var(--forest-green-100);
@@ -928,6 +941,9 @@
   --container-product-page-column-min: 20.5rem;    /* Product Page/column-min-w       328px */
   --container-block-inline-min: 6rem;     /* Block Element/Inline/min-w       96px */
   --container-card-img-max: 13rem;      /* Cards/Img/max-w              208px */
+  --container-card-compact-min: 15rem;      /* Cards/CompactSize/min-w       240px */
+  --container-card-compact-max: 20.5rem;    /* Cards/CompactSize/max-w       328px */
+  --container-card-compact-img-max: 13rem;  /* Cards/CompactSize/Img/max-w   208px */
   --container-overlay-message-min: 24rem; /* Overlay Message/min-w        384px */
   --container-overlay-message-max: 32rem; /* Overlay Message/max-w        512px */
   --container-panel-min: 24rem;          /* Panel/min-w                  384px */
