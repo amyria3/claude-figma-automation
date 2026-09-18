@@ -25,6 +25,8 @@ Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Cla
 >
 > **Whenever the user discusses tarabao.bio content, IA, or UX/UI (independent of Figma), load:** `2-tarabao/2.1-ux-ui-dokumentation-tarabao.md`. Design tokens / Tailwind: `2-tarabao/2.3-design-tokens-tailwind-v4.md` + the `tarabao-token-sync` skill (`1-figma-claude-technical/1.7`).
 >
+> **When the user reports a local macOS problem with Figma or the setup** (fonts installed but not listed, agent/app misbehaving): `4-setup-legacy/4.3-macos-fehlerbehebung.md`
+>
 > **Access:** read via raw URLs (`https://raw.githubusercontent.com/amyria3/claude-figma-automation/main/<path>`) — ⚠️ raw URLs can serve **days-stale** content; verify version stamps or use the Contents API (details: `3-claude-meta/3.1-github-web-editor-notes.md`). Write via the GitHub web editor with Claude in Chrome (techniques: same file).
 >
 > **Language rule:** purely Claude-facing content in English; user-facing content in German.
@@ -60,8 +62,8 @@ Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Cla
 ### 3-claude-meta — Claude meta knowledge
 `3.1-github-web-editor-notes.md` (web editor techniques, raw-URL staleness), `3.2` (chat/project/memory architecture), `3.3-german-stilguide-claude.md`, `3.4` (shared projects)
 
-### 4-setup-legacy — superseded setup docs
-`4.1-github-mcp-setup.md` (Docker/GitHub MCP), `4.2-user-system-setup-documentation.md`
+### 4-setup-legacy — superseded setup docs & local troubleshooting
+`4.1-github-mcp-setup.md` (Docker/GitHub MCP), `4.2-user-system-setup-documentation.md`, `4.3-macos-fehlerbehebung.md` (current, not legacy: local macOS fixes — e.g. Figma not listing installed fonts)
 
 ### Root
 `figma-design-principles-arkadieff.md` (design principles), `SCOPE.md`
