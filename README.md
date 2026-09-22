@@ -56,6 +56,7 @@ Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Cla
 | `2.2-komponenten-liste.md` | Component catalogue |
 | `2.3-design-tokens-tailwind-v4.md` | Token architecture Figma → Tailwind v4 (maintainer doc) |
 | `2.3-tailwind-dev-handoff.md` | Token usage for developers (consumer doc) |
+| `2.4-buttons-aufbau.md` | Buttons: Fill vs. Hug, how the SVG shape follows, code contract & prototype |
 | `app.tcss` | Tailwind v4 token file (mirrors Figma variables 1:1) |
 | `offene-punkte.md` | Open points: Tarabao |
 
