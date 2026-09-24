@@ -147,7 +147,7 @@
 /* ================================================================
  *  2a. COLOR MODES — [data-theme], section- or component-level
  *
- *  55 tokens from "Clrs / Color Modes", 4 modes:
+ *  63 tokens from "Clrs / Color Modes", 4 modes:
  *    cole-tint-surface-warm   (default)
  *    cole-tint-surface-snow
  *    purple-tint-surface-warm
@@ -166,6 +166,7 @@
   /* Surface */
   --surface-color: var(--warm-white-100);
   --surface-placeholder: var(--purple-tint-light-old);
+  --surface-highlighted: var(--purple-early-evening-sky-40);
 
   /* Content */
   --content-text: var(--cole-tint-100);
@@ -211,6 +212,16 @@
   --segmented-bg-selected: var(--cole-tint-90);
   --segmented-label-selected: var(--warm-white-80);
 
+
+  /* Switch */
+  --switch-bg-hover: var(--purple-early-evening-sky-40-opaque);
+  --switch-segment-bg: var(--transparent-100);
+  --switch-segment-label: var(--cole-tint-90);
+  --switch-segment-bg-selected: var(--cole-tint-90);
+  --switch-segment-label-selected: var(--warm-white-80);
+  --switch-segment-bg-selected-hover: var(--warm-white-100);
+  --switch-segment-label-selected-hover: var(--cole-tint-100);
+
   /* Counter */
   --counter-bg: var(--transparent-100);
   --counter-label: var(--purple-tint-dark-90);
@@ -248,6 +259,7 @@
   /* Surface */
   --surface-color: var(--snow-white-100);
   --surface-placeholder: var(--purple-tint-light-old);
+  --surface-highlighted: var(--purple-early-evening-sky-40);
 
   /* Content */
   --content-text: var(--cole-tint-100);
@@ -293,6 +305,16 @@
   --segmented-bg-selected: var(--cole-tint-90);
   --segmented-label-selected: var(--snow-white-90);
 
+
+  /* Switch */
+  --switch-bg-hover: var(--purple-early-evening-sky-40);
+  --switch-segment-bg: var(--transparent-100);
+  --switch-segment-label: var(--cole-tint-90);
+  --switch-segment-bg-selected: var(--cole-tint-90);
+  --switch-segment-label-selected: var(--snow-white-90);
+  --switch-segment-bg-selected-hover: var(--snow-white-100);
+  --switch-segment-label-selected-hover: var(--cole-tint-100);
+
   /* Counter */
   --counter-bg: var(--transparent-100);
   --counter-label: var(--purple-tint-dark-90);
@@ -330,6 +352,7 @@
   /* Surface */
   --surface-color: var(--warm-white-100);
   --surface-placeholder: var(--purple-tint-light-old);
+  --surface-highlighted: var(--purple-early-evening-sky-40);
 
   /* Content */
   --content-text: var(--purple-tint-dark-dark);
@@ -375,6 +398,16 @@
   --segmented-bg-selected: var(--purple-tint-light-old);
   --segmented-label-selected: var(--warm-white-80);
 
+
+  /* Switch */
+  --switch-bg-hover: var(--purple-early-evening-sky-40-opaque);
+  --switch-segment-bg: var(--transparent-100);
+  --switch-segment-label: var(--purple-tint-light-old);
+  --switch-segment-bg-selected: var(--purple-tint-light-old);
+  --switch-segment-label-selected: var(--warm-white-80);
+  --switch-segment-bg-selected-hover: var(--warm-white-100);
+  --switch-segment-label-selected-hover: var(--purple-tint-light-100);
+
   /* Counter */
   --counter-bg: var(--transparent-100);
   --counter-label: var(--purple-tint-light-old);
@@ -412,6 +445,7 @@
   /* Surface */
   --surface-color: var(--snow-white-100);
   --surface-placeholder: var(--purple-tint-light-old);
+  --surface-highlighted: var(--purple-early-evening-sky-40);
 
   /* Content */
   --content-text: var(--purple-tint-dark-dark);
@@ -456,6 +490,16 @@
   --segmented-label-hover: var(--purple-tint-light-100);
   --segmented-bg-selected: var(--purple-tint-light-old);
   --segmented-label-selected: var(--snow-white-90);
+
+
+  /* Switch */
+  --switch-bg-hover: var(--purple-early-evening-sky-40-opaque);
+  --switch-segment-bg: var(--transparent-100);
+  --switch-segment-label: var(--purple-tint-light-old);
+  --switch-segment-bg-selected: var(--purple-tint-light-old);
+  --switch-segment-label-selected: var(--snow-white-90);
+  --switch-segment-bg-selected-hover: var(--snow-white-100);
+  --switch-segment-label-selected-hover: var(--purple-tint-light-100);
 
   /* Counter */
   --counter-bg: var(--transparent-100);
@@ -693,6 +737,7 @@
   /* ---- Surface & Content ---- */
   --color-surface: var(--surface-color);
   --color-surface-placeholder: var(--surface-placeholder);
+  --color-surface-highlighted: var(--surface-highlighted);
   --color-content-text: var(--content-text);
   --color-content-weak: var(--content-weak);
   --color-content-loud-headline: var(--content-loud-headline);
@@ -735,6 +780,15 @@
   --color-segmented-label-hover: var(--segmented-label-hover);
   --color-segmented-bg-selected: var(--segmented-bg-selected);
   --color-segmented-label-selected: var(--segmented-label-selected);
+
+  /* Switch */
+  --color-switch-bg-hover: var(--switch-bg-hover);
+  --color-switch-segment-bg: var(--switch-segment-bg);
+  --color-switch-segment-label: var(--switch-segment-label);
+  --color-switch-segment-bg-selected: var(--switch-segment-bg-selected);
+  --color-switch-segment-label-selected: var(--switch-segment-label-selected);
+  --color-switch-segment-bg-selected-hover: var(--switch-segment-bg-selected-hover);
+  --color-switch-segment-label-selected-hover: var(--switch-segment-label-selected-hover);
 
   /* ---- Counter ---- */
   --color-counter-bg: var(--counter-bg);
@@ -865,11 +919,11 @@
  * ================================================================ */
 
 @theme {
-  /* ---- Breakpoint — "Lyt scl / Width" > breakpoint-lg ----
-     In Figma die Grenze selbst: max-w der schmalen Page-Variante und
-     min-w der breiten. Ueberschreibt Tailwinds Default-lg (64rem),
-     lg: bedeutet jetzt >= 964px. Unpraefixiert gilt alles darunter. */
-  --breakpoint-lg: 60.25rem;            /* 964px */
+  /* ---- Breakpoints — "Lyt scl / Breakpoints" (Fensterbreite) ----
+     Konstanten: Eine Media-Query kann keine Variable lesen.
+     base (360) hat keine Media-Query, alles ohne Praefix gilt ab 0. */
+  --breakpoint-md: 48rem;               /* md   768px */
+  --breakpoint-lg: 64rem;               /* lg  1024px */
 
   /* ---- Font families (from Text Styles) ---- */
   --font-display: "LUMOSKY", serif;         /* H1, H2, MegaCard/Lumo, Featured */
@@ -932,36 +986,70 @@
   --spacing-xxl: 3rem;      /* 48px */
   --spacing-xxxl: 3.5rem;   /* 56px */
 
-  /* ---- Component widths — "Lyt scl / Width" (15) ----
-     Correct namespace is --container-*, which generates
-     w-<name>, min-w-<name> and max-w-<name>.
-     Usage: min-w-card-default, max-w-card-default … */
-  --container-block-wide-min: 24rem;      /* Block Element/Wide/min-w        384px */
-  --container-block-max: 32rem;      /* Block Element/max-w             512px */
-  --container-product-page-column-min: 20.5rem;    /* Product Page/column-min-w       328px */
-  --container-block-inline-min: 6rem;     /* Block Element/Inline/min-w       96px */
-  --container-card-img-max: 13rem;      /* Cards/Img/max-w              208px */
-  --container-card-compact-min: 15rem;      /* Cards/CompactSize/min-w       240px */
-  --container-card-compact-max: 20.5rem;    /* Cards/CompactSize/max-w       328px */
-  --container-card-compact-img-max: 13rem;  /* Cards/CompactSize/Img/max-w   208px */
-  --container-overlay-message-min: 24rem; /* Overlay Message/min-w        384px */
-  --container-overlay-message-max: 32rem; /* Overlay Message/max-w        512px */
-  --container-panel-min: 24rem;          /* Panel/min-w                  384px */
-  --container-panel-max: 66.5rem;        /* Panel/max-w = max-w-content 1064px */
-  --container-fieldset-min: 15rem;       /* Fieldset/min-w               240px */
-  --container-block-pair-max: 66.5rem; /* 2 Block Elements/max-w  = max-w-content */
-  --container-card-min: 15rem;  /* Cards/min-w                     240px */
-  --container-card-max: 24rem;  /* Cards/max-w                     384px */
-  --container-footer-header-max: 28rem;  /* Footer/header-max-w          448px */
-  --container-btn-min: 15rem;           /* Buttons/min-w                240px */
-  --container-btn-max: 32rem;           /* Buttons/max-w                512px */
-  --container-megacard-min: 26.5rem;    /* Mega Cards/min-w             424px */
-                                           alias [twuc]-44 (11rem) */
-  --container-megacard-max: 66.5rem;    /* Mega Cards/max-w            1064px */
-  --container-content: 66.5rem;         /* max-w-content → Klasse max-w-content  1064px */
-  --container-min-w-screen: 26.5rem;    /* min-w-screen                 424px */
-                                           alias [twuc]-312 (78rem) */
+  /* ---- Breiten — "Lyt scl / Width" ----
+     Namespace --container-* erzeugt w-, min-w- und max-w-.
+     Namen = Code-Syntax (Web) der Figma-Variablen.
+     Gleicher Wert in allen Modi: nur hier.
+     Wert je Modus: hier der base-Wert, :root setzt ab md/lg neu (unten).
+     Nur Figma, ohne Token: breakpoint, min-w-screen, max-w-screen, visible-md-up. */
+  --container-block-max: 32rem;               /* Block Element/max-w  512px */
+  --container-block-double-max: 66.5rem;      /* Block Element/Double/max-w  1064px */
+  --container-block-inline-min: 6rem;         /* Block Element/Inline/min-w  96px */
+  --container-card-min: 15rem;                /* Cards/DefaultSize/min-w  240px */
+  --container-card-max: 24rem;                /* Cards/DefaultSize/max-w  384px */
+  --container-card-img-max: 13rem;            /* Cards/DefaultSize/Img/max-w  208px */
+  --container-card-compact-min: 15rem;        /* Cards/CompactSize/min-w  240px */
+  --container-card-compact-max: 20.5rem;      /* Cards/CompactSize/max-w  328px */
+  --container-card-compact-img-max: 13rem;    /* Cards/CompactSize/Img/max-w  208px */
+  --container-card-small-min: 16rem;          /* Cards/Small/min-w  256px */
+  --container-card-discovery-max: 42rem;      /* Cards/Discovery/max-w  672px */
+  --container-btn-min: 15rem;                 /* Buttons/min-w  240px */
+  --container-btn-max: 32rem;                 /* Buttons/max-w  512px */
+  --container-btn-payment-max: 28rem;         /* Buttons/Payment/max-w  448px */
+  --container-nav-block-min: 7rem;            /* Nav/Block/min-w  112px */
+  --container-nav-block-max: 16rem;           /* Nav/Block/max-w  256px */
+  --container-footer-header-max: 28rem;       /* Footer/header-max-w  448px */
+  --container-overlay-message-max: 32rem;     /* Overlay Message/max-w  512px */
+  --container-panel-max: 66.5rem;             /* Panel/max-w  1064px */
+  --container-fieldset-min: 15rem;            /* Fieldset/min-w  240px */
+  --container-icon-counter-min: 0.875rem;     /* Icons/Counter/min-w  14px */
+  --container-list-item-img-min: 4.5rem;      /* List Item/Img/min-w  72px */
+  --container-search-max: 37.5rem;            /* Search/max-w  600px */
+  --container-impact-scale-min: 8rem;         /* ImpactScale/min-w  128px */
+  --container-impact-scale-max: 14rem;        /* ImpactScale/max-w  224px */
+  --container-megacard-max: 66.5rem;          /* Mega Cards/max-w  1064px */
+  --container-content: 66.5rem;               /* max-w-content  1064px */
+
+  /* Wert je Modus (base) */
+  --container-block-min: 20rem;               /* Block Element/min-w  320px */
+  --container-overlay-message-min: 20rem;     /* Overlay Message/min-w  320px */
+  --container-panel-min: 20rem;               /* Panel/min-w  320px */
+  --container-product-page-column-min: 20rem; /* Product Page/column-min-w  320px */
+  --container-megacard-min: 20rem;            /* Mega Cards/min-w  320px */
+  --container-content-min: 20rem;             /* min-w-content  320px */
 }
+/* ---- Breitenbereiche — Pin an :root ----
+   Entspricht dem Modus-Pin an Templates / Page in Figma.
+   Werte base · md · lg aus "Lyt scl / Width". */
+:root {
+  @variant md {
+    --container-block-min: 20rem;
+    --container-overlay-message-min: 24rem;
+    --container-panel-min: 24rem;
+    --container-product-page-column-min: 20.5rem;
+    --container-megacard-min: 26.5rem;
+    --container-content-min: 45.5rem;
+  }
+  @variant lg {
+    --container-block-min: 24rem;
+    --container-overlay-message-min: 24rem;
+    --container-panel-min: 24rem;
+    --container-product-page-column-min: 20.5rem;
+    --container-megacard-min: 26.5rem;
+    --container-content-min: 61.5rem;
+  }
+}
+
 
 
 /* ================================================================
