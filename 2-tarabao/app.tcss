@@ -958,7 +958,7 @@
   --container-megacard-min: 26.5rem;    /* Mega Cards/min-w             424px */
                                            alias [twuc]-44 (11rem) */
   --container-megacard-max: 66.5rem;    /* Mega Cards/max-w            1064px */
-  --container-max-w-content: 66.5rem;   /* max-w-content               1064px */
+  --container-content: 66.5rem;         /* max-w-content → Klasse max-w-content  1064px */
   --container-min-w-screen: 26.5rem;    /* min-w-screen                 424px */
                                            alias [twuc]-312 (78rem) */
 }
