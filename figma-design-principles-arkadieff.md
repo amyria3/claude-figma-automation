@@ -196,6 +196,7 @@ Damit eine Komponente das CMS-Verhalten korrekt abbildet und „Explore Componen
 - **Layout-Frames (Auto Layout):** Tailwind-Konvention, lowercase — z.B. `flex-row`, `flex-col`
 - **Layout-Wrapper mit Ausrichtung:** Tailwind `align-self`-Klassen — z.B. `self-end`, `self-start`, `self-center`. Werden verwendet wenn ein einzelnes Kind-Element eine abweichende Ausrichtung im Container braucht, ohne den Inhalt selbst zu verändern.
 - **Scroll:** `scroll`, `scroll-x-auto`, `scroll-y-auto`
+- **Layout-Wrapper mit Breitengrenze:** `Wrapper [klasse]`, benannt nach der Tailwind-Klasse, die ihn ausmacht, z. B. „Wrapper [max-w-content]“. Der Name zeigt, dass es eine Figma-Ebene ist und welche Klasse sie im Code wird.
 - **Components:** PascalCase — z.B. `TabsNavigation`, `Button`, `Card`
 - **Variant-Properties:** siehe Principle 15 — Booleans immer `Property?=True/False`, Enums immer `Variant=Wert`
 
@@ -214,15 +215,30 @@ MainContent (flex-col)
 
 ---
 
+## 📐 Breakpoints & Breitenbereiche
+
+Details und Werte: `2-tarabao/2.5-breakpoints-und-width.md`.
+
+- **Begriffe:** Ein Breakpoint ist eine Schwelle der Fensterbreite (360 · 768 · 1024). Ein Breitenbereich ist die Spanne zwischen zwei Breakpoints (`base` · `md` · `lg`). In jedem Breitenbereich gilt ein Modus von `Lyt scl / Width`.
+- **Der Modus wird an der Seite festgelegt.** Nur die Varianten von `Templates / Page` pinnen `Lyt scl / Width` und binden `min-w-screen` / `max-w-screen`. So simuliert die Designerin den Breitenbereich.
+- **Komponenten pinnen keinen Modus.** Sie erben ihn von der Seite. Varianten je Breitenbereich schalten über die Property `Breakpoint`, gebunden an die Text-Variable `breakpoint`.
+- **Keinen Modus an einer Instanz setzen.** Ein Pin an einer Page-Instanz ist ein Override und bleibt beim Variantenwechsel stehen. Den Breitenbereich wechselst Du über die Variante.
+- **Frame-Breite und Variante passen zusammen.** Figma wählt die Variante nicht nach der Breite des Frames.
+- **Alle min-/max-Werte hängen an `Lyt scl / Width`.** Keine rohen Werte, keine direkte Bindung an `[twuc]`-Primitive (Ausnahme: Textebenen, an denen Figma keine Width-Variable annimmt).
+- **Kein min-w über `min-w-content`.** Sonst läuft das Element im kleinsten Breitenbereich über.
+- **Hintergrund volle Breite, Inhalt begrenzt.** Die Section läuft bis zum Fensterrand, die Ebene „Wrapper [max-w-content]“ begrenzt den Inhalt.
+
+---
+
 ## 📦 Box-Spacing-Muster (Section-basierte Seiten)
 
-Padding und Gap sind pro Layout-Ebene festgelegt; jede Ebene hat genau eine Aufgabe. Spacing sitzt ausschließlich auf der **Section** und im **wrapper-max-w** — Page und Slots sind spacing-neutral.
+Padding und Gap sind pro Layout-Ebene festgelegt; jede Ebene hat genau eine Aufgabe. Spacing sitzt ausschließlich auf der **Section** und in der Ebene **Wrapper [max-w-content]**. Page und Slots sind spacing-neutral.
 
 | Figma-Ebene | React/HTML | Padding vert. | Padding horiz. | Gap |
 |---|---|---|---|---|
-| **Page** (`main` → `wrapper-max-w` → `Section-Slots`) | Seiten-Layout `<main>`, stapelt Sections — spacing-neutral | 0 | 0 | 0 |
-| **Section** (Section-(Template)-Instanz) | `<section>` — die Spacing-Box (`py-10 px-5`) | 40 | 20 | 0 |
-| **wrapper-max-w** | `<div className="mx-auto max-w-[1024px] flex flex-col gap-5">` | 0 | 0 | 20 |
+| **Page** (`main` → `sections` → `Section-Slots`) | Seiten-Layout `<main>`, stapelt Sections, spacing-neutral | 0 | 0 | 0 |
+| **Section** (Instanz von `Templates / Section`) | `<section>`, die vertikale Spacing-Box (`py-10`), Hintergrund volle Breite | 40 | 0 | 0 |
+| **Wrapper [max-w-content]** | `<div className="mx-auto max-w-content px-5 flex flex-col gap-5">` | 0 | 20 | 20 |
 | **Content Slot** | React-Composition-Slot (`{children}`) — nur Transport, kein Styling | 0 | 0 | 0 |
 | **Inhalt mit >1 Child** (z. B. Card-Reihe) | eigene Komponente, bringt eigenes Spacing mit (`gap-3`) | 0 | 0 | 12* |
 | **Inhalt mit 1 Child** (z. B. Headline/H2) | eigene Komponente — immer `gap-0` (Single-Child-Regel) | 0 | 0 | 0 |
@@ -230,10 +246,10 @@ Padding und Gap sind pro Layout-Ebene festgelegt; jede Ebene hat genau eine Aufg
 \* Card-Reihe: 12 in den Standardvarianten, 16 in der Horizontal-Scroll-Variante.
 
 **Regeln:**
-1. Vertikaler Abstand entsteht nur auf Section-Ebene (`py-10`/40, `px-5`/20, Gap 0).
+1. Vertikaler Abstand entsteht nur auf Section-Ebene (`py-10`/40, Gap 0). Der seitliche Rand (`px-5`/20) sitzt in „Wrapper [max-w-content]“, damit der Hintergrund der Section bis zum Fensterrand läuft.
 2. Der Abstand zwischen zwei Sections ergibt sich rein aus deren Padding (40 + 40 = 80) — die Page fügt nichts hinzu.
-3. `wrapper-max-w` (max-w 1024, zentriert) hat kein Padding, aber `gap-5`/20 — der einzige Abstand zwischen mehreren Inhaltsblöcken innerhalb einer Section.
+3. „Wrapper [max-w-content]“ (max-w-content 1064 inklusive 2 × 20 px Rand, Inhalt also höchstens 1024, zentriert) hat `px-5`/20 und `gap-5`/20. Der Gap ist der einzige Abstand zwischen mehreren Inhaltsblöcken innerhalb einer Section.
 4. `Content Slots` sind 0/0/0 — sie transportieren Inhalt, stylen ihn nicht.
-5. Die Page-Kette (`main` → `wrapper-max-w` → `Section-Slots`) ist durchgehend 0/0/0.
+5. Die Page-Kette (`main` → `sections` → `Section-Slots`) ist durchgehend 0/0/0.
 6. Inhaltskomponenten bringen ihr eigenes internes Spacing mit.
 7. **Single-Child-Regel: Container mit nur einem Child haben grundsätzlich `gap-0`.**
