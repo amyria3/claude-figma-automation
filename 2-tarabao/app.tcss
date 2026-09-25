@@ -7,8 +7,14 @@
  *
  *  Layer stack:
  *    1. Primitives            :root (raw hex, never themed, never used directly)
- *    2. Semantic tokens       :root + [data-theme] / [data-lively-theme] switches
- *    3. Tailwind utilities    @theme inline (colors) + @theme (static scales)
+ *    2. Semantic tokens       :root + [data-theme] / [data-lively-theme] /
+ *                             [data-special-theme] switches
+ *    3. Tailwind utilities    @theme inline (colors) + @theme static (scales)
+ *                             + @utility (heights, content widths, text styles)
+ *
+ *  Never write the character pair star-slash inside a comment: it ends the
+ *  comment early and turns the rest into a selector. Browsers then drop the
+ *  following rule block. Write "Buttons/…/Inline" for path wildcards.
  *
  *  WHAT BELONGS TO WHAT
  *
@@ -17,35 +23,41 @@
  *  Clrs / Primitives                 §1           (palette names)     none — never used directly
  *  Clrs / Color Modes                §2a          --surface-*         page & section surfaces
  *    switched via [data-theme],                   --content-*         body copy, headlines
- *    4 modes = brand × surface:                   --btn-primary-*     Buttons/*/PrimaryButton
- *      cole   × warm | snow                       --btn-secondary-*   Buttons/*/SecondaryButton
- *      purple × warm | snow                       --btn-inline-*      Buttons/*/Inline
+ *    4 modes = brand × surface:                   --btn-primary-*     Buttons/…/PrimaryButton
+ *      cole   × warm | snow                       --btn-secondary-*   Buttons/…/SecondaryButton
+ *      purple × warm | snow                       --btn-inline-*      Buttons/…/Inline
  *                                                 --input-*           Input, Input Field plain
  *                                                 --segmented-*       Segment Control, TabControl
+ *                                                 --switch-*          Switches
  *                                                 --counter-*         Buttons/Counter, PlusMinus
- *                                                 --btn-option-selection-*          Buttons/XS/OptionSelection
- *                                                 --card-*            Cards/* (except MegaCard)
- *                                                 --block-*           Components/BlockElements/*
- *                                                 --error-*/--success-* validation & feedback
+ *                                                 --btn-option-selection-*   Buttons/XS/OptionSelection
+ *                                                 --card-*            Cards/… (except MegaCard)
+ *                                                 --block-*           Components/BlockElements/…
+ *                                                 --error-*, --success-*   validation & feedback
  *  Clrs / Filter Panel               §2b          --filter-chip-*     Filter/FilterChip
- *    single mode — never themed                   --price-filter-*    Filter/PriceRange*
+ *    single mode — never themed                   --price-filter-*    Filter/PriceRange…
  *                                                 --price-dd-*        Filter/PriceRange/DropDown
  *                                                 --filter-panel-*    Filter/FilterPanel
  *  Clrs / Search                     §2b          --search-*          Search/Input, QueryState
  *  Clrs / Sustainability Tags        §2b          --tag-*             sustainability tag chips
- *  Clrs / NutmixerTags              §2b          --nutmixer-tag-*    NutmixerTags chip
+ *  Clrs / NutmixerTags               §2b          --nutmixer-tag-*    NutmixerTags chip
  *  Clrs / Mega Cards                 §2c          --megacard-*        Cards/MegaCard, Section/MegaCards
  *    switched via [data-lively-theme]             --megacard-btn-*    Buttons/LG/Primary + Inline
- *  Clrs / Special                   §2c          --special-*         Cards/VoucherCard, Layout/PromoBar
+ *  Clrs / Special                    §2e          --special-*         Cards/VoucherCard, Layout/PromoBar
+ *    switched via [data-special-theme]
  *  Lyt scl / Heights                 §2d          --height-*          → @utility h-*, §5
- *  Text Styles                       §4           --font-*            all type
+ *  Lyt scl / Breakpoints (md, lg)    §4           --breakpoint-*      variants md: / lg:
+ *  Text Styles (families)            §4           --font-*            all type
  *  Typografy                         §4           --text-*            all type
  *  Text Styles (leading)             §4           --leading-*         line-height, all type
  *  Text Styles (tracking)            §4           --tracking-*        letter-spacing, all type
  *  Box Spacing + Gaps                §4           --spacing-*         all padding/gap/margin
  *  Lyt scl / Width                   §4           --container-*       → w-/min-w-/max-w-
+ *  Lyt scl / Width › min/max-w-content  §4 + §5   --content-min/-max  → @utility min-w-content, max-w-content
+ *  Text Styles                       §6           (none)              → @utility type-*, one class per style
  *
  *  Collections prefixed "__" are content data, not design tokens — not mapped here.
+ *  Check against Figma: 2-tarabao/token-check (figma-dump.js + token_check.py).
  * ================================================================ */
 
 
@@ -307,7 +319,7 @@
 
 
   /* Switch */
-  --switch-bg-hover: var(--purple-early-evening-sky-40);
+  --switch-bg-hover: var(--purple-early-evening-sky-40-opaque);
   --switch-segment-bg: var(--transparent-100);
   --switch-segment-label: var(--cole-tint-90);
   --switch-segment-bg-selected: var(--cole-tint-90);
@@ -510,7 +522,7 @@
   --btn-option-selection-bg: var(--purple-early-evening-sky-40);
   --btn-option-selection-label: var(--purple-tint-light-old);
   --btn-option-selection-bg-hover: var(--purple-tint-dark-90);
-  --btn-option-selection-label-hover: var(--warm-white-100);
+  --btn-option-selection-label-hover: var(--snow-white-100);
   --btn-option-selection-bg-selected: var(--purple-tint-light-old);
   --btn-option-selection-label-selected: var(--snow-white-90);
 
@@ -537,8 +549,7 @@
 /* ================================================================
  *  2b. SINGLE-MODE COLLECTIONS — fixed, never follow [data-theme]
  *      "Clrs / Filter Panel" (26), "Clrs / Search" (7),
- *      "Clrs / Btns / Large / Inline" (3),
- *      "Clrs / Sustainability Tags" (8)
+ *      "Clrs / Sustainability Tags" (8), "Clrs / NutmixerTags" (4)
  *      Opt-out is structural: they are simply never re-declared
  *      inside a [data-theme] block.
  * ================================================================ */
@@ -614,7 +625,7 @@
  *      compose: an element may carry both. Chosen per component.
  *      Blocks are complete for the same nesting reason as above.
  *
- *      Source: one collection "Clrs / Mega Cards" (13) — the MegaCard and
+ *      Source: one collection "Clrs / Mega Cards" — the MegaCard and
  *      the LG buttons it contains switch together, so the mode values are
  *      the collection modes, without group prefixes.
  * ================================================================ */
@@ -894,10 +905,11 @@
 
 }
 
-/*  2c. SPECIAL — [data-special-theme], parallele Achse
- *  Quelle: Clrs / Special (2) — Sonderflächen (Voucher, Banner).
- *  theme-1 = Default; theme-2 wird pro Frame gepinnt.
- */
+/* ================================================================
+ *  2e. SPECIAL — [data-special-theme], a parallel theme axis
+ *      Source: "Clrs / Special" (2), special surfaces (voucher, banner).
+ *      forest = default, lilac is pinned per frame.
+ * ================================================================ */
 :root,
 [data-special-theme="forest"] {
   --special-surface-color-voucher: var(--forest-green-100);
@@ -922,7 +934,10 @@
 @theme static {
   /* ---- Breakpoints — "Lyt scl / Breakpoints" (Fensterbreite) ----
      Konstanten: Eine Media-Query kann keine Variable lesen.
-     base (360) hat keine Media-Query, alles ohne Praefix gilt ab 0. */
+     base (360) hat keine Media-Query, alles ohne Praefix gilt ab 0.
+     initial entfernt die Tailwind-Standards sm, xl und 2xl.
+     Nur Figma: base, calc(md - 1), calc(lg - 1), calc(x-lg - 1), x-lg. */
+  --breakpoint-*: initial;
   --breakpoint-md: 48rem;               /* md   768px */
   --breakpoint-lg: 64rem;               /* lg  1024px */
 
@@ -992,9 +1007,11 @@
      Namen = Code-Syntax (Web) der Figma-Variablen.
      Gleicher Wert in allen Modi: nur hier.
      Wert je Modus: hier der base-Wert, :root setzt ab md/lg neu (unten).
-     Nur Figma, ohne Token: breakpoint, min-w-screen, max-w-screen, visible-md-up. */
+     Verweist die Figma-Variable auf max-w-content, steht hier var(--content-max).
+     min-w-content und max-w-content: eigene @utility in §5.
+     Nur Figma, ohne Token: viewport-range, min-w-screen, max-w-screen, visible-md-up. */
   --container-block-max: 32rem;               /* Block Element/max-w  512px */
-  --container-block-double-max: 66.5rem;      /* Block Element/Double/max-w  1064px */
+  --container-block-double-max: var(--content-max); /* Block Element/Double/max-w → max-w-content */
   --container-block-inline-min: 6rem;         /* Block Element/Inline/min-w  96px */
   --container-card-min: 15rem;                /* Cards/DefaultSize/min-w  240px */
   --container-card-max: 24rem;                /* Cards/DefaultSize/max-w  384px */
@@ -1011,15 +1028,14 @@
   --container-nav-block-max: 16rem;           /* Nav/Block/max-w  256px */
   --container-footer-header-max: 28rem;       /* Footer/header-max-w  448px */
   --container-overlay-message-max: 32rem;     /* Overlay Message/max-w  512px */
-  --container-panel-max: 66.5rem;             /* Panel/max-w  1064px */
+  --container-panel-max: var(--content-max);  /* Panel/max-w → max-w-content */
   --container-fieldset-min: 15rem;            /* Fieldset/min-w  240px */
   --container-icon-counter-min: 0.875rem;     /* Icons/Counter/min-w  14px */
   --container-list-item-img-min: 4.5rem;      /* List Item/Img/min-w  72px */
   --container-search-max: 37.5rem;            /* Search/max-w  600px */
   --container-impact-scale-min: 8rem;         /* ImpactScale/min-w  128px */
   --container-impact-scale-max: 14rem;        /* ImpactScale/max-w  224px */
-  --container-megacard-max: 66.5rem;          /* Mega Cards/max-w  1064px */
-  --container-content: 66.5rem;               /* max-w-content  1064px */
+  --container-megacard-max: var(--content-max); /* Mega Cards/max-w → max-w-content */
 
   /* Wert je Modus (base) */
   --container-block-min: 20rem;               /* Block Element/min-w  320px */
@@ -1027,19 +1043,21 @@
   --container-panel-min: 20rem;               /* Panel/min-w  320px */
   --container-product-page-column-min: 20rem; /* Product Page/column-min-w  320px */
   --container-megacard-min: 20rem;            /* Mega Cards/min-w  320px */
-  --container-content-min: 20rem;             /* min-w-content  320px */
 }
 /* ---- Breitenbereiche — Pin an :root ----
    Entspricht dem Modus-Pin an Templates / Page in Figma.
    Werte base · md · lg aus "Lyt scl / Width". */
 :root {
+  --content-min: 20rem;                       /* min-w-content  320px */
+  --content-max: 48rem;                       /* max-w-content  768px → Breakpoints/md */
   @variant md {
     --container-block-min: 20rem;
     --container-overlay-message-min: 24rem;
     --container-panel-min: 24rem;
     --container-product-page-column-min: 20.5rem;
     --container-megacard-min: 26.5rem;
-    --container-content-min: 45.5rem;
+    --content-min: 45.5rem;                   /* 728px */
+    --content-max: 64rem;                     /* 1024px → Breakpoints/lg */
   }
   @variant lg {
     --container-block-min: 24rem;
@@ -1047,17 +1065,24 @@
     --container-panel-min: 24rem;
     --container-product-page-column-min: 20.5rem;
     --container-megacard-min: 26.5rem;
-    --container-content-min: 61.5rem;
+    --content-min: 61.5rem;                   /* 984px */
+    --content-max: 78rem;                     /* 1248px → Breakpoints/x-lg */
   }
 }
 
 
 
 /* ================================================================
- *  5. HEIGHT UTILITIES — @utility
+ *  5. HEIGHT AND CONTENT-WIDTH UTILITIES — @utility
  *     v4 has no height theme namespace, so fixed/min/max heights are
  *     declared explicitly. Values come from §2d.
+ *     min-w-content / max-w-content carry the Figma names as class names.
+ *     A --container-content token would also create min-w-content with
+ *     the maximum value, so both are declared explicitly. Values: §4.
  * ================================================================ */
+
+@utility max-w-content { max-width: var(--content-max); }
+@utility min-w-content { min-width: var(--content-min); }
 
 @utility h-btn-lg      { height: var(--height-btn-lg); }
 @utility h-btn-md      { height: var(--height-btn-md); }
@@ -1071,3 +1096,489 @@
 
 @utility min-h-card-md { min-height: var(--height-card-md-min); }
 @utility max-h-card-md { max-height: var(--height-card-md-max); }
+
+
+/* ================================================================
+ *  6. TEXT STYLES — @utility type-*, one class per Figma text style
+ *     Class name = style name in kebab case with the prefix type-:
+ *     "/" and spaces become "-", camel case is split, "&" is dropped.
+ *     Example: "ShoppingCart & Checkout/MainHeadline"
+ *              → type-shopping-cart-checkout-main-headline
+ *     Values come from §4 (--font-*, --text-*, --leading-*, --tracking-*).
+ *     Paragraph spacing: & + & (between two paragraphs of the same style).
+ *     Generated with token-check/token_check.py --emit-type.
+ * ================================================================ */
+
+@utility type-h1 { /* H1 */
+  font-family: var(--font-display);
+  font-size: var(--text-48);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-h1-subtitle { /* H1 Subtitle */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-40);
+  font-weight: 400;
+  line-height: var(--leading-tighter);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-h2 { /* H2 */
+  font-family: var(--font-display);
+  font-size: var(--text-24);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-h2-alternative { /* H2 Alternative */
+  font-family: var(--font-accent-one);
+  font-size: var(--text-22);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-navigation-route { /* Navigation/Route */
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-wide);
+  text-decoration-line: underline;
+}
+@utility type-navigation-full-screen-shipping-costs { /* Navigation/FullScreen/ShippingCosts */
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-navigation-full-screen-main-category { /* Navigation/FullScreen/MainCategory */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 800;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+  text-transform: uppercase;
+}
+@utility type-navigation-full-screen-sub-category { /* Navigation/FullScreen/SubCategory */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-navigation-side-navigation-main-category { /* Navigation/SideNavigation/MainCategory */
+  font-family: var(--font-body);
+  font-size: var(--text-13);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+  text-transform: uppercase;
+}
+@utility type-navigation-side-navigation-sub-category { /* Navigation/SideNavigation/SubCategory */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-buttons-lg { /* Buttons/LG */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-34);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-buttons-lg-underlined { /* Buttons/LG Underlined */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-34);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  text-decoration-line: underline;
+}
+@utility type-buttons-md { /* Buttons/MD */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-24);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-buttons-sm { /* Buttons/SM */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-20);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-cards-product-title { /* Cards/ProductTitle */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-normal);
+  text-transform: uppercase;
+}
+@utility type-cards-md { /* Cards/MD */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-22);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+@utility type-cards-light { /* Cards/Light */
+  font-family: var(--font-body);
+  font-size: var(--text-10);
+  font-weight: 300;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-cards-mega-card-body { /* Cards/MegaCard/Body */
+  font-family: var(--font-body);
+  font-size: var(--text-20);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+  & + & { margin-top: 1.625rem; }
+}
+@utility type-cards-mega-card-lumo { /* Cards/MegaCard/Lumo */
+  font-family: var(--font-display);
+  font-size: var(--text-40);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-cards-blog-title { /* Cards/Blog/Title */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-cards-featured-title { /* Cards/Featured/Title */
+  font-family: var(--font-display);
+  font-size: var(--text-20);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-table-th { /* Table/<th> */
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-table-cell { /* Table/Cell */
+  font-family: var(--font-body);
+  font-size: var(--text-20);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-product-page-product-title { /* ProductPage/ProductTitle */
+  font-family: var(--font-body);
+  font-size: var(--text-24);
+  font-weight: 800;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-product-page-hightlighted { /* ProductPage/Hightlighted */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 800;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-product-page-dropdown-summary { /* ProductPage/Dropdown/Summary */
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-product-page-dropdown-h3-manufacturer-name { /* ProductPage/Dropdown/H3 ManufacturerName */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-product-page-dropdown-body-text-responce { /* ProductPage/Dropdown/BodyText - Responce */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-product-page-dropdown-h4-question { /* ProductPage/Dropdown/H4 Question */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-shopping-cart-checkout-main-headline { /* ShoppingCart & Checkout/MainHeadline */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-34);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-shopping-cart-checkout-headline { /* ShoppingCart & Checkout/Headline */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-shopping-cart-checkout-body { /* ShoppingCart & Checkout/Body */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 500;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-shopping-cart-checkout-hightlighted { /* ShoppingCart & Checkout/Hightlighted */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-shopping-cart-checkout-subtle { /* ShoppingCart & Checkout/Subtle */
+  font-family: var(--font-body);
+  font-size: var(--text-11);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-input-label-default { /* Input/LabelDefault */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-input-label-sm { /* Input/Label SM */
+  font-family: var(--font-body);
+  font-size: var(--text-10);
+  font-weight: 300;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-input-input-text { /* Input/InputText */
+  font-family: var(--font-body);
+  font-size: var(--text-18);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-input-warning-default-text { /* Input/Warning&DefaultText */
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-label-default { /* Label/default */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-16);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-comment-body-text { /* Comment/BodyText */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-comment-name-time { /* Comment/Name&Time */
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-user-message-default { /* UserMessage/Default */
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-user-message-lg { /* UserMessage/LG */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-16);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-price-range-filter-label { /* PriceRangeFilter/Label */
+  font-family: var(--font-body);
+  font-size: var(--text-10);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-data-blocks-summary-item-title { /* DataBlocks/SummaryItemTitle */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 300;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-data-blocks-summary-item-content { /* DataBlocks/SummaryItemContent */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-h2-subtitle { /* H2 Subtitle */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-20);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-h3 { /* H3 */
+  font-family: var(--font-accent-one);
+  font-size: var(--text-20);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-default-text-lg { /* DefaultText LG */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+  & + & { margin-top: var(--spacing-md); }
+}
+@utility type-default-text-md { /* DefaultText MD */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+  & + & { margin-top: var(--spacing-md); }
+}
+@utility type-default-text-s { /* DefaultText S */
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-bullet-points { /* BulletPoints */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-comment { /* Comment */
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-link { /* Link */
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 600;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-normal);
+  text-decoration-line: underline;
+}
+@utility type-buttons-x-sm { /* Buttons/X-SM */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-18);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-buttons-xx-sm { /* Buttons/XX-SM */
+  font-family: var(--font-accent-one);
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-buttons-xx-sm-underlined { /* Buttons/XX-SM underlined */
+  font-family: var(--font-accent-one);
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  text-decoration-line: underline;
+}
+@utility type-buttons-quantity-packaging { /* Buttons/Quantity&Packaging */
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+@utility type-buttons-xxxs-inline { /* Buttons/XXXS Inline */
+  font-family: var(--font-accent-one);
+  font-size: var(--text-12);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-label-selected { /* Label/Selected */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-16);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-user-message-x-lg { /* UserMessage/X-LG */
+  font-family: var(--font-accent-two);
+  font-size: var(--text-20);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-h2-produktkategorie { /* H2 Produktkategorie */
+  font-family: var(--font-display);
+  font-size: var(--text-40);
+  font-weight: 400;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+@utility type-navigation-endpoint { /* Navigation/Endpoint */
+  font-family: var(--font-body);
+  font-size: var(--text-12);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-wide);
+}
