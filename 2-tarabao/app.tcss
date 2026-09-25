@@ -913,12 +913,13 @@
 
 /* ================================================================
  *  4. TAILWIND UTILITY REGISTRATION — STATIC SCALES
- *     Plain @theme (not inline) so these are also emitted as CSS
- *     variables and usable from hand-written CSS.
+ *     @theme static (not inline): every variable is emitted, also
+ *     when no utility uses it, so var(--…) from the Figma code syntax
+ *     works in hand-written CSS.
  *     None of these are theme-dependent.
  * ================================================================ */
 
-@theme {
+@theme static {
   /* ---- Breakpoints — "Lyt scl / Breakpoints" (Fensterbreite) ----
      Konstanten: Eine Media-Query kann keine Variable lesen.
      base (360) hat keine Media-Query, alles ohne Praefix gilt ab 0. */
