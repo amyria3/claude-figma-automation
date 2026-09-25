@@ -112,7 +112,9 @@ flex-row
 Titel und Inhalt einer Sektion können in getrennten Kind-Frames liegen (`SectionLabel` + Content-Frame), um die semantische Trennung im Layer-Panel sichtbar zu machen. Bei großen Dateien ist eine durchgängige Benennung nicht immer erforderlich.
 
 ### Principle 10: Scrollable Container Pattern
-Scrollbare Inhalte erhalten einen expliziten Container-Frame mit entsprechendem Scroll-Verhalten (`clip content` aktiviert, Overflow scroll).
+Die Seite scrollt als Ganzes. Overflow sitzt nur an der Wurzel von `Templates / Page` (sie steht für den Browser-Viewport) und an echten Scroll-Bereichen wie Karussell, Modal oder Filter-Panel. Diese erhalten einen expliziten Container-Frame mit `clip content` und Overflow.
+
+Sections, `main` und Slots bekommen keinen Overflow. Verschachtelte Scroll-Container fangen im Prototyp das Mausrad ab (die Seite scrollt dann nicht mehr zurück), und der Entwickler übernimmt sie als `overflow-y: auto` mit fester Höhe. Bei Scroll-Problemen prüft die Designerin zuerst, welche Ebenen einen Overflow tragen. Details: [2.7 Layout](2-tarabao/2.7-layout/README.md).
 
 ### Principle 11: Component Variants
 Wiederverwendbare Elemente werden als Components mit Variants angelegt.
@@ -140,6 +142,14 @@ Innerhalb von Component-Variant-Namen (z.B. `Hover?=False, Variant=1, Color=blue
 - Enthält das Label selbst bereits ein `?` (z.B. eine Frage wie `"Weiter zu Versandmethoden?"`), wird der Boolean-Marker trotzdem zusätzlich außerhalb der Anführungszeichen ergänzt: `"Weiter zu Versandmethoden?"?=False`. Das sieht mit doppeltem `?` ungewohnt aus, folgt aber derselben Regel wie alle Nachbar-Properties.
 
 **Häufig verwendete Property-Namen zur Orientierung (Audit vom 01.07.2026, `Inactive?`-Umbenennung berücksichtigt):** `State`, `Variant`, `Hover?`,  `Type`, `Selected?`, `Open?`, `Inactive?`, `Show Icon?`, `Is Active?`, `Has Input?`, `window-w`, `Size`. Selten: `color-mode: ...?`
+
+### Principle 16: Seiten wachsen mit dem Inhalt, der Bildschirm ist eine Min-Höhe
+Die Designerin setzt eine Seite nie auf eine feste Viewport-Höhe. `Templates / Page` steht auf Hug, die Min-Höhe (792) steht für den Bildschirm und wird im Code zu `min-h-dvh`. Die Bildschirmgröße legt das Device im Prototyp fest. So sieht der Entwickler die ganze Seite auf dem Canvas, ohne zu scrollen.
+
+Nach manuellen Änderungen in der UI prüft die Designerin die Höhe: Instanzen und Slots können dabei auf eine feste Höhe zurückspringen.
+
+### Principle 17: Header, main und Footer sind Geschwister
+Die Ebenen der Seite entsprechen der HTML-Struktur `<header>`, `<main>`, `<footer>`. Der Footer gehört nicht in `main`. Der Header ist sticky (Position: Sticky), und der Frame `Page` steht auf „Canvas stacking: First on top“, damit der Header beim Scrollen über dem Inhalt liegt.
 
 ---
 
@@ -179,6 +189,8 @@ Damit eine Komponente das CMS-Verhalten korrekt abbildet und „Explore Componen
 4. **Boolean-Achse für optionale Bereiche** — z. B. `Has Headline?=True/False` (Naming nach Principle 15).
 
 **Warum keine freien Overrides:** Die Texte der Primitives hängen an Content-Variablen, die Auswahl läuft ausschließlich über Slots und Achsen. So zeigt die Komponente exakt die Zustände, die es geben darf — und nur diese. (Übergabe-Prinzip: nichts frei überschreiben, alles über Slots/Varianten/Properties.)
+
+**Platzhalter-Werte sind nur Figma:** Min-Höhe und Fläche eines leeren Slots (z. B. `[twuc]-112`, `purple-early-evening-sky-light`) markieren den Slot auf dem Canvas. Sie gehören nicht in den Code, und ein Slot bekommt im Code kein eigenes Element: Seine Inhalte folgen direkt im umgebenden Wrapper.
 
 ### Explore Component Behavior — Anleitung für Lukas & Carsten
 
