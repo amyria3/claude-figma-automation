@@ -23,7 +23,7 @@ Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Cla
 > 4. `1-figma-claude-technical/1.5-figma-stylesheet-workaround.md` – LEGACY, variable edge cases only
 > 5. `1-figma-claude-technical/1.4-figma-kollaboration-workflows.md` – recommended collaboration workflows
 >
-> **Whenever the user discusses tarabao.bio content, IA, or UX/UI (independent of Figma), load:** `2-tarabao/2.1-ux-ui-dokumentation-tarabao.md`. Design tokens / Tailwind: `2-tarabao/2.3-design-tokens-tailwind-v4.md` + the `tarabao-token-sync` skill (`1-figma-claude-technical/1.7`).
+> **Whenever the user discusses tarabao.bio content, IA, or UX/UI (independent of Figma), load:** `2-tarabao/README.md` (reading order) and `2-tarabao/2.1-ux-ui-dokumentation-tarabao.md`. Breakpoints & widths: `2-tarabao/2.5-breakpoints-und-width.md`; layout: `2-tarabao/2.7-layout/README.md`. Design tokens / Tailwind: `2-tarabao/2.3-design-tokens-tailwind-v4.md` + the `tarabao-token-sync` skill (`1-figma-claude-technical/1.7`).
 >
 > **When the user reports a local macOS problem with Figma or the setup** (fonts installed but not listed, agent/app misbehaving): `4-setup-legacy/4.3-macos-fehlerbehebung.md`
 >
@@ -50,6 +50,8 @@ Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Cla
 | `offene-punkte.md` | Open points: Claude setup, skills, technical docs |
 
 ### 2-tarabao — Tarabao B2C content & design system
+Entry page with reading order: [`2-tarabao/README.md`](./2-tarabao/README.md)
+
 | File | Content |
 |---|---|
 | `2.1-ux-ui-dokumentation-tarabao.md` | Content structure & UX/UI findings, design tokens table |
@@ -57,6 +59,10 @@ Dieses Repository enthält überwiegend Anweisungen und Referenzdateien, die Cla
 | `2.3-design-tokens-tailwind-v4.md` | Token architecture Figma → Tailwind v4 (maintainer doc) |
 | `2.3-tailwind-dev-handoff.md` | Token usage for developers (consumer doc) |
 | `2.4-buttons-aufbau.md` | Buttons: Fill vs. Hug, how the SVG shape follows, code contract & prototype |
+| `2.5-breakpoints-und-width.md` | Breakpoints, width ranges and width variables: Figma modes → Tailwind (`:root` pin, `@variant md/lg`) |
+| `2.6-breiten-audit.md` | Width audit log: bindings, fixes, open decisions |
+| `2.7-layout/README.md` | Layout: how Page, Section and components nest; body scroll; sticky header |
+| `token-check/` | Figma ↔ `app.tcss` check (`figma-dump.js` for use_figma, `token_check.py`) |
 | `app.tcss` | Tailwind v4 token file (mirrors Figma variables 1:1) |
 | `offene-punkte.md` | Open points: Tarabao |
 
@@ -82,4 +88,4 @@ Maintained in one place: **`1-figma-claude-technical/1.3-figma-api-reference.md`
 
 ## Last Updated
 
-August 3, 2026
+September 25, 2026
