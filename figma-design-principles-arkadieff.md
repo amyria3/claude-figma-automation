@@ -146,10 +146,10 @@ Innerhalb von Component-Variant-Namen (z.B. `Hover?=False, Variant=1, Color=blue
 ### Principle 16: Seiten wachsen mit dem Inhalt, der Bildschirm ist eine Min-Höhe
 Die Designerin setzt eine Seite nie auf eine feste Viewport-Höhe. `Templates / Page` steht auf Hug, die Min-Höhe (792) steht für den Bildschirm und wird im Code zu `min-h-dvh`. Die Bildschirmgröße legt das Device im Prototyp fest. So sieht der Entwickler die ganze Seite auf dem Canvas, ohne zu scrollen.
 
-Nach manuellen Änderungen in der UI prüft die Designerin die Höhe: Instanzen und Slots können dabei auf eine feste Höhe zurückspringen.
+Nach manuellen Änderungen in der UI prüft die Designerin die Höhe: Instanzen und Slots können dabei auf eine feste Höhe zurückspringen. Details: [2.7 Layout](2-tarabao/2.7-layout/README.md).
 
 ### Principle 17: Header, main und Footer sind Geschwister
-Die Ebenen der Seite entsprechen der HTML-Struktur `<header>`, `<main>`, `<footer>`. Der Footer gehört nicht in `main`. Der Header ist sticky (Position: Sticky), und der Frame `Page` steht auf „Canvas stacking: First on top“, damit der Header beim Scrollen über dem Inhalt liegt.
+Die Ebenen der Seite entsprechen der HTML-Struktur `<header>`, `<main>`, `<footer>`. Der Footer gehört nicht in `main`. Der Header ist sticky (Position: Sticky), und der Frame `Page` steht auf „Canvas stacking: First on top“, damit der Header beim Scrollen über dem Inhalt liegt. Details: [2.7 Layout](2-tarabao/2.7-layout/README.md).
 
 ### Principle 18: Varianten schalten mit dem Modus um, wenn ihre Property an eine Variable gebunden ist
 Eine Komponente, die je Modus anders aussieht, bekommt eine Varianten-Property. Die Designerin bindet diese Property an eine Text-Variable. Dann wählt jede Instanz ihre Variante selbst: Schaltet die Designerin den Modus an der Section um, wechseln alle gebundenen Komponenten darin mit.
@@ -192,26 +192,7 @@ Button (Variant: Inactive=True)   ← zurück zum Ausgangszustand, kein separate
 
 ## 🧩 Slots & Content Modules — Bauprinzip für CMS-abbildende Komponenten
 
-**Referenz:** [`ContentModules / Basic`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7565-24446) (Seite COMPONENTS & SCREENS) — an dieser Komponente ist das Muster vollständig umgesetzt. Derselben Mechanik folgen [`ContentModules / CustomContent`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7660-20273) und [`Section / CustomSection`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7601-22036).
-
-Damit eine Komponente das CMS-Verhalten korrekt abbildet und „Explore Component Behavior" sauber funktioniert, braucht **jeder austauschbare Inhaltsbereich vier Bausteine**:
-
-1. **Slot-Property** (Typ SLOT) — der Platzhalter, in dem ein Primitive bzw. Content Module steckt. Beispiel Basic: `Headline`, `Paragraph`.
-2. **Preferred Values am Slot** — die abschließende Liste der erlaubten Inhalte. Das ist die CMS-Regel „nur erlaubte Werte" in Figma: Headline-Slot → H1/H2/H3; Paragraph-Slot → Paragraphs/Default + Paragraphs/LG. Nichts anderes gehört hinein.
-3. **Zugehörige Varianten-Achse pro Slot** (`TypeOfHeadline`, `TypeOfParagraph`) — zu jedem Slot gehört eine Varianten-Achse — bewusste Entscheidung (22.07.2026), keine Figma-Pflicht: Dev Mode und Component Playground zeigen Slot-Preferred-Values nicht an, wenn sie nicht zusätzlich als Varianten abgebildet sind und mit einer Property korrelieren — erst die Varianten machen für Entwickler:innen sichtbar, welche Inhalte erlaubt sind. Jede Variante trägt den Slot mit anderem Default-Inhalt. **Der Achsen-Name trägt den Namen seines Slots**, damit Achse und Slot einander eindeutig zuordenbar sind — bestehende Muster: `TypeOf<Slot>` (Slot `Headline` → `TypeOfHeadline`, Slot `Paragraph` → `TypeOfParagraph`) sowie `SlotContent` für den Content-Slot in CustomContent und CustomSection. Die Achsen-Werte heißen wie das Primitive im Slot, mit vollem Pfad (z. B. `Primitives / Headline / H2 / Default`), damit im Playground ohne Layer-Suche ablesbar ist, welcher Baustein gerade im Slot steckt. **Wichtig:** Diese Achse ist keine Redundanz, sondern Teil der Slot-Verdrahtung — nicht „aufräumen".
-4. **Boolean-Achse für optionale Bereiche** — z. B. `Has Headline?=True/False` (Naming nach Principle 15).
-
-**Warum keine freien Overrides:** Die Texte der Primitives hängen an Content-Variablen, die Auswahl läuft ausschließlich über Slots und Achsen. So zeigt die Komponente exakt die Zustände, die es geben darf — und nur diese. (Übergabe-Prinzip: nichts frei überschreiben, alles über Slots/Varianten/Properties.)
-
-**Platzhalter-Werte sind nur Figma:** Min-Höhe und Fläche eines leeren Slots (z. B. `[twuc]-112`, `purple-early-evening-sky-light`) markieren den Slot auf dem Canvas. Sie gehören nicht in den Code, und ein Slot bekommt im Code kein eigenes Element: Seine Inhalte folgen direkt im umgebenden Wrapper.
-
-### Explore Component Behavior — Anleitung für Lukas & Carsten
-
-1. Datei **B2C-und-CI** öffnen und oben rechts in den **Dev Mode** wechseln (`</>`-Toggle).
-2. Komponente oder Instanz auswählen — z. B. [`ContentModules / Basic`](https://www.figma.com/design/rLwATluwV4CSS5rXceLptH/B2C-und-CI?node-id=7565-24446).
-3. Im rechten Panel **„Explore component behavior"** öffnen (Component Playground).
-4. Dort alle Properties durchschalten: `Has Headline?`, `TypeOfHeadline`, `TypeOfParagraph` und die Slot-Inhalte. Der Playground ist eine Sandbox — nichts davon verändert das Design.
-5. Lesart: **Jede im Playground erreichbare Kombination ist ein gültiger CMS-Zustand.** Kombinationen, die dort nicht existieren, sind bewusst nicht vorgesehen — bitte nicht per Override nachbauen.
+Jeder austauschbare Inhaltsbereich hat einen Slot mit Preferred Values, eine Varianten-Achse je Slot und für optionale Bereiche ein Boolean. So zeigt der Component Playground genau die Zustände, die das CMS erlaubt. Aufbau, Benennung und Beispiel `ContentModules / Basic`: [2.1, Komponenten mit austauschbarem Inhalt](2-tarabao/2.1-ux-ui-dokumentation-tarabao.md).
 
 ---
 
@@ -234,47 +215,19 @@ MainContent (flex-col)
     └── BeyondWorkBlock ← inhaltlicher Block
 ```
 
----
-
-*Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen. Design-Tokens (Text Styles, Box-Spacing & Gap, Tailwind-Utility-Scale) stehen in `2-tarabao/2.3-design-tokens-tailwind-v4.md` und `2-tarabao/app.tcss`, offene Punkte in `2-tarabao/offene-punkte.md`.*
 
 ---
 
 ## 📐 Breakpoints & Breitenbereiche
 
-Details und Werte: `2-tarabao/2.5-breakpoints-und-width.md`.
-
-- **Begriffe:** Ein Breakpoint ist eine Schwelle der Fensterbreite (360 · 768 · 1024). Ein Breitenbereich ist die Spanne zwischen zwei Breakpoints (`base` · `md` · `lg`). In jedem Breitenbereich gilt ein Modus von `Lyt scl / Width`.
-- **Der Modus wird an der Figma-Section festgelegt, in der die Seiten liegen.** So simuliert die Designerin den Breitenbereich. `Templates / Page` hat nur eine Variante und pinnt keinen Modus. Nur `Templates / Page` bindet `min-w-screen` / `max-w-screen`.
-- **Komponenten pinnen keinen Modus.** Sie erben ihn von der Section. Varianten je Breitenbereich schalten über die Property `viewport-range`, gebunden an die gleichnamige Variable (Principle 18).
-- **Keinen Modus an einer Instanz setzen.** Ein Modus an einer Page-Instanz ist ein Override und bleibt beim Umschalten der Section stehen.
-- **Breite und Modus passen zusammen.** Figma wählt den Modus nicht nach der Breite des Frames. Änderst Du die Breite einer Seite, stellst Du den Modus an ihrer Section um.
-- **Alle min-/max-Werte hängen an `Lyt scl / Width`.** Keine rohen Werte, keine direkte Bindung an `[twuc]`-Primitive (Ausnahme: Textebenen, an denen Figma keine Width-Variable annimmt).
-- **Kein min-w über `min-w-content`.** Sonst läuft das Element im kleinsten Breitenbereich über.
-- **Hintergrund volle Breite, Inhalt begrenzt.** Die Section läuft bis zum Fensterrand, die Ebene „Wrapper [max-w-content]“ begrenzt den Inhalt.
+Die Designerin setzt den Modus von `Lyt scl / Width` an der Figma-Section, in der die Seiten liegen. So rechnen alle Seiten und Komponenten darin mit den Breiten dieses Breitenbereichs. Begriffe, Werte und alle Regeln: [2.5 Breakpoints und Width](2-tarabao/2.5-breakpoints-und-width.md), Kopplung der Varianten: Principle 18.
 
 ---
 
 ## 📦 Box-Spacing-Muster (Section-basierte Seiten)
 
-Padding und Gap sind pro Layout-Ebene festgelegt; jede Ebene hat genau eine Aufgabe. Spacing sitzt ausschließlich auf der **Section** und in der Ebene **Wrapper [max-w-content]**. Page und Slots sind spacing-neutral.
+Abstände sitzen nur an der Section (oben und unten) und in der Ebene „Wrapper [max-w-content]“ (seitlich und zwischen den Inhalten). Page und Slots tragen keinen Abstand. So ergibt sich der Abstand zwischen zwei Sections allein aus ihrem Padding. Tabelle und Regeln: [2.7 Layout, So entstehen die Abstände](2-tarabao/2.7-layout/README.md).
 
-| Figma-Ebene | React/HTML | Padding vert. | Padding horiz. | Gap |
-|---|---|---|---|---|
-| **Page** (`main` → `sections` → `Section-Slots`) | Seiten-Layout `<main>`, stapelt Sections, spacing-neutral | 0 | 0 | 0 |
-| **Section** (Instanz von `Templates / Section`) | `<section>`, die vertikale Spacing-Box (`py-10`), Hintergrund volle Breite | 40 | 0 | 0 |
-| **Wrapper [max-w-content]** | `<div className="mx-auto max-w-content px-5 flex flex-col gap-5">` | 0 | 20 | 20 |
-| **Content Slot** | React-Composition-Slot (`{children}`) — nur Transport, kein Styling | 0 | 0 | 0 |
-| **Inhalt mit >1 Child** (z. B. Card-Reihe) | eigene Komponente, bringt eigenes Spacing mit (`gap-3`) | 0 | 0 | 12* |
-| **Inhalt mit 1 Child** (z. B. Headline/H2) | eigene Komponente — immer `gap-0` (Single-Child-Regel) | 0 | 0 | 0 |
+---
 
-\* Card-Reihe: 12 in den Standardvarianten, 16 in der Horizontal-Scroll-Variante.
-
-**Regeln:**
-1. Vertikaler Abstand entsteht nur auf Section-Ebene (`py-10`/40, Gap 0). Der seitliche Rand (`px-5`/20) sitzt in „Wrapper [max-w-content]“, damit der Hintergrund der Section bis zum Fensterrand läuft.
-2. Der Abstand zwischen zwei Sections ergibt sich rein aus deren Padding (40 + 40 = 80) — die Page fügt nichts hinzu.
-3. „Wrapper [max-w-content]“ (max-w-content 1248 inklusive 2 × 20 px Rand, Inhalt also höchstens 1208, zentriert) hat `px-5`/20 und `gap-5`/20. Der Gap ist der einzige Abstand zwischen mehreren Inhaltsblöcken innerhalb einer Section.
-4. `Content Slots` sind 0/0/0 — sie transportieren Inhalt, stylen ihn nicht.
-5. Die Page-Kette (`main` → `sections` → `Section-Slots`) ist durchgehend 0/0/0.
-6. Inhaltskomponenten bringen ihr eigenes internes Spacing mit.
-7. **Single-Child-Regel: Container mit nur einem Child haben grundsätzlich `gap-0`.**
+*Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen. Design-Tokens (Text Styles, Box-Spacing & Gap, Tailwind-Utility-Scale) stehen in `2-tarabao/2.3-design-tokens-tailwind-v4.md` und `2-tarabao/app.tcss`, offene Punkte in `2-tarabao/offene-punkte.md`.*
