@@ -35,7 +35,7 @@ Templates / Page   (Hug, Min-Höhe = Bildschirm)
 
 ### So liest Du die Seite in Dev Mode
 
-1. **Die Höhe der Seite übernimmst Du nicht.** Figma zeigt die Höhe des Inhalts. Die Min-Höhe 792 steht für den Bildschirm und wird im Code zu `min-h-dvh`.
+1. Der KI-Agent / der Entwickler übernimmt **nicht** die Höhe der Seite aus Figma. Sie wird dynamisch über die Klasse `min-h-dvh` berechnet.
 2. **Die Seite scrollt als Ganzes.** Du baust keinen inneren Scroll-Container, also kein `overflow-y: auto` mit fester Höhe an `main` oder den Sections.
 3. **Slots bekommen kein Element.** Die Inhalte eines Slots folgen direkt im Wrapper. Min-Höhe und Fläche eines leeren Slots sind Platzhalter in Figma.
 4. **Die Werte liest Du aus den Variablen.** Die Code-Syntax WEB zeigt `var(--…)`. Da `app.tcss` diese Variablen in `@theme` anlegt, gibt es passende Utilities: `--spacing-xl` → `py-xl`, `--container-content` → `max-w-content`.
