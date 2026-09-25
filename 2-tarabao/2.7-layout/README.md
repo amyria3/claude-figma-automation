@@ -6,8 +6,6 @@ Stand: 25.09.2026 · Figma-Datei „B2C und CI“, Seite COMPONENTS & SCREENS ·
 
 Die Seite besteht aus drei Ebenen. Komponenten wie `Primitives / Headline / H1` oder `Templates / Cards Order` gehen in die Slots der Section. Sections gehen in den Section-Slot der Page. Nur der Bildschirm scrollt, die Seite selbst hat keinen eigenen Scroll-Bereich.
 
-Vektorfassung der Grafik: [img/layout-ebenen.svg](img/layout-ebenen.svg)
-
 ---
 
 ## So baut die Designerin die Seite in Figma
