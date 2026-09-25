@@ -1,6 +1,6 @@
 # 2.7 Layout: So bauen sich Page, Section und Komponenten auf
 
-Stand: 25.09.2026 · Figma-Datei „B2C und CI“, Seite COMPONENTS & SCREENS · Vorlagen `Templates / Screen` (Set 8358:53818) und `Templates / Section` (Set 8308:40715)
+Stand: 25.09.2026 · Figma-Datei „B2C und CI“, Seite COMPONENTS & SCREENS · Vorlagen `Templates / Page` (Set 8358:53818) und `Templates / Section` (Set 8308:40715)
 
 ![So setzen sich Page, Section und Komponenten zusammen](img/layout-ebenen.png)
 
@@ -36,14 +36,14 @@ Templates / Page   (Hug, Min-Höhe = Bildschirm)
 1. Der KI-Agent / der Entwickler übernimmt die Höhe der Seite aus Figma nicht. Sie wird dynamisch über die Klasse `min-h-dvh` berechnet.
 2. **Die Seite scrollt als Ganzes.** Der KI-Agent / der Entwickler baut keinen inneren Scroll-Container, also kein `overflow-y: auto` mit fester Höhe an `main` oder den Sections.
 3. **Slots bekommen kein Element.** Die Inhalte eines Slots folgen direkt im Wrapper. Min-Höhe und Fläche eines leeren Slots sind Platzhalter in Figma.
-4. **Die Werte liest Du aus den Variablen.** Die Code-Syntax WEB zeigt `var(--…)`. Da `app.tcss` diese Variablen in `@theme` anlegt, gibt es passende Utilities: `--spacing-xl` → `py-xl`, `--container-content` → `max-w-content`.
+4. **Die Werte liest Du aus den Variablen.** Die Code-Syntax WEB zeigt `var(--…)`. Da `app.tcss` diese Variablen in `@theme` anlegt, gibt es passende Utilities: `--spacing-xl` → `py-xl`, `--content-max` → `max-w-content` (über `@utility`).
 5. **Der Name `Wrapper [klasse]` nennt die Klasse**, die diese Ebene braucht.
 6. **`main.flex-1` ergänzt Du selbst.** So bleibt der Footer bei kurzem Inhalt unten. Figma bildet das nicht ab.
 
 ### So sieht `Templates / Page` in Tailwind aus
 
 ```html
-<body class="flex min-h-dvh min-w-content-min flex-col items-center bg-surface">
+<body class="flex min-h-dvh min-w-content flex-col items-center bg-surface">
   <header class="sticky top-0 z-50 flex w-full flex-col items-center bg-surface">…</header>
 
   <main class="flex w-full flex-1 flex-col items-center">
@@ -57,7 +57,7 @@ Templates / Page   (Hug, Min-Höhe = Bildschirm)
 
 | Figma | Variable (WEB) | Tailwind |
 |---|---|---|
-| Page min-w | `var(--container-content-min)` | `min-w-content-min` |
+| Page min-w | `var(--content-min)` | `min-w-content` |
 | Page min-h 792 | keine Variable (Viewport) | `min-h-dvh` |
 | Fill Page, Header, Footer | `var(--surface-color)` | `bg-surface` |
 | Footer padding oben/unten | `var(--spacing-md-l)` | `py-md-l` |
@@ -81,7 +81,7 @@ Templates / Page   (Hug, Min-Höhe = Bildschirm)
 |---|---|---|
 | Section padding oben/unten | `var(--spacing-xl)` | `py-xl` |
 | Section Fill | `var(--surface-color)` | `bg-surface` |
-| Wrapper max-w | `var(--container-content)` | `max-w-content` |
+| Wrapper max-w | `var(--content-max)` | `max-w-content` |
 | Wrapper px und gap | `var(--spacing-md-l)` | `px-md-l`, `gap-md-l` |
 | Slot min-h | `calc(var(--spacing) * 3)` | nur Figma (Platzhalter) |
 
