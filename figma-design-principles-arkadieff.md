@@ -128,7 +128,7 @@ Jede Ebene trägt einen aussagekräftigen Namen, der Funktion oder Inhalt beschr
 ### Principle 13: Text Styles konsequent verknüpfen
 Jeder Textknoten ist mit einem Text Style verknüpft. Direkte Font-Properties ohne Style-Verknüpfung sind nur temporär während der Erstellung zulässig. Globale Änderungen (Font, Größe, Farbe) sollen über den Style wirken — nicht durch manuelle Einzelanpassungen.
 
-Empfohlener Workflow: Styles werden vor der eigentlichen Datei-Erstellung angelegt (siehe `figma-kollaboration-workflows.md`). Vollständige Liste der aktuell definierten Text Styles: siehe `ux-ui-dokumentation-tarabao.md`, Abschnitt "🔤 Design Tokens: Text Styles".
+Empfohlener Workflow: Styles werden vor der eigentlichen Datei-Erstellung angelegt (siehe `figma-kollaboration-workflows.md`). Alle Text Styles mit ihren Werten: `2-tarabao/app.tcss` §6 (Klassen `type-*`), erklärt in `2-tarabao/2.3-design-tokens-tailwind-v4.md` §6a.
 
 ### Principle 14: Clip Content nur explizit setzen
 `clipsContent` wird nicht als Default gesetzt — nur dann, wenn Inhalte eines Containers bewusst abgeschnitten werden sollen (z.B. Scroll-Container, Bild-Crop, Karussell). Slides und Layout-Frames erhalten kein Clip Content, solange kein Overflow-Problem vorliegt.
@@ -150,6 +150,19 @@ Nach manuellen Änderungen in der UI prüft die Designerin die Höhe: Instanzen 
 
 ### Principle 17: Header, main und Footer sind Geschwister
 Die Ebenen der Seite entsprechen der HTML-Struktur `<header>`, `<main>`, `<footer>`. Der Footer gehört nicht in `main`. Der Header ist sticky (Position: Sticky), und der Frame `Page` steht auf „Canvas stacking: First on top“, damit der Header beim Scrollen über dem Inhalt liegt.
+
+### Principle 18: Varianten schalten mit dem Modus um, wenn ihre Property an eine Variable gebunden ist
+Eine Komponente, die je Modus anders aussieht, bekommt eine Varianten-Property. Die Designerin bindet diese Property an eine Text-Variable. Dann wählt jede Instanz ihre Variante selbst: Schaltet die Designerin den Modus an der Section um, wechseln alle gebundenen Komponenten darin mit.
+
+Beispiel: NavBar, Nav, Footer, PromoBar und Nutmixer haben die Varianten-Property `viewport-range` mit den Werten base, md und lg. Sie ist an die Variable `viewport-range` aus `Lyt scl / Width` gebunden. Diese Variable hat im Modus base den Wert „base“, im Modus md „md“ und im Modus lg „lg“. Stellt die Designerin die Section „{Single Pages} Toggle Lyt / Scl -> Width when changing Page Width“ auf lg, zeigen Header und Footer aller Seiten darin ihre lg-Variante.
+
+- **Die Werte der Variable heißen genau wie die Varianten.** Sonst findet Figma keine passende Variante.
+- **Die Property heißt wie die Variable.** So erkennst Du die Kopplung schon am Namen.
+- **Die Designerin bindet die Property einmal im Master, in dem die Instanz steckt,** z. B. am Footer in `Templates / Page`. Alle Seiten erben die Bindung. Eine Instanz mit festem Wert schaltet nicht mit.
+- **Die Komponente trägt keinen eigenen Modus.** Ein Modus an der Instanz überschreibt den Modus der Section.
+- **So siehst Du die Kopplung:** Im Dev Mode zeigt die Property keinen festen Wert wie „md“, sondern die Variable mit dem T-Symbol: `viewport-range`. Im Component Playground („Explore component behavior“) schaltest Du die Varianten von Hand durch.
+
+Im Code braucht die Komponente dafür keine Prop. Was sich je Breitenbereich ändert, setzt der Entwickler mit `md:` und `lg:`. Details: [2.5 Breakpoints und Width](2-tarabao/2.5-breakpoints-und-width.md), [Einstieg §3](2-tarabao/README.md).
 
 ---
 
@@ -223,7 +236,7 @@ MainContent (flex-col)
 
 ---
 
-*Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen. Design-Tokens (Text Styles, Box-Spacing & Gap, Tailwind-Utility-Scale) und offene TODOs stehen in `ux-ui-dokumentation-tarabao.md`.*
+*Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen. Design-Tokens (Text Styles, Box-Spacing & Gap, Tailwind-Utility-Scale) stehen in `2-tarabao/2.3-design-tokens-tailwind-v4.md` und `2-tarabao/app.tcss`, offene Punkte in `2-tarabao/offene-punkte.md`.*
 
 ---
 
@@ -232,10 +245,10 @@ MainContent (flex-col)
 Details und Werte: `2-tarabao/2.5-breakpoints-und-width.md`.
 
 - **Begriffe:** Ein Breakpoint ist eine Schwelle der Fensterbreite (360 · 768 · 1024). Ein Breitenbereich ist die Spanne zwischen zwei Breakpoints (`base` · `md` · `lg`). In jedem Breitenbereich gilt ein Modus von `Lyt scl / Width`.
-- **Der Modus wird an der Seite festgelegt.** Nur die Varianten von `Templates / Page` pinnen `Lyt scl / Width` und binden `min-w-screen` / `max-w-screen`. So simuliert die Designerin den Breitenbereich.
-- **Komponenten pinnen keinen Modus.** Sie erben ihn von der Seite. Varianten je Breitenbereich schalten über die Property `Breakpoint`, gebunden an die Text-Variable `breakpoint`.
-- **Keinen Modus an einer Instanz setzen.** Ein Pin an einer Page-Instanz ist ein Override und bleibt beim Variantenwechsel stehen. Den Breitenbereich wechselst Du über die Variante.
-- **Frame-Breite und Variante passen zusammen.** Figma wählt die Variante nicht nach der Breite des Frames.
+- **Der Modus wird an der Figma-Section festgelegt, in der die Seiten liegen.** So simuliert die Designerin den Breitenbereich. `Templates / Page` hat nur eine Variante und pinnt keinen Modus. Nur `Templates / Page` bindet `min-w-screen` / `max-w-screen`.
+- **Komponenten pinnen keinen Modus.** Sie erben ihn von der Section. Varianten je Breitenbereich schalten über die Property `viewport-range`, gebunden an die gleichnamige Variable (Principle 18).
+- **Keinen Modus an einer Instanz setzen.** Ein Modus an einer Page-Instanz ist ein Override und bleibt beim Umschalten der Section stehen.
+- **Breite und Modus passen zusammen.** Figma wählt den Modus nicht nach der Breite des Frames. Änderst Du die Breite einer Seite, stellst Du den Modus an ihrer Section um.
 - **Alle min-/max-Werte hängen an `Lyt scl / Width`.** Keine rohen Werte, keine direkte Bindung an `[twuc]`-Primitive (Ausnahme: Textebenen, an denen Figma keine Width-Variable annimmt).
 - **Kein min-w über `min-w-content`.** Sonst läuft das Element im kleinsten Breitenbereich über.
 - **Hintergrund volle Breite, Inhalt begrenzt.** Die Section läuft bis zum Fensterrand, die Ebene „Wrapper [max-w-content]“ begrenzt den Inhalt.
@@ -260,7 +273,7 @@ Padding und Gap sind pro Layout-Ebene festgelegt; jede Ebene hat genau eine Aufg
 **Regeln:**
 1. Vertikaler Abstand entsteht nur auf Section-Ebene (`py-10`/40, Gap 0). Der seitliche Rand (`px-5`/20) sitzt in „Wrapper [max-w-content]“, damit der Hintergrund der Section bis zum Fensterrand läuft.
 2. Der Abstand zwischen zwei Sections ergibt sich rein aus deren Padding (40 + 40 = 80) — die Page fügt nichts hinzu.
-3. „Wrapper [max-w-content]“ (max-w-content 1064 inklusive 2 × 20 px Rand, Inhalt also höchstens 1024, zentriert) hat `px-5`/20 und `gap-5`/20. Der Gap ist der einzige Abstand zwischen mehreren Inhaltsblöcken innerhalb einer Section.
+3. „Wrapper [max-w-content]“ (max-w-content 1248 inklusive 2 × 20 px Rand, Inhalt also höchstens 1208, zentriert) hat `px-5`/20 und `gap-5`/20. Der Gap ist der einzige Abstand zwischen mehreren Inhaltsblöcken innerhalb einer Section.
 4. `Content Slots` sind 0/0/0 — sie transportieren Inhalt, stylen ihn nicht.
 5. Die Page-Kette (`main` → `sections` → `Section-Slots`) ist durchgehend 0/0/0.
 6. Inhaltskomponenten bringen ihr eigenes internes Spacing mit.
