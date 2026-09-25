@@ -3,7 +3,7 @@
 /* ================================================================
  *  DESIGN TOKENS — Figma → Tailwind v4
  *  Source: Figma file rLwATluwV4CSS5rXceLptH
- *  Docs: 2-tarabao/2.3-design-tokens-tailwind-v4.md
+ *  Docs: 2-tarabao/2.6-design-tokens-tailwind-v4.md
  *
  *  Layer stack:
  *    1. Primitives            :root (raw hex, never themed, never used directly)

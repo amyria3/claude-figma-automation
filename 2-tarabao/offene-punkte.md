@@ -33,6 +33,6 @@ Zentrale Ablage **ausschließlich** für unklare Punkte und unbeendete Aufgaben 
 
 ## Doku
 
-21. **Zustände im Code:** Welche CSS-Zustände gehören zu `-hover`, `-focused`, `-selected`, `-inactive` (z. B. `hover:`, `focus-visible:`, `aria-selected`, `aria-disabled`)? Festlegen und in 2.3 §9.1 ergänzen.
+21. **Zustände im Code:** Welche CSS-Zustände gehören zu `-hover`, `-focused`, `-selected`, `-inactive` (z. B. `hover:`, `focus-visible:`, `aria-selected`, `aria-disabled`)? Festlegen und in 2.6 §9.1 ergänzen.
 22. **Schriften und Icons:** Quelle der Schriftdateien und `@font-face` für LUMOSKY, BROWN NOW ONE/TWO und Manrope; Export der Icons (SVG, `currentColor`).
 23. **Grafik in 2.7:** Die dritte Beschriftung („Komponente in einen anderen“) ist abgeschnitten. Im Figma-Frame „layout-ebenen“ (9023:23570) ergänzen und neu exportieren.

@@ -32,7 +32,7 @@ Jede Seite ist eine Instanz von `Templates / Page`. Im Layers-Panel siehst Du ih
 </body>
 ```
 
-Mehr dazu: [2.7 Layout](2.7-layout/README.md) (`Templates / Page`, `Templates / Section`, Slots und Abstände).
+Mehr dazu: [2.7 Layout](2.7-layout.md) (`Templates / Page`, `Templates / Section`, Slots und Abstände).
 
 ---
 
@@ -57,7 +57,7 @@ Die Klasse ist die Eigenschaft plus der Token-Name ohne Namespace: `py-xl` (`py-
 | `background: var(--btn-primary-bg)` | `--btn-primary-bg: var(--cole-tint-90);` | `bg-btn-primary-bg` |
 | `background: var(--surface-color)` | `--surface-color: var(--warm-white-100);` | `bg-surface` (einzige Ausnahme vom Muster) |
 
-Mehr dazu: [2.3 Dev-Handoff](2.3-tailwind-dev-handoff.md) (Klassen im Markup) und [2.3 Design-Tokens §9.5](2.3-design-tokens-tailwind-v4.md) (Ableitung Figma → CSS).
+Mehr dazu: [2.3 Dev-Handoff](2.3-tailwind-dev-handoff.md) (Klassen im Markup) und [2.6 Design-Tokens §9.5](2.6-design-tokens-tailwind-v4.md) (Ableitung Figma → CSS).
 
 ---
 
@@ -80,7 +80,7 @@ Im Code wird daraus eine Komponente ohne Prop für den Breitenbereich. Was sich 
 </nav>
 ```
 
-Mehr dazu: [2.5 Breakpoints und Width-Variablen](2.5-breakpoints-und-width.md) (Responsivity) und [2.7 Layout](2.7-layout/README.md).
+Mehr dazu: [2.5 Breakpoints und Width-Variablen](2.5-breakpoints-und-width.md) (Responsivity) und [2.7 Layout](2.7-layout.md).
 
 ---
 
@@ -101,7 +101,7 @@ Im Code setzt Du den Farbmodus als `data-theme` an das Element, an dem er in Fig
 </header>
 ```
 
-Mehr dazu: [2.1 Colors System](2.1-ux-ui-dokumentation-tarabao.md) (warum es die vier Farbmodi gibt) und [2.3 Dev-Handoff §2–§4](2.3-tailwind-dev-handoff.md) (Code je Farbmodus, Ausnahmen).
+Mehr dazu: [2.1 Farbsystem](2.1-farbsystem.md) (warum es die vier Farbmodi gibt) und [2.3 Dev-Handoff §2–§4](2.3-tailwind-dev-handoff.md) (Code je Farbmodus, Ausnahmen).
 
 ---
 
@@ -109,18 +109,20 @@ Mehr dazu: [2.1 Colors System](2.1-ux-ui-dokumentation-tarabao.md) (warum es die
 
 | # | Datei | Worum es geht |
 |---|---|---|
-| 1 | [2.7 Layout](2.7-layout/README.md) | Page, Section, Slots und Abstände. Hier beginnst Du. |
-| 2 | [2.5 Breakpoints und Width](2.5-breakpoints-und-width.md) | Breitenbereiche, Modus an der Section, Breiten im Code |
-| 3 | [2.3 Dev-Handoff](2.3-tailwind-dev-handoff.md) | Tokens im Markup, Farbmodi im Code |
-| 4 | [2.2 Komponenten-Liste](2.2-komponenten-liste.md) | alle Komponenten mit Figma-Links und Farbachsen |
-| 5 | [2.4 Buttons](2.4-buttons-aufbau.md) | Fill und Hug, Form und Label, Code-Vertrag |
-| 6 | [2.1 UX/UI-Dokumentation](2.1-ux-ui-dokumentation-tarabao.md) | Farbsystem und Farbmodi, Regeln für Variablen in Figma, Kategorien und Sammlungen |
+| 1 | [2.7 Layout](2.7-layout.md) | Page, Section, Slots und Abstände. Hier beginnst Du. |
+| 2 | [2.5 Breakpoints und Width](2.5-breakpoints-und-width.md) | Breitenbereiche, Modus an der Section, Breiten und Höhen binden, Breiten im Code |
+| 3 | [2.1 Farbsystem](2.1-farbsystem.md) | Themes, die vier Farbmodi und ihre Ausnahmen |
+| 4 | [2.3 Dev-Handoff](2.3-tailwind-dev-handoff.md) | Tokens im Markup, Farbmodi im Code |
+| 5 | [2.8 Content Modules](2.8-content-modules-und-slots.md) | Slots, Varianten-Achsen und erlaubte Zustände im Playground |
+| 6 | [2.2 Komponenten-Liste](2.2-komponenten-liste.md) | alle Komponenten mit Figma-Links und Farbachsen |
+| 7 | [2.4 Buttons](2.4-buttons-aufbau.md) | Fill und Hug, Form und Label, Code-Vertrag |
+| 8 | [2.9 Content-Struktur](2.9-content-struktur.md) | feste Kategorien und Sammlungen |
 
 ## Für die Pflege des Design-Systems
 
 | Datei | Worum es geht |
 |---|---|
-| [2.3 Design-Tokens](2.3-design-tokens-tailwind-v4.md) | Aufbau von `app.tcss`, Namespaces, Namenskonventionen |
+| [2.6 Design-Tokens](2.6-design-tokens-tailwind-v4.md) | Aufbau von `app.tcss`, Namespaces, Namenskonventionen |
 | [`app.tcss`](app.tcss) | alle Tokens, spiegelt die Figma-Variablen 1:1 |
 | [token-check/](token-check/) | Abgleich Figma ↔ `app.tcss` (`figma-dump.js`, `token_check.py`) |
 | [offene-punkte.md](offene-punkte.md) | offene Entscheidungen |
