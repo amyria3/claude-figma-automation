@@ -4,10 +4,10 @@ Zentrale Ablage **ausschließlich** für unklare Punkte und unbeendete Aufgaben 
 
 ## Figma: Breiten und Breakpoints
 
-1. **Footer schaltet nicht überall mit.** Ein Teil der Footer-Instanzen bindet die Property `Breakpoint` nicht an `viewport-range`, sondern steht fest auf base, md oder lg. Dasselbe gilt für `viewport-range` an der Nutmixer-Instanz. Binden.
+1. **Footer in den alten Screens schaltet nicht mit.** In den Sections „max-w 1259, min-w 564 …“ (Tablet) und „max-w 563“ (Mobile) sowie einmal im Check-Out-Workflow steht `viewport-range` am Footer fest auf md oder lg, statt an der gleichnamigen Variable zu hängen. Binden oder die alten Screens entfernen.
 2. **Welche Untergrenze bindet `Templates / Page`?** Die Page bindet min-w an `min-w-content`. Die Beschreibung von `min-w-screen` sagt „Nur an Templates / Page binden“. Entscheiden und Bindung oder Beschreibung anpassen.
 3. **Beschreibungen der Breakpoint-Variablen veraltet.** `base`, `md` und `lg` sprechen von „Page-Varianten“. Die Beschreibung von `viewport-range` nennt nur Footer und Nutmixer, gebunden sind auch NavBar, Nav und PromoBar.
-4. **MegaCard und MegaCards auf `Breakpoint` base · md · lg umstellen.** Beide nutzen noch die Achse `Min/Max` (min 1260 / max 1259), die Varianten von `Cards / MegaCard` tragen einen Pin auf einen gelöschten Modus von `Lyt scl / Width`.
+4. **MegaCard und MegaCards auf `viewport-range` base · md · lg umstellen.** Beide nutzen noch die Achse `Min/Max` (min 1260 / max 1259), die Varianten von `Cards / MegaCard` tragen einen Pin auf einen gelöschten Modus von `Lyt scl / Width`.
 5. **Mega Cards: 4 ungruppierte `button-LG-primary-*` ohne Code-Syntax.** Gruppieren und Code-Syntax setzen oder löschen.
 6. **`Cards / ProductCard / CompactSize` bindet `Cards/DefaultSize/min-w` · `max-w` (240 · 384)** statt `Cards/CompactSize/…` (240 · 328). Umbinden ändert das Maximum auf 328.
 7. **Ungenutzte Width-Variablen:** `Cards/CompactSize/min-w` und `Cards/CompactSize/Img/max-w`. Entweder CompactSize darauf umbinden oder löschen.

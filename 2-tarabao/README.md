@@ -63,13 +63,13 @@ Mehr dazu: [2.3 Dev-Handoff](2.3-tailwind-dev-handoff.md) (Klassen im Markup) un
 
 ## 3. So liest Du die Optik je Breakpoint aus der Komponente
 
-Wähle eine Komponente aus, z. B. `Navigation / NavBar`. Die Property `Breakpoint` zeigt die Variable `viewport-range`, die Komponente folgt also dem Breitenbereich der Seite. Klicke auf **Explore component behavior**. Im Component Playground wählst Du unter `Breakpoint` base, md oder lg und siehst die Optik je Breitenbereich.
+Wähle eine Komponente aus, z. B. `Navigation / NavBar`. Die Property `viewport-range` ist an die gleichnamige Variable gebunden, die Komponente folgt also dem Breitenbereich der Seite. Klicke auf **Explore component behavior**. Im Component Playground wählst Du unter `viewport-range` base, md oder lg und siehst die Optik je Breitenbereich.
 
-![Component Playground: Breakpoint wählen](img/einstieg-03-playground-breakpoint.png)
+![Component Playground: Breitenbereich wählen](img/einstieg-03-playground-breakpoint.png)
 
 ① Hier schaltest Du zwischen base, md und lg um.
 
-Im Code wird daraus eine Komponente ohne Breakpoint-Prop. Was sich je Breitenbereich ändert, setzt Du mit `md:` und `lg:`. Breiten schalten über die Token-Klasse selbst um:
+Im Code wird daraus eine Komponente ohne Prop für den Breitenbereich. Was sich je Breitenbereich ändert, setzt Du mit `md:` und `lg:`. Breiten schalten über die Token-Klasse selbst um:
 
 ```html
 <nav class="flex w-full items-center justify-between">
