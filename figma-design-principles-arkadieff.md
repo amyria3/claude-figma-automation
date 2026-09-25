@@ -2,7 +2,7 @@
 
 > **Ausnahmen:** Jedes Prinzip erlaubt Ausnahmen, sofern das UI-Pattern es erfordert. Beispiel: Ein Karussell erfordert, dass alle Kind-Frames `hug` haben und der Container absichtlich überläuft — das ist kein Fehler, sondern das korrekte Muster. Ausnahmen sind explizit zu benennen.
 
-> **Korrektur 13.07.2026 (durchgängig eingearbeitet):** Die Variant-Property für den inaktiven Button-Zustand heißt **`Inactive?`** (nicht mehr `Deactivated?`, wie manchmal verwendet). Betrifft u.a. `Buttons / MD / PrimaryButton` (node-id=2310-2156). Vor Code, der Property-Namen referenziert, immer live via `componentPropertyDefinitions` gegenprüfen — Namen ändern sich in diesem File, weil wir noch im Prozess sind.
+> **Property-Namen:** Die Variant-Property für den inaktiven Button-Zustand heißt **`Inactive?`**, z. B. an `Buttons / MD / PrimaryButton` (node-id=2310-2156). Vor Code, der Property-Namen referenziert, prüfst Du die Namen live über `componentPropertyDefinitions`. So bleibt der Code auch dann richtig, wenn sich ein Name im File ändert.
 
 ---
 
@@ -78,7 +78,7 @@ flex-col (fill)
 
 *Ausnahme: Elemente mit wirklich fixer, nicht-textbasierter Größe — z.B. ein quadratisches Icon, ein Avatar, ein Badge mit fester Pixelgröße. Textbasierte Elemente, auch kurze Labels, bekommen immer `fill`.*
 
-**Ergänzung (21.07.2026) — Primitives & Slot-Einsatz:** Gilt insbesondere für Typo-Primitives (Headlines, Paragraphs) und Content Modules: Der Textknoten übernimmt per `fill` die Breite seines Frames — auf jeder Verschachtelungsebene, auch innerhalb von Wrapper-Frames wie `Title`. Wird eine Instanz in einen Slot oder ein Modul gesetzt (auch nach Instance-Swap), sind Frame UND Textknoten auf `fill` zu prüfen. Breiten-Constraints (min-/max-w) gehören an den Container — nie an den Textknoten oder das Primitive selbst (vgl. max-w-Entfernung am Master von Primitives / Headlines / H3, 21.07.2026).
+**Primitives & Slot-Einsatz:** Gilt insbesondere für Typo-Primitives (Headlines, Paragraphs) und Content Modules: Der Textknoten übernimmt per `fill` die Breite seines Frames — auf jeder Verschachtelungsebene, auch innerhalb von Wrapper-Frames wie `Title`. Wird eine Instanz in einen Slot oder ein Modul gesetzt (auch nach Instance-Swap), sind Frame UND Textknoten auf `fill` zu prüfen. Breiten-Constraints (min-/max-w) gehören an den Container — nie an den Textknoten oder das Primitive selbst.
 
 ### Principle 7: flex-wrap und Grid — Wahl nach Struktur
 `flex-wrap` für dynamische Inhalte ohne bekannte Anzahl. Grid (`grid-cols`) wenn Spaltenanzahl fix und vorhersehbar. Kinder in beiden Fällen standardmäßig `fill` — sie teilen den verfügbaren Platz gleichmäßig auf.
@@ -114,7 +114,7 @@ Titel und Inhalt einer Sektion können in getrennten Kind-Frames liegen (`Sectio
 ### Principle 10: Scrollable Container Pattern
 Die Seite scrollt als Ganzes. Overflow sitzt nur an der Wurzel von `Templates / Page` (sie steht für den Browser-Viewport) und an echten Scroll-Bereichen wie Karussell, Modal oder Filter-Panel. Diese erhalten einen expliziten Container-Frame mit `clip content` und Overflow.
 
-Sections, `main` und Slots bekommen keinen Overflow. Verschachtelte Scroll-Container fangen im Prototyp das Mausrad ab (die Seite scrollt dann nicht mehr zurück), und der Entwickler übernimmt sie als `overflow-y: auto` mit fester Höhe. Bei Scroll-Problemen prüft die Designerin zuerst, welche Ebenen einen Overflow tragen. Details: [2.7 Layout](2-tarabao/2.7-layout/README.md).
+Sections, `main` und Slots bekommen keinen Overflow. Verschachtelte Scroll-Container fangen im Prototyp das Mausrad ab (die Seite scrollt dann nicht mehr zurück), und der Entwickler übernimmt sie als `overflow-y: auto` mit fester Höhe. Bei Scroll-Problemen prüft die Designerin zuerst, welche Ebenen einen Overflow tragen. Details: [2.7 Layout](2-tarabao/2.7-layout.md).
 
 ### Principle 11: Component Variants
 Wiederverwendbare Elemente werden als Components mit Variants angelegt.
@@ -122,13 +122,13 @@ Wiederverwendbare Elemente werden als Components mit Variants angelegt.
 ### Principle 12: Granular & Semantic Naming
 Jede Ebene trägt einen aussagekräftigen Namen, der Funktion oder Inhalt beschreibt (z.B. `HeaderFrame`, `TabsNavigation`, `FeedContent`).
 
-**Ergänzung — Frame-Naming und Auto-Layout:**
+**Frame-Naming und Auto-Layout:**
 „Frame" ist im Zweifel ein gültiger Name — random Nummerierungen wie `Frame 845`, `Frame 15` etc. werden vermieden. Ein schlichtes `Frame` ist insbesondere gewünscht, wenn der Frame keine erkennbare FE-Relevanz hat. Auto-Layout-Frames sind so oft es geht mit `flex-row` bzw. `flex-col` zu benennen — ihre Layout-Richtung ist FE-relevant.
 
 ### Principle 13: Text Styles konsequent verknüpfen
 Jeder Textknoten ist mit einem Text Style verknüpft. Direkte Font-Properties ohne Style-Verknüpfung sind nur temporär während der Erstellung zulässig. Globale Änderungen (Font, Größe, Farbe) sollen über den Style wirken — nicht durch manuelle Einzelanpassungen.
 
-Empfohlener Workflow: Styles werden vor der eigentlichen Datei-Erstellung angelegt (siehe `figma-kollaboration-workflows.md`). Alle Text Styles mit ihren Werten: `2-tarabao/app.tcss` §6 (Klassen `type-*`), erklärt in `2-tarabao/2.3-design-tokens-tailwind-v4.md` §6a.
+Empfohlener Workflow: Styles werden vor der eigentlichen Datei-Erstellung angelegt (siehe `figma-kollaboration-workflows.md`). Alle Text Styles mit ihren Werten: `2-tarabao/app.tcss` §6 (Klassen `type-*`), erklärt in `2-tarabao/2.6-design-tokens-tailwind-v4.md` §6a.
 
 ### Principle 14: Clip Content nur explizit setzen
 `clipsContent` wird nicht als Default gesetzt — nur dann, wenn Inhalte eines Containers bewusst abgeschnitten werden sollen (z.B. Scroll-Container, Bild-Crop, Karussell). Slides und Layout-Frames erhalten kein Clip Content, solange kein Overflow-Problem vorliegt.
@@ -141,15 +141,15 @@ Innerhalb von Component-Variant-Namen (z.B. `Hover?=False, Variant=1, Color=blue
 - Die Property-Reihenfolge bleibt innerhalb eines Component-Sets über alle Varianten hinweg identisch.
 - Enthält das Label selbst bereits ein `?` (z.B. eine Frage wie `"Weiter zu Versandmethoden?"`), wird der Boolean-Marker trotzdem zusätzlich außerhalb der Anführungszeichen ergänzt: `"Weiter zu Versandmethoden?"?=False`. Das sieht mit doppeltem `?` ungewohnt aus, folgt aber derselben Regel wie alle Nachbar-Properties.
 
-**Häufig verwendete Property-Namen zur Orientierung (Audit vom 01.07.2026, `Inactive?`-Umbenennung berücksichtigt):** `State`, `Variant`, `Hover?`,  `Type`, `Selected?`, `Open?`, `Inactive?`, `Show Icon?`, `Is Active?`, `Has Input?`, `window-w`, `Size`. Selten: `color-mode: ...?`
+**Häufig verwendete Property-Namen zur Orientierung:** `State`, `Variant`, `Hover?`,  `Type`, `Selected?`, `Open?`, `Inactive?`, `Show Icon?`, `Is Active?`, `Has Input?`, `viewport-range`, `Size`. Selten: `color-mode: ...?`
 
 ### Principle 16: Seiten wachsen mit dem Inhalt, der Bildschirm ist eine Min-Höhe
 Die Designerin setzt eine Seite nie auf eine feste Viewport-Höhe. `Templates / Page` steht auf Hug, die Min-Höhe (792) steht für den Bildschirm und wird im Code zu `min-h-dvh`. Die Bildschirmgröße legt das Device im Prototyp fest. So sieht der Entwickler die ganze Seite auf dem Canvas, ohne zu scrollen.
 
-Nach manuellen Änderungen in der UI prüft die Designerin die Höhe: Instanzen und Slots können dabei auf eine feste Höhe zurückspringen. Details: [2.7 Layout](2-tarabao/2.7-layout/README.md).
+Nach manuellen Änderungen in der UI prüft die Designerin die Höhe: Instanzen und Slots können dabei auf eine feste Höhe zurückspringen. Details: [2.7 Layout](2-tarabao/2.7-layout.md).
 
 ### Principle 17: Header, main und Footer sind Geschwister
-Die Ebenen der Seite entsprechen der HTML-Struktur `<header>`, `<main>`, `<footer>`. Der Footer gehört nicht in `main`. Der Header ist sticky (Position: Sticky), und der Frame `Page` steht auf „Canvas stacking: First on top“, damit der Header beim Scrollen über dem Inhalt liegt. Details: [2.7 Layout](2-tarabao/2.7-layout/README.md).
+Die Ebenen der Seite entsprechen der HTML-Struktur `<header>`, `<main>`, `<footer>`. Der Footer gehört nicht in `main`. Der Header ist sticky (Position: Sticky), und der Frame `Page` steht auf „Canvas stacking: First on top“, damit der Header beim Scrollen über dem Inhalt liegt. Details: [2.7 Layout](2-tarabao/2.7-layout.md).
 
 ### Principle 18: Varianten schalten mit dem Modus um, wenn ihre Property an eine Variable gebunden ist
 Eine Komponente, die je Modus anders aussieht, bekommt eine Varianten-Property. Die Designerin bindet diese Property an eine Text-Variable. Dann wählt jede Instanz ihre Variante selbst: Schaltet die Designerin den Modus an der Section um, wechseln alle gebundenen Komponenten darin mit.
@@ -192,7 +192,7 @@ Button (Variant: Inactive=True)   ← zurück zum Ausgangszustand, kein separate
 
 ## 🧩 Slots & Content Modules — Bauprinzip für CMS-abbildende Komponenten
 
-Jeder austauschbare Inhaltsbereich hat einen Slot mit Preferred Values, eine Varianten-Achse je Slot und für optionale Bereiche ein Boolean. So zeigt der Component Playground genau die Zustände, die das CMS erlaubt. Aufbau, Benennung und Beispiel `ContentModules / Basic`: [2.1, Komponenten mit austauschbarem Inhalt](2-tarabao/2.1-ux-ui-dokumentation-tarabao.md).
+Jeder austauschbare Inhaltsbereich hat einen Slot mit Preferred Values, eine Varianten-Achse je Slot und für optionale Bereiche ein Boolean. So zeigt der Component Playground genau die Zustände, die das CMS erlaubt. Aufbau, Benennung und Beispiel `ContentModules / Basic`: [2.8 Content Modules](2-tarabao/2.8-content-modules-und-slots.md).
 
 ---
 
@@ -226,8 +226,8 @@ Die Designerin setzt den Modus von `Lyt scl / Width` an der Figma-Section, in de
 
 ## 📦 Box-Spacing-Muster (Section-basierte Seiten)
 
-Abstände sitzen nur an der Section (oben und unten) und in der Ebene „Wrapper [max-w-content]“ (seitlich und zwischen den Inhalten). Page und Slots tragen keinen Abstand. So ergibt sich der Abstand zwischen zwei Sections allein aus ihrem Padding. Tabelle und Regeln: [2.7 Layout, So entstehen die Abstände](2-tarabao/2.7-layout/README.md).
+Abstände sitzen nur an der Section (oben und unten) und in der Ebene „Wrapper [max-w-content]“ (seitlich und zwischen den Inhalten). Page und Slots tragen keinen Abstand. So ergibt sich der Abstand zwischen zwei Sections allein aus ihrem Padding. Tabelle und Regeln: [2.7 Layout, So entstehen die Abstände](2-tarabao/2.7-layout.md).
 
 ---
 
-*Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen. Design-Tokens (Text Styles, Box-Spacing & Gap, Tailwind-Utility-Scale) stehen in `2-tarabao/2.3-design-tokens-tailwind-v4.md` und `2-tarabao/app.tcss`, offene Punkte in `2-tarabao/offene-punkte.md`.*
+*Diese Prinzipien gelten für alle Figma-Designs, Komponenten und Layout-Strukturen. Design-Tokens (Text Styles, Box-Spacing & Gap, Tailwind-Utility-Scale) stehen in `2-tarabao/2.6-design-tokens-tailwind-v4.md` und `2-tarabao/app.tcss`, offene Punkte in `2-tarabao/offene-punkte.md`.*
