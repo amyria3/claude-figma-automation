@@ -936,7 +936,7 @@
      Konstanten: Eine Media-Query kann keine Variable lesen.
      base (360) hat keine Media-Query, alles ohne Praefix gilt ab 0.
      initial entfernt die Tailwind-Standards sm, xl und 2xl.
-     Nur Figma: base, calc(md - 1), calc(lg - 1), calc(x-lg - 1), x-lg. */
+     Nur Figma: base, calc(md - 1), calc(lg - 1). */
   --breakpoint-*: initial;
   --breakpoint-md: 48rem;               /* md   768px */
   --breakpoint-lg: 64rem;               /* lg  1024px */
@@ -1066,7 +1066,7 @@
     --container-product-page-column-min: 20.5rem;
     --container-megacard-min: 26.5rem;
     --content-min: 61.5rem;                   /* 984px */
-    --content-max: 78rem;                     /* 1248px → Breakpoints/x-lg */
+    --content-max: 78rem;                     /* 1248px → [twuc]-312 */
   }
 }
 
